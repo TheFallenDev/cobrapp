@@ -1,0 +1,12 @@
+C:\Users\ignaa\source\repos\Cobrapp\bin\Debug\Cobrapp.exe.config
+C:\Users\ignaa\source\repos\Cobrapp\bin\Debug\Cobrapp.exe
+C:\Users\ignaa\source\repos\Cobrapp\bin\Debug\Cobrapp.pdb
+C:\Users\ignaa\source\repos\Cobrapp\obj\Debug\Cobrapp.csproj.AssemblyReference.cache
+C:\Users\ignaa\source\repos\Cobrapp\obj\Debug\Cobrapp.csproj.SuggestedBindingRedirects.cache
+C:\Users\ignaa\source\repos\Cobrapp\obj\Debug\Cobrapp.Properties.Resources.resources
+C:\Users\ignaa\source\repos\Cobrapp\obj\Debug\Cobrapp.csproj.GenerateResource.cache
+C:\Users\ignaa\source\repos\Cobrapp\obj\Debug\Cobrapp.csproj.CoreCompileInputs.cache
+C:\Users\ignaa\source\repos\Cobrapp\obj\Debug\Cobrapp.exe
+C:\Users\ignaa\source\repos\Cobrapp\obj\Debug\Cobrapp.pdb
+C:\Users\ignaa\source\repos\Cobrapp\obj\Debug\Cobrapp.main.resources
+C:\Users\ignaa\source\repos\Cobrapp\obj\Debug\Cobrapp.Collector.resources
