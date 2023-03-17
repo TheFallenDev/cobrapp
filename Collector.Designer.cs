@@ -31,13 +31,11 @@
             this.lbl_barcode = new System.Windows.Forms.Label();
             this.txt_barcode = new System.Windows.Forms.TextBox();
             this.lbl_tax_name = new System.Windows.Forms.Label();
-            this.lbl_account_number = new System.Windows.Forms.Label();
             this.lbl_due_date = new System.Windows.Forms.Label();
             this.lbl_total = new System.Windows.Forms.Label();
             this.lbl_penalty = new System.Windows.Forms.Label();
             this.lbl_tax_total = new System.Windows.Forms.Label();
             this.btn_add_tax = new System.Windows.Forms.Button();
-            this.lbl_period = new System.Windows.Forms.Label();
             this.btn_collect_taxes = new System.Windows.Forms.Button();
             this.dtgv_taxes_list = new System.Windows.Forms.DataGridView();
             this.account = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -48,8 +46,6 @@
             this.partial = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.btn_remove_tax = new System.Windows.Forms.Button();
             this.lbl_show_tax = new System.Windows.Forms.Label();
-            this.lbl_show_period = new System.Windows.Forms.Label();
-            this.lbl_show_account = new System.Windows.Forms.Label();
             this.lbl_show_due_date = new System.Windows.Forms.Label();
             this.lbl_show_penalty = new System.Windows.Forms.Label();
             this.lbl_amount = new System.Windows.Forms.Label();
@@ -59,6 +55,10 @@
             this.btn_cleaner = new System.Windows.Forms.Button();
             this.txt_tax_total = new System.Windows.Forms.TextBox();
             this.txt_total = new System.Windows.Forms.TextBox();
+            this.txt_extra_penalty = new System.Windows.Forms.TextBox();
+            this.lbl_extra_penalty = new System.Windows.Forms.Label();
+            this.txt_penalty_percentage = new System.Windows.Forms.TextBox();
+            this.lbl_show_due_days = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.dtgv_taxes_list)).BeginInit();
             this.SuspendLayout();
             // 
@@ -89,19 +89,10 @@
             this.lbl_tax_name.TabIndex = 2;
             this.lbl_tax_name.Text = "Tasa";
             // 
-            // lbl_account_number
-            // 
-            this.lbl_account_number.AutoSize = true;
-            this.lbl_account_number.Location = new System.Drawing.Point(15, 128);
-            this.lbl_account_number.Name = "lbl_account_number";
-            this.lbl_account_number.Size = new System.Drawing.Size(71, 13);
-            this.lbl_account_number.TabIndex = 3;
-            this.lbl_account_number.Text = "Cta. Corriente";
-            // 
             // lbl_due_date
             // 
             this.lbl_due_date.AutoSize = true;
-            this.lbl_due_date.Location = new System.Drawing.Point(226, 128);
+            this.lbl_due_date.Location = new System.Drawing.Point(140, 93);
             this.lbl_due_date.Name = "lbl_due_date";
             this.lbl_due_date.Size = new System.Drawing.Size(112, 13);
             this.lbl_due_date.TabIndex = 4;
@@ -119,7 +110,7 @@
             // lbl_penalty
             // 
             this.lbl_penalty.AutoSize = true;
-            this.lbl_penalty.Location = new System.Drawing.Point(226, 165);
+            this.lbl_penalty.Location = new System.Drawing.Point(224, 123);
             this.lbl_penalty.Name = "lbl_penalty";
             this.lbl_penalty.Size = new System.Drawing.Size(50, 13);
             this.lbl_penalty.TabIndex = 6;
@@ -128,7 +119,7 @@
             // lbl_tax_total
             // 
             this.lbl_tax_total.AutoSize = true;
-            this.lbl_tax_total.Location = new System.Drawing.Point(75, 240);
+            this.lbl_tax_total.Location = new System.Drawing.Point(73, 198);
             this.lbl_tax_total.Name = "lbl_tax_total";
             this.lbl_tax_total.Size = new System.Drawing.Size(63, 13);
             this.lbl_tax_total.TabIndex = 7;
@@ -136,22 +127,14 @@
             // 
             // btn_add_tax
             // 
-            this.btn_add_tax.Location = new System.Drawing.Point(138, 319);
+            this.btn_add_tax.Enabled = false;
+            this.btn_add_tax.Location = new System.Drawing.Point(136, 277);
             this.btn_add_tax.Name = "btn_add_tax";
             this.btn_add_tax.Size = new System.Drawing.Size(75, 23);
             this.btn_add_tax.TabIndex = 9;
             this.btn_add_tax.Text = "Agregar";
             this.btn_add_tax.UseVisualStyleBackColor = true;
             this.btn_add_tax.Click += new System.EventHandler(this.btn_add_tax_Click);
-            // 
-            // lbl_period
-            // 
-            this.lbl_period.AutoSize = true;
-            this.lbl_period.Location = new System.Drawing.Point(226, 93);
-            this.lbl_period.Name = "lbl_period";
-            this.lbl_period.Size = new System.Drawing.Size(45, 13);
-            this.lbl_period.TabIndex = 10;
-            this.lbl_period.Text = "Período";
             // 
             // btn_collect_taxes
             // 
@@ -219,7 +202,7 @@
             // 
             // btn_remove_tax
             // 
-            this.btn_remove_tax.Location = new System.Drawing.Point(263, 319);
+            this.btn_remove_tax.Location = new System.Drawing.Point(261, 277);
             this.btn_remove_tax.Name = "btn_remove_tax";
             this.btn_remove_tax.Size = new System.Drawing.Size(75, 23);
             this.btn_remove_tax.TabIndex = 15;
@@ -234,26 +217,10 @@
             this.lbl_show_tax.Size = new System.Drawing.Size(0, 13);
             this.lbl_show_tax.TabIndex = 16;
             // 
-            // lbl_show_period
-            // 
-            this.lbl_show_period.AutoSize = true;
-            this.lbl_show_period.Location = new System.Drawing.Point(278, 93);
-            this.lbl_show_period.Name = "lbl_show_period";
-            this.lbl_show_period.Size = new System.Drawing.Size(0, 13);
-            this.lbl_show_period.TabIndex = 17;
-            // 
-            // lbl_show_account
-            // 
-            this.lbl_show_account.AutoSize = true;
-            this.lbl_show_account.Location = new System.Drawing.Point(93, 128);
-            this.lbl_show_account.Name = "lbl_show_account";
-            this.lbl_show_account.Size = new System.Drawing.Size(0, 13);
-            this.lbl_show_account.TabIndex = 18;
-            // 
             // lbl_show_due_date
             // 
             this.lbl_show_due_date.AutoSize = true;
-            this.lbl_show_due_date.Location = new System.Drawing.Point(345, 128);
+            this.lbl_show_due_date.Location = new System.Drawing.Point(259, 93);
             this.lbl_show_due_date.Name = "lbl_show_due_date";
             this.lbl_show_due_date.Size = new System.Drawing.Size(0, 13);
             this.lbl_show_due_date.TabIndex = 19;
@@ -261,7 +228,7 @@
             // lbl_show_penalty
             // 
             this.lbl_show_penalty.AutoSize = true;
-            this.lbl_show_penalty.Location = new System.Drawing.Point(283, 165);
+            this.lbl_show_penalty.Location = new System.Drawing.Point(281, 123);
             this.lbl_show_penalty.Name = "lbl_show_penalty";
             this.lbl_show_penalty.Size = new System.Drawing.Size(0, 13);
             this.lbl_show_penalty.TabIndex = 20;
@@ -269,7 +236,7 @@
             // lbl_amount
             // 
             this.lbl_amount.AutoSize = true;
-            this.lbl_amount.Location = new System.Drawing.Point(15, 165);
+            this.lbl_amount.Location = new System.Drawing.Point(13, 123);
             this.lbl_amount.Name = "lbl_amount";
             this.lbl_amount.Size = new System.Drawing.Size(37, 13);
             this.lbl_amount.TabIndex = 22;
@@ -288,7 +255,7 @@
             // txt_amount
             // 
             this.txt_amount.Enabled = false;
-            this.txt_amount.Location = new System.Drawing.Point(58, 162);
+            this.txt_amount.Location = new System.Drawing.Point(56, 120);
             this.txt_amount.Name = "txt_amount";
             this.txt_amount.Size = new System.Drawing.Size(121, 20);
             this.txt_amount.TabIndex = 24;
@@ -297,9 +264,9 @@
             // txt_penalty
             // 
             this.txt_penalty.Enabled = false;
-            this.txt_penalty.Location = new System.Drawing.Point(289, 162);
+            this.txt_penalty.Location = new System.Drawing.Point(361, 120);
             this.txt_penalty.Name = "txt_penalty";
-            this.txt_penalty.Size = new System.Drawing.Size(100, 20);
+            this.txt_penalty.Size = new System.Drawing.Size(68, 20);
             this.txt_penalty.TabIndex = 25;
             this.txt_penalty.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
             // 
@@ -316,7 +283,7 @@
             // txt_tax_total
             // 
             this.txt_tax_total.Enabled = false;
-            this.txt_tax_total.Location = new System.Drawing.Point(145, 240);
+            this.txt_tax_total.Location = new System.Drawing.Point(143, 198);
             this.txt_tax_total.Name = "txt_tax_total";
             this.txt_tax_total.Size = new System.Drawing.Size(126, 20);
             this.txt_tax_total.TabIndex = 27;
@@ -328,12 +295,50 @@
             this.txt_total.Size = new System.Drawing.Size(167, 20);
             this.txt_total.TabIndex = 28;
             // 
+            // txt_extra_penalty
+            // 
+            this.txt_extra_penalty.Enabled = false;
+            this.txt_extra_penalty.Location = new System.Drawing.Point(361, 146);
+            this.txt_extra_penalty.Name = "txt_extra_penalty";
+            this.txt_extra_penalty.Size = new System.Drawing.Size(68, 20);
+            this.txt_extra_penalty.TabIndex = 29;
+            // 
+            // lbl_extra_penalty
+            // 
+            this.lbl_extra_penalty.AutoSize = true;
+            this.lbl_extra_penalty.Location = new System.Drawing.Point(224, 150);
+            this.lbl_extra_penalty.Name = "lbl_extra_penalty";
+            this.lbl_extra_penalty.Size = new System.Drawing.Size(62, 13);
+            this.lbl_extra_penalty.TabIndex = 30;
+            this.lbl_extra_penalty.Text = "Multa (10%)";
+            // 
+            // txt_penalty_percentage
+            // 
+            this.txt_penalty_percentage.Enabled = false;
+            this.txt_penalty_percentage.Location = new System.Drawing.Point(287, 120);
+            this.txt_penalty_percentage.Name = "txt_penalty_percentage";
+            this.txt_penalty_percentage.Size = new System.Drawing.Size(68, 20);
+            this.txt_penalty_percentage.TabIndex = 31;
+            this.txt_penalty_percentage.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
+            // 
+            // lbl_show_due_days
+            // 
+            this.lbl_show_due_days.AutoSize = true;
+            this.lbl_show_due_days.Location = new System.Drawing.Point(358, 93);
+            this.lbl_show_due_days.Name = "lbl_show_due_days";
+            this.lbl_show_due_days.Size = new System.Drawing.Size(0, 13);
+            this.lbl_show_due_days.TabIndex = 32;
+            // 
             // Collector
             // 
             this.AcceptButton = this.btn_add_tax;
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1108, 617);
+            this.Controls.Add(this.lbl_show_due_days);
+            this.Controls.Add(this.txt_penalty_percentage);
+            this.Controls.Add(this.lbl_extra_penalty);
+            this.Controls.Add(this.txt_extra_penalty);
             this.Controls.Add(this.txt_total);
             this.Controls.Add(this.txt_tax_total);
             this.Controls.Add(this.btn_cleaner);
@@ -343,19 +348,15 @@
             this.Controls.Add(this.lbl_amount);
             this.Controls.Add(this.lbl_show_penalty);
             this.Controls.Add(this.lbl_show_due_date);
-            this.Controls.Add(this.lbl_show_account);
-            this.Controls.Add(this.lbl_show_period);
             this.Controls.Add(this.lbl_show_tax);
             this.Controls.Add(this.btn_remove_tax);
             this.Controls.Add(this.dtgv_taxes_list);
             this.Controls.Add(this.btn_collect_taxes);
-            this.Controls.Add(this.lbl_period);
             this.Controls.Add(this.btn_add_tax);
             this.Controls.Add(this.lbl_tax_total);
             this.Controls.Add(this.lbl_penalty);
             this.Controls.Add(this.lbl_total);
             this.Controls.Add(this.lbl_due_date);
-            this.Controls.Add(this.lbl_account_number);
             this.Controls.Add(this.lbl_tax_name);
             this.Controls.Add(this.txt_barcode);
             this.Controls.Add(this.lbl_barcode);
@@ -373,13 +374,11 @@
         private System.Windows.Forms.Label lbl_barcode;
         private System.Windows.Forms.TextBox txt_barcode;
         private System.Windows.Forms.Label lbl_tax_name;
-        private System.Windows.Forms.Label lbl_account_number;
         private System.Windows.Forms.Label lbl_due_date;
         private System.Windows.Forms.Label lbl_total;
         private System.Windows.Forms.Label lbl_penalty;
         private System.Windows.Forms.Label lbl_tax_total;
         private System.Windows.Forms.Button btn_add_tax;
-        private System.Windows.Forms.Label lbl_period;
         private System.Windows.Forms.Button btn_collect_taxes;
         private System.Windows.Forms.DataGridView dtgv_taxes_list;
         private System.Windows.Forms.DataGridViewTextBoxColumn account;
@@ -390,8 +389,6 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn partial;
         private System.Windows.Forms.Button btn_remove_tax;
         private System.Windows.Forms.Label lbl_show_tax;
-        private System.Windows.Forms.Label lbl_show_period;
-        private System.Windows.Forms.Label lbl_show_account;
         private System.Windows.Forms.Label lbl_show_due_date;
         private System.Windows.Forms.Label lbl_show_penalty;
         private System.Windows.Forms.Label lbl_amount;
@@ -401,5 +398,9 @@
         private System.Windows.Forms.Button btn_cleaner;
         private System.Windows.Forms.TextBox txt_tax_total;
         private System.Windows.Forms.TextBox txt_total;
+        private System.Windows.Forms.TextBox txt_extra_penalty;
+        private System.Windows.Forms.Label lbl_extra_penalty;
+        private System.Windows.Forms.TextBox txt_penalty_percentage;
+        private System.Windows.Forms.Label lbl_show_due_days;
     }
 }

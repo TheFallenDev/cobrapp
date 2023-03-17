@@ -22,12 +22,16 @@ namespace Cobrapp
         {
             txt_barcode.Text = "";
             txt_barcode.Enabled = true;
-            lbl_show_account.Text = "";
             lbl_show_penalty.Text = "";
-            lbl_show_period.Text = "";
             lbl_show_tax.Text = "";
             lbl_show_due_date.Text = "";
             txt_amount.Text = "";
+            txt_penalty_percentage.Text = "";
+            txt_penalty.Text = "";
+            txt_extra_penalty.Text = "";
+            txt_tax_total.Text = "";
+            lbl_show_due_days.Text = "";
+            btn_add_tax.Enabled = false;
         }
 
         private string TaxCheck (string taxNumber)
@@ -49,12 +53,12 @@ namespace Cobrapp
 
         private string AmountFixer(string amount)
         {
-            amount = amount.Insert(8, ".");
+            amount = amount.Insert(amount.Length-2, ".");
             amount = string.Format("{0:0.00}", amount);
             amount = amount.TrimStart('0');
             return amount;
         }
-
+         
         private string DateCheck(string dueDateStr,string amount)
         {
             DateTime todayDate = DateTime.Today;
@@ -67,13 +71,26 @@ namespace Cobrapp
                 return dueDate.ToString("dd/MM/yy");
             }
             lbl_show_due_date.ForeColor = Color.Black;
+            txt_tax_total.Text = amount;
             return dueDate.ToString("dd/MM/yy");
         }
 
-        private decimal PenaltiesCalculator(string amount, DateTime todayDate, DateTime date)
+        private void PenaltiesCalculator(string amount, DateTime todayDate, DateTime dueDate)
         {
-            txt_penalty.Text = "30.46";
-            return 30.46m;
+            decimal amountDecimal = Decimal.Parse(amount)/100;
+            int differenceInDays = (todayDate - dueDate).Days;
+            decimal calc = differenceInDays * Constants.Interest;
+            decimal penalty = amountDecimal * (calc / 100);
+            decimal totalWithPenalties = amountDecimal + penalty;
+            if (differenceInDays > 60) {
+                decimal extraPenalty = (Decimal.Multiply(amountDecimal, Constants.ExtraPenalty));
+                totalWithPenalties += extraPenalty;
+                txt_extra_penalty.Text = extraPenalty.ToString();
+            }
+            lbl_show_due_days.Text = "Días de atraso: " + differenceInDays.ToString();
+            txt_penalty_percentage.Text = (Math.Round(calc,2)).ToString() + " %";
+            txt_penalty.Text = (Math.Round(penalty, 2)).ToString();
+            txt_tax_total.Text = (Math.Round(totalWithPenalties, 2)).ToString();
         }
 
         private void txt_barcode_TextChanged(object sender, EventArgs e)
@@ -88,9 +105,9 @@ namespace Cobrapp
                 string fixedAmount = AmountFixer(amount);
                 txt_barcode.Enabled = false;
                 lbl_show_tax.Text = TaxCheck(taxNumber);
-                txt_penalty.Text = "0.00";
                 lbl_show_due_date.Text = DateCheck(dueDate, fixedAmount);
                 txt_amount.Text = fixedAmount;
+                if (!btn_add_tax.Enabled) btn_add_tax.Enabled = true;
             }
         }
 
@@ -109,5 +126,10 @@ namespace Cobrapp
         {
             Cleaner();
         }
+    }
+    static class Constants
+    {
+        public const decimal Interest = 0.0667m;
+        public const decimal ExtraPenalty = 0.1m;
     }
 }

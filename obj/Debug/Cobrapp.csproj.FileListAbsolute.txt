@@ -10,3 +10,15 @@ C:\Users\ignaa\source\repos\Cobrapp\obj\Debug\Cobrapp.exe
 C:\Users\ignaa\source\repos\Cobrapp\obj\Debug\Cobrapp.pdb
 C:\Users\ignaa\source\repos\Cobrapp\obj\Debug\Cobrapp.main.resources
 C:\Users\ignaa\source\repos\Cobrapp\obj\Debug\Cobrapp.Collector.resources
+C:\Deploy\cobrapp\bin\Debug\Cobrapp.exe.config
+C:\Deploy\cobrapp\bin\Debug\Cobrapp.exe
+C:\Deploy\cobrapp\bin\Debug\Cobrapp.pdb
+C:\Deploy\cobrapp\obj\Debug\Cobrapp.csproj.AssemblyReference.cache
+C:\Deploy\cobrapp\obj\Debug\Cobrapp.csproj.SuggestedBindingRedirects.cache
+C:\Deploy\cobrapp\obj\Debug\Cobrapp.main.resources
+C:\Deploy\cobrapp\obj\Debug\Cobrapp.Collector.resources
+C:\Deploy\cobrapp\obj\Debug\Cobrapp.Properties.Resources.resources
+C:\Deploy\cobrapp\obj\Debug\Cobrapp.csproj.GenerateResource.cache
+C:\Deploy\cobrapp\obj\Debug\Cobrapp.csproj.CoreCompileInputs.cache
+C:\Deploy\cobrapp\obj\Debug\Cobrapp.exe
+C:\Deploy\cobrapp\obj\Debug\Cobrapp.pdb
