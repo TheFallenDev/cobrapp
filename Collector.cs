@@ -1,4 +1,5 @@
 ﻿using System;
+using System.IO;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -8,6 +9,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using System.Globalization;
+using System.Drawing.Printing;
 
 namespace Cobrapp
 {
@@ -16,6 +18,21 @@ namespace Cobrapp
         public Collector()
         {
             InitializeComponent();
+        }
+
+        private int n = 0;
+
+        private void CheckDigit (string barcode)
+        {
+            int acc = 0;
+            for (int i = 0; i < barcode.Length - 1; i++)
+            {
+                acc += Int32.Parse(barcode[i].ToString());
+            }
+            if (acc != barcode[31]) 
+            {
+                
+            }
         }
 
         private void Cleaner ()
@@ -59,7 +76,7 @@ namespace Cobrapp
             return amount;
         }
          
-        private string DateCheck(string dueDateStr,string amount)
+        private string DateCheck(string dueDateStr,decimal amountDecimal)
         {
             DateTime todayDate = DateTime.Today;
             var cultureInfo = new CultureInfo("es-AR");
@@ -67,17 +84,16 @@ namespace Cobrapp
             if (DateTime.Compare(todayDate, dueDate) > 0)
             {
                 lbl_show_due_date.ForeColor = Color.Red;
-                PenaltiesCalculator(amount, todayDate, dueDate);
+                PenaltiesCalculator(amountDecimal, todayDate, dueDate);
                 return dueDate.ToString("dd/MM/yy");
             }
             lbl_show_due_date.ForeColor = Color.Black;
-            txt_tax_total.Text = amount;
+            txt_tax_total.Text = (Math.Round(amountDecimal, 2)).ToString();
             return dueDate.ToString("dd/MM/yy");
         }
 
-        private void PenaltiesCalculator(string amount, DateTime todayDate, DateTime dueDate)
+        private void PenaltiesCalculator(decimal amountDecimal, DateTime todayDate, DateTime dueDate)
         {
-            decimal amountDecimal = Decimal.Parse(amount)/100;
             int differenceInDays = (todayDate - dueDate).Days;
             decimal calc = differenceInDays * Constants.Interest;
             decimal penalty = amountDecimal * (calc / 100);
@@ -102,11 +118,11 @@ namespace Cobrapp
                 string dueDate = txt_barcode.Text.Substring(14, 6);
                 string amount = txt_barcode.Text.Substring(20, 10);
                 string checkDigit = txt_barcode.Text.Substring(30);
-                string fixedAmount = AmountFixer(amount);
+                decimal amountDecimal = Decimal.Parse(amount) / 100;
                 txt_barcode.Enabled = false;
+                txt_amount.Text = (Math.Round(amountDecimal, 2)).ToString();
                 lbl_show_tax.Text = TaxCheck(taxNumber);
-                lbl_show_due_date.Text = DateCheck(dueDate, fixedAmount);
-                txt_amount.Text = fixedAmount;
+                lbl_show_due_date.Text = DateCheck(dueDate, amountDecimal);
                 if (!btn_add_tax.Enabled) btn_add_tax.Enabled = true;
             }
         }
@@ -115,16 +131,69 @@ namespace Cobrapp
         {
             int n = dtgv_taxes_list.Rows.Add();
 
-            dtgv_taxes_list.Rows[n].Cells[1].Value = lbl_show_tax.Text;
-            dtgv_taxes_list.Rows[n].Cells[3].Value = lbl_show_due_date.Text;
-            dtgv_taxes_list.Rows[n].Cells[5].Value = txt_tax_total.Text;
+            dtgv_taxes_list.Rows[n].Cells[0].Value = lbl_show_tax.Text;
+            dtgv_taxes_list.Rows[n].Cells[1].Value = lbl_show_due_date.Text;
+            dtgv_taxes_list.Rows[n].Cells[2].Value = txt_penalty.Text;
+            dtgv_taxes_list.Rows[n].Cells[3].Value = txt_extra_penalty.Text;
+            dtgv_taxes_list.Rows[n].Cells[4].Value = Decimal.Parse(txt_tax_total.Text);
 
             Cleaner();
+            UpdateTotal();
+            txt_barcode.Focus();
         }
 
         private void btn_cleaner_Click(object sender, EventArgs e)
         {
             Cleaner();
+        }
+
+        private void dtgv_taxes_list_CellClick(object sender, DataGridViewCellEventArgs e)
+        {
+            n = e.RowIndex;
+        }
+
+        private void btn_remove_tax_Click(object sender, EventArgs e)
+        {
+            if (n != -1 && n < dtgv_taxes_list.Rows.Count)
+            {
+                dtgv_taxes_list.Rows.RemoveAt(n);
+                UpdateTotal();
+            }
+        }
+
+        private void UpdateTotal()
+        {
+            decimal total = 0;
+            foreach(DataGridViewRow row in dtgv_taxes_list.Rows)
+            {
+                if(row.Cells["partial"] != null)
+                {
+                    total += (Decimal)row.Cells["partial"].Value;
+                }
+            }
+            txt_total.Text = total.ToString();
+        }
+
+        private void btn_collect_taxes_Click(object sender, EventArgs e)
+        {
+            printTicket = new PrintDocument();
+            PrinterSettings ps = new PrinterSettings();
+            printTicket.PrinterSettings = ps;
+            printTicket.PrintPage += Print;
+            printTicket.Print();
+        }
+
+        private void Print (object sender, PrintPageEventArgs e)
+        {
+            string[] lines = File.ReadAllLines("ticket.txt");
+            string totalFile = "";
+            Font font = new Font("Arial", 10, FontStyle.Regular, GraphicsUnit.Point);
+            foreach (string line in lines)
+            {
+                totalFile = totalFile + Environment.NewLine + line;
+            }
+            totalFile.Replace("TOTALAMOUNT", txt_total.Text);
+            e.Graphics.DrawString(totalFile, font, Brushes.Black, new RectangleF(0, 10, 220, 2000));
         }
     }
     static class Constants

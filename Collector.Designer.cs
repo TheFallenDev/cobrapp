@@ -38,11 +38,10 @@
             this.btn_add_tax = new System.Windows.Forms.Button();
             this.btn_collect_taxes = new System.Windows.Forms.Button();
             this.dtgv_taxes_list = new System.Windows.Forms.DataGridView();
-            this.account = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.tax = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.period = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.due_date = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.penalty = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.extra_penalty = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.partial = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.btn_remove_tax = new System.Windows.Forms.Button();
             this.lbl_show_tax = new System.Windows.Forms.Label();
@@ -59,6 +58,7 @@
             this.lbl_extra_penalty = new System.Windows.Forms.Label();
             this.txt_penalty_percentage = new System.Windows.Forms.TextBox();
             this.lbl_show_due_days = new System.Windows.Forms.Label();
+            this.printTicket = new System.Drawing.Printing.PrintDocument();
             ((System.ComponentModel.ISupportInitialize)(this.dtgv_taxes_list)).BeginInit();
             this.SuspendLayout();
             // 
@@ -144,6 +144,7 @@
             this.btn_collect_taxes.TabIndex = 12;
             this.btn_collect_taxes.Text = "Cobrar";
             this.btn_collect_taxes.UseVisualStyleBackColor = true;
+            this.btn_collect_taxes.Click += new System.EventHandler(this.btn_collect_taxes_Click);
             // 
             // dtgv_taxes_list
             // 
@@ -151,22 +152,16 @@
             this.dtgv_taxes_list.AllowUserToDeleteRows = false;
             this.dtgv_taxes_list.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dtgv_taxes_list.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
-            this.account,
             this.tax,
-            this.period,
             this.due_date,
             this.penalty,
+            this.extra_penalty,
             this.partial});
             this.dtgv_taxes_list.Location = new System.Drawing.Point(497, 24);
             this.dtgv_taxes_list.Name = "dtgv_taxes_list";
             this.dtgv_taxes_list.Size = new System.Drawing.Size(599, 474);
             this.dtgv_taxes_list.TabIndex = 14;
-            // 
-            // account
-            // 
-            this.account.HeaderText = "Cta. Corriente";
-            this.account.Name = "account";
-            this.account.ReadOnly = true;
+            this.dtgv_taxes_list.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dtgv_taxes_list_CellClick);
             // 
             // tax
             // 
@@ -175,12 +170,6 @@
             this.tax.Name = "tax";
             this.tax.ReadOnly = true;
             this.tax.Width = 56;
-            // 
-            // period
-            // 
-            this.period.HeaderText = "Período";
-            this.period.Name = "period";
-            this.period.ReadOnly = true;
             // 
             // due_date
             // 
@@ -193,6 +182,12 @@
             this.penalty.HeaderText = "Intereses";
             this.penalty.Name = "penalty";
             this.penalty.ReadOnly = true;
+            // 
+            // extra_penalty
+            // 
+            this.extra_penalty.HeaderText = "Multa";
+            this.extra_penalty.Name = "extra_penalty";
+            this.extra_penalty.ReadOnly = true;
             // 
             // partial
             // 
@@ -208,6 +203,7 @@
             this.btn_remove_tax.TabIndex = 15;
             this.btn_remove_tax.Text = "Quitar";
             this.btn_remove_tax.UseVisualStyleBackColor = true;
+            this.btn_remove_tax.Click += new System.EventHandler(this.btn_remove_tax_Click);
             // 
             // lbl_show_tax
             // 
@@ -290,6 +286,7 @@
             // 
             // txt_total
             // 
+            this.txt_total.Enabled = false;
             this.txt_total.Location = new System.Drawing.Point(929, 512);
             this.txt_total.Name = "txt_total";
             this.txt_total.Size = new System.Drawing.Size(167, 20);
@@ -381,12 +378,6 @@
         private System.Windows.Forms.Button btn_add_tax;
         private System.Windows.Forms.Button btn_collect_taxes;
         private System.Windows.Forms.DataGridView dtgv_taxes_list;
-        private System.Windows.Forms.DataGridViewTextBoxColumn account;
-        private System.Windows.Forms.DataGridViewTextBoxColumn tax;
-        private System.Windows.Forms.DataGridViewTextBoxColumn period;
-        private System.Windows.Forms.DataGridViewTextBoxColumn due_date;
-        private System.Windows.Forms.DataGridViewTextBoxColumn penalty;
-        private System.Windows.Forms.DataGridViewTextBoxColumn partial;
         private System.Windows.Forms.Button btn_remove_tax;
         private System.Windows.Forms.Label lbl_show_tax;
         private System.Windows.Forms.Label lbl_show_due_date;
@@ -402,5 +393,11 @@
         private System.Windows.Forms.Label lbl_extra_penalty;
         private System.Windows.Forms.TextBox txt_penalty_percentage;
         private System.Windows.Forms.Label lbl_show_due_days;
+        private System.Windows.Forms.DataGridViewTextBoxColumn tax;
+        private System.Windows.Forms.DataGridViewTextBoxColumn due_date;
+        private System.Windows.Forms.DataGridViewTextBoxColumn penalty;
+        private System.Windows.Forms.DataGridViewTextBoxColumn extra_penalty;
+        private System.Windows.Forms.DataGridViewTextBoxColumn partial;
+        private System.Drawing.Printing.PrintDocument printTicket;
     }
 }
