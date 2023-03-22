@@ -2,11 +2,12 @@
 Municipalidad de Diamante
 *************************
 
-LUGARCOBRO
+BUSINESSNAME
+ADDRESS
 
 Caja Nº: 
 
-Comprobante Nº: TICKETNUMBER
+Comprobante Nº: RECEIPTNUMBER
 
 Fecha: DATE
 Hora: TIME
@@ -16,5 +17,5 @@ Hora: TIME
    Multas: EXTRAPENALTIES
 
 ************************
-   Total: TOTALAMOUNT
+   Total: TOTAL
 ************************
