@@ -10,11 +10,10 @@ Caja Nº:
 Comprobante Nº: RECEIPTNUMBER
 
 Fecha: DATE
-Hora: TIME
 
    Importe: AMOUNT
    Recargos: PENALTIES
-   Multas: EXTRAPENALTIES
+   Multas: EXTRAPENALTY
 
 ************************
    Total: TOTAL

@@ -24,17 +24,21 @@ namespace Cobrapp
         private string receiptNumber = "";
         private int page = 0;
 
-        private void CheckDigit (string barcode)
+        private bool CheckDigit (string barcode)
         {
             int acc = 0;
+            int checker = Int32.Parse(barcode[30].ToString());
             for (int i = 0; i < barcode.Length - 1; i++)
             {
                 acc += Int32.Parse(barcode[i].ToString());
             }
-            if (acc != barcode[31]) 
+            if (acc % 10 != checker)
             {
-                
+                MessageBox.Show("Código de barras incorrecto");
+                Cleaner();
+                return false;
             }
+            return true;    
         }
 
         private void Cleaner ()
@@ -62,14 +66,10 @@ namespace Cobrapp
                     return "TGI";
                 case "13":
                     return "OSM";
-                case "39":
-                    return "COM";
                 default:
                     return "ERROR EN LA BARRA";
             }
         }
-
-        
 
         private string AmountFixer(string amount)
         {
@@ -104,7 +104,7 @@ namespace Cobrapp
             if (differenceInDays > 60) {
                 decimal extraPenalty = (Decimal.Multiply(amountDecimal, Constants.ExtraPenalty));
                 totalWithPenalties += extraPenalty;
-                txt_extra_penalty.Text = extraPenalty.ToString();
+                txt_extra_penalty.Text = (Math.Round(extraPenalty, 2)).ToString();
             }
             lbl_show_due_days.Text = "Días de atraso: " + differenceInDays.ToString();
             txt_penalty_percentage.Text = (Math.Round(calc,2)).ToString() + " %";
@@ -115,13 +115,12 @@ namespace Cobrapp
         private void txt_barcode_TextChanged(object sender, EventArgs e)
         {
             int textLength = txt_barcode.Text.Length;
-            if (textLength == 31)
+            if (textLength == 31 && CheckDigit(txt_barcode.Text))
             {
                 string taxNumber = txt_barcode.Text.Substring(4, 2);
                 receiptNumber = txt_barcode.Text.Substring(6,8);
                 string dueDate = txt_barcode.Text.Substring(14, 6);
                 string amount = txt_barcode.Text.Substring(20, 10);
-                string checkDigit = txt_barcode.Text.Substring(30);
                 decimal amountDecimal = Decimal.Parse(amount) / 100;
                 txt_barcode.Enabled = false;
                 txt_amount.Text = (Math.Round(amountDecimal, 2)).ToString();
@@ -140,7 +139,8 @@ namespace Cobrapp
             dtgv_taxes_list.Rows[n].Cells[3].Value = txt_penalty.Text;
             dtgv_taxes_list.Rows[n].Cells[4].Value = txt_extra_penalty.Text;
             dtgv_taxes_list.Rows[n].Cells[5].Value = Decimal.Parse(txt_tax_total.Text);
-            
+            dtgv_taxes_list.Rows[n].Cells["amount"].Value = txt_amount.Text;
+
 
             Cleaner();
             UpdateTotal();
@@ -187,6 +187,8 @@ namespace Cobrapp
             printReceipt.DefaultPageSettings.PaperSize = new PaperSize("Custom", 500, 800);
             printReceipt.PrintPage += (s, ev) => Print(s, ev);
             printReceipt.Print();
+            dtgv_taxes_list.Rows.Clear();
+            txt_total.Text = "";
         }
 
         private void Print (object sender, PrintPageEventArgs e)
@@ -217,6 +219,11 @@ namespace Cobrapp
         private string Replacer (string receipt, DataGridViewRow row)
         {
             receipt = receipt.Replace("RECEIPTNUMBER", row.Cells["receiptNum"].Value.ToString());
+            receipt = receipt.Replace("DATE", DateTime.Now.ToString());
+            receipt = receipt.Replace("AMOUNT", row.Cells["amount"].Value.ToString());
+            receipt = receipt.Replace("PENALTIES", row.Cells["penalty"].Value.ToString());
+            receipt = receipt.Replace("EXTRAPENALTY", row.Cells["extra_penalty"].Value.ToString());
+            receipt = receipt.Replace("TOTAL", row.Cells["partial"].Value.ToString());
             return receipt;
         }
     }
