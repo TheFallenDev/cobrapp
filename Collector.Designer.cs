@@ -44,6 +44,7 @@
             this.penalty = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.extra_penalty = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.partial = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.amount = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.btn_remove_tax = new System.Windows.Forms.Button();
             this.lbl_show_tax = new System.Windows.Forms.Label();
             this.lbl_show_due_date = new System.Windows.Forms.Label();
@@ -60,7 +61,6 @@
             this.txt_penalty_percentage = new System.Windows.Forms.TextBox();
             this.lbl_show_due_days = new System.Windows.Forms.Label();
             this.printTicket = new System.Drawing.Printing.PrintDocument();
-            this.amount = new System.Windows.Forms.DataGridViewTextBoxColumn();
             ((System.ComponentModel.ISupportInitialize)(this.dtgv_taxes_list)).BeginInit();
             this.SuspendLayout();
             // 
@@ -140,6 +140,7 @@
             // 
             // btn_collect_taxes
             // 
+            this.btn_collect_taxes.Enabled = false;
             this.btn_collect_taxes.Location = new System.Drawing.Point(963, 561);
             this.btn_collect_taxes.Name = "btn_collect_taxes";
             this.btn_collect_taxes.Size = new System.Drawing.Size(75, 23);
@@ -204,6 +205,12 @@
             this.partial.HeaderText = "A pagar";
             this.partial.Name = "partial";
             this.partial.ReadOnly = true;
+            // 
+            // amount
+            // 
+            this.amount.HeaderText = "Monto";
+            this.amount.Name = "amount";
+            this.amount.Visible = false;
             // 
             // btn_remove_tax
             // 
@@ -335,12 +342,6 @@
             this.lbl_show_due_days.Name = "lbl_show_due_days";
             this.lbl_show_due_days.Size = new System.Drawing.Size(0, 13);
             this.lbl_show_due_days.TabIndex = 32;
-            // 
-            // amount
-            // 
-            this.amount.HeaderText = "Monto";
-            this.amount.Name = "amount";
-            this.amount.Visible = false;
             // 
             // Collector
             // 

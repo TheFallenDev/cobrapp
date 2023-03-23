@@ -145,6 +145,7 @@ namespace Cobrapp
             Cleaner();
             UpdateTotal();
             txt_barcode.Focus();
+            if (!btn_collect_taxes.Enabled) btn_collect_taxes.Enabled = true;
         }
 
         private void btn_cleaner_Click(object sender, EventArgs e)
@@ -184,11 +185,12 @@ namespace Cobrapp
             PrintDocument printReceipt = new PrintDocument();
             PrinterSettings ps = new PrinterSettings();
             printReceipt.PrinterSettings = ps;
-            printReceipt.DefaultPageSettings.PaperSize = new PaperSize("Custom", 500, 800);
+            //printReceipt.DefaultPageSettings.PaperSize = new PaperSize("Receipt",500,1500);
             printReceipt.PrintPage += (s, ev) => Print(s, ev);
             printReceipt.Print();
             dtgv_taxes_list.Rows.Clear();
             txt_total.Text = "";
+            btn_collect_taxes.Enabled = false;
         }
 
         private void Print (object sender, PrintPageEventArgs e)
@@ -203,7 +205,7 @@ namespace Cobrapp
             int pages = dtgv_taxes_list.Rows.Count;
             string receipt = "";
             receipt = Replacer(file, dtgv_taxes_list.Rows[page]);
-            e.Graphics.DrawString(receipt, font, Brushes.Black, new RectangleF(0, 20, 220, 2000));
+            e.Graphics.DrawString(receipt, font, Brushes.Black, new RectangleF(0,0,220,2000));
             page++;
             if(page < pages)
             {
