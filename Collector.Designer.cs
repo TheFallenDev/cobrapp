@@ -38,6 +38,7 @@
             this.btn_add_tax = new System.Windows.Forms.Button();
             this.btn_collect_taxes = new System.Windows.Forms.Button();
             this.dtgv_taxes_list = new System.Windows.Forms.DataGridView();
+            this.receiptNum = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.tax = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.due_date = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.penalty = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -59,6 +60,7 @@
             this.txt_penalty_percentage = new System.Windows.Forms.TextBox();
             this.lbl_show_due_days = new System.Windows.Forms.Label();
             this.printTicket = new System.Drawing.Printing.PrintDocument();
+            this.amount = new System.Windows.Forms.DataGridViewTextBoxColumn();
             ((System.ComponentModel.ISupportInitialize)(this.dtgv_taxes_list)).BeginInit();
             this.SuspendLayout();
             // 
@@ -152,16 +154,24 @@
             this.dtgv_taxes_list.AllowUserToDeleteRows = false;
             this.dtgv_taxes_list.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dtgv_taxes_list.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
+            this.receiptNum,
             this.tax,
             this.due_date,
             this.penalty,
             this.extra_penalty,
-            this.partial});
+            this.partial,
+            this.amount});
             this.dtgv_taxes_list.Location = new System.Drawing.Point(497, 24);
             this.dtgv_taxes_list.Name = "dtgv_taxes_list";
             this.dtgv_taxes_list.Size = new System.Drawing.Size(599, 474);
             this.dtgv_taxes_list.TabIndex = 14;
             this.dtgv_taxes_list.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dtgv_taxes_list_CellClick);
+            // 
+            // receiptNum
+            // 
+            this.receiptNum.HeaderText = "N° comprobante";
+            this.receiptNum.Name = "receiptNum";
+            this.receiptNum.ReadOnly = true;
             // 
             // tax
             // 
@@ -326,6 +336,12 @@
             this.lbl_show_due_days.Size = new System.Drawing.Size(0, 13);
             this.lbl_show_due_days.TabIndex = 32;
             // 
+            // amount
+            // 
+            this.amount.HeaderText = "Monto";
+            this.amount.Name = "amount";
+            this.amount.Visible = false;
+            // 
             // Collector
             // 
             this.AcceptButton = this.btn_add_tax;
@@ -393,11 +409,13 @@
         private System.Windows.Forms.Label lbl_extra_penalty;
         private System.Windows.Forms.TextBox txt_penalty_percentage;
         private System.Windows.Forms.Label lbl_show_due_days;
+        private System.Drawing.Printing.PrintDocument printTicket;
+        private System.Windows.Forms.DataGridViewTextBoxColumn receiptNum;
         private System.Windows.Forms.DataGridViewTextBoxColumn tax;
         private System.Windows.Forms.DataGridViewTextBoxColumn due_date;
         private System.Windows.Forms.DataGridViewTextBoxColumn penalty;
         private System.Windows.Forms.DataGridViewTextBoxColumn extra_penalty;
         private System.Windows.Forms.DataGridViewTextBoxColumn partial;
-        private System.Drawing.Printing.PrintDocument printTicket;
+        private System.Windows.Forms.DataGridViewTextBoxColumn amount;
     }
 }
