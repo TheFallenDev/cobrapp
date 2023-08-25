@@ -1,0 +1,12 @@
+C:\Deploy\cobrapp\bin\x86\Debug\Cobrapp.exe.config
+C:\Deploy\cobrapp\bin\x86\Debug\Cobrapp.exe
+C:\Deploy\cobrapp\bin\x86\Debug\Cobrapp.pdb
+C:\Deploy\cobrapp\obj\x86\Debug\Cobrapp.csproj.AssemblyReference.cache
+C:\Deploy\cobrapp\obj\x86\Debug\Cobrapp.csproj.SuggestedBindingRedirects.cache
+C:\Deploy\cobrapp\obj\x86\Debug\Cobrapp.main.resources
+C:\Deploy\cobrapp\obj\x86\Debug\Cobrapp.Collector.resources
+C:\Deploy\cobrapp\obj\x86\Debug\Cobrapp.Properties.Resources.resources
+C:\Deploy\cobrapp\obj\x86\Debug\Cobrapp.csproj.GenerateResource.cache
+C:\Deploy\cobrapp\obj\x86\Debug\Cobrapp.csproj.CoreCompileInputs.cache
+C:\Deploy\cobrapp\obj\x86\Debug\Cobrapp.exe
+C:\Deploy\cobrapp\obj\x86\Debug\Cobrapp.pdb

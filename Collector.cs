@@ -10,6 +10,8 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 using System.Globalization;
 using System.Drawing.Printing;
+using Cobrapp.Model;
+using Cobrapp.Logic;
 
 namespace Cobrapp
 {
@@ -23,6 +25,9 @@ namespace Cobrapp
         private int n = 0;
         private string receiptNumber = "";
         private int page = 0;
+        private string connectionString = "Data Source=mydatabase.db;Version=3;";
+
+        
 
         private bool CheckDigit (string barcode)
         {
@@ -191,6 +196,11 @@ namespace Cobrapp
             dtgv_taxes_list.Rows.Clear();
             txt_total.Text = "";
             btn_collect_taxes.Enabled = false;
+
+            Tax obj = new Tax()
+            {
+                
+            };
         }
 
         private void Print (object sender, PrintPageEventArgs e)
@@ -203,8 +213,10 @@ namespace Cobrapp
                 file = file + Environment.NewLine + line;
             }
             int pages = dtgv_taxes_list.Rows.Count;
-            string receipt = "";
+            string receipt;
+            string escapeSequence = "\x1B" + "m" + "\x1B\x6D";
             receipt = Replacer(file, dtgv_taxes_list.Rows[page]);
+            receipt = receipt + escapeSequence;
             e.Graphics.DrawString(receipt, font, Brushes.Black, new RectangleF(0,0,220,2000));
             page++;
             if(page < pages)

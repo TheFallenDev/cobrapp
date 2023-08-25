@@ -22,5 +22,17 @@ namespace Cobrapp
             using (Collector taxCollector = new Collector()) 
                 taxCollector.ShowDialog();    
         }
+
+        private void btn_daily_total_Click(object sender, EventArgs e)
+        {
+            using (Total dailyTotal = new Total())
+                dailyTotal.ShowDialog();
+        }
+
+        private void btn_stamps_Click(object sender, EventArgs e)
+        {
+            using (Stamps stamps = new Stamps())
+                stamps.ShowDialog();
+        }
     }
 }

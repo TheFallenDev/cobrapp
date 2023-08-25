@@ -85,7 +85,7 @@
             // lbl_tax_name
             // 
             this.lbl_tax_name.AutoSize = true;
-            this.lbl_tax_name.Location = new System.Drawing.Point(15, 93);
+            this.lbl_tax_name.Location = new System.Drawing.Point(13, 93);
             this.lbl_tax_name.Name = "lbl_tax_name";
             this.lbl_tax_name.Size = new System.Drawing.Size(31, 13);
             this.lbl_tax_name.TabIndex = 2;
@@ -225,7 +225,7 @@
             // lbl_show_tax
             // 
             this.lbl_show_tax.AutoSize = true;
-            this.lbl_show_tax.Location = new System.Drawing.Point(53, 93);
+            this.lbl_show_tax.Location = new System.Drawing.Point(51, 93);
             this.lbl_show_tax.Name = "lbl_show_tax";
             this.lbl_show_tax.Size = new System.Drawing.Size(0, 13);
             this.lbl_show_tax.TabIndex = 16;
@@ -262,7 +262,7 @@
             this.btn_cancel.Name = "btn_cancel";
             this.btn_cancel.Size = new System.Drawing.Size(75, 23);
             this.btn_cancel.TabIndex = 23;
-            this.btn_cancel.Text = "Cancelar";
+            this.btn_cancel.Text = "Volver";
             this.btn_cancel.UseVisualStyleBackColor = true;
             // 
             // txt_amount
@@ -270,7 +270,7 @@
             this.txt_amount.Enabled = false;
             this.txt_amount.Location = new System.Drawing.Point(56, 120);
             this.txt_amount.Name = "txt_amount";
-            this.txt_amount.Size = new System.Drawing.Size(121, 20);
+            this.txt_amount.Size = new System.Drawing.Size(93, 20);
             this.txt_amount.TabIndex = 24;
             this.txt_amount.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
             // 
