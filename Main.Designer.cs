@@ -35,12 +35,12 @@
             this.btn_daily_total = new System.Windows.Forms.Button();
             this.button1 = new System.Windows.Forms.Button();
             this.btn_stamps = new System.Windows.Forms.Button();
-            this.btn_payments_list = new System.Windows.Forms.Button();
+            this.button2 = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
             // btn_collect_taxes
             // 
-            this.btn_collect_taxes.Location = new System.Drawing.Point(208, 116);
+            this.btn_collect_taxes.Location = new System.Drawing.Point(312, 97);
             this.btn_collect_taxes.Name = "btn_collect_taxes";
             this.btn_collect_taxes.Size = new System.Drawing.Size(162, 35);
             this.btn_collect_taxes.TabIndex = 0;
@@ -50,7 +50,7 @@
             // 
             // btn_void_payment
             // 
-            this.btn_void_payment.Location = new System.Drawing.Point(312, 170);
+            this.btn_void_payment.Location = new System.Drawing.Point(312, 240);
             this.btn_void_payment.Name = "btn_void_payment";
             this.btn_void_payment.Size = new System.Drawing.Size(162, 35);
             this.btn_void_payment.TabIndex = 1;
@@ -68,7 +68,7 @@
             // 
             // btn_send
             // 
-            this.btn_send.Location = new System.Drawing.Point(312, 381);
+            this.btn_send.Location = new System.Drawing.Point(312, 395);
             this.btn_send.Name = "btn_send";
             this.btn_send.Size = new System.Drawing.Size(162, 29);
             this.btn_send.TabIndex = 3;
@@ -77,26 +77,26 @@
             // 
             // btn_daily_total
             // 
-            this.btn_daily_total.Location = new System.Drawing.Point(312, 255);
+            this.btn_daily_total.Location = new System.Drawing.Point(208, 322);
             this.btn_daily_total.Name = "btn_daily_total";
             this.btn_daily_total.Size = new System.Drawing.Size(162, 35);
             this.btn_daily_total.TabIndex = 4;
-            this.btn_daily_total.Text = "Totales";
+            this.btn_daily_total.Text = "Totales diarios";
             this.btn_daily_total.UseVisualStyleBackColor = true;
             this.btn_daily_total.Click += new System.EventHandler(this.btn_daily_total_Click);
             // 
             // button1
             // 
-            this.button1.Location = new System.Drawing.Point(480, 255);
+            this.button1.Location = new System.Drawing.Point(409, 322);
             this.button1.Name = "button1";
             this.button1.Size = new System.Drawing.Size(162, 35);
             this.button1.TabIndex = 5;
-            this.button1.Text = "Comisión";
+            this.button1.Text = "Comisiones";
             this.button1.UseVisualStyleBackColor = true;
             // 
             // btn_stamps
             // 
-            this.btn_stamps.Location = new System.Drawing.Point(409, 116);
+            this.btn_stamps.Location = new System.Drawing.Point(208, 172);
             this.btn_stamps.Name = "btn_stamps";
             this.btn_stamps.Size = new System.Drawing.Size(162, 35);
             this.btn_stamps.TabIndex = 6;
@@ -104,21 +104,21 @@
             this.btn_stamps.UseVisualStyleBackColor = true;
             this.btn_stamps.Click += new System.EventHandler(this.btn_stamps_Click);
             // 
-            // btn_payments_list
+            // button2
             // 
-            this.btn_payments_list.Location = new System.Drawing.Point(144, 255);
-            this.btn_payments_list.Name = "btn_payments_list";
-            this.btn_payments_list.Size = new System.Drawing.Size(162, 35);
-            this.btn_payments_list.TabIndex = 7;
-            this.btn_payments_list.Text = "Listado de cobros";
-            this.btn_payments_list.UseVisualStyleBackColor = true;
+            this.button2.Location = new System.Drawing.Point(409, 172);
+            this.button2.Name = "button2";
+            this.button2.Size = new System.Drawing.Size(162, 35);
+            this.button2.TabIndex = 7;
+            this.button2.Text = "Multas y estadías";
+            this.button2.UseVisualStyleBackColor = true;
             // 
             // main
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(800, 450);
-            this.Controls.Add(this.btn_payments_list);
+            this.Controls.Add(this.button2);
             this.Controls.Add(this.btn_stamps);
             this.Controls.Add(this.button1);
             this.Controls.Add(this.btn_daily_total);
@@ -142,7 +142,7 @@
         private System.Windows.Forms.Button btn_daily_total;
         private System.Windows.Forms.Button button1;
         private System.Windows.Forms.Button btn_stamps;
-        private System.Windows.Forms.Button btn_payments_list;
+        private System.Windows.Forms.Button button2;
     }
 }
 

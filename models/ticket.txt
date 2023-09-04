@@ -1,1 +1,25 @@
-***Municipalidad de Diamante***
+*************************
+Municipalidad de Diamante
+*************************
+
+BUSINESSNAME
+ADDRESS
+
+Caja Nº: 
+
+Comprobante Nº: RECEIPTNUMBER
+
+Fecha: DATE
+
+   Importe: $ AMOUNT
+   Recargos: $ PENALTIES
+   Multas: $ EXTRAPENALTY
+
+************************
+   Total: $ TOTAL
+************************
+
+
+
+------------------------
+\←d\

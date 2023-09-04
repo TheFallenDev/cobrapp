@@ -1,12 +1,6 @@
 ﻿using System;
 using System.IO;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
 using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 using System.Globalization;
 using System.Drawing.Printing;
@@ -25,9 +19,6 @@ namespace Cobrapp
         private int n = 0;
         private string receiptNumber = "";
         private int page = 0;
-        private string connectionString = "Data Source=mydatabase.db;Version=3;";
-
-        
 
         private bool CheckDigit (string barcode)
         {
@@ -146,11 +137,11 @@ namespace Cobrapp
             dtgv_taxes_list.Rows[n].Cells[5].Value = Decimal.Parse(txt_tax_total.Text);
             dtgv_taxes_list.Rows[n].Cells["amount"].Value = txt_amount.Text;
 
-
             Cleaner();
             UpdateTotal();
             txt_barcode.Focus();
             if (!btn_collect_taxes.Enabled) btn_collect_taxes.Enabled = true;
+
         }
 
         private void btn_cleaner_Click(object sender, EventArgs e)
@@ -193,19 +184,30 @@ namespace Cobrapp
             //printReceipt.DefaultPageSettings.PaperSize = new PaperSize("Receipt",500,1500);
             printReceipt.PrintPage += (s, ev) => Print(s, ev);
             printReceipt.Print();
+
+            foreach (DataGridViewRow row in dtgv_taxes_list.Rows)
+            {
+                Tax obj = new Tax()
+                {
+                    TaxName = row.Cells["tax"].Value.ToString(),
+                    Receipt_number = row.Cells["receiptNum"].Value.ToString(),
+                    Due_date = row.Cells["due_date"].Value.ToString(),
+                    Total = float.Parse(row.Cells["partial"].Value.ToString()),
+                    Payment_date = DateTime.Now.ToString("dd/MM/yy"),
+                };
+
+                bool response = TaxLogic.Instance.Save(obj);
+            }
+
             dtgv_taxes_list.Rows.Clear();
             txt_total.Text = "";
             btn_collect_taxes.Enabled = false;
 
-            Tax obj = new Tax()
-            {
-                
-            };
         }
 
         private void Print (object sender, PrintPageEventArgs e)
         {
-            string[] lines = File.ReadAllLines("ticket.txt");
+            string[] lines = File.ReadAllLines("models/ticket.txt");
             string file = "";
             Font font = new Font("Arial", 10, FontStyle.Regular, GraphicsUnit.Point);
             foreach (string line in lines)

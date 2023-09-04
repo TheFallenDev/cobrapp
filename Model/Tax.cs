@@ -9,7 +9,7 @@ namespace Cobrapp.Model
     public class Tax
     {
         public int Id { get; set; }
-        public string Tax { get; set; }
+        public string TaxName { get; set; }
         public string Receipt_number { get; set; }
         public string Payment_date { get; set; }
         public string Due_date { get; set; }

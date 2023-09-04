@@ -6,10 +6,7 @@ using System.Threading.Tasks;
 
 namespace Cobrapp.Model
 {
-    internal class Business
+    internal class Storage
     {
-        public string Name { get; set; }
-        public string Address { get; set; }
-        public int Number  { get; set; }
     }
 }

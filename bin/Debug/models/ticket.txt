@@ -11,12 +11,12 @@ Comprobante Nº: RECEIPTNUMBER
 
 Fecha: DATE
 
-   Importe: AMOUNT
-   Recargos: PENALTIES
-   Multas: EXTRAPENALTY
+   Importe: $ AMOUNT
+   Recargos: $ PENALTIES
+   Multas: $ EXTRAPENALTY
 
 ************************
-   Total: TOTAL
+   Total: $ TOTAL
 ************************
 
 

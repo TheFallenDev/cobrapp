@@ -120,9 +120,18 @@
     <Compile Include="Collector.Designer.cs">
       <DependentUpon>Collector.cs</DependentUpon>
     </Compile>
+    <Compile Include="Commissions.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Commissions.Designer.cs">
+      <DependentUpon>Commissions.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Logic\StampLogic.cs" />
     <Compile Include="Logic\TaxLogic.cs" />
     <Compile Include="Model\Business.cs" />
+    <Compile Include="Model\Fine.cs" />
     <Compile Include="Model\Stamp.cs" />
+    <Compile Include="Model\Storage.cs" />
     <Compile Include="Model\Tax.cs" />
     <Compile Include="Stamps.cs">
       <SubType>Form</SubType>
@@ -144,6 +153,11 @@
     </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Content Include="models\ticket-sellado.txt" />
+    <Content Include="models\ticket.txt" />
+    <EmbeddedResource Include="Commissions.resx">
+      <DependentUpon>Commissions.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Stamps.resx">
       <DependentUpon>Stamps.cs</DependentUpon>
     </EmbeddedResource>
