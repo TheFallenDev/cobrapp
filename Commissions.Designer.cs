@@ -29,15 +29,16 @@
         private void InitializeComponent()
         {
             this.dataGridView1 = new System.Windows.Forms.DataGridView();
-            this.textBox1 = new System.Windows.Forms.TextBox();
-            this.textBox2 = new System.Windows.Forms.TextBox();
-            this.label1 = new System.Windows.Forms.Label();
-            this.label2 = new System.Windows.Forms.Label();
-            this.textBox3 = new System.Windows.Forms.TextBox();
-            this.label3 = new System.Windows.Forms.Label();
             this.date = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.dailyTotal = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.commission = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.lbl_from_date = new System.Windows.Forms.Label();
+            this.lbl_to_date = new System.Windows.Forms.Label();
+            this.txt_total_commission = new System.Windows.Forms.TextBox();
+            this.lbl_total_commission = new System.Windows.Forms.Label();
+            this.dtp_from_date = new System.Windows.Forms.DateTimePicker();
+            this.dtp_to_date = new System.Windows.Forms.DateTimePicker();
+            this.btn_calculate = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
             this.SuspendLayout();
             // 
@@ -52,54 +53,6 @@
             this.dataGridView1.Name = "dataGridView1";
             this.dataGridView1.Size = new System.Drawing.Size(344, 323);
             this.dataGridView1.TabIndex = 0;
-            // 
-            // textBox1
-            // 
-            this.textBox1.Location = new System.Drawing.Point(291, 26);
-            this.textBox1.Name = "textBox1";
-            this.textBox1.Size = new System.Drawing.Size(100, 20);
-            this.textBox1.TabIndex = 1;
-            // 
-            // textBox2
-            // 
-            this.textBox2.Location = new System.Drawing.Point(438, 26);
-            this.textBox2.Name = "textBox2";
-            this.textBox2.Size = new System.Drawing.Size(100, 20);
-            this.textBox2.TabIndex = 2;
-            // 
-            // label1
-            // 
-            this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(250, 29);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(38, 13);
-            this.label1.TabIndex = 3;
-            this.label1.Text = "Desde";
-            // 
-            // label2
-            // 
-            this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(397, 29);
-            this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(35, 13);
-            this.label2.TabIndex = 4;
-            this.label2.Text = "Hasta";
-            // 
-            // textBox3
-            // 
-            this.textBox3.Location = new System.Drawing.Point(471, 405);
-            this.textBox3.Name = "textBox3";
-            this.textBox3.Size = new System.Drawing.Size(100, 20);
-            this.textBox3.TabIndex = 5;
-            // 
-            // label3
-            // 
-            this.label3.AutoSize = true;
-            this.label3.Location = new System.Drawing.Point(364, 408);
-            this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(101, 13);
-            this.label3.TabIndex = 6;
-            this.label3.Text = "Total de comisiones";
             // 
             // date
             // 
@@ -116,17 +69,83 @@
             this.commission.HeaderText = "Comisión";
             this.commission.Name = "commission";
             // 
+            // lbl_from_date
+            // 
+            this.lbl_from_date.AutoSize = true;
+            this.lbl_from_date.Location = new System.Drawing.Point(250, 29);
+            this.lbl_from_date.Name = "lbl_from_date";
+            this.lbl_from_date.Size = new System.Drawing.Size(38, 13);
+            this.lbl_from_date.TabIndex = 3;
+            this.lbl_from_date.Text = "Desde";
+            // 
+            // lbl_to_date
+            // 
+            this.lbl_to_date.AutoSize = true;
+            this.lbl_to_date.Location = new System.Drawing.Point(397, 29);
+            this.lbl_to_date.Name = "lbl_to_date";
+            this.lbl_to_date.Size = new System.Drawing.Size(35, 13);
+            this.lbl_to_date.TabIndex = 4;
+            this.lbl_to_date.Text = "Hasta";
+            // 
+            // txt_total_commission
+            // 
+            this.txt_total_commission.Location = new System.Drawing.Point(471, 405);
+            this.txt_total_commission.Name = "txt_total_commission";
+            this.txt_total_commission.Size = new System.Drawing.Size(100, 20);
+            this.txt_total_commission.TabIndex = 5;
+            // 
+            // lbl_total_commission
+            // 
+            this.lbl_total_commission.AutoSize = true;
+            this.lbl_total_commission.Location = new System.Drawing.Point(364, 408);
+            this.lbl_total_commission.Name = "lbl_total_commission";
+            this.lbl_total_commission.Size = new System.Drawing.Size(101, 13);
+            this.lbl_total_commission.TabIndex = 6;
+            this.lbl_total_commission.Text = "Total de comisiones";
+            // 
+            // dtp_from_date
+            // 
+            this.dtp_from_date.CustomFormat = "dd/MM/yyyy";
+            this.dtp_from_date.Format = System.Windows.Forms.DateTimePickerFormat.Custom;
+            this.dtp_from_date.Location = new System.Drawing.Point(294, 26);
+            this.dtp_from_date.MinDate = new System.DateTime(2000, 1, 1, 0, 0, 0, 0);
+            this.dtp_from_date.Name = "dtp_from_date";
+            this.dtp_from_date.Size = new System.Drawing.Size(100, 20);
+            this.dtp_from_date.TabIndex = 7;
+            this.dtp_from_date.Value = new System.DateTime(2000, 1, 1, 0, 0, 0, 0);
+            // 
+            // dtp_to_date
+            // 
+            this.dtp_to_date.CustomFormat = "dd/MM/yyyy";
+            this.dtp_to_date.Format = System.Windows.Forms.DateTimePickerFormat.Custom;
+            this.dtp_to_date.Location = new System.Drawing.Point(438, 26);
+            this.dtp_to_date.Name = "dtp_to_date";
+            this.dtp_to_date.Size = new System.Drawing.Size(100, 20);
+            this.dtp_to_date.TabIndex = 8;
+            this.dtp_to_date.Value = new System.DateTime(2023, 9, 13, 0, 0, 0, 0);
+            // 
+            // btn_calculate
+            // 
+            this.btn_calculate.Location = new System.Drawing.Point(577, 26);
+            this.btn_calculate.Name = "btn_calculate";
+            this.btn_calculate.Size = new System.Drawing.Size(75, 23);
+            this.btn_calculate.TabIndex = 9;
+            this.btn_calculate.Text = "Calcular";
+            this.btn_calculate.UseVisualStyleBackColor = true;
+            this.btn_calculate.Click += new System.EventHandler(this.btn_calculate_Click);
+            // 
             // Commissions
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(800, 450);
-            this.Controls.Add(this.label3);
-            this.Controls.Add(this.textBox3);
-            this.Controls.Add(this.label2);
-            this.Controls.Add(this.label1);
-            this.Controls.Add(this.textBox2);
-            this.Controls.Add(this.textBox1);
+            this.Controls.Add(this.btn_calculate);
+            this.Controls.Add(this.dtp_to_date);
+            this.Controls.Add(this.dtp_from_date);
+            this.Controls.Add(this.lbl_total_commission);
+            this.Controls.Add(this.txt_total_commission);
+            this.Controls.Add(this.lbl_to_date);
+            this.Controls.Add(this.lbl_from_date);
             this.Controls.Add(this.dataGridView1);
             this.Name = "Commissions";
             this.Text = "Comisiones";
@@ -139,14 +158,15 @@
         #endregion
 
         private System.Windows.Forms.DataGridView dataGridView1;
-        private System.Windows.Forms.TextBox textBox1;
-        private System.Windows.Forms.TextBox textBox2;
-        private System.Windows.Forms.Label label1;
-        private System.Windows.Forms.Label label2;
-        private System.Windows.Forms.TextBox textBox3;
-        private System.Windows.Forms.Label label3;
+        private System.Windows.Forms.Label lbl_from_date;
+        private System.Windows.Forms.Label lbl_to_date;
+        private System.Windows.Forms.TextBox txt_total_commission;
+        private System.Windows.Forms.Label lbl_total_commission;
         private System.Windows.Forms.DataGridViewTextBoxColumn date;
         private System.Windows.Forms.DataGridViewTextBoxColumn dailyTotal;
         private System.Windows.Forms.DataGridViewTextBoxColumn commission;
+        private System.Windows.Forms.DateTimePicker dtp_from_date;
+        private System.Windows.Forms.DateTimePicker dtp_to_date;
+        private System.Windows.Forms.Button btn_calculate;
     }
 }

@@ -38,3 +38,4 @@ C:\Deploy\cobrapp\bin\Debug\EntityFramework.SqlServer.xml
 C:\Deploy\cobrapp\bin\Debug\System.Data.SQLite.xml
 C:\Deploy\cobrapp\obj\Debug\Cobrapp.csproj.CopyComplete
 C:\Deploy\cobrapp\bin\Debug\data.db
+C:\Deploy\cobrapp\obj\Debug\Cobrapp.Commissions.resources

@@ -1,8 +1,5 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 using System.Configuration;
 using Cobrapp.Model;
@@ -39,11 +36,12 @@ namespace Cobrapp.Logic
             using (SQLiteConnection connection = new SQLiteConnection(conn) )
             {
                 connection.Open();
-                string query = "insert into Taxes(Tax,Receipt_number,Payment_date,Due_date,Total) values (@tax,@receipt_number,@payment_date,@due_date,@total)";
+                string query = "insert into Taxes(Tax,Receipt_number,Payment_date,Payment_time,Due_date,Total) values (@tax,@receipt_number,@payment_date,@payment_time,@due_date,@total)";
                 SQLiteCommand command = new SQLiteCommand(query, connection);
                 command.Parameters.Add(new SQLiteParameter("@tax", obj.TaxName));
                 command.Parameters.Add(new SQLiteParameter("@receipt_number", obj.Receipt_number));
                 command.Parameters.Add(new SQLiteParameter("@payment_date", obj.Payment_date));
+                command.Parameters.Add(new SQLiteParameter("@payment_time", obj.Payment_time));
                 command.Parameters.Add(new SQLiteParameter("@due_date", obj.Due_date));
                 command.Parameters.Add(new SQLiteParameter("@total", obj.Total));
                 command.CommandType = System.Data.CommandType.Text;

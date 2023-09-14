@@ -33,7 +33,8 @@ namespace Cobrapp
             Stamp obj = new Stamp()
             {
                 Receipt_number = Constant.Default.ToString(),
-                Payment_date = DateTime.Now.ToString("dd/MM/yy hh:mm:ss"),
+                Payment_date = DateTime.Now.ToString("yyyy/MM/dd"),
+                Payment_time = DateTime.Now.ToString("HH:mm:ss"),
                 Total = float.Parse(txt_stamp.Text),
             };
 

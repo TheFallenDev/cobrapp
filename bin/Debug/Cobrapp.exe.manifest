@@ -42,14 +42,14 @@
     </dependentAssembly>
   </dependency>
   <dependency>
-    <dependentAssembly dependencyType="install" allowDelayedBinding="true" codebase="Cobrapp.exe" size="34208">
+    <dependentAssembly dependencyType="install" allowDelayedBinding="true" codebase="Cobrapp.exe" size="38816">
       <assemblyIdentity name="Cobrapp" version="1.0.0.0" language="neutral" processorArchitecture="msil" />
       <hash>
         <dsig:Transforms>
           <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
         </dsig:Transforms>
         <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha256" />
-        <dsig:DigestValue>C9j+jk3JDODUeyerGzvD5XLi2uNCyP57C8drqvH5kaM=</dsig:DigestValue>
+        <dsig:DigestValue>yb0ofoPAxVoAYNAnXgN1i5VNZfMS22sL2d91GvvPpXE=</dsig:DigestValue>
       </hash>
     </dependentAssembly>
   </dependency>
@@ -128,7 +128,7 @@
         <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
       </dsig:Transforms>
       <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha256" />
-      <dsig:DigestValue>qsqNcdBZgRX6Xz6M1AJAOh0nsUlNoCmOAWVBTUE31R8=</dsig:DigestValue>
+      <dsig:DigestValue>0arNyFS+BIJ4WXGM30jhDC6yQO3xL85X7Bg1XiY71xo=</dsig:DigestValue>
     </hash>
   </file>
   <file name="models\ticket.txt" size="333">

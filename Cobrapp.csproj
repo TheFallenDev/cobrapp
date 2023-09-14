@@ -126,6 +126,7 @@
     <Compile Include="Commissions.Designer.cs">
       <DependentUpon>Commissions.cs</DependentUpon>
     </Compile>
+    <Compile Include="Logic\CommissionsLogic.cs" />
     <Compile Include="Logic\StampLogic.cs" />
     <Compile Include="Logic\TaxLogic.cs" />
     <Compile Include="Model\Business.cs" />

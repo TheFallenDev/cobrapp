@@ -33,7 +33,7 @@
             this.lbl_select_message = new System.Windows.Forms.Label();
             this.btn_send = new System.Windows.Forms.Button();
             this.btn_daily_total = new System.Windows.Forms.Button();
-            this.button1 = new System.Windows.Forms.Button();
+            this.btn_commissions = new System.Windows.Forms.Button();
             this.btn_stamps = new System.Windows.Forms.Button();
             this.button2 = new System.Windows.Forms.Button();
             this.SuspendLayout();
@@ -85,14 +85,15 @@
             this.btn_daily_total.UseVisualStyleBackColor = true;
             this.btn_daily_total.Click += new System.EventHandler(this.btn_daily_total_Click);
             // 
-            // button1
+            // btn_commissions
             // 
-            this.button1.Location = new System.Drawing.Point(409, 322);
-            this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(162, 35);
-            this.button1.TabIndex = 5;
-            this.button1.Text = "Comisiones";
-            this.button1.UseVisualStyleBackColor = true;
+            this.btn_commissions.Location = new System.Drawing.Point(409, 322);
+            this.btn_commissions.Name = "btn_commissions";
+            this.btn_commissions.Size = new System.Drawing.Size(162, 35);
+            this.btn_commissions.TabIndex = 5;
+            this.btn_commissions.Text = "Comisiones";
+            this.btn_commissions.UseVisualStyleBackColor = true;
+            this.btn_commissions.Click += new System.EventHandler(this.btn_commissions_Click);
             // 
             // btn_stamps
             // 
@@ -120,7 +121,7 @@
             this.ClientSize = new System.Drawing.Size(800, 450);
             this.Controls.Add(this.button2);
             this.Controls.Add(this.btn_stamps);
-            this.Controls.Add(this.button1);
+            this.Controls.Add(this.btn_commissions);
             this.Controls.Add(this.btn_daily_total);
             this.Controls.Add(this.btn_send);
             this.Controls.Add(this.lbl_select_message);
@@ -140,7 +141,7 @@
         private System.Windows.Forms.Label lbl_select_message;
         private System.Windows.Forms.Button btn_send;
         private System.Windows.Forms.Button btn_daily_total;
-        private System.Windows.Forms.Button button1;
+        private System.Windows.Forms.Button btn_commissions;
         private System.Windows.Forms.Button btn_stamps;
         private System.Windows.Forms.Button button2;
     }

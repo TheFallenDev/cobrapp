@@ -193,7 +193,8 @@ namespace Cobrapp
                     Receipt_number = row.Cells["receiptNum"].Value.ToString(),
                     Due_date = row.Cells["due_date"].Value.ToString(),
                     Total = float.Parse(row.Cells["partial"].Value.ToString()),
-                    Payment_date = DateTime.Now.ToString("dd/MM/yy"),
+                    Payment_date = DateTime.Now.ToString("yyyy/MM/dd"),
+                    Payment_time = DateTime.Now.ToString("HH:mm:ss")
                 };
 
                 bool response = TaxLogic.Instance.Save(obj);

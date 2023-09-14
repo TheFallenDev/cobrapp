@@ -39,10 +39,11 @@ namespace Cobrapp.Logic
             using (SQLiteConnection connection = new SQLiteConnection(conn))
             {
                 connection.Open();
-                string query = "insert into Stamps(Receipt_number,Payment_date,Total) values (@receipt_number,@payment_date,@total)";
+                string query = "insert into Stamps(Receipt_number,Payment_date,Payment_time,Total) values (@receipt_number,@payment_date,@payment_time,@total)";
                 SQLiteCommand command = new SQLiteCommand(query, connection);
                 command.Parameters.Add(new SQLiteParameter("@receipt_number", obj.Receipt_number));
                 command.Parameters.Add(new SQLiteParameter("@payment_date", obj.Payment_date));
+                command.Parameters.Add(new SQLiteParameter("@payment_time", obj.Payment_time));
                 command.Parameters.Add(new SQLiteParameter("@total", obj.Total));
                 command.CommandType = System.Data.CommandType.Text;
 

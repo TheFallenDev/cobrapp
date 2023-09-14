@@ -34,5 +34,11 @@ namespace Cobrapp
             using (Stamps stamps = new Stamps())
                 stamps.ShowDialog();
         }
+
+        private void btn_commissions_Click(object sender, EventArgs e)
+        {
+            using (Commissions commissions = new Commissions())
+                commissions.ShowDialog();
+        }
     }
 }
