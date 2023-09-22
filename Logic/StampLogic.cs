@@ -62,7 +62,7 @@ namespace Cobrapp.Logic
             using (SQLiteConnection connection = new SQLiteConnection(conn))
             {
                 connection.Open();
-                string query = "select receipt_number,total,payment_date from Stamps where payment_date='" + date + "'";
+                string query = "select receipt_number,total,payment_date,payment_time from Stamps where payment_date='" + date + "'";
                 SQLiteCommand command = new SQLiteCommand(query, connection);
                 command.CommandType = System.Data.CommandType.Text;
 
@@ -72,14 +72,42 @@ namespace Cobrapp.Logic
                     {
                         listByDate.Add(new Stamp()
                         {
+                            Payment_time = reader["payment_time"].ToString(),
                             Receipt_number = reader["receipt_number"].ToString(),
                             Total = float.Parse(reader["total"].ToString()),
                         });
                     }
                 }
             }
-
             return listByDate;
+        }
+
+        public int GetLastItemID ()
+        {
+            int lastId;
+
+            using (SQLiteConnection connection = new SQLiteConnection(conn))
+            {
+                connection.Open ();
+                string query = "select id from Stamps order by id desc limit 1";
+
+                SQLiteCommand command = new SQLiteCommand(query, connection);
+                command.CommandType = System.Data.CommandType.Text;
+
+                using (SQLiteDataReader reader = command.ExecuteReader())
+                {
+                    if (reader.Read()) // Verifica si hay resultados
+                    {
+                        lastId = int.Parse(reader["id"].ToString());
+                    }
+                    else
+                    {
+                        lastId = 0;
+                    }
+                }
+            }
+
+            return lastId;
         }
     }
 }

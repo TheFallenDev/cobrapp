@@ -9,6 +9,9 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 using Cobrapp.Model;
 using Cobrapp.Logic;
+using Cobrapp.Utils;
+using System.Drawing.Printing;
+using System.IO;
 
 namespace Cobrapp
 {
@@ -17,37 +20,115 @@ namespace Cobrapp
         public Total()
         {
             InitializeComponent();
+            dtp_date.Value = DateTime.Now;
         }
 
-        private void txt_date_KeyDown(object sender, KeyEventArgs e)
+        private void dtp_date_KeyDown(object sender, KeyEventArgs e)
         {
             float acc = 0;
-            if(e.KeyCode == Keys.Enter)
+            if (e.KeyCode == Keys.Enter)
             {
-                dtgv_taxes.DataSource = null;
-                
-                List<Tax> taxList = TaxLogic.Instance.ListByDate(txt_date.Text);
+                dtgv_taxes.Rows.Clear();
+
+                List<Tax> taxList = TaxLogic.Instance.ListByDate(MyUtils.DateFixer(dtp_date.Text));
                 foreach (var tax in taxList)
                 {
                     int n = dtgv_taxes.Rows.Add();
-                    dtgv_taxes.Rows[n].Cells[0].Value = tax.Receipt_number;
-                    dtgv_taxes.Rows[n].Cells[1].Value = tax.Total;
-                    dtgv_taxes.Rows[n].Cells[2].Value = tax.Due_date;
-                    dtgv_taxes.Rows[n].Cells[3].Value = tax.TaxName;
+                    dtgv_taxes.Rows[n].Cells[0].Value = tax.Payment_time;
+                    dtgv_taxes.Rows[n].Cells[1].Value = tax.Receipt_number;
+                    dtgv_taxes.Rows[n].Cells[2].Value = tax.Total.ToString("0.00");
+                    dtgv_taxes.Rows[n].Cells[3].Value = tax.Due_date;
+                    dtgv_taxes.Rows[n].Cells[4].Value = tax.TaxName;
                     acc += tax.Total;
-                    txt_total.Text = acc.ToString();
+                    lbl_total.Text = acc.ToString();
                 }
 
-                List<Stamp> stampList = StampLogic.Instance.ListByDate(txt_date.Text);
+                List<Stamp> stampList = StampLogic.Instance.ListByDate(MyUtils.DateFixer(dtp_date.Text));
                 foreach (var stamp in stampList)
                 {
                     int n = dtgv_taxes.Rows.Add();
-                    dtgv_taxes.Rows[n].Cells[0].Value = stamp.Receipt_number;
-                    dtgv_taxes.Rows[n].Cells[1].Value = stamp.Total;
-                    dtgv_taxes.Rows[n].Cells[3].Value = "Sellado";
+                    dtgv_taxes.Rows[n].Cells[0].Value = stamp.Payment_time;
+                    dtgv_taxes.Rows[n].Cells[1].Value = stamp.Receipt_number;
+                    dtgv_taxes.Rows[n].Cells[2].Value = stamp.Total.ToString("0.00");
+                    dtgv_taxes.Rows[n].Cells[4].Value = "Sellado";
                     acc += stamp.Total;
-                    txt_total.Text = acc.ToString();
+                    lbl_total.Text = acc.ToString();
                 }
+                dtgv_taxes.Sort(dtgv_taxes.Columns[0], ListSortDirection.Ascending);
+            }
+        }
+
+        private void btn_print_Click(object sender, EventArgs e)
+        {
+            PrintDocument printReceipt = new PrintDocument();
+            PrinterSettings ps = new PrinterSettings();
+            printReceipt.PrinterSettings = ps;
+            printReceipt.PrintPage += (s, ev) => Print(s, ev);
+            printReceipt.Print();
+        }
+
+        private void Print(object sender, PrintPageEventArgs e)
+        {
+            string Model = File.ReadAllText("models/ticket-comisiones.txt");
+            int yPos = 100;
+
+            e.Graphics.DrawString(Replacer(Model), new Font("Arial", 8), Brushes.Black, 50, yPos);
+        }
+
+        private string Replacer(string model)
+        {
+            string linea = string.Empty;
+
+            foreach (DataGridViewRow row in dtgv_taxes.Rows)
+            {
+                linea = linea + Environment.NewLine + row.Cells[0].Value.ToString() + "\t" + row.Cells[1].Value.ToString() + "\t" + row.Cells[2].Value.ToString();
+            }
+
+            model = model.Replace("LINE", linea);
+            model = model.Replace("TOTAL", lbl_total.Text);
+
+            return model;
+        }
+
+        private void btn_generate_file_Click(object sender, EventArgs e)
+        {
+            string fileName = "buschi" + MyUtils.DateFixer(dtp_date.Text).Replace("/", "") + ".dat";
+            try
+            {
+                // Crea un StreamWriter para escribir en el archivo (esto creará o sobrescribirá el archivo)
+                using (StreamWriter writer = new StreamWriter(fileName))
+                {
+                    // Escribe contenido en el archivo
+                    List<Tax> taxList = TaxLogic.Instance.ListByDate(MyUtils.DateFixer(dtp_date.Text));
+                    foreach (var tax in taxList)
+                    {
+                        string receipt = tax.Receipt_number.PadLeft(8, '0');
+                        string date = MyUtils.DateFixer(dtp_date.Text).Replace("/", "");
+                        string amount = tax.Partial.ToString().Replace(",", "").PadLeft(10, '0');
+                        string additional = tax.Additional.ToString().Replace(",", "").PadLeft(8, '0');
+                        string delay = tax.Delay.ToString().Replace(",", "").PadLeft(8, '0');
+
+                        string line = "53" + "0285" + "06" + receipt + date + amount + "0" + additional + delay;
+                        writer.WriteLine(line);
+                    }
+
+                    List<Stamp> stampList = StampLogic.Instance.ListByDate(MyUtils.DateFixer(dtp_date.Text));
+                    foreach (var stamp in stampList)
+                    {
+                        string receipt = stamp.Receipt_number.PadLeft(6, '0');
+                        string date = MyUtils.DateFixer(dtp_date.Text).Replace("/", "");
+                        string amount = stamp.Total.ToString().Replace(",", "").PadLeft(10, '0');
+                        string additional = "00000000";
+                        string delay = "00000000";
+                        string line = "53" + "0285" + "00" + receipt + date + amount + "0" + additional + delay;
+                        writer.WriteLine(line);
+                    }
+                }
+                Console.WriteLine("Archivo creado con éxito: " + fileName);
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine("Error al crear el archivo: " + ex.Message);
             }
         }
     }

@@ -130,6 +130,7 @@
     <Compile Include="Logic\StampLogic.cs" />
     <Compile Include="Logic\TaxLogic.cs" />
     <Compile Include="Model\Business.cs" />
+    <Compile Include="Model\Commission.cs" />
     <Compile Include="Model\Fine.cs" />
     <Compile Include="Model\Stamp.cs" />
     <Compile Include="Model\Storage.cs" />
@@ -154,6 +155,7 @@
     </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Utils\utils.cs" />
     <Content Include="models\ticket-sellado.txt" />
     <Content Include="models\ticket.txt" />
     <EmbeddedResource Include="Commissions.resx">

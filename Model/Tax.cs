@@ -15,6 +15,9 @@ namespace Cobrapp.Model
         public string Payment_time { get; set; }
         public string Due_date { get; set; }
         public float Total { get; set; }
+        public float Additional { get; set; }
+        public float Delay { get; set; }
+        public string Partial { get; set; }
         public string Void { get; set; }
     }
 }

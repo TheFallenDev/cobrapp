@@ -1,12 +1,6 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
 using System.Drawing;
 using System.Drawing.Printing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 using Cobrapp.Model;
 using Cobrapp.Logic;
@@ -19,6 +13,9 @@ namespace Cobrapp
         public Stamps()
         {
             InitializeComponent();
+            nud_stamp_value.DecimalPlaces = 2; // Dos decimales
+            nud_stamp_value.Increment = 1; // Incremento de 1
+            nud_stamp_value.Minimum = 0.00m; // Valor mínimo
         }
 
         private void btn_print_Click(object sender, EventArgs e)
@@ -30,12 +27,14 @@ namespace Cobrapp
             printReceipt.PrintPage += (s, ev) => Print(s, ev);
             printReceipt.Print();
 
+            int newId = StampLogic.Instance.GetLastItemID() + 1;
+
             Stamp obj = new Stamp()
             {
-                Receipt_number = Constant.Default.ToString(),
+                Receipt_number = "53" + newId.ToString().PadLeft(6,'0'),
                 Payment_date = DateTime.Now.ToString("yyyy/MM/dd"),
                 Payment_time = DateTime.Now.ToString("HH:mm:ss"),
-                Total = float.Parse(txt_stamp.Text),
+                Total = float.Parse(nud_stamp_value.Value.ToString("0.00"))
             };
 
             bool response = StampLogic.Instance.Save(obj);
@@ -52,21 +51,19 @@ namespace Cobrapp
                 file = file + Environment.NewLine + line;
             }
             string receipt;
-            string escapeSequence = "\x1B" + "m" + "\x1B\x6D";
             receipt = Replacer(file);
-            receipt = receipt + escapeSequence;
             e.Graphics.DrawString(receipt, font, Brushes.Black, new RectangleF(0, 0, 220, 2000));
-
-
         }
 
         private string Replacer(string receipt)
         {
-            receipt = receipt.Replace("RECEIPTNUMBER", Constant.Default.ToString());
+            int newId = StampLogic.Instance.GetLastItemID() + 1;
+            receipt = receipt.Replace("RECEIPTNUMBER", "53" + newId.ToString().PadLeft(6, '0'));
             receipt = receipt.Replace("DATE", DateTime.Now.ToString("dd/MM/yy hh:mm:ss").ToString());
-            receipt = receipt.Replace("TOTAL", txt_stamp.Text.ToString());
+            receipt = receipt.Replace("TOTAL", nud_stamp_value.Value.ToString("0.00"));
             return receipt;
         }
+
     }
     static class Constant
     {

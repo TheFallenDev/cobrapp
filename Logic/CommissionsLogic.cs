@@ -13,9 +13,26 @@ namespace Cobrapp.Logic
 
         private static CommissionsLogic _instance = null;
 
-        public List<Tax> ListFromToDate(String fromDate, String toDate)
+        public CommissionsLogic()
         {
-            List<Tax> listFromToDate = new List<Tax>();
+
+        }
+
+        public static CommissionsLogic Instance
+        {
+            get
+            {
+                if (_instance == null)
+                {
+                    _instance = new CommissionsLogic();
+                }
+                return _instance;
+            }
+        }
+
+        public List<Commission> ListFromToDate(String fromDate, String toDate)
+        {
+            List<Commission> listFromToDate = new List<Commission>();
 
             using (SQLiteConnection connection = new SQLiteConnection(conn))
             {
@@ -23,21 +40,53 @@ namespace Cobrapp.Logic
                 string query = "select total,payment_date from Taxes where payment_date>='" + fromDate + "' and payment_date<='" + toDate + "'";
                 SQLiteCommand command = new SQLiteCommand(query, connection);
                 command.CommandType = System.Data.CommandType.Text;
+                string previousDate = "";
+                string newDate = "";
+                int counter = 0;
+                float dailyTotal;
+                float accumulator = 0;
 
                 using (SQLiteDataReader reader = command.ExecuteReader())
                 {
-                    string previousDate = "";
                     while (reader.Read())
                     {
-                        if (reader["payment_date"].ToString() != previousDate)
+                        if (reader["payment_date"].ToString() != newDate)
                         {
-                            previousDate = reader["payment_date"].ToString();
+                            previousDate = newDate;
+                            newDate = reader["payment_date"].ToString();
+                            if (accumulator == 0)
+                            {
+                                previousDate = reader["payment_date"].ToString();
+                                dailyTotal = float.Parse(reader["total"].ToString());
+                            }
+                            else
+                            {
+                                dailyTotal = accumulator;
+                                listFromToDate.Add(new Commission
+                                {
+                                    Day = previousDate,
+                                    DailyTotal = dailyTotal,
+                                    OpCounter = counter
+                                });
+                            }
+                            accumulator = float.Parse(reader["total"].ToString());
+                            counter = 1;
                         }
-                        listFromToDate.Add(new Tax()
+                        else
                         {
-                            Total = float.Parse(reader["total"].ToString()),
-                        });
+                            accumulator += float.Parse(reader["total"].ToString());
+                            counter++;
+                        }
                     }
+                }
+                if (accumulator != 0)
+                {
+                    listFromToDate.Add(new Commission
+                    {
+                        Day = newDate,
+                        DailyTotal = accumulator,
+                        OpCounter = counter
+                    });
                 }
             }
 

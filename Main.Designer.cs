@@ -31,7 +31,6 @@
             this.btn_collect_taxes = new System.Windows.Forms.Button();
             this.btn_void_payment = new System.Windows.Forms.Button();
             this.lbl_select_message = new System.Windows.Forms.Label();
-            this.btn_send = new System.Windows.Forms.Button();
             this.btn_daily_total = new System.Windows.Forms.Button();
             this.btn_commissions = new System.Windows.Forms.Button();
             this.btn_stamps = new System.Windows.Forms.Button();
@@ -66,15 +65,6 @@
             this.lbl_select_message.TabIndex = 2;
             this.lbl_select_message.Text = "Seleccione una opción";
             // 
-            // btn_send
-            // 
-            this.btn_send.Location = new System.Drawing.Point(312, 395);
-            this.btn_send.Name = "btn_send";
-            this.btn_send.Size = new System.Drawing.Size(162, 29);
-            this.btn_send.TabIndex = 3;
-            this.btn_send.Text = "Enviar archivo de recaudación";
-            this.btn_send.UseVisualStyleBackColor = true;
-            // 
             // btn_daily_total
             // 
             this.btn_daily_total.Location = new System.Drawing.Point(208, 322);
@@ -107,7 +97,7 @@
             // 
             // button2
             // 
-            this.button2.Location = new System.Drawing.Point(409, 172);
+            this.button2.Location = new System.Drawing.Point(408, 172);
             this.button2.Name = "button2";
             this.button2.Size = new System.Drawing.Size(162, 35);
             this.button2.TabIndex = 7;
@@ -123,7 +113,6 @@
             this.Controls.Add(this.btn_stamps);
             this.Controls.Add(this.btn_commissions);
             this.Controls.Add(this.btn_daily_total);
-            this.Controls.Add(this.btn_send);
             this.Controls.Add(this.lbl_select_message);
             this.Controls.Add(this.btn_void_payment);
             this.Controls.Add(this.btn_collect_taxes);
@@ -139,7 +128,6 @@
         private System.Windows.Forms.Button btn_collect_taxes;
         private System.Windows.Forms.Button btn_void_payment;
         private System.Windows.Forms.Label lbl_select_message;
-        private System.Windows.Forms.Button btn_send;
         private System.Windows.Forms.Button btn_daily_total;
         private System.Windows.Forms.Button btn_commissions;
         private System.Windows.Forms.Button btn_stamps;

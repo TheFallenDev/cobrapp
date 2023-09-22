@@ -80,7 +80,7 @@
             this.txt_barcode.Size = new System.Drawing.Size(366, 20);
             this.txt_barcode.TabIndex = 1;
             this.txt_barcode.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
-            this.txt_barcode.TextChanged += new System.EventHandler(this.txt_barcode_TextChanged);
+            this.txt_barcode.KeyDown += new System.Windows.Forms.KeyEventHandler(this.txt_barcode_KeyDown);
             // 
             // lbl_tax_name
             // 
@@ -114,9 +114,9 @@
             this.lbl_penalty.AutoSize = true;
             this.lbl_penalty.Location = new System.Drawing.Point(224, 123);
             this.lbl_penalty.Name = "lbl_penalty";
-            this.lbl_penalty.Size = new System.Drawing.Size(50, 13);
+            this.lbl_penalty.Size = new System.Drawing.Size(48, 13);
             this.lbl_penalty.TabIndex = 6;
-            this.lbl_penalty.Text = "Intereses";
+            this.lbl_penalty.Text = "Recargo";
             // 
             // lbl_tax_total
             // 
@@ -190,13 +190,13 @@
             // 
             // penalty
             // 
-            this.penalty.HeaderText = "Intereses";
+            this.penalty.HeaderText = "Recargo";
             this.penalty.Name = "penalty";
             this.penalty.ReadOnly = true;
             // 
             // extra_penalty
             // 
-            this.extra_penalty.HeaderText = "Multa";
+            this.extra_penalty.HeaderText = "Mora";
             this.extra_penalty.Name = "extra_penalty";
             this.extra_penalty.ReadOnly = true;
             // 
@@ -322,9 +322,9 @@
             this.lbl_extra_penalty.AutoSize = true;
             this.lbl_extra_penalty.Location = new System.Drawing.Point(224, 150);
             this.lbl_extra_penalty.Name = "lbl_extra_penalty";
-            this.lbl_extra_penalty.Size = new System.Drawing.Size(62, 13);
+            this.lbl_extra_penalty.Size = new System.Drawing.Size(60, 13);
             this.lbl_extra_penalty.TabIndex = 30;
-            this.lbl_extra_penalty.Text = "Multa (10%)";
+            this.lbl_extra_penalty.Text = "Mora (10%)";
             // 
             // txt_penalty_percentage
             // 

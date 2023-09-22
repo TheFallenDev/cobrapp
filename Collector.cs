@@ -66,14 +66,6 @@ namespace Cobrapp
                     return "ERROR EN LA BARRA";
             }
         }
-
-        private string AmountFixer(string amount)
-        {
-            amount = amount.Insert(amount.Length-2, ".");
-            amount = string.Format("{0:0.00}", amount);
-            amount = amount.TrimStart('0');
-            return amount;
-        }
          
         private string DateCheck(string dueDateStr,decimal amountDecimal)
         {
@@ -108,23 +100,31 @@ namespace Cobrapp
             txt_tax_total.Text = (Math.Round(totalWithPenalties, 2)).ToString();
         }
 
-        private void txt_barcode_TextChanged(object sender, EventArgs e)
+        private void txt_barcode_KeyDown(object sender, KeyEventArgs e)
         {
-            int textLength = txt_barcode.Text.Length;
-            if (textLength == 31 && CheckDigit(txt_barcode.Text))
+            if (e.KeyCode == Keys.Enter)
             {
-                string taxNumber = txt_barcode.Text.Substring(4, 2);
-                receiptNumber = txt_barcode.Text.Substring(6,8);
-                string dueDate = txt_barcode.Text.Substring(14, 6);
-                string amount = txt_barcode.Text.Substring(20, 10);
-                decimal amountDecimal = Decimal.Parse(amount) / 100;
-                txt_barcode.Enabled = false;
-                txt_amount.Text = (Math.Round(amountDecimal, 2)).ToString();
-                lbl_show_tax.Text = TaxCheck(taxNumber);
-                lbl_show_due_date.Text = DateCheck(dueDate, amountDecimal);
-                if (!btn_add_tax.Enabled) btn_add_tax.Enabled = true;
+                int textLength = txt_barcode.Text.Length;
+                if (textLength == 31 && CheckDigit(txt_barcode.Text))
+                {
+                    string taxNumber = txt_barcode.Text.Substring(4, 2);
+                    receiptNumber = txt_barcode.Text.Substring(6, 8);
+                    string dueDate = txt_barcode.Text.Substring(14, 6);
+                    string amount = txt_barcode.Text.Substring(20, 10);
+                    decimal amountDecimal = Decimal.Parse(amount) / 100;
+                    txt_barcode.Enabled = false;
+                    txt_amount.Text = (Math.Round(amountDecimal, 2)).ToString();
+                    lbl_show_tax.Text = TaxCheck(taxNumber);
+                    lbl_show_due_date.Text = DateCheck(dueDate, amountDecimal);
+                    if (!btn_add_tax.Enabled) btn_add_tax.Enabled = true;
+                    if (TaxLogic.Instance.SearchReceipt(receiptNumber))
+                    {
+                        MessageBox.Show("¡Advertencia! Este número de recibo ya ha sido cobrado previamente.", "Advertencia", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                    }
+                }
             }
         }
+
 
         private void btn_add_tax_Click(object sender, EventArgs e)
         {
@@ -192,6 +192,9 @@ namespace Cobrapp
                     TaxName = row.Cells["tax"].Value.ToString(),
                     Receipt_number = row.Cells["receiptNum"].Value.ToString(),
                     Due_date = row.Cells["due_date"].Value.ToString(),
+                    Partial = txt_amount.Text.ToString(),
+                    Additional = float.Parse(row.Cells["penalty"].Value.ToString()),
+                    Delay = float.Parse(row.Cells["extra_penalty"].Value.ToString()),
                     Total = float.Parse(row.Cells["partial"].Value.ToString()),
                     Payment_date = DateTime.Now.ToString("yyyy/MM/dd"),
                     Payment_time = DateTime.Now.ToString("HH:mm:ss")
@@ -217,9 +220,7 @@ namespace Cobrapp
             }
             int pages = dtgv_taxes_list.Rows.Count;
             string receipt;
-            string escapeSequence = "\x1B" + "m" + "\x1B\x6D";
             receipt = Replacer(file, dtgv_taxes_list.Rows[page]);
-            receipt = receipt + escapeSequence;
             e.Graphics.DrawString(receipt, font, Brushes.Black, new RectangleF(0,0,220,2000));
             page++;
             if(page < pages)
@@ -243,6 +244,8 @@ namespace Cobrapp
             receipt = receipt.Replace("TOTAL", row.Cells["partial"].Value.ToString());
             return receipt;
         }
+
+
     }
     static class Constants
     {
