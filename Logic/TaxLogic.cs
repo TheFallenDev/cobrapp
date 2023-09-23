@@ -4,6 +4,7 @@ using System.Collections.Generic;
 using System.Configuration;
 using Cobrapp.Model;
 using System.Data.SQLite;
+using System.Runtime.Remoting.Messaging;
 
 namespace Cobrapp.Logic
 {
@@ -54,6 +55,26 @@ namespace Cobrapp.Logic
                     response = false;
                 }
             }
+            return response;
+        }
+
+        public bool VoidTax(string receipt)
+        {
+            bool response = true;
+
+            using (SQLiteConnection connection = new SQLiteConnection(conn))
+            {
+                connection.Open();
+                string query = "update taxes set void = '" + DateTime.Now.ToString("dd/MM/yyyy") + "' where receipt_number = '" + receipt + "'";
+                SQLiteCommand command = new SQLiteCommand(query, connection);
+                command.CommandType = System.Data.CommandType.Text;
+
+                if (command.ExecuteNonQuery() < 1)
+                {
+                    response = false;
+                }
+            }
+
             return response;
         }
 

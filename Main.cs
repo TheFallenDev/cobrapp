@@ -40,5 +40,11 @@ namespace Cobrapp
             using (Commissions commissions = new Commissions())
                 commissions.ShowDialog();
         }
+
+        private void btn_void_payment_Click(object sender, EventArgs e)
+        {
+            using (VoidPayment payment = new VoidPayment())
+                payment.ShowDialog();
+        }
     }
 }

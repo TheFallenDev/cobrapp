@@ -80,7 +80,7 @@
             this.txt_barcode.Size = new System.Drawing.Size(366, 20);
             this.txt_barcode.TabIndex = 1;
             this.txt_barcode.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
-            this.txt_barcode.KeyDown += new System.Windows.Forms.KeyEventHandler(this.txt_barcode_KeyDown);
+            this.txt_barcode.TextChanged += new System.EventHandler(this.txt_barcode_TextChanged);
             // 
             // lbl_tax_name
             // 
@@ -148,6 +148,7 @@
             this.btn_collect_taxes.Text = "Cobrar";
             this.btn_collect_taxes.UseVisualStyleBackColor = true;
             this.btn_collect_taxes.Click += new System.EventHandler(this.btn_collect_taxes_Click);
+            this.btn_collect_taxes.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.btn_collect_taxes_KeyPress);
             // 
             // dtgv_taxes_list
             // 

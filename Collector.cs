@@ -100,27 +100,24 @@ namespace Cobrapp
             txt_tax_total.Text = (Math.Round(totalWithPenalties, 2)).ToString();
         }
 
-        private void txt_barcode_KeyDown(object sender, KeyEventArgs e)
+        private void txt_barcode_TextChanged(object sender, EventArgs e)
         {
-            if (e.KeyCode == Keys.Enter)
+            int textLength = txt_barcode.Text.Length;
+            if (textLength == 31 && CheckDigit(txt_barcode.Text))
             {
-                int textLength = txt_barcode.Text.Length;
-                if (textLength == 31 && CheckDigit(txt_barcode.Text))
+                string taxNumber = txt_barcode.Text.Substring(4, 2);
+                receiptNumber = txt_barcode.Text.Substring(6, 8);
+                string dueDate = txt_barcode.Text.Substring(14, 6);
+                string amount = txt_barcode.Text.Substring(20, 10);
+                decimal amountDecimal = Decimal.Parse(amount) / 100;
+                txt_barcode.Enabled = false;
+                txt_amount.Text = (Math.Round(amountDecimal, 2)).ToString();
+                lbl_show_tax.Text = TaxCheck(taxNumber);
+                lbl_show_due_date.Text = DateCheck(dueDate, amountDecimal);
+                if (!btn_add_tax.Enabled) btn_add_tax.Enabled = true;
+                if (TaxLogic.Instance.SearchReceipt(receiptNumber))
                 {
-                    string taxNumber = txt_barcode.Text.Substring(4, 2);
-                    receiptNumber = txt_barcode.Text.Substring(6, 8);
-                    string dueDate = txt_barcode.Text.Substring(14, 6);
-                    string amount = txt_barcode.Text.Substring(20, 10);
-                    decimal amountDecimal = Decimal.Parse(amount) / 100;
-                    txt_barcode.Enabled = false;
-                    txt_amount.Text = (Math.Round(amountDecimal, 2)).ToString();
-                    lbl_show_tax.Text = TaxCheck(taxNumber);
-                    lbl_show_due_date.Text = DateCheck(dueDate, amountDecimal);
-                    if (!btn_add_tax.Enabled) btn_add_tax.Enabled = true;
-                    if (TaxLogic.Instance.SearchReceipt(receiptNumber))
-                    {
-                        MessageBox.Show("¡Advertencia! Este número de recibo ya ha sido cobrado previamente.", "Advertencia", MessageBoxButtons.OK, MessageBoxIcon.Warning);
-                    }
+                    MessageBox.Show("¡Advertencia! Este número de recibo ya ha sido cobrado previamente.", "Advertencia", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                 }
             }
         }
@@ -245,7 +242,13 @@ namespace Cobrapp
             return receipt;
         }
 
-
+        private void btn_collect_taxes_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            if (e.KeyChar == (char)Keys.Enter)
+            {
+                e.Handled = true; // Evita que se active el botón por la tecla Enter
+            }
+        }
     }
     static class Constants
     {

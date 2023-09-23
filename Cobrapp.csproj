@@ -156,6 +156,12 @@
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Utils\utils.cs" />
+    <Compile Include="VoidPayment.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="VoidPayment.Designer.cs">
+      <DependentUpon>VoidPayment.cs</DependentUpon>
+    </Compile>
     <Content Include="models\ticket-sellado.txt" />
     <Content Include="models\ticket.txt" />
     <EmbeddedResource Include="Commissions.resx">
@@ -181,6 +187,9 @@
     </Compile>
     <EmbeddedResource Include="Total.resx">
       <DependentUpon>Total.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="VoidPayment.resx">
+      <DependentUpon>VoidPayment.cs</DependentUpon>
     </EmbeddedResource>
     <None Include="Cobrapp_TemporaryKey.pfx" />
     <Content Include="data.db">

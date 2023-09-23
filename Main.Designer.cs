@@ -55,6 +55,7 @@
             this.btn_void_payment.TabIndex = 1;
             this.btn_void_payment.Text = "Anular pago";
             this.btn_void_payment.UseVisualStyleBackColor = true;
+            this.btn_void_payment.Click += new System.EventHandler(this.btn_void_payment_Click);
             // 
             // lbl_select_message
             // 
