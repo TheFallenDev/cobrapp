@@ -39,8 +39,12 @@ namespace Cobrapp
                     dtgv_taxes.Rows[n].Cells[2].Value = tax.Total.ToString("0.00");
                     dtgv_taxes.Rows[n].Cells[3].Value = tax.Due_date;
                     dtgv_taxes.Rows[n].Cells[4].Value = tax.TaxName;
-                    acc += tax.Total;
-                    lbl_total.Text = acc.ToString();
+                    dtgv_taxes.Rows[n].Cells[5].Value = tax.Void;
+                    if (dtgv_taxes.Rows[n].Cells[5].Value == null || string.IsNullOrEmpty(dtgv_taxes.Rows[n].Cells[5].Value.ToString()))
+                    {
+                        acc += tax.Total;
+                        lbl_total.Text = acc.ToString();
+                    }
                 }
 
                 List<Stamp> stampList = StampLogic.Instance.ListByDate(MyUtils.DateFixer(dtp_date.Text));
@@ -81,7 +85,10 @@ namespace Cobrapp
 
             foreach (DataGridViewRow row in dtgv_taxes.Rows)
             {
-                linea = linea + Environment.NewLine + row.Cells[0].Value.ToString() + "\t" + row.Cells[1].Value.ToString() + "\t" + row.Cells[2].Value.ToString();
+                if (row.Cells[5].Value == null || string.IsNullOrEmpty(row.Cells[5].Value.ToString()))
+                {
+                    linea = linea + Environment.NewLine + row.Cells[0].Value.ToString() + "\t" + row.Cells[1].Value.ToString() + "\t" + row.Cells[2].Value.ToString();
+                }
             }
 
             model = model.Replace("LINE", linea);
@@ -102,14 +109,17 @@ namespace Cobrapp
                     List<Tax> taxList = TaxLogic.Instance.ListByDate(MyUtils.DateFixer(dtp_date.Text));
                     foreach (var tax in taxList)
                     {
-                        string receipt = tax.Receipt_number.PadLeft(8, '0');
-                        string date = MyUtils.DateFixer(dtp_date.Text).Replace("/", "");
-                        string amount = tax.Partial.ToString().Replace(",", "").PadLeft(10, '0');
-                        string additional = tax.Additional.ToString().Replace(",", "").PadLeft(8, '0');
-                        string delay = tax.Delay.ToString().Replace(",", "").PadLeft(8, '0');
+                        if (tax.Void == null)
+                        {
+                            string receipt = tax.Receipt_number.PadLeft(8, '0');
+                            string date = MyUtils.DateFixer(dtp_date.Text).Replace("/", "");
+                            string amount = tax.Partial.ToString().Replace(",", "").PadLeft(10, '0');
+                            string additional = tax.Additional.ToString().Replace(",", "").PadLeft(8, '0');
+                            string delay = tax.Delay.ToString().Replace(",", "").PadLeft(8, '0');
 
-                        string line = "53" + "0285" + "06" + receipt + date + amount + "0" + additional + delay;
-                        writer.WriteLine(line);
+                            string line = "53" + "0285" + "06" + receipt + date + amount + "0" + additional + delay;
+                            writer.WriteLine(line);
+                        }
                     }
 
                     List<Stamp> stampList = StampLogic.Instance.ListByDate(MyUtils.DateFixer(dtp_date.Text));
@@ -129,6 +139,20 @@ namespace Cobrapp
             catch (Exception ex)
             {
                 Console.WriteLine("Error al crear el archivo: " + ex.Message);
+            }
+        }
+
+        private void chkShowVoid_CheckedChanged(object sender, EventArgs e)
+        {
+            bool showVoidRows = chkShowVoid.Checked;
+
+            foreach (DataGridViewRow row in dtgv_taxes.Rows)
+            {
+                int columnIndex = 5;
+                bool isVoided = row.Cells[columnIndex].Value != null && !string.IsNullOrEmpty(row.Cells[columnIndex].Value.ToString());
+
+                // Mostrar u ocultar la fila según el estado del CheckBox y si la fila está anulada
+                row.Visible = showVoidRows || !isVoided;
             }
         }
     }

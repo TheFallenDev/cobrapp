@@ -134,6 +134,12 @@ namespace Cobrapp
             dtgv_taxes_list.Rows[n].Cells[5].Value = Decimal.Parse(txt_tax_total.Text);
             dtgv_taxes_list.Rows[n].Cells["amount"].Value = txt_amount.Text;
 
+            if (txt_penalty.Text == null || string.IsNullOrEmpty(txt_penalty.Text))
+            {
+                dtgv_taxes_list.Rows[n].Cells[3].Value = 0;
+                dtgv_taxes_list.Rows[n].Cells[4].Value = 0;
+            }
+
             Cleaner();
             UpdateTotal();
             txt_barcode.Focus();
@@ -173,37 +179,39 @@ namespace Cobrapp
             txt_total.Text = total.ToString();
         }
 
-        private void btn_collect_taxes_Click(object sender, EventArgs e)
+        private void btn_collect_taxes_KeyDown(object sender, KeyEventArgs e)
         {
-            PrintDocument printReceipt = new PrintDocument();
-            PrinterSettings ps = new PrinterSettings();
-            printReceipt.PrinterSettings = ps;
-            //printReceipt.DefaultPageSettings.PaperSize = new PaperSize("Receipt",500,1500);
-            printReceipt.PrintPage += (s, ev) => Print(s, ev);
-            printReceipt.Print();
-
-            foreach (DataGridViewRow row in dtgv_taxes_list.Rows)
+            if (e.KeyCode == Keys.F1)
             {
-                Tax obj = new Tax()
+                PrintDocument printReceipt = new PrintDocument();
+                PrinterSettings ps = new PrinterSettings();
+                printReceipt.PrinterSettings = ps;
+                //printReceipt.DefaultPageSettings.PaperSize = new PaperSize("Receipt",500,1500);
+                printReceipt.PrintPage += (s, ev) => Print(s, ev);
+                printReceipt.Print();
+
+                foreach (DataGridViewRow row in dtgv_taxes_list.Rows)
                 {
-                    TaxName = row.Cells["tax"].Value.ToString(),
-                    Receipt_number = row.Cells["receiptNum"].Value.ToString(),
-                    Due_date = row.Cells["due_date"].Value.ToString(),
-                    Partial = txt_amount.Text.ToString(),
-                    Additional = float.Parse(row.Cells["penalty"].Value.ToString()),
-                    Delay = float.Parse(row.Cells["extra_penalty"].Value.ToString()),
-                    Total = float.Parse(row.Cells["partial"].Value.ToString()),
-                    Payment_date = DateTime.Now.ToString("yyyy/MM/dd"),
-                    Payment_time = DateTime.Now.ToString("HH:mm:ss")
-                };
+                    Tax obj = new Tax()
+                    {
+                        TaxName = row.Cells["tax"].Value.ToString(),
+                        Receipt_number = row.Cells["receiptNum"].Value.ToString(),
+                        Due_date = row.Cells["due_date"].Value.ToString(),
+                        Partial = txt_amount.Text.ToString(),
+                        Additional = float.Parse(row.Cells["penalty"].Value.ToString()),
+                        Delay = float.Parse(row.Cells["extra_penalty"].Value.ToString()),
+                        Total = float.Parse(row.Cells["partial"].Value.ToString()),
+                        Payment_date = DateTime.Now.ToString("yyyy/MM/dd"),
+                        Payment_time = DateTime.Now.ToString("HH:mm:ss")
+                    };
 
-                bool response = TaxLogic.Instance.Save(obj);
+                    bool response = TaxLogic.Instance.Save(obj);
+                }
+
+                dtgv_taxes_list.Rows.Clear();
+                txt_total.Text = "";
+                btn_collect_taxes.Enabled = false;
             }
-
-            dtgv_taxes_list.Rows.Clear();
-            txt_total.Text = "";
-            btn_collect_taxes.Enabled = false;
-
         }
 
         private void Print (object sender, PrintPageEventArgs e)
@@ -249,6 +257,16 @@ namespace Cobrapp
                 e.Handled = true; // Evita que se active el botón por la tecla Enter
             }
         }
+
+        private void txt_barcode_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            if (e.KeyChar == (char)13)
+            {
+                // Suprimir el procesamiento del "Enter"
+                e.Handled = true;
+            }
+        }
+
     }
     static class Constants
     {

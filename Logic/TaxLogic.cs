@@ -58,14 +58,14 @@ namespace Cobrapp.Logic
             return response;
         }
 
-        public bool VoidTax(string receipt)
+        public bool VoidTax(string receipt, string description)
         {
             bool response = true;
 
             using (SQLiteConnection connection = new SQLiteConnection(conn))
             {
                 connection.Open();
-                string query = "update taxes set void = '" + DateTime.Now.ToString("dd/MM/yyyy") + "' where receipt_number = '" + receipt + "'";
+                string query = "update taxes set void = '" + description + "' where receipt_number = '" + receipt + "'";
                 SQLiteCommand command = new SQLiteCommand(query, connection);
                 command.CommandType = System.Data.CommandType.Text;
 
@@ -77,6 +77,34 @@ namespace Cobrapp.Logic
 
             return response;
         }
+
+        public bool IsReceiptVoided(string receipt)
+        {
+            bool isVoided = false;
+
+            using (SQLiteConnection connection = new SQLiteConnection(conn))
+            {
+                connection.Open();
+                string query = "SELECT void FROM taxes WHERE receipt_number = @receipt";
+
+                using (SQLiteCommand command = new SQLiteCommand(query, connection))
+                {
+                    command.Parameters.AddWithValue("@receipt", receipt);
+
+                    using (SQLiteDataReader reader = command.ExecuteReader())
+                    {
+                        if (reader.Read() && !reader.IsDBNull(0))
+                        {
+                            // Si la columna 'void' no es nula, significa que el recibo ya fue anulado
+                            isVoided = true;
+                        }
+                    }
+                }
+            }
+
+            return isVoided;
+        }
+
 
         public List<Tax> List()
         {

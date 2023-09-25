@@ -9,6 +9,7 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 using Cobrapp.Logic;
 using Cobrapp.Model;
+using Cobrapp.Utils;
 
 namespace Cobrapp
 {
@@ -21,29 +22,37 @@ namespace Cobrapp
 
         private void btn_void_Click(object sender, EventArgs e)
         {
-            // Mostrar un cuadro de diálogo de confirmación
-            string message = "¿Está seguro de que desea anular el comprobante " + txt_receipt_number.Text + "?" + Environment.NewLine + "Esta acción no se puede revertir.";
-            DialogResult result = MessageBox.Show(message, "Confirmación de Anulación de Pago", MessageBoxButtons.YesNo, MessageBoxIcon.Warning);
 
-            // Verificar la respuesta del usuario
-            if (result == DialogResult.Yes)
+            if (TaxLogic.Instance.IsReceiptVoided(txt_receipt_number.Text))
             {
-                Voider(txt_receipt_number.Text);
-                txt_receipt_number.Text = "";
+                // El recibo ya fue anulado previamente, muestra un mensaje de advertencia o toma la acción adecuada
+                MessageBox.Show("Este recibo ya ha sido anulado previamente.", "Recibo Anulado", MessageBoxButtons.OK, MessageBoxIcon.Warning);
             }
             else
             {
-                txt_receipt_number.Text = "";
+                string description = Prompt.ShowDialog("Por favor, ingrese el motivo de la anulación:", "Motivo de Anulación");
+                // Verificar si el usuario ingresó un motivo
+                if (!string.IsNullOrEmpty(description))
+                {
+                    // Realizar la anulación con el motivo proporcionado
+                    Voider(txt_receipt_number.Text, description);
+                    txt_receipt_number.Text = "";
+                }
+                else
+                {
+                    MessageBox.Show("Debe proporcionar un motivo válido para la anulación.", "Motivo no válido", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                }
             }
+                
         }
 
-        private void Voider (string receipt)
+        private void Voider (string receipt, string description)
         {
             if (TaxLogic.Instance.SearchReceipt(receipt)) 
             {
                 try
                 {
-                    TaxLogic.Instance.VoidTax(receipt);
+                    TaxLogic.Instance.VoidTax(receipt, description);
                     MessageBox.Show("Comprobante anulado exitosamente", "Exito", MessageBoxButtons.OK);
                 }
                 catch (Exception ex)

@@ -41,6 +41,7 @@
             this.dtp_date = new System.Windows.Forms.DateTimePicker();
             this.lbl_total = new System.Windows.Forms.Label();
             this.btn_generate_file = new System.Windows.Forms.Button();
+            this.chkShowVoid = new System.Windows.Forms.CheckBox();
             ((System.ComponentModel.ISupportInitialize)(this.dtgv_taxes)).BeginInit();
             this.SuspendLayout();
             // 
@@ -154,11 +155,25 @@
             this.btn_generate_file.UseVisualStyleBackColor = true;
             this.btn_generate_file.Click += new System.EventHandler(this.btn_generate_file_Click);
             // 
+            // chkShowVoid
+            // 
+            this.chkShowVoid.AutoSize = true;
+            this.chkShowVoid.Checked = true;
+            this.chkShowVoid.CheckState = System.Windows.Forms.CheckState.Checked;
+            this.chkShowVoid.Location = new System.Drawing.Point(462, 12);
+            this.chkShowVoid.Name = "chkShowVoid";
+            this.chkShowVoid.Size = new System.Drawing.Size(102, 17);
+            this.chkShowVoid.TabIndex = 12;
+            this.chkShowVoid.Text = "Incluír anulados";
+            this.chkShowVoid.UseVisualStyleBackColor = true;
+            this.chkShowVoid.CheckedChanged += new System.EventHandler(this.chkShowVoid_CheckedChanged);
+            // 
             // Total
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(800, 450);
+            this.Controls.Add(this.chkShowVoid);
             this.Controls.Add(this.btn_generate_file);
             this.Controls.Add(this.lbl_total);
             this.Controls.Add(this.dtp_date);
@@ -188,5 +203,6 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn TaxName;
         private System.Windows.Forms.DataGridViewTextBoxColumn voided;
         private System.Windows.Forms.Button btn_generate_file;
+        private System.Windows.Forms.CheckBox chkShowVoid;
     }
 }
