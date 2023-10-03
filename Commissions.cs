@@ -19,6 +19,7 @@ namespace Cobrapp
             DateTime previousMonth = today.AddMonths(-1);
             dtp_to_date.Value = new DateTime(previousMonth.Year,previousMonth.Month, DateTime.DaysInMonth(previousMonth.Year, previousMonth.Month));
             dtp_from_date.Value = new DateTime(dtp_to_date.Value.Year,dtp_to_date.Value.Month,1);
+            KeyPreview = true;
         }
 
         private void btn_calculate_Click(object sender, EventArgs e)
@@ -72,6 +73,22 @@ namespace Cobrapp
             model = model.Replace("TOTCOM", "\t" + lbl_total_commission.Text);
 
             return model;
+        }
+
+        private void Commissions_KeyDown(object sender, KeyEventArgs e)
+        {
+            if(e.KeyCode == Keys.F9)
+            {
+                btn_calculate.PerformClick();
+            }
+            else if (e.KeyCode == Keys.F12)
+            {
+                btn_print.PerformClick();
+            }
+            else if (e.KeyCode == Keys.Escape)
+            {
+                Close();
+            }
         }
     }
 }

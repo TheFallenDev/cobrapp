@@ -14,6 +14,7 @@ namespace Cobrapp
         public Collector()
         {
             InitializeComponent();
+            KeyPreview = true;
         }
 
         private int n = 0;
@@ -163,6 +164,7 @@ namespace Cobrapp
             {
                 dtgv_taxes_list.Rows.RemoveAt(n);
                 UpdateTotal();
+                txt_barcode.Focus();
             }
         }
 
@@ -178,10 +180,9 @@ namespace Cobrapp
             }
             txt_total.Text = total.ToString();
         }
-
-        private void btn_collect_taxes_KeyDown(object sender, KeyEventArgs e)
+        private void btn_collect_taxes_Click(object sender, EventArgs e)
         {
-            if (e.KeyCode == Keys.F1)
+            if (dtgv_taxes_list.Rows.Count > 0)
             {
                 PrintDocument printReceipt = new PrintDocument();
                 PrinterSettings ps = new PrinterSettings();
@@ -267,6 +268,21 @@ namespace Cobrapp
             }
         }
 
+        private void Collector_KeyDown(object sender, KeyEventArgs e)
+        {
+            if(e.KeyCode == Keys.F9)
+            {
+                btn_add_tax.PerformClick();
+            }
+            else if(e.KeyCode == Keys.F12)
+            {
+                btn_collect_taxes.PerformClick();
+            }
+            else if(e.KeyCode == Keys.Escape)
+            {
+                Close();
+            }
+        }
     }
     static class Constants
     {

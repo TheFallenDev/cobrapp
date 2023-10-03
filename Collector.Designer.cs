@@ -50,7 +50,6 @@
             this.lbl_show_due_date = new System.Windows.Forms.Label();
             this.lbl_show_penalty = new System.Windows.Forms.Label();
             this.lbl_amount = new System.Windows.Forms.Label();
-            this.btn_cancel = new System.Windows.Forms.Button();
             this.txt_amount = new System.Windows.Forms.TextBox();
             this.txt_penalty = new System.Windows.Forms.TextBox();
             this.btn_cleaner = new System.Windows.Forms.Button();
@@ -135,7 +134,7 @@
             this.btn_add_tax.Name = "btn_add_tax";
             this.btn_add_tax.Size = new System.Drawing.Size(75, 23);
             this.btn_add_tax.TabIndex = 9;
-            this.btn_add_tax.Text = "Agregar";
+            this.btn_add_tax.Text = "Agregar (F9)";
             this.btn_add_tax.UseVisualStyleBackColor = true;
             this.btn_add_tax.Click += new System.EventHandler(this.btn_add_tax_Click);
             // 
@@ -146,9 +145,9 @@
             this.btn_collect_taxes.Name = "btn_collect_taxes";
             this.btn_collect_taxes.Size = new System.Drawing.Size(75, 23);
             this.btn_collect_taxes.TabIndex = 12;
-            this.btn_collect_taxes.Text = "Cobrar";
+            this.btn_collect_taxes.Text = "Cobrar (F12)";
             this.btn_collect_taxes.UseVisualStyleBackColor = true;
-            this.btn_collect_taxes.KeyDown += new System.Windows.Forms.KeyEventHandler(this.btn_collect_taxes_KeyDown);
+            this.btn_collect_taxes.Click += new System.EventHandler(this.btn_collect_taxes_Click);
             this.btn_collect_taxes.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.btn_collect_taxes_KeyPress);
             // 
             // dtgv_taxes_list
@@ -257,16 +256,6 @@
             this.lbl_amount.TabIndex = 22;
             this.lbl_amount.Text = "Monto";
             // 
-            // btn_cancel
-            // 
-            this.btn_cancel.DialogResult = System.Windows.Forms.DialogResult.Cancel;
-            this.btn_cancel.Location = new System.Drawing.Point(208, 561);
-            this.btn_cancel.Name = "btn_cancel";
-            this.btn_cancel.Size = new System.Drawing.Size(75, 23);
-            this.btn_cancel.TabIndex = 23;
-            this.btn_cancel.Text = "Volver";
-            this.btn_cancel.UseVisualStyleBackColor = true;
-            // 
             // txt_amount
             // 
             this.txt_amount.Enabled = false;
@@ -360,7 +349,6 @@
             this.Controls.Add(this.btn_cleaner);
             this.Controls.Add(this.txt_penalty);
             this.Controls.Add(this.txt_amount);
-            this.Controls.Add(this.btn_cancel);
             this.Controls.Add(this.lbl_amount);
             this.Controls.Add(this.lbl_show_penalty);
             this.Controls.Add(this.lbl_show_due_date);
@@ -379,6 +367,7 @@
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedDialog;
             this.Name = "Collector";
             this.Text = "Cobrapp";
+            this.KeyDown += new System.Windows.Forms.KeyEventHandler(this.Collector_KeyDown);
             ((System.ComponentModel.ISupportInitialize)(this.dtgv_taxes_list)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
@@ -402,7 +391,6 @@
         private System.Windows.Forms.Label lbl_show_due_date;
         private System.Windows.Forms.Label lbl_show_penalty;
         private System.Windows.Forms.Label lbl_amount;
-        private System.Windows.Forms.Button btn_cancel;
         private System.Windows.Forms.TextBox txt_amount;
         private System.Windows.Forms.TextBox txt_penalty;
         private System.Windows.Forms.Button btn_cleaner;

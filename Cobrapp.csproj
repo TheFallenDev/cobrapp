@@ -126,14 +126,20 @@
     <Compile Include="Commissions.Designer.cs">
       <DependentUpon>Commissions.cs</DependentUpon>
     </Compile>
+    <Compile Include="Configuration.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Configuration.Designer.cs">
+      <DependentUpon>Configuration.cs</DependentUpon>
+    </Compile>
     <Compile Include="Logic\CommissionsLogic.cs" />
+    <Compile Include="Logic\ConfigurationLogic.cs" />
+    <Compile Include="Logic\EmailSender.cs" />
     <Compile Include="Logic\StampLogic.cs" />
     <Compile Include="Logic\TaxLogic.cs" />
-    <Compile Include="Model\Business.cs" />
     <Compile Include="Model\Commission.cs" />
-    <Compile Include="Model\Fine.cs" />
+    <Compile Include="Model\Configuration.cs" />
     <Compile Include="Model\Stamp.cs" />
-    <Compile Include="Model\Storage.cs" />
     <Compile Include="Model\Tax.cs" />
     <Compile Include="Stamps.cs">
       <SubType>Form</SubType>
@@ -166,6 +172,9 @@
     <Content Include="models\ticket.txt" />
     <EmbeddedResource Include="Commissions.resx">
       <DependentUpon>Commissions.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Configuration.resx">
+      <DependentUpon>Configuration.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Stamps.resx">
       <DependentUpon>Stamps.cs</DependentUpon>

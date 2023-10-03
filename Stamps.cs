@@ -13,13 +13,15 @@ namespace Cobrapp
         public Stamps()
         {
             InitializeComponent();
-            nud_stamp_value.DecimalPlaces = 2; // Dos decimales
-            nud_stamp_value.Increment = 1; // Incremento de 1
-            nud_stamp_value.Minimum = 0.00m; // Valor mínimo
+            KeyPreview = true;
+            txt_stamp_value.Text = "";
+            txt_stamp_value.Focus();
         }
 
         private void btn_print_Click(object sender, EventArgs e)
         {
+            string value = Formatter(txt_stamp_value.Text);
+            
             PrintDocument printReceipt = new PrintDocument();
             PrinterSettings ps = new PrinterSettings();
             printReceipt.PrinterSettings = ps;
@@ -31,14 +33,32 @@ namespace Cobrapp
 
             Stamp obj = new Stamp()
             {
-                Receipt_number = "53" + newId.ToString().PadLeft(6,'0'),
+                Receipt_number = "53" + newId.ToString().PadLeft(6, '0'),
                 Payment_date = DateTime.Now.ToString("yyyy/MM/dd"),
                 Payment_time = DateTime.Now.ToString("HH:mm:ss"),
-                Total = float.Parse(nud_stamp_value.Value.ToString("0.00"))
+                Total = float.Parse(value)
             };
 
             bool response = StampLogic.Instance.Save(obj);
 
+        }
+
+        private string Formatter(string text)
+        {
+            string result;
+            if (!text.Contains("."))
+            {
+                result = text + ",00";
+            }
+            else if (text.Split('.')[1].Length < 2)
+            {
+                result = text.Replace(".", ",") + "0";
+            }
+            else
+            {
+                result = text.Replace(".", ",");
+            }
+            return result;
         }
 
         private void Print(object sender, PrintPageEventArgs e)
@@ -53,6 +73,8 @@ namespace Cobrapp
             string receipt;
             receipt = Replacer(file);
             e.Graphics.DrawString(receipt, font, Brushes.Black, new RectangleF(0, 0, 220, 2000));
+            txt_stamp_value.Text = "";
+            txt_stamp_value.Focus();
         }
 
         private string Replacer(string receipt)
@@ -60,13 +82,21 @@ namespace Cobrapp
             int newId = StampLogic.Instance.GetLastItemID() + 1;
             receipt = receipt.Replace("RECEIPTNUMBER", "53" + newId.ToString().PadLeft(6, '0'));
             receipt = receipt.Replace("DATE", DateTime.Now.ToString("dd/MM/yy hh:mm:ss").ToString());
-            receipt = receipt.Replace("TOTAL", nud_stamp_value.Value.ToString("0.00"));
+            receipt = receipt.Replace("TOTAL", Formatter(txt_stamp_value.Text));
             return receipt;
         }
 
-    }
-    static class Constant
-    {
-        public const int Default = 53000000;
+        private void Stamps_KeyDown(object sender, KeyEventArgs e)
+        {
+
+            if (e.KeyCode == Keys.F12)
+            {
+                btn_print.PerformClick();
+            }
+            else if (e.KeyCode == Keys.Escape)
+            {
+                Close();
+            }
+        }
     }
 }

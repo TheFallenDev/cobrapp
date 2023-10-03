@@ -30,8 +30,7 @@
         {
             this.label1 = new System.Windows.Forms.Label();
             this.btn_print = new System.Windows.Forms.Button();
-            this.nud_stamp_value = new System.Windows.Forms.NumericUpDown();
-            ((System.ComponentModel.ISupportInitialize)(this.nud_stamp_value)).BeginInit();
+            this.txt_stamp_value = new System.Windows.Forms.TextBox();
             this.SuspendLayout();
             // 
             // label1
@@ -47,37 +46,30 @@
             // 
             this.btn_print.Location = new System.Drawing.Point(283, 146);
             this.btn_print.Name = "btn_print";
-            this.btn_print.Size = new System.Drawing.Size(75, 23);
+            this.btn_print.Size = new System.Drawing.Size(88, 23);
             this.btn_print.TabIndex = 3;
-            this.btn_print.Text = "Imprimir";
+            this.btn_print.Text = "Imprimir (F12)";
             this.btn_print.UseVisualStyleBackColor = true;
             this.btn_print.Click += new System.EventHandler(this.btn_print_Click);
             // 
-            // nud_stamp_value
+            // txt_stamp_value
             // 
-            this.nud_stamp_value.Location = new System.Drawing.Point(272, 97);
-            this.nud_stamp_value.Maximum = new decimal(new int[] {
-            1215752191,
-            23,
-            0,
-            0});
-            this.nud_stamp_value.Name = "nud_stamp_value";
-            this.nud_stamp_value.Size = new System.Drawing.Size(120, 20);
-            this.nud_stamp_value.TabIndex = 4;
-            this.nud_stamp_value.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
-            this.nud_stamp_value.ThousandsSeparator = true;
+            this.txt_stamp_value.Location = new System.Drawing.Point(272, 96);
+            this.txt_stamp_value.Name = "txt_stamp_value";
+            this.txt_stamp_value.Size = new System.Drawing.Size(109, 20);
+            this.txt_stamp_value.TabIndex = 4;
             // 
             // Stamps
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(597, 281);
-            this.Controls.Add(this.nud_stamp_value);
+            this.Controls.Add(this.txt_stamp_value);
             this.Controls.Add(this.btn_print);
             this.Controls.Add(this.label1);
             this.Name = "Stamps";
             this.Text = "Sellados";
-            ((System.ComponentModel.ISupportInitialize)(this.nud_stamp_value)).EndInit();
+            this.KeyDown += new System.Windows.Forms.KeyEventHandler(this.Stamps_KeyDown);
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -86,6 +78,6 @@
         #endregion
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Button btn_print;
-        private System.Windows.Forms.NumericUpDown nud_stamp_value;
+        private System.Windows.Forms.TextBox txt_stamp_value;
     }
 }

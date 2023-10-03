@@ -18,6 +18,8 @@ namespace Cobrapp
         public VoidPayment()
         {
             InitializeComponent();
+            KeyPreview = true;
+            txt_receipt_number.Focus();
         }
 
         private void btn_void_Click(object sender, EventArgs e)
@@ -72,6 +74,14 @@ namespace Cobrapp
             {
                 // Si no es un número ni una tecla de retroceso, se cancela la entrada
                 e.Handled = true;
+            }
+        }
+
+        private void VoidPayment_KeyDown(object sender, KeyEventArgs e)
+        {
+            if(e.KeyCode == Keys.Escape)
+            {
+                Close();
             }
         }
     }

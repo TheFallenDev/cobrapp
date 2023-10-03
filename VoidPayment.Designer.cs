@@ -37,7 +37,7 @@
             // label1
             // 
             this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(356, 73);
+            this.label1.Location = new System.Drawing.Point(297, 70);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(91, 13);
             this.label1.TabIndex = 0;
@@ -45,7 +45,7 @@
             // 
             // txt_receipt_number
             // 
-            this.txt_receipt_number.Location = new System.Drawing.Point(420, 166);
+            this.txt_receipt_number.Location = new System.Drawing.Point(361, 163);
             this.txt_receipt_number.Name = "txt_receipt_number";
             this.txt_receipt_number.Size = new System.Drawing.Size(100, 20);
             this.txt_receipt_number.TabIndex = 1;
@@ -54,7 +54,7 @@
             // label2
             // 
             this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(266, 169);
+            this.label2.Location = new System.Drawing.Point(207, 166);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(148, 13);
             this.label2.TabIndex = 2;
@@ -62,7 +62,7 @@
             // 
             // btn_void
             // 
-            this.btn_void.Location = new System.Drawing.Point(359, 246);
+            this.btn_void.Location = new System.Drawing.Point(300, 243);
             this.btn_void.Name = "btn_void";
             this.btn_void.Size = new System.Drawing.Size(75, 23);
             this.btn_void.TabIndex = 3;
@@ -74,13 +74,14 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(800, 450);
+            this.ClientSize = new System.Drawing.Size(680, 323);
             this.Controls.Add(this.btn_void);
             this.Controls.Add(this.label2);
             this.Controls.Add(this.txt_receipt_number);
             this.Controls.Add(this.label1);
             this.Name = "VoidPayment";
             this.Text = "VoidPayment";
+            this.KeyDown += new System.Windows.Forms.KeyEventHandler(this.VoidPayment_KeyDown);
             this.ResumeLayout(false);
             this.PerformLayout();
 

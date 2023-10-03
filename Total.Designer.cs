@@ -68,7 +68,7 @@
             this.voided});
             this.dtgv_taxes.Location = new System.Drawing.Point(12, 38);
             this.dtgv_taxes.Name = "dtgv_taxes";
-            this.dtgv_taxes.Size = new System.Drawing.Size(776, 329);
+            this.dtgv_taxes.Size = new System.Drawing.Size(648, 329);
             this.dtgv_taxes.TabIndex = 2;
             // 
             // time
@@ -118,11 +118,11 @@
             // 
             // btn_print
             // 
-            this.btn_print.Location = new System.Drawing.Point(374, 392);
+            this.btn_print.Location = new System.Drawing.Point(297, 392);
             this.btn_print.Name = "btn_print";
-            this.btn_print.Size = new System.Drawing.Size(75, 23);
+            this.btn_print.Size = new System.Drawing.Size(102, 23);
             this.btn_print.TabIndex = 5;
-            this.btn_print.Text = "Imprimir";
+            this.btn_print.Text = "Imprimir (F12)";
             this.btn_print.UseVisualStyleBackColor = true;
             this.btn_print.Click += new System.EventHandler(this.btn_print_Click);
             // 
@@ -147,7 +147,7 @@
             // 
             // btn_generate_file
             // 
-            this.btn_generate_file.Location = new System.Drawing.Point(608, 392);
+            this.btn_generate_file.Location = new System.Drawing.Point(480, 392);
             this.btn_generate_file.Name = "btn_generate_file";
             this.btn_generate_file.Size = new System.Drawing.Size(180, 23);
             this.btn_generate_file.TabIndex = 11;
@@ -172,7 +172,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(800, 450);
+            this.ClientSize = new System.Drawing.Size(678, 450);
             this.Controls.Add(this.chkShowVoid);
             this.Controls.Add(this.btn_generate_file);
             this.Controls.Add(this.lbl_total);
@@ -183,6 +183,7 @@
             this.Controls.Add(this.label1);
             this.Name = "Total";
             this.Text = "Total del día";
+            this.KeyDown += new System.Windows.Forms.KeyEventHandler(this.Total_KeyDown);
             ((System.ComponentModel.ISupportInitialize)(this.dtgv_taxes)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();

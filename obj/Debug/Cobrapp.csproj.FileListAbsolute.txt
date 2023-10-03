@@ -70,3 +70,4 @@ D:\Deploy\cobrapp\obj\Debug\Cobrapp.exe
 D:\Deploy\cobrapp\obj\Debug\Cobrapp.pdb
 D:\Deploy\cobrapp\obj\Debug\Cobrapp.VoidPayment.resources
 C:\Deploy\cobrapp\obj\Debug\Cobrapp.VoidPayment.resources
+C:\Deploy\cobrapp\obj\Debug\Cobrapp.Configuration.resources

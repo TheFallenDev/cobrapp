@@ -140,19 +140,19 @@
             // 
             this.btn_calculate.Location = new System.Drawing.Point(577, 26);
             this.btn_calculate.Name = "btn_calculate";
-            this.btn_calculate.Size = new System.Drawing.Size(75, 23);
+            this.btn_calculate.Size = new System.Drawing.Size(93, 23);
             this.btn_calculate.TabIndex = 9;
-            this.btn_calculate.Text = "Calcular";
+            this.btn_calculate.Text = "Calcular (F9)";
             this.btn_calculate.UseVisualStyleBackColor = true;
             this.btn_calculate.Click += new System.EventHandler(this.btn_calculate_Click);
             // 
             // btn_print
             // 
-            this.btn_print.Location = new System.Drawing.Point(595, 403);
+            this.btn_print.Location = new System.Drawing.Point(577, 403);
             this.btn_print.Name = "btn_print";
-            this.btn_print.Size = new System.Drawing.Size(75, 23);
+            this.btn_print.Size = new System.Drawing.Size(93, 23);
             this.btn_print.TabIndex = 10;
-            this.btn_print.Text = "Imprimir";
+            this.btn_print.Text = "Imprimir (F12)";
             this.btn_print.UseVisualStyleBackColor = true;
             this.btn_print.Click += new System.EventHandler(this.btn_print_Click);
             // 
@@ -199,6 +199,7 @@
             this.Controls.Add(this.dtgv_commissions);
             this.Name = "Commissions";
             this.Text = "Comisiones";
+            this.KeyDown += new System.Windows.Forms.KeyEventHandler(this.Commissions_KeyDown);
             ((System.ComponentModel.ISupportInitialize)(this.dtgv_commissions)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();

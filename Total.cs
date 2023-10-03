@@ -1,17 +1,15 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.ComponentModel;
-using System.Data;
 using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 using Cobrapp.Model;
 using Cobrapp.Logic;
 using Cobrapp.Utils;
 using System.Drawing.Printing;
 using System.IO;
+using System.Threading.Tasks;
+
 
 namespace Cobrapp
 {
@@ -21,6 +19,8 @@ namespace Cobrapp
         {
             InitializeComponent();
             dtp_date.Value = DateTime.Now;
+            dtp_date.Focus();
+            KeyPreview = true;
         }
 
         private void dtp_date_KeyDown(object sender, KeyEventArgs e)
@@ -56,7 +56,7 @@ namespace Cobrapp
                     dtgv_taxes.Rows[n].Cells[2].Value = stamp.Total.ToString("0.00");
                     dtgv_taxes.Rows[n].Cells[4].Value = "Sellado";
                     acc += stamp.Total;
-                    lbl_total.Text = acc.ToString();
+                    lbl_total.Text = acc.ToString("0.00");
                 }
                 dtgv_taxes.Sort(dtgv_taxes.Columns[0], ListSortDirection.Ascending);
             }
@@ -97,9 +97,17 @@ namespace Cobrapp
             return model;
         }
 
-        private void btn_generate_file_Click(object sender, EventArgs e)
+        private async void btn_generate_file_Click(object sender, EventArgs e)
         {
-            string fileName = "buschi" + MyUtils.DateFixer(dtp_date.Text).Replace("/", "") + ".dat";
+            string baseFileName = ConfigurationLogic.Instance.GetConfigurationValue("BusinessName").ToUpper() + MyUtils.DateFixer(dtp_date.Text).Replace("/", "");
+            string fileName = baseFileName + ".dat";
+            int version = 1;
+
+            while (File.Exists(fileName))
+            {
+                version++;
+                fileName = $"{baseFileName}_v{version}.dat";
+            }
             try
             {
                 // Crea un StreamWriter para escribir en el archivo (esto creará o sobrescribirá el archivo)
@@ -134,7 +142,20 @@ namespace Cobrapp
                         writer.WriteLine(line);
                     }
                 }
-                Console.WriteLine("Archivo creado con éxito: " + fileName);
+                Console.WriteLine("Archivo creado con éxito: " + fileName + " " + lbl_total.Text);
+                 
+                DialogResult result = MessageBox.Show("¿Desea enviar el archivo por correo electrónico?", "Enviar Correo Electrónico", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
+
+                if (result == DialogResult.Yes)
+                {
+                    string toEmail = ConfigurationLogic.Instance.GetConfigurationValue("toEmail");
+                    string subject = baseFileName + " - $" + lbl_total.Text;
+                    string body = "";
+                    string currentDirectory = AppDomain.CurrentDomain.BaseDirectory;
+                    string attachmentFilePath = Path.Combine(currentDirectory, fileName);
+                    EmailSender emailSender = new EmailSender();
+                    await Task.Run(() => emailSender.SendEmailWithAttachment(toEmail, subject, body, attachmentFilePath));
+                }
             }
             catch (Exception ex)
             {
@@ -153,6 +174,22 @@ namespace Cobrapp
 
                 // Mostrar u ocultar la fila según el estado del CheckBox y si la fila está anulada
                 row.Visible = showVoidRows || !isVoided;
+            }
+        }
+
+        private void Total_KeyDown(object sender, KeyEventArgs e)
+        {
+            if (e.KeyCode == Keys.F12)
+            {
+                btn_print.PerformClick();
+            }
+            else if (e.KeyCode == Keys.Enter)
+            {
+                dtp_date_KeyDown(dtp_date,e);
+            }
+            else if (e.KeyCode == Keys.Escape)
+            {
+                Close();
             }
         }
     }
