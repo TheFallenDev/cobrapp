@@ -33,6 +33,8 @@
             this.taxName = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.taxCode = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.tabPage1 = new System.Windows.Forms.TabPage();
+            this.toEmail = new System.Windows.Forms.TextBox();
+            this.label9 = new System.Windows.Forms.Label();
             this.EmailPort = new System.Windows.Forms.TextBox();
             this.label8 = new System.Windows.Forms.Label();
             this.EmailServer = new System.Windows.Forms.TextBox();
@@ -51,8 +53,10 @@
             this.label1 = new System.Windows.Forms.Label();
             this.tabControl = new System.Windows.Forms.TabControl();
             this.btn_save = new System.Windows.Forms.Button();
-            this.toEmail = new System.Windows.Forms.TextBox();
-            this.label9 = new System.Windows.Forms.Label();
+            this.BusinessCode = new System.Windows.Forms.TextBox();
+            this.label10 = new System.Windows.Forms.Label();
+            this.ShortName = new System.Windows.Forms.TextBox();
+            this.label11 = new System.Windows.Forms.Label();
             this.tabPage2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dtgv_taxes)).BeginInit();
             this.tabPage1.SuspendLayout();
@@ -95,6 +99,10 @@
             // 
             // tabPage1
             // 
+            this.tabPage1.Controls.Add(this.ShortName);
+            this.tabPage1.Controls.Add(this.label11);
+            this.tabPage1.Controls.Add(this.BusinessCode);
+            this.tabPage1.Controls.Add(this.label10);
             this.tabPage1.Controls.Add(this.toEmail);
             this.tabPage1.Controls.Add(this.label9);
             this.tabPage1.Controls.Add(this.EmailPort);
@@ -120,6 +128,22 @@
             this.tabPage1.TabIndex = 0;
             this.tabPage1.Text = "Lugar de cobro";
             this.tabPage1.UseVisualStyleBackColor = true;
+            // 
+            // toEmail
+            // 
+            this.toEmail.Location = new System.Drawing.Point(78, 308);
+            this.toEmail.Name = "toEmail";
+            this.toEmail.Size = new System.Drawing.Size(219, 20);
+            this.toEmail.TabIndex = 17;
+            // 
+            // label9
+            // 
+            this.label9.AutoSize = true;
+            this.label9.Location = new System.Drawing.Point(9, 311);
+            this.label9.Name = "label9";
+            this.label9.Size = new System.Drawing.Size(63, 13);
+            this.label9.TabIndex = 16;
+            this.label9.Text = "Destinatario";
             // 
             // EmailPort
             // 
@@ -187,7 +211,7 @@
             // 
             // BusinessOwner
             // 
-            this.BusinessOwner.Location = new System.Drawing.Point(236, 108);
+            this.BusinessOwner.Location = new System.Drawing.Point(236, 134);
             this.BusinessOwner.Name = "BusinessOwner";
             this.BusinessOwner.Size = new System.Drawing.Size(416, 20);
             this.BusinessOwner.TabIndex = 7;
@@ -195,7 +219,7 @@
             // label3
             // 
             this.label3.AutoSize = true;
-            this.label3.Location = new System.Drawing.Point(6, 111);
+            this.label3.Location = new System.Drawing.Point(6, 137);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(69, 13);
             this.label3.TabIndex = 6;
@@ -203,7 +227,7 @@
             // 
             // Phone
             // 
-            this.Phone.Location = new System.Drawing.Point(236, 82);
+            this.Phone.Location = new System.Drawing.Point(236, 108);
             this.Phone.Name = "Phone";
             this.Phone.Size = new System.Drawing.Size(416, 20);
             this.Phone.TabIndex = 5;
@@ -211,7 +235,7 @@
             // label4
             // 
             this.label4.AutoSize = true;
-            this.label4.Location = new System.Drawing.Point(6, 85);
+            this.label4.Location = new System.Drawing.Point(6, 111);
             this.label4.Name = "label4";
             this.label4.Size = new System.Drawing.Size(49, 13);
             this.label4.TabIndex = 4;
@@ -219,7 +243,7 @@
             // 
             // Address
             // 
-            this.Address.Location = new System.Drawing.Point(236, 56);
+            this.Address.Location = new System.Drawing.Point(236, 82);
             this.Address.Name = "Address";
             this.Address.Size = new System.Drawing.Size(416, 20);
             this.Address.TabIndex = 3;
@@ -227,7 +251,7 @@
             // label2
             // 
             this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(6, 59);
+            this.label2.Location = new System.Drawing.Point(6, 85);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(52, 13);
             this.label2.TabIndex = 2;
@@ -269,21 +293,37 @@
             this.btn_save.UseVisualStyleBackColor = true;
             this.btn_save.Click += new System.EventHandler(this.btn_save_Click);
             // 
-            // toEmail
+            // BusinessCode
             // 
-            this.toEmail.Location = new System.Drawing.Point(78, 308);
-            this.toEmail.Name = "toEmail";
-            this.toEmail.Size = new System.Drawing.Size(219, 20);
-            this.toEmail.TabIndex = 17;
+            this.BusinessCode.Location = new System.Drawing.Point(236, 160);
+            this.BusinessCode.Name = "BusinessCode";
+            this.BusinessCode.Size = new System.Drawing.Size(416, 20);
+            this.BusinessCode.TabIndex = 19;
             // 
-            // label9
+            // label10
             // 
-            this.label9.AutoSize = true;
-            this.label9.Location = new System.Drawing.Point(9, 311);
-            this.label9.Name = "label9";
-            this.label9.Size = new System.Drawing.Size(63, 13);
-            this.label9.TabIndex = 16;
-            this.label9.Text = "Destinatario";
+            this.label10.AutoSize = true;
+            this.label10.Location = new System.Drawing.Point(6, 163);
+            this.label10.Name = "label10";
+            this.label10.Size = new System.Drawing.Size(102, 13);
+            this.label10.TabIndex = 18;
+            this.label10.Text = "Codigo de cobranza";
+            // 
+            // ShortName
+            // 
+            this.ShortName.Location = new System.Drawing.Point(236, 56);
+            this.ShortName.Name = "ShortName";
+            this.ShortName.Size = new System.Drawing.Size(416, 20);
+            this.ShortName.TabIndex = 21;
+            // 
+            // label11
+            // 
+            this.label11.AutoSize = true;
+            this.label11.Location = new System.Drawing.Point(6, 59);
+            this.label11.Name = "label11";
+            this.label11.Size = new System.Drawing.Size(63, 13);
+            this.label11.TabIndex = 20;
+            this.label11.Text = "Abreviación";
             // 
             // Configuration
             // 
@@ -329,5 +369,9 @@
         private System.Windows.Forms.Button btn_save;
         private System.Windows.Forms.TextBox toEmail;
         private System.Windows.Forms.Label label9;
+        private System.Windows.Forms.TextBox BusinessCode;
+        private System.Windows.Forms.Label label10;
+        private System.Windows.Forms.TextBox ShortName;
+        private System.Windows.Forms.Label label11;
     }
 }

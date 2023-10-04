@@ -22,6 +22,23 @@ namespace Cobrapp.Utils
             string newDate = string.Join("/", newArray);
             return newDate;
         }
+        public static string Formatter(string text)
+        {
+            string result;
+            if (!text.Contains("."))
+            {
+                result = text + ",00";
+            }
+            else if (text.Split('.')[1].Length < 2)
+            {
+                result = text.Replace(".", ",") + "0";
+            }
+            else
+            {
+                result = text.Replace(".", ",");
+            }
+            return result;
+        }
     }
 
     public static class Prompt

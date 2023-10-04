@@ -4,6 +4,7 @@ using System.Drawing.Printing;
 using System.Windows.Forms;
 using Cobrapp.Model;
 using Cobrapp.Logic;
+using Cobrapp.Utils;
 using System.IO;
 
 namespace Cobrapp
@@ -20,7 +21,7 @@ namespace Cobrapp
 
         private void btn_print_Click(object sender, EventArgs e)
         {
-            string value = Formatter(txt_stamp_value.Text);
+            string value = MyUtils.Formatter(txt_stamp_value.Text);
             
             PrintDocument printReceipt = new PrintDocument();
             PrinterSettings ps = new PrinterSettings();
@@ -30,10 +31,10 @@ namespace Cobrapp
             printReceipt.Print();
 
             int newId = StampLogic.Instance.GetLastItemID() + 1;
-
+            string businessCode = ConfigurationLogic.Instance.GetConfigurationValue("BusinessCode");
             Stamp obj = new Stamp()
             {
-                Receipt_number = "53" + newId.ToString().PadLeft(6, '0'),
+                Receipt_number = businessCode + newId.ToString().PadLeft(6, '0'),
                 Payment_date = DateTime.Now.ToString("yyyy/MM/dd"),
                 Payment_time = DateTime.Now.ToString("HH:mm:ss"),
                 Total = float.Parse(value)
@@ -41,24 +42,6 @@ namespace Cobrapp
 
             bool response = StampLogic.Instance.Save(obj);
 
-        }
-
-        private string Formatter(string text)
-        {
-            string result;
-            if (!text.Contains("."))
-            {
-                result = text + ",00";
-            }
-            else if (text.Split('.')[1].Length < 2)
-            {
-                result = text.Replace(".", ",") + "0";
-            }
-            else
-            {
-                result = text.Replace(".", ",");
-            }
-            return result;
         }
 
         private void Print(object sender, PrintPageEventArgs e)
@@ -79,10 +62,13 @@ namespace Cobrapp
 
         private string Replacer(string receipt)
         {
+            string businessCode = ConfigurationLogic.Instance.GetConfigurationValue("BusinessCode");
             int newId = StampLogic.Instance.GetLastItemID() + 1;
-            receipt = receipt.Replace("RECEIPTNUMBER", "53" + newId.ToString().PadLeft(6, '0'));
+            receipt = receipt.Replace("BUSINESSNAME", ConfigurationLogic.Instance.GetConfigurationValue("BusinessName").ToUpper());
+            receipt = receipt.Replace("ADDRESS", ConfigurationLogic.Instance.GetConfigurationValue("Address"));
+            receipt = receipt.Replace("RECEIPTNUMBER", businessCode + newId.ToString().PadLeft(6, '0'));
             receipt = receipt.Replace("DATE", DateTime.Now.ToString("dd/MM/yy hh:mm:ss").ToString());
-            receipt = receipt.Replace("TOTAL", Formatter(txt_stamp_value.Text));
+            receipt = receipt.Replace("TOTAL", MyUtils.Formatter(txt_stamp_value.Text));
             return receipt;
         }
 

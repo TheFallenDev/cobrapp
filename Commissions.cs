@@ -68,6 +68,8 @@ namespace Cobrapp
                 linea = linea + Environment.NewLine + row.Cells[0].Value.ToString() + "\t" + row.Cells[1].Value.ToString() + "\t" + row.Cells[2].Value.ToString();
             }
 
+            model = model.Replace("BUSINESSNAME", ConfigurationLogic.Instance.GetConfigurationValue("BusinessName").ToUpper());
+            model = model.Replace("ADDRESS", ConfigurationLogic.Instance.GetConfigurationValue("Address"));
             model = model.Replace("LINE", linea);
             model = model.Replace("TOTAL", lbl_total_collected.Text);
             model = model.Replace("TOTCOM", "\t" + lbl_total_commission.Text);

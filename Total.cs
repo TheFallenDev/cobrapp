@@ -73,7 +73,7 @@ namespace Cobrapp
 
         private void Print(object sender, PrintPageEventArgs e)
         {
-            string Model = File.ReadAllText("models/ticket-comisiones.txt");
+            string Model = File.ReadAllText("models/ticket-totales.txt");
             int yPos = 100;
 
             e.Graphics.DrawString(Replacer(Model), new Font("Arial", 8), Brushes.Black, 50, yPos);
@@ -82,24 +82,29 @@ namespace Cobrapp
         private string Replacer(string model)
         {
             string linea = string.Empty;
-
+            dtgv_taxes.Sort(dtgv_taxes.Columns[1], ListSortDirection.Ascending);
+            dtgv_taxes.Sort(dtgv_taxes.Columns[4], ListSortDirection.Ascending);
             foreach (DataGridViewRow row in dtgv_taxes.Rows)
             {
                 if (row.Cells[5].Value == null || string.IsNullOrEmpty(row.Cells[5].Value.ToString()))
                 {
-                    linea = linea + Environment.NewLine + row.Cells[0].Value.ToString() + "\t" + row.Cells[1].Value.ToString() + "\t" + row.Cells[2].Value.ToString();
+                    linea = linea + Environment.NewLine + row.Cells[4].Value.ToString() + "\t\t" + row.Cells[1].Value.ToString() + "\t" + row.Cells[2].Value.ToString();
                 }
             }
-
+            dtgv_taxes.Sort(dtgv_taxes.Columns[0], ListSortDirection.Ascending);
+            model = model.Replace("BUSINESSNAME", ConfigurationLogic.Instance.GetConfigurationValue("BusinessName").ToUpper());
+            model = model.Replace("ADDRESS", ConfigurationLogic.Instance.GetConfigurationValue("Address"));
             model = model.Replace("LINE", linea);
-            model = model.Replace("TOTAL", lbl_total.Text);
+            model = model.Replace("TOTAL", "$" + lbl_total.Text);
+            float commission = (float.Parse(lbl_total.Text) * 2) / 100;
+            model = model.Replace("TOTCOM", " $" + commission.ToString("0.00"));
 
             return model;
         }
 
         private async void btn_generate_file_Click(object sender, EventArgs e)
         {
-            string baseFileName = ConfigurationLogic.Instance.GetConfigurationValue("BusinessName").ToUpper() + MyUtils.DateFixer(dtp_date.Text).Replace("/", "");
+            string baseFileName = ConfigurationLogic.Instance.GetConfigurationValue("ShortName").ToUpper() + MyUtils.DateFixer(dtp_date.Text).Replace("/", "");
             string fileName = baseFileName + ".dat";
             int version = 1;
 

@@ -116,37 +116,63 @@ namespace Cobrapp
                 lbl_show_tax.Text = TaxCheck(taxNumber);
                 lbl_show_due_date.Text = DateCheck(dueDate, amountDecimal);
                 if (!btn_add_tax.Enabled) btn_add_tax.Enabled = true;
-                if (TaxLogic.Instance.SearchReceipt(receiptNumber))
-                {
-                    MessageBox.Show("¡Advertencia! Este número de recibo ya ha sido cobrado previamente.", "Advertencia", MessageBoxButtons.OK, MessageBoxIcon.Warning);
-                }
             }
         }
 
 
         private void btn_add_tax_Click(object sender, EventArgs e)
         {
-            int n = dtgv_taxes_list.Rows.Add();
-            dtgv_taxes_list.Rows[n].Cells[0].Value = receiptNumber;
-            dtgv_taxes_list.Rows[n].Cells[1].Value = lbl_show_tax.Text;
-            dtgv_taxes_list.Rows[n].Cells[2].Value = lbl_show_due_date.Text;
-            dtgv_taxes_list.Rows[n].Cells[3].Value = txt_penalty.Text;
-            dtgv_taxes_list.Rows[n].Cells[4].Value = txt_extra_penalty.Text;
-            dtgv_taxes_list.Rows[n].Cells[5].Value = Decimal.Parse(txt_tax_total.Text);
-            dtgv_taxes_list.Rows[n].Cells["amount"].Value = txt_amount.Text;
+            string newReceiptNumber = receiptNumber; // Obtén el valor actual de receiptNumber
 
-            if (txt_penalty.Text == null || string.IsNullOrEmpty(txt_penalty.Text))
+            // Verifica si el receiptNumber ya existe en dtgv_taxes_list
+            bool receiptNumberExists = false;
+            foreach (DataGridViewRow row in dtgv_taxes_list.Rows)
             {
-                dtgv_taxes_list.Rows[n].Cells[3].Value = 0;
-                dtgv_taxes_list.Rows[n].Cells[4].Value = 0;
+                string existingReceiptNumber = row.Cells[0].Value as string;
+                if (existingReceiptNumber != null && existingReceiptNumber.Equals(newReceiptNumber))
+                {
+                    receiptNumberExists = true;
+                    break;
+                }
             }
 
-            Cleaner();
-            UpdateTotal();
-            txt_barcode.Focus();
-            if (!btn_collect_taxes.Enabled) btn_collect_taxes.Enabled = true;
+            if (receiptNumberExists)
+            {
+                MessageBox.Show("¡Advertencia! Este número de recibo ya está en la lista.", "Advertencia", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                Cleaner();
+                txt_barcode.Focus();
+            }
+            else if (TaxLogic.Instance.SearchReceipt(newReceiptNumber))
+            {
+                MessageBox.Show("¡Advertencia! Este número de recibo ya ha sido cobrado previamente.", "Advertencia", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                Cleaner(); // Ejecuta Cleaner() cuando SearchReceipt es verdadero
+                txt_barcode.Focus();
+            }
+            else
+            {
+                int n = dtgv_taxes_list.Rows.Add();
+                dtgv_taxes_list.Rows[n].Cells[0].Value = newReceiptNumber;
+                dtgv_taxes_list.Rows[n].Cells[1].Value = lbl_show_tax.Text;
+                dtgv_taxes_list.Rows[n].Cells[2].Value = lbl_show_due_date.Text;
+                dtgv_taxes_list.Rows[n].Cells[3].Value = string.IsNullOrEmpty(txt_penalty.Text) ? "0" : txt_penalty.Text;
+                dtgv_taxes_list.Rows[n].Cells[4].Value = string.IsNullOrEmpty(txt_extra_penalty.Text) ? "0" : txt_extra_penalty.Text;
+                dtgv_taxes_list.Rows[n].Cells[5].Value = Decimal.Parse(txt_tax_total.Text);
+                dtgv_taxes_list.Rows[n].Cells["amount"].Value = txt_amount.Text;
 
+
+                if (string.IsNullOrEmpty(txt_penalty.Text))
+                {
+                    dtgv_taxes_list.Rows[n].Cells[3].Value = 0;
+                    dtgv_taxes_list.Rows[n].Cells[4].Value = 0;
+                }
+
+                UpdateTotal();
+                Cleaner();
+                txt_barcode.Focus();
+                if (!btn_collect_taxes.Enabled) btn_collect_taxes.Enabled = true;
+            }
         }
+
 
         private void btn_cleaner_Click(object sender, EventArgs e)
         {
@@ -180,38 +206,43 @@ namespace Cobrapp
             }
             txt_total.Text = total.ToString();
         }
-        private void btn_collect_taxes_Click(object sender, EventArgs e)
+
+        private void btn_collect_taxes_KeyDown(object sender, KeyEventArgs e)
         {
-            if (dtgv_taxes_list.Rows.Count > 0)
+            if (e.KeyCode == Keys.F12)
             {
-                PrintDocument printReceipt = new PrintDocument();
-                PrinterSettings ps = new PrinterSettings();
-                printReceipt.PrinterSettings = ps;
-                //printReceipt.DefaultPageSettings.PaperSize = new PaperSize("Receipt",500,1500);
-                printReceipt.PrintPage += (s, ev) => Print(s, ev);
-                printReceipt.Print();
-
-                foreach (DataGridViewRow row in dtgv_taxes_list.Rows)
+                if (dtgv_taxes_list.Rows.Count > 0)
                 {
-                    Tax obj = new Tax()
+                    PrintDocument printReceipt = new PrintDocument();
+                    PrinterSettings ps = new PrinterSettings();
+                    printReceipt.PrinterSettings = ps;
+                    //printReceipt.DefaultPageSettings.PaperSize = new PaperSize("Receipt",500,1500);
+                    printReceipt.PrintPage += (s, ev) => Print(s, ev);
+                    printReceipt.Print();
+
+                    foreach (DataGridViewRow row in dtgv_taxes_list.Rows)
                     {
-                        TaxName = row.Cells["tax"].Value.ToString(),
-                        Receipt_number = row.Cells["receiptNum"].Value.ToString(),
-                        Due_date = row.Cells["due_date"].Value.ToString(),
-                        Partial = txt_amount.Text.ToString(),
-                        Additional = float.Parse(row.Cells["penalty"].Value.ToString()),
-                        Delay = float.Parse(row.Cells["extra_penalty"].Value.ToString()),
-                        Total = float.Parse(row.Cells["partial"].Value.ToString()),
-                        Payment_date = DateTime.Now.ToString("yyyy/MM/dd"),
-                        Payment_time = DateTime.Now.ToString("HH:mm:ss")
-                    };
 
-                    bool response = TaxLogic.Instance.Save(obj);
+                        Tax obj = new Tax()
+                        {
+                            TaxName = row.Cells["tax"].Value.ToString(),
+                            Receipt_number = row.Cells["receiptNum"].Value.ToString(),
+                            Due_date = row.Cells["due_date"].Value.ToString(),
+                            Partial = row.Cells["amount"].Value.ToString(),
+                            Additional = float.Parse(row.Cells["penalty"].Value.ToString()),
+                            Delay = float.Parse(row.Cells["extra_penalty"].Value.ToString()),
+                            Total = float.Parse(row.Cells["partial"].Value.ToString()),
+                            Payment_date = DateTime.Now.ToString("yyyy/MM/dd"),
+                            Payment_time = DateTime.Now.ToString("HH:mm:ss")
+                        };
+
+                        bool response = TaxLogic.Instance.Save(obj);
+                    }
+
+                    dtgv_taxes_list.Rows.Clear();
+                    txt_total.Text = "";
+                    btn_collect_taxes.Enabled = false;
                 }
-
-                dtgv_taxes_list.Rows.Clear();
-                txt_total.Text = "";
-                btn_collect_taxes.Enabled = false;
             }
         }
 
@@ -242,6 +273,8 @@ namespace Cobrapp
 
         private string Replacer (string receipt, DataGridViewRow row)
         {
+            receipt = receipt.Replace("BUSINESSNAME", ConfigurationLogic.Instance.GetConfigurationValue("BusinessName").ToUpper());
+            receipt = receipt.Replace("ADDRESS", ConfigurationLogic.Instance.GetConfigurationValue("Address"));
             receipt = receipt.Replace("RECEIPTNUMBER", row.Cells["receiptNum"].Value.ToString());
             receipt = receipt.Replace("DATE", DateTime.Now.ToString());
             receipt = receipt.Replace("AMOUNT", row.Cells["amount"].Value.ToString());
@@ -249,23 +282,6 @@ namespace Cobrapp
             receipt = receipt.Replace("EXTRAPENALTY", row.Cells["extra_penalty"].Value.ToString());
             receipt = receipt.Replace("TOTAL", row.Cells["partial"].Value.ToString());
             return receipt;
-        }
-
-        private void btn_collect_taxes_KeyPress(object sender, KeyPressEventArgs e)
-        {
-            if (e.KeyChar == (char)Keys.Enter)
-            {
-                e.Handled = true; // Evita que se active el botón por la tecla Enter
-            }
-        }
-
-        private void txt_barcode_KeyPress(object sender, KeyPressEventArgs e)
-        {
-            if (e.KeyChar == (char)13)
-            {
-                // Suprimir el procesamiento del "Enter"
-                e.Handled = true;
-            }
         }
 
         private void Collector_KeyDown(object sender, KeyEventArgs e)
@@ -276,7 +292,7 @@ namespace Cobrapp
             }
             else if(e.KeyCode == Keys.F12)
             {
-                btn_collect_taxes.PerformClick();
+                btn_collect_taxes_KeyDown(btn_collect_taxes,e);
             }
             else if(e.KeyCode == Keys.Escape)
             {

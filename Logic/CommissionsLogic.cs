@@ -37,9 +37,18 @@ namespace Cobrapp.Logic
             using (SQLiteConnection connection = new SQLiteConnection(conn))
             {
                 connection.Open();
-                string query = "select total,payment_date from Taxes where payment_date>='" + fromDate + "' and payment_date<='" + toDate + "'";
+                string query = @"SELECT total, payment_date, receipt_number FROM (
+                                    SELECT total, payment_date, receipt_number FROM Taxes 
+                                    WHERE payment_date >= @fromDate AND payment_date <= @toDate
+                                    UNION ALL
+                                    SELECT total, payment_date, receipt_number FROM Stamps
+                                    WHERE payment_date >= @fromDate AND payment_date <= @toDate
+                                ) AS CombinedResults
+                                ORDER BY payment_date";
                 SQLiteCommand command = new SQLiteCommand(query, connection);
                 command.CommandType = System.Data.CommandType.Text;
+                command.Parameters.AddWithValue("@fromDate", fromDate);
+                command.Parameters.AddWithValue("@toDate", toDate);
                 string previousDate = "";
                 string newDate = "";
                 int counter = 0;
