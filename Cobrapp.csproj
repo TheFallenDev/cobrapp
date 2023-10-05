@@ -132,6 +132,12 @@
     <Compile Include="Configuration.Designer.cs">
       <DependentUpon>Configuration.cs</DependentUpon>
     </Compile>
+    <Compile Include="Fines.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Fines.Designer.cs">
+      <DependentUpon>Fines.cs</DependentUpon>
+    </Compile>
     <Compile Include="Logic\CommissionsLogic.cs" />
     <Compile Include="Logic\ConfigurationLogic.cs" />
     <Compile Include="Logic\EmailSender.cs" />
@@ -175,6 +181,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Configuration.resx">
       <DependentUpon>Configuration.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Fines.resx">
+      <DependentUpon>Fines.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Stamps.resx">
       <DependentUpon>Stamps.cs</DependentUpon>
