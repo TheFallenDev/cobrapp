@@ -47,6 +47,19 @@ namespace Cobrapp
                     }
                 }
 
+                List<Fine> fineList = FineLogic.Instance.GetFinesByDate(MyUtils.DateFixer(dtp_date.Text));
+                foreach (var fine in fineList)
+                {
+                    int n = dtgv_taxes.Rows.Add();
+                    dtgv_taxes.Rows[n].Cells[0].Value = fine.Payment_time;
+                    dtgv_taxes.Rows[n].Cells[1].Value = fine.Receipt_number;
+                    dtgv_taxes.Rows[n].Cells[2].Value = fine.Total.ToString("0.00");
+                    dtgv_taxes.Rows[n].Cells[3].Value = fine.Due_date;
+                    dtgv_taxes.Rows[n].Cells[4].Value = "Multa";
+                    acc += fine.Total;
+                    lbl_total.Text = acc.ToString("0.00");
+                }
+
                 List<Stamp> stampList = StampLogic.Instance.ListByDate(MyUtils.DateFixer(dtp_date.Text));
                 foreach (var stamp in stampList)
                 {

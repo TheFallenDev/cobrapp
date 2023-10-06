@@ -8,6 +8,8 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using Cobrapp.Model;
+using Cobrapp.Logic;
 
 namespace Cobrapp
 {
@@ -21,11 +23,14 @@ namespace Cobrapp
         }
 
         private string receiptNumber = "";
+        private string taxNumber = "";
+        private string period = "";
+        private string dueDate = "";
 
         private bool IsDueDateValid(string taxNumber, string dueDate)
         {
-            // Verificar si el taxNumber es "19" o "21"
-            if (taxNumber == "19" || taxNumber == "21")
+            
+            if (taxNumber == "19" || taxNumber == "17")
             {
                 // Convertir la fecha del código de barras (formato ddMMyy) a DateTime
                 DateTime dueDateTime;
@@ -40,7 +45,7 @@ namespace Cobrapp
                 }
             }
 
-            // El taxNumber no es "19" ni "21", o la fecha no está vencida
+            // El taxNumber no es "19" ni "17", o la fecha no está vencida
             return true;
         }
 
@@ -51,27 +56,29 @@ namespace Cobrapp
             if (textLength == 34)
             {
                 receiptNumber = txt_barcode.Text.Substring(4, 8);
-                string taxNumber = txt_barcode.Text.Substring(12, 2);
-                string period = txt_barcode.Text.Substring(14, 6);
+                taxNumber = txt_barcode.Text.Substring(12, 2);
+                period = txt_barcode.Text.Substring(14, 6);
                 string amount = txt_barcode.Text.Substring(20, 8).Insert(6,",");
-                string dueDate = txt_barcode.Text.Substring(28, 6);
+                dueDate = txt_barcode.Text.Substring(28, 6);
                 decimal amountDecimal = Decimal.Parse(amount);
                 txt_barcode.Enabled = false;
                 lbl_receipt.Text = receiptNumber.TrimStart('0');
                 lbl_amount.Text = (Math.Round(amountDecimal, 2)).ToString();
                 lbl_show_tax.Text = taxNumber;
-
-                // Verificar si la fecha es válida
-                if (!IsDueDateValid(taxNumber, dueDate))
-                {
-                    MessageBox.Show("¡Advertencia! La fecha de vencimiento no puede ser menor que la fecha actual.", "Advertencia", MessageBoxButtons.OK, MessageBoxIcon.Warning);
-                    Cleaner();
-                }
             }
         }
 
-        private void Collect()
+        private void Collect(string receiptNumber, string code, string period, float total, string dueDate, string paymentDate, string paymentTime)
         {
+            // Verificar si la fecha es válida
+            if (!IsDueDateValid(taxNumber, dueDate))
+            {
+                MessageBox.Show("¡Advertencia! Las estadías no pueden pagarse una vez vencidas. Se debe generar una nueva boleta.", "Advertencia", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+            }
+            else
+            {
+                FineLogic.Instance.AddFine(receiptNumber, code, period, total, dueDate, paymentDate, paymentTime);
+            }
             Cleaner();
         }
 
@@ -84,13 +91,18 @@ namespace Cobrapp
             lbl_receipt.Text = "";
             receiptNumber = "";
             txt_barcode.Focus();
-        }
+            taxNumber = "";
+            period = "";
+            dueDate = "";
+    }
 
         private void Fines_KeyDown(object sender, KeyEventArgs e)
         {
             if (e.KeyCode == Keys.F12)
             {
-                Collect();
+                string payment_date = DateTime.Now.ToString("yyyy/MM/dd");
+                string payment_time = DateTime.Now.ToString("hh:mm:ss");
+                Collect(lbl_receipt.Text,taxNumber,period,float.Parse(lbl_amount.Text),dueDate,payment_date,payment_time);
             }
             else if (e.KeyCode == Keys.Escape)
             {

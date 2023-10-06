@@ -33,6 +33,10 @@
             this.taxName = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.taxCode = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.tabPage1 = new System.Windows.Forms.TabPage();
+            this.ShortName = new System.Windows.Forms.TextBox();
+            this.label11 = new System.Windows.Forms.Label();
+            this.BusinessCode = new System.Windows.Forms.TextBox();
+            this.label10 = new System.Windows.Forms.Label();
             this.toEmail = new System.Windows.Forms.TextBox();
             this.label9 = new System.Windows.Forms.Label();
             this.EmailPort = new System.Windows.Forms.TextBox();
@@ -53,18 +57,23 @@
             this.label1 = new System.Windows.Forms.Label();
             this.tabControl = new System.Windows.Forms.TabControl();
             this.btn_save = new System.Windows.Forms.Button();
-            this.BusinessCode = new System.Windows.Forms.TextBox();
-            this.label10 = new System.Windows.Forms.Label();
-            this.ShortName = new System.Windows.Forms.TextBox();
-            this.label11 = new System.Windows.Forms.Label();
+            this.dtgv_fines = new System.Windows.Forms.DataGridView();
+            this.dataGridViewTextBoxColumn1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.dataGridViewTextBoxColumn2 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.label12 = new System.Windows.Forms.Label();
+            this.label13 = new System.Windows.Forms.Label();
             this.tabPage2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dtgv_taxes)).BeginInit();
             this.tabPage1.SuspendLayout();
             this.tabControl.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.dtgv_fines)).BeginInit();
             this.SuspendLayout();
             // 
             // tabPage2
             // 
+            this.tabPage2.Controls.Add(this.label13);
+            this.tabPage2.Controls.Add(this.label12);
+            this.tabPage2.Controls.Add(this.dtgv_fines);
             this.tabPage2.Controls.Add(this.dtgv_taxes);
             this.tabPage2.Location = new System.Drawing.Point(4, 22);
             this.tabPage2.Name = "tabPage2";
@@ -80,7 +89,7 @@
             this.dtgv_taxes.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.taxName,
             this.taxCode});
-            this.dtgv_taxes.Location = new System.Drawing.Point(522, 6);
+            this.dtgv_taxes.Location = new System.Drawing.Point(3, 33);
             this.dtgv_taxes.Name = "dtgv_taxes";
             this.dtgv_taxes.Size = new System.Drawing.Size(240, 231);
             this.dtgv_taxes.TabIndex = 0;
@@ -128,6 +137,38 @@
             this.tabPage1.TabIndex = 0;
             this.tabPage1.Text = "Lugar de cobro";
             this.tabPage1.UseVisualStyleBackColor = true;
+            // 
+            // ShortName
+            // 
+            this.ShortName.Location = new System.Drawing.Point(236, 56);
+            this.ShortName.Name = "ShortName";
+            this.ShortName.Size = new System.Drawing.Size(416, 20);
+            this.ShortName.TabIndex = 21;
+            // 
+            // label11
+            // 
+            this.label11.AutoSize = true;
+            this.label11.Location = new System.Drawing.Point(6, 59);
+            this.label11.Name = "label11";
+            this.label11.Size = new System.Drawing.Size(63, 13);
+            this.label11.TabIndex = 20;
+            this.label11.Text = "Abreviación";
+            // 
+            // BusinessCode
+            // 
+            this.BusinessCode.Location = new System.Drawing.Point(236, 160);
+            this.BusinessCode.Name = "BusinessCode";
+            this.BusinessCode.Size = new System.Drawing.Size(416, 20);
+            this.BusinessCode.TabIndex = 19;
+            // 
+            // label10
+            // 
+            this.label10.AutoSize = true;
+            this.label10.Location = new System.Drawing.Point(6, 163);
+            this.label10.Name = "label10";
+            this.label10.Size = new System.Drawing.Size(102, 13);
+            this.label10.TabIndex = 18;
+            this.label10.Text = "Codigo de cobranza";
             // 
             // toEmail
             // 
@@ -293,37 +334,46 @@
             this.btn_save.UseVisualStyleBackColor = true;
             this.btn_save.Click += new System.EventHandler(this.btn_save_Click);
             // 
-            // BusinessCode
+            // dtgv_fines
             // 
-            this.BusinessCode.Location = new System.Drawing.Point(236, 160);
-            this.BusinessCode.Name = "BusinessCode";
-            this.BusinessCode.Size = new System.Drawing.Size(416, 20);
-            this.BusinessCode.TabIndex = 19;
+            this.dtgv_fines.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dtgv_fines.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
+            this.dataGridViewTextBoxColumn1,
+            this.dataGridViewTextBoxColumn2});
+            this.dtgv_fines.Location = new System.Drawing.Point(522, 33);
+            this.dtgv_fines.Name = "dtgv_fines";
+            this.dtgv_fines.Size = new System.Drawing.Size(240, 231);
+            this.dtgv_fines.TabIndex = 1;
             // 
-            // label10
+            // dataGridViewTextBoxColumn1
             // 
-            this.label10.AutoSize = true;
-            this.label10.Location = new System.Drawing.Point(6, 163);
-            this.label10.Name = "label10";
-            this.label10.Size = new System.Drawing.Size(102, 13);
-            this.label10.TabIndex = 18;
-            this.label10.Text = "Codigo de cobranza";
+            this.dataGridViewTextBoxColumn1.Frozen = true;
+            this.dataGridViewTextBoxColumn1.HeaderText = "Tipo";
+            this.dataGridViewTextBoxColumn1.Name = "dataGridViewTextBoxColumn1";
             // 
-            // ShortName
+            // dataGridViewTextBoxColumn2
             // 
-            this.ShortName.Location = new System.Drawing.Point(236, 56);
-            this.ShortName.Name = "ShortName";
-            this.ShortName.Size = new System.Drawing.Size(416, 20);
-            this.ShortName.TabIndex = 21;
+            this.dataGridViewTextBoxColumn2.Frozen = true;
+            this.dataGridViewTextBoxColumn2.HeaderText = "Código";
+            this.dataGridViewTextBoxColumn2.Name = "dataGridViewTextBoxColumn2";
             // 
-            // label11
+            // label12
             // 
-            this.label11.AutoSize = true;
-            this.label11.Location = new System.Drawing.Point(6, 59);
-            this.label11.Name = "label11";
-            this.label11.Size = new System.Drawing.Size(63, 13);
-            this.label11.TabIndex = 20;
-            this.label11.Text = "Abreviación";
+            this.label12.AutoSize = true;
+            this.label12.Location = new System.Drawing.Point(68, 14);
+            this.label12.Name = "label12";
+            this.label12.Size = new System.Drawing.Size(88, 13);
+            this.label12.TabIndex = 2;
+            this.label12.Text = "Códigos de tasas";
+            // 
+            // label13
+            // 
+            this.label13.AutoSize = true;
+            this.label13.Location = new System.Drawing.Point(605, 14);
+            this.label13.Name = "label13";
+            this.label13.Size = new System.Drawing.Size(93, 13);
+            this.label13.TabIndex = 3;
+            this.label13.Text = "Códigos de multas";
             // 
             // Configuration
             // 
@@ -335,10 +385,12 @@
             this.Name = "Configuration";
             this.Text = "Configuración";
             this.tabPage2.ResumeLayout(false);
+            this.tabPage2.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dtgv_taxes)).EndInit();
             this.tabPage1.ResumeLayout(false);
             this.tabPage1.PerformLayout();
             this.tabControl.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.dtgv_fines)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -373,5 +425,10 @@
         private System.Windows.Forms.Label label10;
         private System.Windows.Forms.TextBox ShortName;
         private System.Windows.Forms.Label label11;
+        private System.Windows.Forms.Label label13;
+        private System.Windows.Forms.Label label12;
+        private System.Windows.Forms.DataGridView dtgv_fines;
+        private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn1;
+        private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn2;
     }
 }

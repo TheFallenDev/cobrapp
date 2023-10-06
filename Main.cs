@@ -62,6 +62,7 @@ namespace Cobrapp
             }
             else if (e.KeyCode == Keys.F3)
             {
+                btn_fines.PerformClick();
                 // Realiza la acción correspondiente al botón F3
                 
             }

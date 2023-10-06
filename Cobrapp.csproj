@@ -141,10 +141,12 @@
     <Compile Include="Logic\CommissionsLogic.cs" />
     <Compile Include="Logic\ConfigurationLogic.cs" />
     <Compile Include="Logic\EmailSender.cs" />
+    <Compile Include="Logic\FineLogic.cs" />
     <Compile Include="Logic\StampLogic.cs" />
     <Compile Include="Logic\TaxLogic.cs" />
     <Compile Include="Model\Commission.cs" />
     <Compile Include="Model\Configuration.cs" />
+    <Compile Include="Model\Fine.cs" />
     <Compile Include="Model\Stamp.cs" />
     <Compile Include="Model\Tax.cs" />
     <Compile Include="Stamps.cs">
