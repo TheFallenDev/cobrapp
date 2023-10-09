@@ -3,7 +3,7 @@
   <asmv1:assemblyIdentity name="Cobrapp.exe" version="1.0.0.2" publicKeyToken="0000000000000000" language="neutral" processorArchitecture="msil" type="win32" />
   <application />
   <entryPoint>
-    <assemblyIdentity name="Cobrapp" version="1.0.0.0" language="neutral" processorArchitecture="msil" />
+    <assemblyIdentity name="Cobrapp" version="1.0.0.1" language="neutral" processorArchitecture="msil" />
     <commandLine file="Cobrapp.exe" parameters="" />
   </entryPoint>
   <trustInfo>
@@ -42,14 +42,14 @@
     </dependentAssembly>
   </dependency>
   <dependency>
-    <dependentAssembly dependencyType="install" allowDelayedBinding="true" codebase="Cobrapp.exe" size="80800">
-      <assemblyIdentity name="Cobrapp" version="1.0.0.0" language="neutral" processorArchitecture="msil" />
+    <dependentAssembly dependencyType="install" allowDelayedBinding="true" codebase="Cobrapp.exe" size="82848">
+      <assemblyIdentity name="Cobrapp" version="1.0.0.1" language="neutral" processorArchitecture="msil" />
       <hash>
         <dsig:Transforms>
           <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
         </dsig:Transforms>
         <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha256" />
-        <dsig:DigestValue>RPzBuCJpGBaRUn32JUncRl26hOPhN68Mtsmz+S5SgZE=</dsig:DigestValue>
+        <dsig:DigestValue>bS4D5rWXYsWIWEPSHRsLzz9NNwmKN8q2wZBWLVC2KEE=</dsig:DigestValue>
       </hash>
     </dependentAssembly>
   </dependency>
@@ -131,22 +131,22 @@
       <dsig:DigestValue>yH8kesxd0+LbMZrt2B4UgIGkySB2APUmGFDrfS41Bq8=</dsig:DigestValue>
     </hash>
   </file>
-  <file name="models\ticket.txt" size="333">
+  <file name="models\ticket.txt" size="357">
     <hash>
       <dsig:Transforms>
         <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
       </dsig:Transforms>
       <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha256" />
-      <dsig:DigestValue>LmWUskVJzcwgRh9Y6xLxSJ4frbasbf9Zbkx6CuMRQ98=</dsig:DigestValue>
+      <dsig:DigestValue>OTvpz5Bv3G9pfh3aOQ8ga3C3O8zDf4voMGAnBrKM2qw=</dsig:DigestValue>
     </hash>
   </file>
-  <file name="models\ticket-sellado.txt" size="751">
+  <file name="models\ticket-sellado.txt" size="772">
     <hash>
       <dsig:Transforms>
         <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
       </dsig:Transforms>
       <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha256" />
-      <dsig:DigestValue>iMF6+kuzm62X6mUFnboLxrEKq/Ho/1/4id/WgY9mRYg=</dsig:DigestValue>
+      <dsig:DigestValue>0VzbqIyhLErKiTN6ai6jBp/VqLlZor0TYcHHpLrBwrc=</dsig:DigestValue>
     </hash>
   </file>
 </asmv1:assembly>
