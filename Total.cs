@@ -92,11 +92,12 @@ namespace Cobrapp
                 }
             }
             dtgv_taxes.Sort(dtgv_taxes.Columns[0], ListSortDirection.Ascending);
+            model = model.Replace("PERCENT", ConfigurationLogic.Instance.GetConfigurationValue("CorrespondingComission"));
             model = model.Replace("BUSINESSNAME", ConfigurationLogic.Instance.GetConfigurationValue("BusinessName").ToUpper());
             model = model.Replace("ADDRESS", ConfigurationLogic.Instance.GetConfigurationValue("Address"));
             model = model.Replace("LINE", linea);
             model = model.Replace("TOTAL", "$" + lbl_total.Text);
-            float commission = (float.Parse(lbl_total.Text) * 2) / 100;
+            float commission = (float.Parse(lbl_total.Text) * float.Parse(ConfigurationLogic.Instance.GetConfigurationValue("CorrespondingComission"))) / 100;
             model = model.Replace("TOTCOM", " $" + commission.ToString("0.00"));
 
             return model;

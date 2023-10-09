@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Linq;
 using System.Windows.Forms;
 using Cobrapp.Logic;
 
@@ -13,6 +14,10 @@ namespace Cobrapp
 
             getConfigurations();
             getTaxConfigurations();
+
+            CorrespondingComission.KeyPress += onlyNumbersAndComa_KeyPress;
+            AdditionalPenalty.KeyPress += onlyNumbersAndComa_KeyPress;
+            DelayPenalty.KeyPress += onlyNumbersAndComa_KeyPress;
         }
 
         private void btn_save_Click(object sender, EventArgs e)
@@ -148,6 +153,22 @@ namespace Cobrapp
                 // Elimina el prefijo "tax" de la clave
                 string keyWithoutTax = kvp.Key.Substring(3);
                 dtgv_taxes.Rows.Add(keyWithoutTax, kvp.Value);
+            }
+        }
+
+        private void onlyNumbersAndComa_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            // Verificar si la tecla presionada no es un número ni una coma
+            if (!char.IsControl(e.KeyChar) && !char.IsDigit(e.KeyChar) && e.KeyChar != ',')
+            {
+                // Cancelar la entrada del caracter
+                e.Handled = true;
+            }
+
+            // Permitir solo una coma en el TextBox
+            if (e.KeyChar == ',' && (sender as TextBox).Text.Contains(','))
+            {
+                e.Handled = true;
             }
         }
     }

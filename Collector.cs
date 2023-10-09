@@ -86,12 +86,14 @@ namespace Cobrapp
 
         private void PenaltiesCalculator(decimal amountDecimal, DateTime todayDate, DateTime dueDate)
         {
+            decimal additionalPenalty = decimal.Parse(ConfigurationLogic.Instance.GetConfigurationValue("AdditionalPenalty"));
+            decimal delayPenalty = decimal.Parse(ConfigurationLogic.Instance.GetConfigurationValue("DelayPenalty"));
             int differenceInDays = (todayDate - dueDate).Days;
-            decimal calc = differenceInDays * Constants.Interest;
+            decimal calc = differenceInDays * additionalPenalty;
             decimal penalty = amountDecimal * (calc / 100);
             decimal totalWithPenalties = amountDecimal + penalty;
             if (differenceInDays > 60) {
-                decimal extraPenalty = (Decimal.Multiply(amountDecimal, Constants.ExtraPenalty));
+                decimal extraPenalty = (Decimal.Multiply(amountDecimal, delayPenalty));
                 totalWithPenalties += extraPenalty;
                 txt_extra_penalty.Text = (Math.Round(extraPenalty, 2)).ToString();
             }

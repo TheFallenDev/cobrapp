@@ -42,14 +42,14 @@
     </dependentAssembly>
   </dependency>
   <dependency>
-    <dependentAssembly dependencyType="install" allowDelayedBinding="true" codebase="Cobrapp.exe" size="73632">
+    <dependentAssembly dependencyType="install" allowDelayedBinding="true" codebase="Cobrapp.exe" size="75168">
       <assemblyIdentity name="Cobrapp" version="1.0.0.0" language="neutral" processorArchitecture="msil" />
       <hash>
         <dsig:Transforms>
           <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
         </dsig:Transforms>
         <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha256" />
-        <dsig:DigestValue>EIexTF13H5RCvXUbTFCvqWRFeT1KXUd8ZTeAAGM3z4w=</dsig:DigestValue>
+        <dsig:DigestValue>AMfVn3MzajQmNlmLTvT2AIZjkeD6dTSEKiN5ar9Ne6k=</dsig:DigestValue>
       </hash>
     </dependentAssembly>
   </dependency>
@@ -131,22 +131,22 @@
       <dsig:DigestValue>u39G0Ze+Diq+2ZqdmN2y2ZCHdQ24JDv+pZgTiekPG94=</dsig:DigestValue>
     </hash>
   </file>
-  <file name="models\ticket.txt" size="333">
+  <file name="models\ticket.txt" size="357">
     <hash>
       <dsig:Transforms>
         <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
       </dsig:Transforms>
       <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha256" />
-      <dsig:DigestValue>LmWUskVJzcwgRh9Y6xLxSJ4frbasbf9Zbkx6CuMRQ98=</dsig:DigestValue>
+      <dsig:DigestValue>OTvpz5Bv3G9pfh3aOQ8ga3C3O8zDf4voMGAnBrKM2qw=</dsig:DigestValue>
     </hash>
   </file>
-  <file name="models\ticket-sellado.txt" size="751">
+  <file name="models\ticket-sellado.txt" size="772">
     <hash>
       <dsig:Transforms>
         <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
       </dsig:Transforms>
       <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha256" />
-      <dsig:DigestValue>iMF6+kuzm62X6mUFnboLxrEKq/Ho/1/4id/WgY9mRYg=</dsig:DigestValue>
+      <dsig:DigestValue>0VzbqIyhLErKiTN6ai6jBp/VqLlZor0TYcHHpLrBwrc=</dsig:DigestValue>
     </hash>
   </file>
 </asmv1:assembly>

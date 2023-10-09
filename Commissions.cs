@@ -20,7 +20,10 @@ namespace Cobrapp
             dtp_to_date.Value = new DateTime(previousMonth.Year,previousMonth.Month, DateTime.DaysInMonth(previousMonth.Year, previousMonth.Month));
             dtp_from_date.Value = new DateTime(dtp_to_date.Value.Year,dtp_to_date.Value.Month,1);
             KeyPreview = true;
+            
         }
+
+        private float CorrespondingComission = float.Parse(ConfigurationLogic.Instance.GetConfigurationValue("CorrespondingComission")) / 100;
 
         private void btn_calculate_Click(object sender, EventArgs e)
         {
@@ -33,9 +36,9 @@ namespace Cobrapp
                 int n = dtgv_commissions.Rows.Add();
                 dtgv_commissions.Rows[n].Cells[0].Value = MyUtils.DateFixer(commission.Day);
                 dtgv_commissions.Rows[n].Cells[1].Value = "$ " + commission.DailyTotal.ToString("0.00");
-                dtgv_commissions.Rows[n].Cells[2].Value = "$ " + (commission.DailyTotal * 0.02).ToString("0.00");
+                dtgv_commissions.Rows[n].Cells[2].Value = "$ " + (commission.DailyTotal * CorrespondingComission).ToString("0.00");
                 dtgv_commissions.Rows[n].Cells[3].Value = commission.OpCounter.ToString();
-                acc += Decimal.Parse((commission.DailyTotal * 0.02).ToString());
+                acc += Decimal.Parse((commission.DailyTotal * CorrespondingComission).ToString());
                 lbl_total_commission.Text = "$ " + acc.ToString("0.00");
                 collected += Decimal.Parse(commission.DailyTotal.ToString());
                 lbl_total_collected.Text = "$ " + collected.ToString("0.00");
@@ -68,6 +71,7 @@ namespace Cobrapp
                 linea = linea + Environment.NewLine + row.Cells[0].Value.ToString() + "\t" + row.Cells[1].Value.ToString() + "\t" + row.Cells[2].Value.ToString();
             }
 
+            model = model.Replace("PERCENT", ConfigurationLogic.Instance.GetConfigurationValue("CorrespondingComission"));
             model = model.Replace("BUSINESSNAME", ConfigurationLogic.Instance.GetConfigurationValue("BusinessName").ToUpper());
             model = model.Replace("ADDRESS", ConfigurationLogic.Instance.GetConfigurationValue("Address"));
             model = model.Replace("LINE", linea);

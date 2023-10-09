@@ -4,14 +4,14 @@ Municipalidad de Diamante
 BUSINESSNAME
 ADDRESS
 
-Día		Total		2%
+Día		Total		PERCENT%
 
 LINE
 
 **********************************
 Total	TOTAL
 
-	Com 2%	TOTCOM
+	Com PERCENT%	TOTCOM
 **********************************
 
 ----------------------------------
