@@ -30,7 +30,7 @@ namespace Cobrapp
         private bool IsDueDateValid(string taxNumber, string dueDate)
         {
             
-            if (taxNumber == "19" || taxNumber == "17")
+            if (taxNumber == "19" || taxNumber == "16")
             {
                 // Convertir la fecha del código de barras (formato ddMMyy) a DateTime
                 DateTime dueDateTime;
@@ -45,7 +45,7 @@ namespace Cobrapp
                 }
             }
 
-            // El taxNumber no es "19" ni "17", o la fecha no está vencida
+            // El taxNumber no es "19" ni "16", o la fecha no está vencida
             return true;
         }
 
@@ -64,7 +64,17 @@ namespace Cobrapp
                 txt_barcode.Enabled = false;
                 lbl_receipt.Text = receiptNumber.TrimStart('0');
                 lbl_amount.Text = (Math.Round(amountDecimal, 2)).ToString();
-                lbl_show_tax.Text = taxNumber;
+                string fineName = ConfigurationLogic.Instance.GetConfigurationKey(taxNumber);
+                if (fineName != null && fineName.Contains("fine_"))
+                {
+                    fineName = fineName.Split('_')[1];
+                    lbl_show_tax.Text = fineName;
+                }
+                else
+                {
+                    MessageBox.Show("¡Advertencia! Código no reconocido.", "Advertencia", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                    Cleaner();
+                }
             }
         }
 

@@ -13,6 +13,7 @@ namespace Cobrapp
 
             getConfigurations();
             getTaxConfigurations();
+            getFineConfigurations();
         }
 
         private void btn_save_Click(object sender, EventArgs e)
@@ -30,9 +31,12 @@ namespace Cobrapp
                     ConfigurationLogic.Instance.SaveConfiguration(kvp.Key,kvp.Value);
                 }
 
-                Dictionary<string, string> keyValueData = new Dictionary<string, string>();
-                SaveDataGridViewToDictionary(dtgv_taxes, keyValueData);
-                ConfigurationLogic.Instance.SaveOrUpdateTaxConfigurations(keyValueData);
+                Dictionary<string, string> keyValueTaxes = new Dictionary<string, string>();
+                Dictionary<string, string> keyValueFines = new Dictionary<string, string>();
+                SaveDataGridViewToDictionary(dtgv_taxes, keyValueTaxes, "tax");
+                SaveDataGridViewToDictionary(dtgv_fines, keyValueFines, "fine_");
+                ConfigurationLogic.Instance.SaveOrUpdateTaxConfigurations(keyValueTaxes);
+                ConfigurationLogic.Instance.SaveOrUpdateFineConfigurations(keyValueFines);
             }
         }
 
@@ -92,7 +96,7 @@ namespace Cobrapp
             return textBoxValues;
         }
 
-        private void SaveDataGridViewToDictionary(DataGridView dataGridView, Dictionary<string, string> dictionary)
+        private void SaveDataGridViewToDictionary(DataGridView dataGridView, Dictionary<string, string> dictionary, string prefix)
         {
             // Limpiar el diccionario existente antes de agregar nuevos datos.
             dictionary.Clear();
@@ -101,7 +105,7 @@ namespace Cobrapp
             {
                 if (row.Cells.Count == 2 && row.Cells[0].Value != null && row.Cells[1].Value != null)
                 {
-                    string key = "tax" + row.Cells[0].Value.ToString();
+                    string key = prefix + row.Cells[0].Value.ToString();
                     string value = row.Cells[1].Value.ToString();
 
                     // Verificar si la clave ya existe en el diccionario antes de agregarla.
@@ -148,6 +152,20 @@ namespace Cobrapp
                 // Elimina el prefijo "tax" de la clave
                 string keyWithoutTax = kvp.Key.Substring(3);
                 dtgv_taxes.Rows.Add(keyWithoutTax, kvp.Value);
+            }
+        }
+
+        private void getFineConfigurations()
+        {
+            Dictionary<string, string> fineConfigurations = ConfigurationLogic.Instance.GetFineConfigurations();
+
+            dtgv_fines.Rows.Clear();
+
+            foreach (var kvp in fineConfigurations)
+            {
+                // Elimina el prefijo "fine_" de la clave
+                string keyWithoutFine = kvp.Key.Substring(5);
+                dtgv_fines.Rows.Add(keyWithoutFine, kvp.Value);
             }
         }
     }

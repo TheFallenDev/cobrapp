@@ -21,6 +21,8 @@ namespace Cobrapp
             dtp_date.Value = DateTime.Now;
             dtp_date.Focus();
             KeyPreview = true;
+            btn_print.Enabled = false;
+            btn_generate_file.Enabled = false;
         }
 
         private void dtp_date_KeyDown(object sender, KeyEventArgs e)
@@ -55,7 +57,8 @@ namespace Cobrapp
                     dtgv_taxes.Rows[n].Cells[1].Value = fine.Receipt_number;
                     dtgv_taxes.Rows[n].Cells[2].Value = fine.Total.ToString("0.00");
                     dtgv_taxes.Rows[n].Cells[3].Value = fine.Due_date;
-                    dtgv_taxes.Rows[n].Cells[4].Value = "Multa";
+                    string fineName = ConfigurationLogic.Instance.GetConfigurationKey(fine.Code).Split('_')[1];
+                    dtgv_taxes.Rows[n].Cells[4].Value = fineName;
                     acc += fine.Total;
                     lbl_total.Text = acc.ToString("0.00");
                 }
@@ -72,6 +75,16 @@ namespace Cobrapp
                     lbl_total.Text = acc.ToString("0.00");
                 }
                 dtgv_taxes.Sort(dtgv_taxes.Columns[0], ListSortDirection.Ascending);
+                if (dtgv_taxes.Rows.Count > 0)
+                {
+                    btn_print.Enabled = true;
+                    btn_generate_file.Enabled = true;
+                }
+                else
+                {
+                    btn_print.Enabled = false;
+                    btn_generate_file.Enabled = false;
+                }
             }
         }
 
@@ -135,28 +148,42 @@ namespace Cobrapp
                     List<Tax> taxList = TaxLogic.Instance.ListByDate(MyUtils.DateFixer(dtp_date.Text));
                     foreach (var tax in taxList)
                     {
-                        if (tax.Void == null)
+                        if (String.IsNullOrEmpty(tax.Void))
                         {
                             string receipt = tax.Receipt_number.PadLeft(8, '0');
                             string date = MyUtils.DateFixer(dtp_date.Text).Replace("/", "");
                             string amount = tax.Partial.ToString().Replace(",", "").PadLeft(10, '0');
                             string additional = tax.Additional.ToString().Replace(",", "").PadLeft(8, '0');
                             string delay = tax.Delay.ToString().Replace(",", "").PadLeft(8, '0');
-
-                            string line = "53" + "0285" + "06" + receipt + date + amount + "0" + additional + delay;
+                            string businessCode = ConfigurationLogic.Instance.GetConfigurationValue("BusinessCode");
+                            string line = businessCode + "0285" + "06" + receipt + date + amount + "0" + additional + delay;
                             writer.WriteLine(line);
                         }
                     }
 
-                    List<Stamp> stampList = StampLogic.Instance.ListByDate(MyUtils.DateFixer(dtp_date.Text));
-                    foreach (var stamp in stampList)
+                    List<Fine> fineList = FineLogic.Instance.GetFinesByDate(MyUtils.DateFixer(dtp_date.Text));
+                    foreach (var fine in fineList)
                     {
-                        string receipt = stamp.Receipt_number.PadLeft(6, '0');
+                        string receipt = fine.Receipt_number.PadLeft(8, '0');
                         string date = MyUtils.DateFixer(dtp_date.Text).Replace("/", "");
-                        string amount = stamp.Total.ToString().Replace(",", "").PadLeft(10, '0');
+                        string amount = fine.Total.ToString("0.00").Replace(",", "").PadLeft(10, '0');
                         string additional = "00000000";
                         string delay = "00000000";
-                        string line = "53" + "0285" + "00" + receipt + date + amount + "0" + additional + delay;
+                        string businessCode = ConfigurationLogic.Instance.GetConfigurationValue("BusinessCode");
+                        string line = businessCode + "0285" + "00" + receipt + date + amount + "0" + additional + delay;
+                        writer.WriteLine(line);
+                    }
+
+                        List<Stamp> stampList = StampLogic.Instance.ListByDate(MyUtils.DateFixer(dtp_date.Text));
+                    foreach (var stamp in stampList)
+                    {
+                        string receipt = stamp.Receipt_number.PadLeft(8, '0');
+                        string date = MyUtils.DateFixer(dtp_date.Text).Replace("/", "");
+                        string amount = stamp.Total.ToString("0.00").Replace(",", "").PadLeft(10, '0');
+                        string additional = "00000000";
+                        string delay = "00000000";
+                        string businessCode = ConfigurationLogic.Instance.GetConfigurationValue("BusinessCode");
+                        string line = businessCode + "0285" + "00" + receipt + date + amount + "0" + additional + delay;
                         writer.WriteLine(line);
                     }
                 }
@@ -172,7 +199,18 @@ namespace Cobrapp
                     string currentDirectory = AppDomain.CurrentDomain.BaseDirectory;
                     string attachmentFilePath = Path.Combine(currentDirectory, fileName);
                     EmailSender emailSender = new EmailSender();
-                    await Task.Run(() => emailSender.SendEmailWithAttachment(toEmail, subject, body, attachmentFilePath));
+                    try
+                    {
+                        await Task.Run(() => emailSender.SendEmailWithAttachment(toEmail, subject, body, attachmentFilePath));
+                        // La tarea se completó con éxito, muestra un MessageBox
+                        MessageBox.Show("El correo se envió con éxito.", "Éxito", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    }
+                    catch (Exception ex)
+                    {
+                        // Manejo de errores si la tarea falla
+                        MessageBox.Show("Error al enviar el correo: " + ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    }
+
                 }
             }
             catch (Exception ex)

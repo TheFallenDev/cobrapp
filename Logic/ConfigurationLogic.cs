@@ -242,7 +242,7 @@ namespace Cobrapp.Logic
             return fineConfigurations;
         }
 
-        public void SaveOrUpdateFineConfigurations(Dictionary<string, string> taxConfigurations)
+        public void SaveOrUpdateFineConfigurations(Dictionary<string, string> fineConfigurations)
         {
             using (SQLiteConnection connection = new SQLiteConnection(conn))
             {
@@ -252,12 +252,12 @@ namespace Cobrapp.Logic
                     try
                     {
                         // 1. Obtener los datos actuales de la base de datos para las claves con prefijo "fine_"
-                        Dictionary<string, string> dbTaxConfigurations = GetTaxConfigurations();
+                        Dictionary<string, string> dbFineConfigurations = GetFineConfigurations();
 
                         // 2. Eliminar las entradas en la base de datos que no existen en el Dictionary
-                        foreach (var kvp in dbTaxConfigurations)
+                        foreach (var kvp in dbFineConfigurations)
                         {
-                            if (!taxConfigurations.ContainsKey(kvp.Key))
+                            if (!fineConfigurations.ContainsKey(kvp.Key))
                             {
                                 string deleteQuery = "DELETE FROM Configurations WHERE Key = @Key";
                                 using (SQLiteCommand deleteCommand = new SQLiteCommand(deleteQuery, connection))
@@ -269,9 +269,9 @@ namespace Cobrapp.Logic
                         }
 
                         // 3. Actualizar las entradas en la base de datos que ya existen y tienen valores diferentes en el Dictionary
-                        foreach (var kvp in taxConfigurations)
+                        foreach (var kvp in fineConfigurations)
                         {
-                            if (dbTaxConfigurations.ContainsKey(kvp.Key) && dbTaxConfigurations[kvp.Key] != kvp.Value)
+                            if (dbFineConfigurations.ContainsKey(kvp.Key) && dbFineConfigurations[kvp.Key] != kvp.Value)
                             {
                                 string updateQuery = "UPDATE Configurations SET Value = @Value WHERE Key = @Key";
                                 using (SQLiteCommand updateCommand = new SQLiteCommand(updateQuery, connection))
@@ -284,9 +284,9 @@ namespace Cobrapp.Logic
                         }
 
                         // 4. Agregar nuevas entradas a la base de datos que están en el Dictionary pero no en la base de datos
-                        foreach (var kvp in taxConfigurations)
+                        foreach (var kvp in fineConfigurations)
                         {
-                            if (!dbTaxConfigurations.ContainsKey(kvp.Key))
+                            if (!dbFineConfigurations.ContainsKey(kvp.Key))
                             {
                                 string insertQuery = "INSERT INTO Configurations (Key, Value) VALUES (@Key, @Value)";
                                 using (SQLiteCommand insertCommand = new SQLiteCommand(insertQuery, connection))
@@ -327,6 +327,31 @@ namespace Cobrapp.Logic
                         if (reader.Read())
                         {
                             return reader["Value"].ToString();
+                        }
+                    }
+                }
+            }
+
+            return null;
+        }
+
+        public string GetConfigurationKey(string value)
+        {
+            using (SQLiteConnection connection = new SQLiteConnection(conn))
+            {
+                connection.Open();
+
+                string query = "SELECT Key FROM Configurations WHERE Value = @Value";
+
+                using (SQLiteCommand command = new SQLiteCommand(query, connection))
+                {
+                    command.Parameters.AddWithValue("@Value", value);
+
+                    using (SQLiteDataReader reader = command.ExecuteReader())
+                    {
+                        if (reader.Read())
+                        {
+                            return reader["Key"].ToString();
                         }
                     }
                 }

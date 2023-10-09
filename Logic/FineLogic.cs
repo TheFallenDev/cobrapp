@@ -139,7 +139,7 @@ namespace Cobrapp.Logic
                                 Receipt_number = reader["Receipt_number"].ToString(),
                                 Code = reader["Code"].ToString(),
                                 Period = reader["Period"].ToString(),
-                                Total = Convert.ToSingle(reader["Total"]),
+                                Total = float.Parse(reader["Total"].ToString()),
                                 Due_date = reader["Due_date"].ToString(),
                                 Payment_date = reader["Payment_date"].ToString(),
                                 Payment_time = reader["Payment_time"].ToString()
