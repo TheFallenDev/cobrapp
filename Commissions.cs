@@ -20,7 +20,7 @@ namespace Cobrapp
             dtp_to_date.Value = new DateTime(previousMonth.Year,previousMonth.Month, DateTime.DaysInMonth(previousMonth.Year, previousMonth.Month));
             dtp_from_date.Value = new DateTime(dtp_to_date.Value.Year,dtp_to_date.Value.Month,1);
             KeyPreview = true;
-            
+            btn_print.Enabled = false;
         }
 
         private float CorrespondingComission = float.Parse(ConfigurationLogic.Instance.GetConfigurationValue("CorrespondingComission")) / 100;
@@ -28,6 +28,8 @@ namespace Cobrapp
         private void btn_calculate_Click(object sender, EventArgs e)
         {
             dtgv_commissions.Rows.Clear();
+            lbl_total_commission.Text = "";
+            lbl_total_collected.Text = "";
             List<Commission> commissionsList = CommissionsLogic.Instance.ListFromToDate(MyUtils.DateFixer(dtp_from_date.Text), MyUtils.DateFixer(dtp_to_date.Text));
             Decimal acc = 0;
             Decimal collected = 0;
@@ -42,6 +44,14 @@ namespace Cobrapp
                 lbl_total_commission.Text = "$ " + acc.ToString("0.00");
                 collected += Decimal.Parse(commission.DailyTotal.ToString());
                 lbl_total_collected.Text = "$ " + collected.ToString("0.00");
+            }
+            if(dtgv_commissions.Rows.Count > 0)
+            {
+                btn_print.Enabled = true;
+            }
+            else
+            {
+                btn_print.Enabled = false;
             }
         }
 

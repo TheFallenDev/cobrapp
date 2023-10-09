@@ -30,18 +30,18 @@
         {
             this.label1 = new System.Windows.Forms.Label();
             this.dtgv_taxes = new System.Windows.Forms.DataGridView();
-            this.time = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Receipt = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Payment = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.DueDate = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.TaxName = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.voided = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.label2 = new System.Windows.Forms.Label();
             this.btn_print = new System.Windows.Forms.Button();
             this.dtp_date = new System.Windows.Forms.DateTimePicker();
             this.lbl_total = new System.Windows.Forms.Label();
             this.btn_generate_file = new System.Windows.Forms.Button();
             this.chkShowVoid = new System.Windows.Forms.CheckBox();
+            this.time = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Receipt = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Payment = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.DueDate = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.TaxName = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.voided = new System.Windows.Forms.DataGridViewTextBoxColumn();
             ((System.ComponentModel.ISupportInitialize)(this.dtgv_taxes)).BeginInit();
             this.SuspendLayout();
             // 
@@ -70,42 +70,6 @@
             this.dtgv_taxes.Name = "dtgv_taxes";
             this.dtgv_taxes.Size = new System.Drawing.Size(648, 329);
             this.dtgv_taxes.TabIndex = 2;
-            // 
-            // time
-            // 
-            this.time.HeaderText = "Hora";
-            this.time.Name = "time";
-            this.time.ReadOnly = true;
-            // 
-            // Receipt
-            // 
-            this.Receipt.HeaderText = "Comprobante";
-            this.Receipt.Name = "Receipt";
-            this.Receipt.ReadOnly = true;
-            // 
-            // Payment
-            // 
-            this.Payment.HeaderText = "Pago";
-            this.Payment.Name = "Payment";
-            this.Payment.ReadOnly = true;
-            // 
-            // DueDate
-            // 
-            this.DueDate.HeaderText = "Vencimiento";
-            this.DueDate.Name = "DueDate";
-            this.DueDate.ReadOnly = true;
-            // 
-            // TaxName
-            // 
-            this.TaxName.HeaderText = "Tasa";
-            this.TaxName.Name = "TaxName";
-            this.TaxName.ReadOnly = true;
-            // 
-            // voided
-            // 
-            this.voided.HeaderText = "Anulado";
-            this.voided.Name = "voided";
-            this.voided.ReadOnly = true;
             // 
             // label2
             // 
@@ -168,6 +132,42 @@
             this.chkShowVoid.UseVisualStyleBackColor = true;
             this.chkShowVoid.CheckedChanged += new System.EventHandler(this.chkShowVoid_CheckedChanged);
             // 
+            // time
+            // 
+            this.time.HeaderText = "Hora";
+            this.time.Name = "time";
+            this.time.ReadOnly = true;
+            // 
+            // Receipt
+            // 
+            this.Receipt.HeaderText = "Comprobante";
+            this.Receipt.Name = "Receipt";
+            this.Receipt.ReadOnly = true;
+            // 
+            // Payment
+            // 
+            this.Payment.HeaderText = "Pago";
+            this.Payment.Name = "Payment";
+            this.Payment.ReadOnly = true;
+            // 
+            // DueDate
+            // 
+            this.DueDate.HeaderText = "Vencimiento";
+            this.DueDate.Name = "DueDate";
+            this.DueDate.ReadOnly = true;
+            // 
+            // TaxName
+            // 
+            this.TaxName.HeaderText = "Tipo";
+            this.TaxName.Name = "TaxName";
+            this.TaxName.ReadOnly = true;
+            // 
+            // voided
+            // 
+            this.voided.HeaderText = "Anulado";
+            this.voided.Name = "voided";
+            this.voided.ReadOnly = true;
+            // 
             // Total
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -197,13 +197,13 @@
         private System.Windows.Forms.Button btn_print;
         private System.Windows.Forms.DateTimePicker dtp_date;
         private System.Windows.Forms.Label lbl_total;
+        private System.Windows.Forms.Button btn_generate_file;
+        private System.Windows.Forms.CheckBox chkShowVoid;
         private System.Windows.Forms.DataGridViewTextBoxColumn time;
         private System.Windows.Forms.DataGridViewTextBoxColumn Receipt;
         private System.Windows.Forms.DataGridViewTextBoxColumn Payment;
         private System.Windows.Forms.DataGridViewTextBoxColumn DueDate;
         private System.Windows.Forms.DataGridViewTextBoxColumn TaxName;
         private System.Windows.Forms.DataGridViewTextBoxColumn voided;
-        private System.Windows.Forms.Button btn_generate_file;
-        private System.Windows.Forms.CheckBox chkShowVoid;
     }
 }

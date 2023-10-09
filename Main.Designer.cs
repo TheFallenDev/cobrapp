@@ -34,7 +34,7 @@
             this.btn_daily_total = new System.Windows.Forms.Button();
             this.btn_commissions = new System.Windows.Forms.Button();
             this.btn_stamps = new System.Windows.Forms.Button();
-            this.btn_fees = new System.Windows.Forms.Button();
+            this.btn_fines = new System.Windows.Forms.Button();
             this.menuStrip1 = new System.Windows.Forms.MenuStrip();
             this.configuraciónToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.credencialesToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
@@ -102,14 +102,15 @@
             this.btn_stamps.UseVisualStyleBackColor = true;
             this.btn_stamps.Click += new System.EventHandler(this.btn_stamps_Click);
             // 
-            // btn_fees
+            // btn_fines
             // 
-            this.btn_fees.Location = new System.Drawing.Point(408, 172);
-            this.btn_fees.Name = "btn_fees";
-            this.btn_fees.Size = new System.Drawing.Size(162, 35);
-            this.btn_fees.TabIndex = 7;
-            this.btn_fees.Text = "Multas y estadías (F3)";
-            this.btn_fees.UseVisualStyleBackColor = true;
+            this.btn_fines.Location = new System.Drawing.Point(408, 172);
+            this.btn_fines.Name = "btn_fines";
+            this.btn_fines.Size = new System.Drawing.Size(162, 35);
+            this.btn_fines.TabIndex = 7;
+            this.btn_fines.Text = "Multas y estadías (F3)";
+            this.btn_fines.UseVisualStyleBackColor = true;
+            this.btn_fines.Click += new System.EventHandler(this.btn_fines_Click);
             // 
             // menuStrip1
             // 
@@ -156,7 +157,7 @@
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(800, 450);
-            this.Controls.Add(this.btn_fees);
+            this.Controls.Add(this.btn_fines);
             this.Controls.Add(this.btn_stamps);
             this.Controls.Add(this.btn_commissions);
             this.Controls.Add(this.btn_daily_total);
@@ -183,7 +184,7 @@
         private System.Windows.Forms.Button btn_daily_total;
         private System.Windows.Forms.Button btn_commissions;
         private System.Windows.Forms.Button btn_stamps;
-        private System.Windows.Forms.Button btn_fees;
+        private System.Windows.Forms.Button btn_fines;
         private System.Windows.Forms.MenuStrip menuStrip1;
         private System.Windows.Forms.ToolStripMenuItem configuraciónToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem credencialesToolStripMenuItem;

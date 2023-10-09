@@ -124,7 +124,7 @@ namespace Cobrapp
 
         private void btn_add_tax_Click(object sender, EventArgs e)
         {
-            string newReceiptNumber = receiptNumber; // Obtén el valor actual de receiptNumber
+            string newReceiptNumber = receiptNumber.TrimStart('0'); // Obtén el valor actual de receiptNumber
 
             // Verifica si el receiptNumber ya existe en dtgv_taxes_list
             bool receiptNumberExists = false;

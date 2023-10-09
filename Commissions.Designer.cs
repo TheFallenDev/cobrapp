@@ -159,7 +159,7 @@
             // label1
             // 
             this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(224, 393);
+            this.label1.Location = new System.Drawing.Point(225, 394);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(85, 13);
             this.label1.TabIndex = 11;
@@ -168,7 +168,7 @@
             // lbl_total_collected
             // 
             this.lbl_total_collected.AutoSize = true;
-            this.lbl_total_collected.Location = new System.Drawing.Point(309, 393);
+            this.lbl_total_collected.Location = new System.Drawing.Point(310, 394);
             this.lbl_total_collected.Name = "lbl_total_collected";
             this.lbl_total_collected.Size = new System.Drawing.Size(0, 13);
             this.lbl_total_collected.TabIndex = 12;

@@ -29,12 +29,12 @@
         private void InitializeComponent()
         {
             this.tabPage2 = new System.Windows.Forms.TabPage();
+            this.dtgv_fines = new System.Windows.Forms.DataGridView();
+            this.dataGridViewTextBoxColumn1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.dataGridViewTextBoxColumn2 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.AdditionalPenalty = new System.Windows.Forms.TextBox();
-            this.label15 = new System.Windows.Forms.Label();
             this.DelayPenalty = new System.Windows.Forms.TextBox();
-            this.label13 = new System.Windows.Forms.Label();
             this.CorrespondingComission = new System.Windows.Forms.TextBox();
-            this.label12 = new System.Windows.Forms.Label();
             this.dtgv_taxes = new System.Windows.Forms.DataGridView();
             this.taxName = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.taxCode = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -63,7 +63,12 @@
             this.label1 = new System.Windows.Forms.Label();
             this.tabControl = new System.Windows.Forms.TabControl();
             this.btn_save = new System.Windows.Forms.Button();
+            this.txt_comission = new System.Windows.Forms.Label();
+            this.txt_addtional = new System.Windows.Forms.Label();
+            this.txt_delay = new System.Windows.Forms.Label();
+            this.lbl_fines = new System.Windows.Forms.Label();
             this.tabPage2.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.dtgv_fines)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dtgv_taxes)).BeginInit();
             this.tabPage1.SuspendLayout();
             this.tabControl.SuspendLayout();
@@ -71,12 +76,14 @@
             // 
             // tabPage2
             // 
+            this.tabPage2.Controls.Add(this.lbl_fines);
+            this.tabPage2.Controls.Add(this.txt_delay);
+            this.tabPage2.Controls.Add(this.txt_addtional);
+            this.tabPage2.Controls.Add(this.txt_comission);
+            this.tabPage2.Controls.Add(this.dtgv_fines);
             this.tabPage2.Controls.Add(this.AdditionalPenalty);
-            this.tabPage2.Controls.Add(this.label15);
             this.tabPage2.Controls.Add(this.DelayPenalty);
-            this.tabPage2.Controls.Add(this.label13);
             this.tabPage2.Controls.Add(this.CorrespondingComission);
-            this.tabPage2.Controls.Add(this.label12);
             this.tabPage2.Controls.Add(this.dtgv_taxes);
             this.tabPage2.Location = new System.Drawing.Point(4, 22);
             this.tabPage2.Name = "tabPage2";
@@ -86,53 +93,49 @@
             this.tabPage2.Text = "Constantes";
             this.tabPage2.UseVisualStyleBackColor = true;
             // 
+            // dtgv_fines
+            // 
+            this.dtgv_fines.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dtgv_fines.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
+            this.dataGridViewTextBoxColumn1,
+            this.dataGridViewTextBoxColumn2});
+            this.dtgv_fines.Location = new System.Drawing.Point(522, 33);
+            this.dtgv_fines.Name = "dtgv_fines";
+            this.dtgv_fines.Size = new System.Drawing.Size(240, 231);
+            this.dtgv_fines.TabIndex = 1;
+            // 
+            // dataGridViewTextBoxColumn1
+            // 
+            this.dataGridViewTextBoxColumn1.Frozen = true;
+            this.dataGridViewTextBoxColumn1.HeaderText = "Tipo";
+            this.dataGridViewTextBoxColumn1.Name = "dataGridViewTextBoxColumn1";
+            // 
+            // dataGridViewTextBoxColumn2
+            // 
+            this.dataGridViewTextBoxColumn2.Frozen = true;
+            this.dataGridViewTextBoxColumn2.HeaderText = "Código";
+            this.dataGridViewTextBoxColumn2.Name = "dataGridViewTextBoxColumn2";
+            // 
             // AdditionalPenalty
             // 
-            this.AdditionalPenalty.Location = new System.Drawing.Point(148, 47);
+            this.AdditionalPenalty.Location = new System.Drawing.Point(126, 296);
             this.AdditionalPenalty.Name = "AdditionalPenalty";
             this.AdditionalPenalty.Size = new System.Drawing.Size(117, 20);
             this.AdditionalPenalty.TabIndex = 17;
             // 
-            // label15
-            // 
-            this.label15.AutoSize = true;
-            this.label15.Location = new System.Drawing.Point(13, 50);
-            this.label15.Name = "label15";
-            this.label15.Size = new System.Drawing.Size(53, 13);
-            this.label15.TabIndex = 16;
-            this.label15.Text = "Recargos";
-            // 
             // DelayPenalty
             // 
-            this.DelayPenalty.Location = new System.Drawing.Point(148, 73);
+            this.DelayPenalty.Location = new System.Drawing.Point(126, 322);
             this.DelayPenalty.Name = "DelayPenalty";
             this.DelayPenalty.Size = new System.Drawing.Size(117, 20);
             this.DelayPenalty.TabIndex = 13;
             // 
-            // label13
-            // 
-            this.label13.AutoSize = true;
-            this.label13.Location = new System.Drawing.Point(13, 76);
-            this.label13.Name = "label13";
-            this.label13.Size = new System.Drawing.Size(31, 13);
-            this.label13.TabIndex = 12;
-            this.label13.Text = "Mora";
-            // 
             // CorrespondingComission
             // 
-            this.CorrespondingComission.Location = new System.Drawing.Point(148, 21);
+            this.CorrespondingComission.Location = new System.Drawing.Point(126, 270);
             this.CorrespondingComission.Name = "CorrespondingComission";
             this.CorrespondingComission.Size = new System.Drawing.Size(117, 20);
             this.CorrespondingComission.TabIndex = 11;
-            // 
-            // label12
-            // 
-            this.label12.AutoSize = true;
-            this.label12.Location = new System.Drawing.Point(13, 24);
-            this.label12.Name = "label12";
-            this.label12.Size = new System.Drawing.Size(75, 13);
-            this.label12.TabIndex = 10;
-            this.label12.Text = "Comisión en %";
             // 
             // dtgv_taxes
             // 
@@ -140,7 +143,7 @@
             this.dtgv_taxes.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.taxName,
             this.taxCode});
-            this.dtgv_taxes.Location = new System.Drawing.Point(522, 6);
+            this.dtgv_taxes.Location = new System.Drawing.Point(3, 33);
             this.dtgv_taxes.Name = "dtgv_taxes";
             this.dtgv_taxes.Size = new System.Drawing.Size(240, 231);
             this.dtgv_taxes.TabIndex = 0;
@@ -385,6 +388,42 @@
             this.btn_save.UseVisualStyleBackColor = true;
             this.btn_save.Click += new System.EventHandler(this.btn_save_Click);
             // 
+            // txt_comission
+            // 
+            this.txt_comission.AutoSize = true;
+            this.txt_comission.Location = new System.Drawing.Point(6, 273);
+            this.txt_comission.Name = "txt_comission";
+            this.txt_comission.Size = new System.Drawing.Size(75, 13);
+            this.txt_comission.TabIndex = 18;
+            this.txt_comission.Text = "Comisión en %";
+            // 
+            // txt_addtional
+            // 
+            this.txt_addtional.AutoSize = true;
+            this.txt_addtional.Location = new System.Drawing.Point(6, 299);
+            this.txt_addtional.Name = "txt_addtional";
+            this.txt_addtional.Size = new System.Drawing.Size(48, 13);
+            this.txt_addtional.TabIndex = 19;
+            this.txt_addtional.Text = "Recargo";
+            // 
+            // txt_delay
+            // 
+            this.txt_delay.AutoSize = true;
+            this.txt_delay.Location = new System.Drawing.Point(6, 325);
+            this.txt_delay.Name = "txt_delay";
+            this.txt_delay.Size = new System.Drawing.Size(31, 13);
+            this.txt_delay.TabIndex = 20;
+            this.txt_delay.Text = "Mora";
+            // 
+            // lbl_fines
+            // 
+            this.lbl_fines.AutoSize = true;
+            this.lbl_fines.Location = new System.Drawing.Point(634, 17);
+            this.lbl_fines.Name = "lbl_fines";
+            this.lbl_fines.Size = new System.Drawing.Size(38, 13);
+            this.lbl_fines.TabIndex = 21;
+            this.lbl_fines.Text = "Multas";
+            // 
             // Configuration
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -396,6 +435,7 @@
             this.Text = "Configuración";
             this.tabPage2.ResumeLayout(false);
             this.tabPage2.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.dtgv_fines)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.dtgv_taxes)).EndInit();
             this.tabPage1.ResumeLayout(false);
             this.tabPage1.PerformLayout();
@@ -434,11 +474,15 @@
         private System.Windows.Forms.Label label10;
         private System.Windows.Forms.TextBox ShortName;
         private System.Windows.Forms.Label label11;
+        private System.Windows.Forms.DataGridView dtgv_fines;
+        private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn1;
+        private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn2;
         private System.Windows.Forms.TextBox AdditionalPenalty;
-        private System.Windows.Forms.Label label15;
         private System.Windows.Forms.TextBox DelayPenalty;
-        private System.Windows.Forms.Label label13;
         private System.Windows.Forms.TextBox CorrespondingComission;
-        private System.Windows.Forms.Label label12;
+        private System.Windows.Forms.Label lbl_fines;
+        private System.Windows.Forms.Label txt_delay;
+        private System.Windows.Forms.Label txt_addtional;
+        private System.Windows.Forms.Label txt_comission;
     }
 }

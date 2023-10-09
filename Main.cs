@@ -62,21 +62,23 @@ namespace Cobrapp
             }
             else if (e.KeyCode == Keys.F3)
             {
-                // Realiza la acción correspondiente al botón F2
+                btn_fines.PerformClick();
+                // Realiza la acción correspondiente al botón F3
+                
             }
             else if (e.KeyCode == Keys.F4)
             {
-                // Realiza la acción correspondiente al botón F2
+                // Realiza la acción correspondiente al botón F4
                 btn_void_payment.PerformClick(); // Esto simula un clic en el botón 2
             }
             else if (e.KeyCode == Keys.F5)
             {
-                // Realiza la acción correspondiente al botón F2
+                // Realiza la acción correspondiente al botón F5
                 btn_daily_total.PerformClick(); // Esto simula un clic en el botón 2
             }
             else if (e.KeyCode == Keys.F6)
             {
-                // Realiza la acción correspondiente al botón F2
+                // Realiza la acción correspondiente al botón F6
                 btn_commissions.PerformClick(); // Esto simula un clic en el botón 2
             }
         }
@@ -85,6 +87,14 @@ namespace Cobrapp
         {
             using (Configuration configuration = new Configuration())
                 configuration.ShowDialog();
+        }
+
+        private void btn_fines_Click(object sender, EventArgs e)
+        {
+            using (Fines fines = new Fines())
+            {
+                fines.ShowDialog();
+            }
         }
     }
 }

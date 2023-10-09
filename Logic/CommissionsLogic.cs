@@ -43,6 +43,9 @@ namespace Cobrapp.Logic
                                     UNION ALL
                                     SELECT total, payment_date, receipt_number FROM Stamps
                                     WHERE payment_date >= @fromDate AND payment_date <= @toDate
+                                    UNION ALL
+                                    SELECT total, payment_date, receipt_number FROM Fines
+                                    WHERE payment_date >= @fromDate AND payment_date <= @toDate
                                 ) AS CombinedResults
                                 ORDER BY payment_date";
                 SQLiteCommand command = new SQLiteCommand(query, connection);
