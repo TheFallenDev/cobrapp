@@ -28,151 +28,291 @@
         /// </summary>
         private void InitializeComponent()
         {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(main));
             this.btn_collect_taxes = new System.Windows.Forms.Button();
             this.btn_void_payment = new System.Windows.Forms.Button();
-            this.lbl_select_message = new System.Windows.Forms.Label();
             this.btn_daily_total = new System.Windows.Forms.Button();
             this.btn_commissions = new System.Windows.Forms.Button();
             this.btn_stamps = new System.Windows.Forms.Button();
             this.btn_fines = new System.Windows.Forms.Button();
-            this.menuStrip1 = new System.Windows.Forms.MenuStrip();
-            this.configuraciónToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.credencialesToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.ayudaToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.sobreLaAplicaciónToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.menuStrip1.SuspendLayout();
+            this.btn_Close = new System.Windows.Forms.PictureBox();
+            this.btn_maximize = new System.Windows.Forms.PictureBox();
+            this.btn_minimize = new System.Windows.Forms.PictureBox();
+            this.btn_restore = new System.Windows.Forms.PictureBox();
+            this.panel1 = new System.Windows.Forms.Panel();
+            this.panel2 = new System.Windows.Forms.Panel();
+            this.panel4 = new System.Windows.Forms.Panel();
+            this.panel5 = new System.Windows.Forms.Panel();
+            this.panel6 = new System.Windows.Forms.Panel();
+            this.panel7 = new System.Windows.Forms.Panel();
+            this.panel8 = new System.Windows.Forms.Panel();
+            this.panel3 = new System.Windows.Forms.Panel();
+            this.panel9 = new System.Windows.Forms.Panel();
+            ((System.ComponentModel.ISupportInitialize)(this.btn_Close)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.btn_maximize)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.btn_minimize)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.btn_restore)).BeginInit();
+            this.panel1.SuspendLayout();
+            this.panel2.SuspendLayout();
             this.SuspendLayout();
             // 
             // btn_collect_taxes
             // 
-            this.btn_collect_taxes.Location = new System.Drawing.Point(312, 97);
+            this.btn_collect_taxes.FlatAppearance.BorderSize = 0;
+            this.btn_collect_taxes.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(51)))), ((int)(((byte)(107)))), ((int)(((byte)(135)))));
+            this.btn_collect_taxes.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btn_collect_taxes.ForeColor = System.Drawing.SystemColors.ButtonFace;
+            this.btn_collect_taxes.Location = new System.Drawing.Point(0, 82);
             this.btn_collect_taxes.Name = "btn_collect_taxes";
-            this.btn_collect_taxes.Size = new System.Drawing.Size(162, 35);
+            this.btn_collect_taxes.Size = new System.Drawing.Size(189, 39);
             this.btn_collect_taxes.TabIndex = 0;
-            this.btn_collect_taxes.Text = "Cobrar tasas (F1)";
+            this.btn_collect_taxes.Text = "Cobrar tasas - F1";
+            this.btn_collect_taxes.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             this.btn_collect_taxes.UseVisualStyleBackColor = true;
             this.btn_collect_taxes.Click += new System.EventHandler(this.btn_collect_taxes_Click);
             // 
             // btn_void_payment
             // 
-            this.btn_void_payment.Location = new System.Drawing.Point(312, 240);
+            this.btn_void_payment.FlatAppearance.BorderSize = 0;
+            this.btn_void_payment.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(51)))), ((int)(((byte)(107)))), ((int)(((byte)(135)))));
+            this.btn_void_payment.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btn_void_payment.ForeColor = System.Drawing.SystemColors.ButtonFace;
+            this.btn_void_payment.Location = new System.Drawing.Point(0, 195);
             this.btn_void_payment.Name = "btn_void_payment";
-            this.btn_void_payment.Size = new System.Drawing.Size(162, 35);
+            this.btn_void_payment.Size = new System.Drawing.Size(189, 39);
             this.btn_void_payment.TabIndex = 1;
-            this.btn_void_payment.Text = "Anular pago (F4)";
+            this.btn_void_payment.Text = "Anular pago - F4";
+            this.btn_void_payment.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             this.btn_void_payment.UseVisualStyleBackColor = true;
             this.btn_void_payment.Click += new System.EventHandler(this.btn_void_payment_Click);
             // 
-            // lbl_select_message
-            // 
-            this.lbl_select_message.AutoSize = true;
-            this.lbl_select_message.Location = new System.Drawing.Point(331, 45);
-            this.lbl_select_message.Name = "lbl_select_message";
-            this.lbl_select_message.Size = new System.Drawing.Size(116, 13);
-            this.lbl_select_message.TabIndex = 2;
-            this.lbl_select_message.Text = "Seleccione una opción";
-            // 
             // btn_daily_total
             // 
-            this.btn_daily_total.Location = new System.Drawing.Point(208, 322);
+            this.btn_daily_total.FlatAppearance.BorderSize = 0;
+            this.btn_daily_total.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(51)))), ((int)(((byte)(107)))), ((int)(((byte)(135)))));
+            this.btn_daily_total.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btn_daily_total.ForeColor = System.Drawing.SystemColors.ButtonFace;
+            this.btn_daily_total.Location = new System.Drawing.Point(0, 232);
             this.btn_daily_total.Name = "btn_daily_total";
-            this.btn_daily_total.Size = new System.Drawing.Size(162, 35);
+            this.btn_daily_total.Size = new System.Drawing.Size(189, 39);
             this.btn_daily_total.TabIndex = 4;
-            this.btn_daily_total.Text = "Totales diarios (F5)";
+            this.btn_daily_total.Text = "Totales diarios - F5";
+            this.btn_daily_total.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             this.btn_daily_total.UseVisualStyleBackColor = true;
             this.btn_daily_total.Click += new System.EventHandler(this.btn_daily_total_Click);
             // 
             // btn_commissions
             // 
-            this.btn_commissions.Location = new System.Drawing.Point(409, 322);
+            this.btn_commissions.FlatAppearance.BorderSize = 0;
+            this.btn_commissions.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(51)))), ((int)(((byte)(107)))), ((int)(((byte)(135)))));
+            this.btn_commissions.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btn_commissions.ForeColor = System.Drawing.SystemColors.ButtonFace;
+            this.btn_commissions.Location = new System.Drawing.Point(0, 269);
             this.btn_commissions.Name = "btn_commissions";
-            this.btn_commissions.Size = new System.Drawing.Size(162, 35);
+            this.btn_commissions.Size = new System.Drawing.Size(189, 39);
             this.btn_commissions.TabIndex = 5;
-            this.btn_commissions.Text = "Comisiones (F6)";
+            this.btn_commissions.Text = "Comisiones - F6";
+            this.btn_commissions.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             this.btn_commissions.UseVisualStyleBackColor = true;
             this.btn_commissions.Click += new System.EventHandler(this.btn_commissions_Click);
             // 
             // btn_stamps
             // 
-            this.btn_stamps.Location = new System.Drawing.Point(208, 172);
+            this.btn_stamps.FlatAppearance.BorderSize = 0;
+            this.btn_stamps.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(51)))), ((int)(((byte)(107)))), ((int)(((byte)(135)))));
+            this.btn_stamps.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btn_stamps.ForeColor = System.Drawing.SystemColors.ButtonFace;
+            this.btn_stamps.Location = new System.Drawing.Point(0, 118);
             this.btn_stamps.Name = "btn_stamps";
-            this.btn_stamps.Size = new System.Drawing.Size(162, 35);
+            this.btn_stamps.Size = new System.Drawing.Size(189, 39);
             this.btn_stamps.TabIndex = 6;
-            this.btn_stamps.Text = "Sellados (F2)";
+            this.btn_stamps.Text = "Sellados - F2";
+            this.btn_stamps.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             this.btn_stamps.UseVisualStyleBackColor = true;
             this.btn_stamps.Click += new System.EventHandler(this.btn_stamps_Click);
             // 
             // btn_fines
             // 
-            this.btn_fines.Location = new System.Drawing.Point(408, 172);
+            this.btn_fines.FlatAppearance.BorderSize = 0;
+            this.btn_fines.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(51)))), ((int)(((byte)(107)))), ((int)(((byte)(135)))));
+            this.btn_fines.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btn_fines.ForeColor = System.Drawing.SystemColors.ButtonFace;
+            this.btn_fines.Location = new System.Drawing.Point(0, 157);
             this.btn_fines.Name = "btn_fines";
-            this.btn_fines.Size = new System.Drawing.Size(162, 35);
+            this.btn_fines.Size = new System.Drawing.Size(189, 39);
             this.btn_fines.TabIndex = 7;
-            this.btn_fines.Text = "Multas y estadías (F3)";
+            this.btn_fines.Text = "Multas y estadías - F3";
+            this.btn_fines.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             this.btn_fines.UseVisualStyleBackColor = true;
             this.btn_fines.Click += new System.EventHandler(this.btn_fines_Click);
             // 
-            // menuStrip1
+            // btn_Close
             // 
-            this.menuStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.configuraciónToolStripMenuItem,
-            this.ayudaToolStripMenuItem});
-            this.menuStrip1.Location = new System.Drawing.Point(0, 0);
-            this.menuStrip1.Name = "menuStrip1";
-            this.menuStrip1.Size = new System.Drawing.Size(800, 24);
-            this.menuStrip1.TabIndex = 9;
-            this.menuStrip1.Text = "menuStrip1";
+            this.btn_Close.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.btn_Close.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(51)))), ((int)(((byte)(107)))), ((int)(((byte)(135)))));
+            this.btn_Close.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.btn_Close.Image = ((System.Drawing.Image)(resources.GetObject("btn_Close.Image")));
+            this.btn_Close.Location = new System.Drawing.Point(1103, 3);
+            this.btn_Close.Name = "btn_Close";
+            this.btn_Close.Size = new System.Drawing.Size(18, 18);
+            this.btn_Close.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
+            this.btn_Close.TabIndex = 10;
+            this.btn_Close.TabStop = false;
+            this.btn_Close.Click += new System.EventHandler(this.btn_Close_Click);
             // 
-            // configuraciónToolStripMenuItem
+            // btn_maximize
             // 
-            this.configuraciónToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.credencialesToolStripMenuItem});
-            this.configuraciónToolStripMenuItem.Name = "configuraciónToolStripMenuItem";
-            this.configuraciónToolStripMenuItem.Size = new System.Drawing.Size(95, 20);
-            this.configuraciónToolStripMenuItem.Text = "Configuración";
+            this.btn_maximize.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.btn_maximize.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(51)))), ((int)(((byte)(107)))), ((int)(((byte)(135)))));
+            this.btn_maximize.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.btn_maximize.Image = ((System.Drawing.Image)(resources.GetObject("btn_maximize.Image")));
+            this.btn_maximize.Location = new System.Drawing.Point(1079, 3);
+            this.btn_maximize.Name = "btn_maximize";
+            this.btn_maximize.Size = new System.Drawing.Size(18, 18);
+            this.btn_maximize.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
+            this.btn_maximize.TabIndex = 11;
+            this.btn_maximize.TabStop = false;
+            this.btn_maximize.Click += new System.EventHandler(this.btn_maximize_Click);
             // 
-            // credencialesToolStripMenuItem
+            // btn_minimize
             // 
-            this.credencialesToolStripMenuItem.Name = "credencialesToolStripMenuItem";
-            this.credencialesToolStripMenuItem.Size = new System.Drawing.Size(141, 22);
-            this.credencialesToolStripMenuItem.Text = "Credenciales";
-            this.credencialesToolStripMenuItem.Click += new System.EventHandler(this.credencialesToolStripMenuItem_Click);
+            this.btn_minimize.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.btn_minimize.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(51)))), ((int)(((byte)(107)))), ((int)(((byte)(135)))));
+            this.btn_minimize.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.btn_minimize.Image = ((System.Drawing.Image)(resources.GetObject("btn_minimize.Image")));
+            this.btn_minimize.Location = new System.Drawing.Point(1055, 3);
+            this.btn_minimize.Name = "btn_minimize";
+            this.btn_minimize.Size = new System.Drawing.Size(18, 18);
+            this.btn_minimize.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
+            this.btn_minimize.TabIndex = 12;
+            this.btn_minimize.TabStop = false;
+            this.btn_minimize.Click += new System.EventHandler(this.btn_minimize_Click);
             // 
-            // ayudaToolStripMenuItem
+            // btn_restore
             // 
-            this.ayudaToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.sobreLaAplicaciónToolStripMenuItem});
-            this.ayudaToolStripMenuItem.Name = "ayudaToolStripMenuItem";
-            this.ayudaToolStripMenuItem.Size = new System.Drawing.Size(53, 20);
-            this.ayudaToolStripMenuItem.Text = "Ayuda";
+            this.btn_restore.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.btn_restore.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(51)))), ((int)(((byte)(107)))), ((int)(((byte)(135)))));
+            this.btn_restore.Image = ((System.Drawing.Image)(resources.GetObject("btn_restore.Image")));
+            this.btn_restore.Location = new System.Drawing.Point(1079, 3);
+            this.btn_restore.Name = "btn_restore";
+            this.btn_restore.Size = new System.Drawing.Size(18, 18);
+            this.btn_restore.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
+            this.btn_restore.TabIndex = 13;
+            this.btn_restore.TabStop = false;
+            this.btn_restore.Visible = false;
+            this.btn_restore.Click += new System.EventHandler(this.btn_restore_Click);
             // 
-            // sobreLaAplicaciónToolStripMenuItem
+            // panel1
             // 
-            this.sobreLaAplicaciónToolStripMenuItem.Name = "sobreLaAplicaciónToolStripMenuItem";
-            this.sobreLaAplicaciónToolStripMenuItem.Size = new System.Drawing.Size(173, 22);
-            this.sobreLaAplicaciónToolStripMenuItem.Text = "Sobre la aplicación";
+            this.panel1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(51)))), ((int)(((byte)(107)))), ((int)(((byte)(135)))));
+            this.panel1.Controls.Add(this.btn_maximize);
+            this.panel1.Controls.Add(this.btn_restore);
+            this.panel1.Controls.Add(this.btn_Close);
+            this.panel1.Controls.Add(this.btn_minimize);
+            this.panel1.Dock = System.Windows.Forms.DockStyle.Top;
+            this.panel1.Location = new System.Drawing.Point(0, 0);
+            this.panel1.Name = "panel1";
+            this.panel1.Size = new System.Drawing.Size(1124, 28);
+            this.panel1.TabIndex = 14;
+            // 
+            // panel2
+            // 
+            this.panel2.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(42)))), ((int)(((byte)(49)))), ((int)(((byte)(50)))));
+            this.panel2.Controls.Add(this.panel9);
+            this.panel2.Controls.Add(this.panel3);
+            this.panel2.Controls.Add(this.panel8);
+            this.panel2.Controls.Add(this.panel7);
+            this.panel2.Controls.Add(this.panel6);
+            this.panel2.Controls.Add(this.panel5);
+            this.panel2.Controls.Add(this.panel4);
+            this.panel2.Controls.Add(this.btn_collect_taxes);
+            this.panel2.Controls.Add(this.btn_stamps);
+            this.panel2.Controls.Add(this.btn_commissions);
+            this.panel2.Controls.Add(this.btn_daily_total);
+            this.panel2.Controls.Add(this.btn_fines);
+            this.panel2.Controls.Add(this.btn_void_payment);
+            this.panel2.Dock = System.Windows.Forms.DockStyle.Left;
+            this.panel2.Location = new System.Drawing.Point(0, 28);
+            this.panel2.Name = "panel2";
+            this.panel2.Size = new System.Drawing.Size(192, 628);
+            this.panel2.TabIndex = 15;
+            // 
+            // panel4
+            // 
+            this.panel4.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(51)))), ((int)(((byte)(107)))), ((int)(((byte)(135)))));
+            this.panel4.Location = new System.Drawing.Point(0, 118);
+            this.panel4.Name = "panel4";
+            this.panel4.Size = new System.Drawing.Size(5, 39);
+            this.panel4.TabIndex = 17;
+            // 
+            // panel5
+            // 
+            this.panel5.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(51)))), ((int)(((byte)(107)))), ((int)(((byte)(135)))));
+            this.panel5.Location = new System.Drawing.Point(0, 157);
+            this.panel5.Name = "panel5";
+            this.panel5.Size = new System.Drawing.Size(5, 39);
+            this.panel5.TabIndex = 17;
+            // 
+            // panel6
+            // 
+            this.panel6.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(51)))), ((int)(((byte)(107)))), ((int)(((byte)(135)))));
+            this.panel6.Location = new System.Drawing.Point(0, 195);
+            this.panel6.Name = "panel6";
+            this.panel6.Size = new System.Drawing.Size(5, 39);
+            this.panel6.TabIndex = 17;
+            // 
+            // panel7
+            // 
+            this.panel7.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(51)))), ((int)(((byte)(107)))), ((int)(((byte)(135)))));
+            this.panel7.Location = new System.Drawing.Point(0, 232);
+            this.panel7.Name = "panel7";
+            this.panel7.Size = new System.Drawing.Size(5, 39);
+            this.panel7.TabIndex = 17;
+            // 
+            // panel8
+            // 
+            this.panel8.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(51)))), ((int)(((byte)(107)))), ((int)(((byte)(135)))));
+            this.panel8.Location = new System.Drawing.Point(0, 269);
+            this.panel8.Name = "panel8";
+            this.panel8.Size = new System.Drawing.Size(5, 39);
+            this.panel8.TabIndex = 17;
+            // 
+            // panel3
+            // 
+            this.panel3.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(51)))), ((int)(((byte)(107)))), ((int)(((byte)(135)))));
+            this.panel3.Location = new System.Drawing.Point(0, 82);
+            this.panel3.Name = "panel3";
+            this.panel3.Size = new System.Drawing.Size(5, 39);
+            this.panel3.TabIndex = 18;
+            // 
+            // panel9
+            // 
+            this.panel9.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(118)))), ((int)(((byte)(54)))), ((int)(((byte)(38)))));
+            this.panel9.Dock = System.Windows.Forms.DockStyle.Bottom;
+            this.panel9.Location = new System.Drawing.Point(0, 581);
+            this.panel9.Name = "panel9";
+            this.panel9.Size = new System.Drawing.Size(192, 47);
+            this.panel9.TabIndex = 16;
             // 
             // main
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(800, 450);
-            this.Controls.Add(this.btn_fines);
-            this.Controls.Add(this.btn_stamps);
-            this.Controls.Add(this.btn_commissions);
-            this.Controls.Add(this.btn_daily_total);
-            this.Controls.Add(this.lbl_select_message);
-            this.Controls.Add(this.btn_void_payment);
-            this.Controls.Add(this.btn_collect_taxes);
-            this.Controls.Add(this.menuStrip1);
-            this.MainMenuStrip = this.menuStrip1;
+            this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(144)))), ((int)(((byte)(175)))), ((int)(((byte)(197)))));
+            this.ClientSize = new System.Drawing.Size(1124, 656);
+            this.Controls.Add(this.panel2);
+            this.Controls.Add(this.panel1);
+            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
             this.Name = "main";
             this.Text = "Cobrapp";
             this.KeyDown += new System.Windows.Forms.KeyEventHandler(this.main_KeyDown);
-            this.menuStrip1.ResumeLayout(false);
-            this.menuStrip1.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.btn_Close)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.btn_maximize)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.btn_minimize)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.btn_restore)).EndInit();
+            this.panel1.ResumeLayout(false);
+            this.panel2.ResumeLayout(false);
             this.ResumeLayout(false);
-            this.PerformLayout();
 
         }
 
@@ -180,16 +320,23 @@
 
         private System.Windows.Forms.Button btn_collect_taxes;
         private System.Windows.Forms.Button btn_void_payment;
-        private System.Windows.Forms.Label lbl_select_message;
         private System.Windows.Forms.Button btn_daily_total;
         private System.Windows.Forms.Button btn_commissions;
         private System.Windows.Forms.Button btn_stamps;
         private System.Windows.Forms.Button btn_fines;
-        private System.Windows.Forms.MenuStrip menuStrip1;
-        private System.Windows.Forms.ToolStripMenuItem configuraciónToolStripMenuItem;
-        private System.Windows.Forms.ToolStripMenuItem credencialesToolStripMenuItem;
-        private System.Windows.Forms.ToolStripMenuItem ayudaToolStripMenuItem;
-        private System.Windows.Forms.ToolStripMenuItem sobreLaAplicaciónToolStripMenuItem;
+        private System.Windows.Forms.PictureBox btn_Close;
+        private System.Windows.Forms.PictureBox btn_maximize;
+        private System.Windows.Forms.PictureBox btn_minimize;
+        private System.Windows.Forms.PictureBox btn_restore;
+        private System.Windows.Forms.Panel panel1;
+        private System.Windows.Forms.Panel panel2;
+        private System.Windows.Forms.Panel panel4;
+        private System.Windows.Forms.Panel panel8;
+        private System.Windows.Forms.Panel panel7;
+        private System.Windows.Forms.Panel panel6;
+        private System.Windows.Forms.Panel panel5;
+        private System.Windows.Forms.Panel panel3;
+        private System.Windows.Forms.Panel panel9;
     }
 }
 

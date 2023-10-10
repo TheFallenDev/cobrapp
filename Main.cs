@@ -21,7 +21,7 @@ namespace Cobrapp
         private void btn_collect_taxes_Click(object sender, EventArgs e)
         {
             using (Collector taxCollector = new Collector()) 
-                taxCollector.ShowDialog();    
+                taxCollector.ShowDialog();
         }
 
         private void btn_daily_total_Click(object sender, EventArgs e)
@@ -96,5 +96,30 @@ namespace Cobrapp
                 fines.ShowDialog();
             }
         }
+
+        private void btn_Close_Click(object sender, EventArgs e)
+        {
+            Application.Exit();
+        }
+
+        private void btn_maximize_Click(object sender, EventArgs e)
+        {
+            WindowState = FormWindowState.Maximized;
+            btn_maximize.Visible = false;
+            btn_restore.Visible = true;
+        }
+
+        private void btn_restore_Click(object sender, EventArgs e)
+        {
+            WindowState=FormWindowState.Normal;
+            btn_restore.Visible = false;
+            btn_maximize.Visible= true;
+        }
+
+        private void btn_minimize_Click(object sender, EventArgs e)
+        {
+            WindowState = FormWindowState.Minimized;
+        }
+
     }
 }

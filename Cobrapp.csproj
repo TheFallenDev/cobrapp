@@ -16,7 +16,7 @@
     <IsWebBootstrapper>false</IsWebBootstrapper>
     <NuGetPackageImportStamp>
     </NuGetPackageImportStamp>
-    <PublishUrl>D:\Deploy\CobrappTEST\</PublishUrl>
+    <PublishUrl>C:\Deploy\CobrappTEST\</PublishUrl>
     <Install>true</Install>
     <InstallFrom>Disk</InstallFrom>
     <UpdateEnabled>false</UpdateEnabled>
@@ -26,7 +26,7 @@
     <UpdatePeriodically>false</UpdatePeriodically>
     <UpdateRequired>false</UpdateRequired>
     <MapFileExtensions>true</MapFileExtensions>
-    <ApplicationRevision>3</ApplicationRevision>
+    <ApplicationRevision>4</ApplicationRevision>
     <ApplicationVersion>1.0.0.%2a</ApplicationVersion>
     <UseApplicationTrust>false</UseApplicationTrust>
     <PublishWizardCompleted>true</PublishWizardCompleted>
@@ -176,7 +176,9 @@
     <Compile Include="VoidPayment.Designer.cs">
       <DependentUpon>VoidPayment.cs</DependentUpon>
     </Compile>
+    <Content Include="models\ticket-comisiones.txt" />
     <Content Include="models\ticket-sellado.txt" />
+    <Content Include="models\ticket-totales.txt" />
     <Content Include="models\ticket.txt" />
     <EmbeddedResource Include="Commissions.resx">
       <DependentUpon>Commissions.cs</DependentUpon>

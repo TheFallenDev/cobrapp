@@ -1,9 +1,9 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <asmv1:assembly xsi:schemaLocation="urn:schemas-microsoft-com:asm.v1 assembly.adaptive.xsd" manifestVersion="1.0" xmlns:asmv1="urn:schemas-microsoft-com:asm.v1" xmlns="urn:schemas-microsoft-com:asm.v2" xmlns:asmv2="urn:schemas-microsoft-com:asm.v2" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:co.v1="urn:schemas-microsoft-com:clickonce.v1" xmlns:asmv3="urn:schemas-microsoft-com:asm.v3" xmlns:dsig="http://www.w3.org/2000/09/xmldsig#" xmlns:co.v2="urn:schemas-microsoft-com:clickonce.v2">
-  <asmv1:assemblyIdentity name="Cobrapp.exe" version="1.0.0.2" publicKeyToken="0000000000000000" language="neutral" processorArchitecture="msil" type="win32" />
+  <asmv1:assemblyIdentity name="Cobrapp.exe" version="1.0.0.4" publicKeyToken="0000000000000000" language="neutral" processorArchitecture="msil" type="win32" />
   <application />
   <entryPoint>
-    <assemblyIdentity name="Cobrapp" version="1.0.0.0" language="neutral" processorArchitecture="msil" />
+    <assemblyIdentity name="Cobrapp" version="1.0.0.1" language="neutral" processorArchitecture="msil" />
     <commandLine file="Cobrapp.exe" parameters="" />
   </entryPoint>
   <trustInfo>
@@ -42,14 +42,14 @@
     </dependentAssembly>
   </dependency>
   <dependency>
-    <dependentAssembly dependencyType="install" allowDelayedBinding="true" codebase="Cobrapp.exe" size="88480">
-      <assemblyIdentity name="Cobrapp" version="1.0.0.0" language="neutral" processorArchitecture="msil" />
+    <dependentAssembly dependencyType="install" allowDelayedBinding="true" codebase="Cobrapp.exe" size="148896">
+      <assemblyIdentity name="Cobrapp" version="1.0.0.1" language="neutral" processorArchitecture="msil" />
       <hash>
         <dsig:Transforms>
           <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
         </dsig:Transforms>
         <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha256" />
-        <dsig:DigestValue>ITkHS2GCmlZ3ra+tc5Pn0qWqCTrpIFIjtomE4fyUegE=</dsig:DigestValue>
+        <dsig:DigestValue>VHqUXwXpuQmowu/U0Lxf/335Fc0yL8zSAIDfLV/imr4=</dsig:DigestValue>
       </hash>
     </dependentAssembly>
   </dependency>
@@ -131,22 +131,40 @@
       <dsig:DigestValue>yH8kesxd0+LbMZrt2B4UgIGkySB2APUmGFDrfS41Bq8=</dsig:DigestValue>
     </hash>
   </file>
-  <file name="models\ticket.txt" size="357">
+  <file name="models\ticket.txt" size="333">
     <hash>
       <dsig:Transforms>
         <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
       </dsig:Transforms>
       <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha256" />
-      <dsig:DigestValue>OTvpz5Bv3G9pfh3aOQ8ga3C3O8zDf4voMGAnBrKM2qw=</dsig:DigestValue>
+      <dsig:DigestValue>LmWUskVJzcwgRh9Y6xLxSJ4frbasbf9Zbkx6CuMRQ98=</dsig:DigestValue>
     </hash>
   </file>
-  <file name="models\ticket-sellado.txt" size="772">
+  <file name="models\ticket-comisiones.txt" size="276">
     <hash>
       <dsig:Transforms>
         <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
       </dsig:Transforms>
       <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha256" />
-      <dsig:DigestValue>0VzbqIyhLErKiTN6ai6jBp/VqLlZor0TYcHHpLrBwrc=</dsig:DigestValue>
+      <dsig:DigestValue>/ZN7xClW9OFLqcztLTZFkkTSKMVxCDEudJZazYgRBQc=</dsig:DigestValue>
+    </hash>
+  </file>
+  <file name="models\ticket-sellado.txt" size="751">
+    <hash>
+      <dsig:Transforms>
+        <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
+      </dsig:Transforms>
+      <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha256" />
+      <dsig:DigestValue>iMF6+kuzm62X6mUFnboLxrEKq/Ho/1/4id/WgY9mRYg=</dsig:DigestValue>
+    </hash>
+  </file>
+  <file name="models\ticket-totales.txt" size="322">
+    <hash>
+      <dsig:Transforms>
+        <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
+      </dsig:Transforms>
+      <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha256" />
+      <dsig:DigestValue>saEZBDaKuuY6V4xlb+M913BeVtPqxCoC1PL5t1lfhNw=</dsig:DigestValue>
     </hash>
   </file>
 </asmv1:assembly>
