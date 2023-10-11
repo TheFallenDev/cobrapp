@@ -2,6 +2,7 @@
 using System.Windows.Forms;
 using System.Runtime.InteropServices;
 using Cobrapp.Logic;
+using System.Runtime.Remoting.Messaging;
 
 namespace Cobrapp
 {
@@ -107,7 +108,6 @@ namespace Cobrapp
             {
                 btn_fines.PerformClick();
                 // Realiza la acción correspondiente al botón F3
-                
             }
             else if (e.KeyCode == Keys.F4)
             {
@@ -178,9 +178,21 @@ namespace Cobrapp
             }
         }
 
+        private void OpenProtectedArea()
+        {
+            using (LoginForm loginForm = new LoginForm())
+            {
+                if (loginForm.ShowDialog() == DialogResult.OK)
+                {
+                    OpenNewForm(new Configuration());
+                }
+            }
+        }
+
+
         private void btn_Configuration_Click(object sender, EventArgs e)
         {
-            OpenNewForm(new Configuration());
+            OpenProtectedArea();
         }
 
         private void main_Load(object sender, EventArgs e)
@@ -190,11 +202,6 @@ namespace Cobrapp
                 OpenNewForm(new Configuration());
                 MessageBox.Show("Antes de continuar debe rellenar las configuraciones para que el programa funcione correctamente.", "¡Advertencia!", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
-        }
-
-        private void PasswordCheck()
-        {
-
         }
     }
 }

@@ -311,9 +311,9 @@
             this.lbl_extra_penalty.AutoSize = true;
             this.lbl_extra_penalty.Location = new System.Drawing.Point(13, 188);
             this.lbl_extra_penalty.Name = "lbl_extra_penalty";
-            this.lbl_extra_penalty.Size = new System.Drawing.Size(60, 13);
+            this.lbl_extra_penalty.Size = new System.Drawing.Size(31, 13);
             this.lbl_extra_penalty.TabIndex = 30;
-            this.lbl_extra_penalty.Text = "Mora (10%)";
+            this.lbl_extra_penalty.Text = "Mora";
             // 
             // txt_penalty_percentage
             // 

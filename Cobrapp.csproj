@@ -144,6 +144,12 @@
     <Compile Include="Logic\FineLogic.cs" />
     <Compile Include="Logic\StampLogic.cs" />
     <Compile Include="Logic\TaxLogic.cs" />
+    <Compile Include="LoginForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="LoginForm.Designer.cs">
+      <DependentUpon>LoginForm.cs</DependentUpon>
+    </Compile>
     <Compile Include="Model\Commission.cs" />
     <Compile Include="Model\Configuration.cs" />
     <Compile Include="Model\Fine.cs" />
@@ -188,6 +194,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Fines.resx">
       <DependentUpon>Fines.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="LoginForm.resx">
+      <DependentUpon>LoginForm.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Stamps.resx">
       <DependentUpon>Stamps.cs</DependentUpon>

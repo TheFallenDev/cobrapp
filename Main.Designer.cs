@@ -176,7 +176,7 @@
             this.btn_maximize.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(51)))), ((int)(((byte)(107)))), ((int)(((byte)(135)))));
             this.btn_maximize.Cursor = System.Windows.Forms.Cursors.Hand;
             this.btn_maximize.Image = ((System.Drawing.Image)(resources.GetObject("btn_maximize.Image")));
-            this.btn_maximize.Location = new System.Drawing.Point(1079, 3);
+            this.btn_maximize.Location = new System.Drawing.Point(1079, 4);
             this.btn_maximize.Name = "btn_maximize";
             this.btn_maximize.Size = new System.Drawing.Size(18, 18);
             this.btn_maximize.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
@@ -202,6 +202,7 @@
             // 
             this.btn_restore.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.btn_restore.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(51)))), ((int)(((byte)(107)))), ((int)(((byte)(135)))));
+            this.btn_restore.Cursor = System.Windows.Forms.Cursors.Hand;
             this.btn_restore.Image = ((System.Drawing.Image)(resources.GetObject("btn_restore.Image")));
             this.btn_restore.Location = new System.Drawing.Point(1079, 3);
             this.btn_restore.Name = "btn_restore";

@@ -29,6 +29,8 @@
         private void InitializeComponent()
         {
             this.tabPage2 = new System.Windows.Forms.TabPage();
+            this.ConfigurationPassword = new System.Windows.Forms.TextBox();
+            this.label12 = new System.Windows.Forms.Label();
             this.lbl_fines = new System.Windows.Forms.Label();
             this.txt_delay = new System.Windows.Forms.Label();
             this.txt_addtional = new System.Windows.Forms.Label();
@@ -67,8 +69,6 @@
             this.label1 = new System.Windows.Forms.Label();
             this.tabControl = new System.Windows.Forms.TabControl();
             this.btn_save = new System.Windows.Forms.Button();
-            this.ConfigurationPassword = new System.Windows.Forms.TextBox();
-            this.label12 = new System.Windows.Forms.Label();
             this.tabPage2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dtgv_fines)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dtgv_taxes)).BeginInit();
@@ -96,6 +96,22 @@
             this.tabPage2.TabIndex = 1;
             this.tabPage2.Text = "Constantes";
             this.tabPage2.UseVisualStyleBackColor = true;
+            // 
+            // ConfigurationPassword
+            // 
+            this.ConfigurationPassword.Location = new System.Drawing.Point(543, 322);
+            this.ConfigurationPassword.Name = "ConfigurationPassword";
+            this.ConfigurationPassword.Size = new System.Drawing.Size(219, 20);
+            this.ConfigurationPassword.TabIndex = 25;
+            // 
+            // label12
+            // 
+            this.label12.AutoSize = true;
+            this.label12.Location = new System.Drawing.Point(394, 325);
+            this.label12.Name = "label12";
+            this.label12.Size = new System.Drawing.Size(143, 13);
+            this.label12.TabIndex = 24;
+            this.label12.Text = "Contraseña de configuracion";
             // 
             // lbl_fines
             // 
@@ -422,29 +438,13 @@
             // 
             // btn_save
             // 
-            this.btn_save.Location = new System.Drawing.Point(363, 415);
+            this.btn_save.Location = new System.Drawing.Point(703, 415);
             this.btn_save.Name = "btn_save";
             this.btn_save.Size = new System.Drawing.Size(75, 23);
             this.btn_save.TabIndex = 1;
             this.btn_save.Text = "Guardar";
             this.btn_save.UseVisualStyleBackColor = true;
             this.btn_save.Click += new System.EventHandler(this.btn_save_Click);
-            // 
-            // ConfigurationPassword
-            // 
-            this.ConfigurationPassword.Location = new System.Drawing.Point(543, 322);
-            this.ConfigurationPassword.Name = "ConfigurationPassword";
-            this.ConfigurationPassword.Size = new System.Drawing.Size(219, 20);
-            this.ConfigurationPassword.TabIndex = 25;
-            // 
-            // label12
-            // 
-            this.label12.AutoSize = true;
-            this.label12.Location = new System.Drawing.Point(394, 325);
-            this.label12.Name = "label12";
-            this.label12.Size = new System.Drawing.Size(143, 13);
-            this.label12.TabIndex = 24;
-            this.label12.Text = "Contraseña de configuracion";
             // 
             // Configuration
             // 
