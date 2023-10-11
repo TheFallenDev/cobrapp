@@ -41,6 +41,7 @@ namespace Cobrapp
                 SaveDataGridViewToDictionary(dtgv_fines, keyValueFines, "fine_");
                 ConfigurationLogic.Instance.SaveOrUpdateTaxConfigurations(keyValueTaxes);
                 ConfigurationLogic.Instance.SaveOrUpdateFineConfigurations(keyValueFines);
+                ConfigurationLogic.Instance.SaveConfiguration("ConfigurationOK", "OK");
             }
         }
 

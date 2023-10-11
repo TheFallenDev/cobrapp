@@ -2,6 +2,8 @@
 using System.Collections.Generic;
 using System.Configuration;
 using System.Data.SQLite;
+using System.Security.Cryptography;
+using System.Text;
 
 namespace Cobrapp.Logic
 {

@@ -29,6 +29,10 @@
         private void InitializeComponent()
         {
             this.tabPage2 = new System.Windows.Forms.TabPage();
+            this.lbl_fines = new System.Windows.Forms.Label();
+            this.txt_delay = new System.Windows.Forms.Label();
+            this.txt_addtional = new System.Windows.Forms.Label();
+            this.txt_comission = new System.Windows.Forms.Label();
             this.dtgv_fines = new System.Windows.Forms.DataGridView();
             this.dataGridViewTextBoxColumn1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.dataGridViewTextBoxColumn2 = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -63,10 +67,8 @@
             this.label1 = new System.Windows.Forms.Label();
             this.tabControl = new System.Windows.Forms.TabControl();
             this.btn_save = new System.Windows.Forms.Button();
-            this.txt_comission = new System.Windows.Forms.Label();
-            this.txt_addtional = new System.Windows.Forms.Label();
-            this.txt_delay = new System.Windows.Forms.Label();
-            this.lbl_fines = new System.Windows.Forms.Label();
+            this.ConfigurationPassword = new System.Windows.Forms.TextBox();
+            this.label12 = new System.Windows.Forms.Label();
             this.tabPage2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dtgv_fines)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dtgv_taxes)).BeginInit();
@@ -76,6 +78,8 @@
             // 
             // tabPage2
             // 
+            this.tabPage2.Controls.Add(this.ConfigurationPassword);
+            this.tabPage2.Controls.Add(this.label12);
             this.tabPage2.Controls.Add(this.lbl_fines);
             this.tabPage2.Controls.Add(this.txt_delay);
             this.tabPage2.Controls.Add(this.txt_addtional);
@@ -93,8 +97,45 @@
             this.tabPage2.Text = "Constantes";
             this.tabPage2.UseVisualStyleBackColor = true;
             // 
+            // lbl_fines
+            // 
+            this.lbl_fines.AutoSize = true;
+            this.lbl_fines.Location = new System.Drawing.Point(634, 17);
+            this.lbl_fines.Name = "lbl_fines";
+            this.lbl_fines.Size = new System.Drawing.Size(38, 13);
+            this.lbl_fines.TabIndex = 21;
+            this.lbl_fines.Text = "Multas";
+            // 
+            // txt_delay
+            // 
+            this.txt_delay.AutoSize = true;
+            this.txt_delay.Location = new System.Drawing.Point(6, 325);
+            this.txt_delay.Name = "txt_delay";
+            this.txt_delay.Size = new System.Drawing.Size(31, 13);
+            this.txt_delay.TabIndex = 20;
+            this.txt_delay.Text = "Mora";
+            // 
+            // txt_addtional
+            // 
+            this.txt_addtional.AutoSize = true;
+            this.txt_addtional.Location = new System.Drawing.Point(6, 299);
+            this.txt_addtional.Name = "txt_addtional";
+            this.txt_addtional.Size = new System.Drawing.Size(48, 13);
+            this.txt_addtional.TabIndex = 19;
+            this.txt_addtional.Text = "Recargo";
+            // 
+            // txt_comission
+            // 
+            this.txt_comission.AutoSize = true;
+            this.txt_comission.Location = new System.Drawing.Point(6, 273);
+            this.txt_comission.Name = "txt_comission";
+            this.txt_comission.Size = new System.Drawing.Size(75, 13);
+            this.txt_comission.TabIndex = 18;
+            this.txt_comission.Text = "Comisión en %";
+            // 
             // dtgv_fines
             // 
+            this.dtgv_fines.BackgroundColor = System.Drawing.Color.FromArgb(((int)(((byte)(42)))), ((int)(((byte)(49)))), ((int)(((byte)(50)))));
             this.dtgv_fines.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dtgv_fines.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.dataGridViewTextBoxColumn1,
@@ -139,6 +180,7 @@
             // 
             // dtgv_taxes
             // 
+            this.dtgv_taxes.BackgroundColor = System.Drawing.Color.FromArgb(((int)(((byte)(42)))), ((int)(((byte)(49)))), ((int)(((byte)(50)))));
             this.dtgv_taxes.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dtgv_taxes.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.taxName,
@@ -388,41 +430,21 @@
             this.btn_save.UseVisualStyleBackColor = true;
             this.btn_save.Click += new System.EventHandler(this.btn_save_Click);
             // 
-            // txt_comission
+            // ConfigurationPassword
             // 
-            this.txt_comission.AutoSize = true;
-            this.txt_comission.Location = new System.Drawing.Point(6, 273);
-            this.txt_comission.Name = "txt_comission";
-            this.txt_comission.Size = new System.Drawing.Size(75, 13);
-            this.txt_comission.TabIndex = 18;
-            this.txt_comission.Text = "Comisión en %";
+            this.ConfigurationPassword.Location = new System.Drawing.Point(543, 322);
+            this.ConfigurationPassword.Name = "ConfigurationPassword";
+            this.ConfigurationPassword.Size = new System.Drawing.Size(219, 20);
+            this.ConfigurationPassword.TabIndex = 25;
             // 
-            // txt_addtional
+            // label12
             // 
-            this.txt_addtional.AutoSize = true;
-            this.txt_addtional.Location = new System.Drawing.Point(6, 299);
-            this.txt_addtional.Name = "txt_addtional";
-            this.txt_addtional.Size = new System.Drawing.Size(48, 13);
-            this.txt_addtional.TabIndex = 19;
-            this.txt_addtional.Text = "Recargo";
-            // 
-            // txt_delay
-            // 
-            this.txt_delay.AutoSize = true;
-            this.txt_delay.Location = new System.Drawing.Point(6, 325);
-            this.txt_delay.Name = "txt_delay";
-            this.txt_delay.Size = new System.Drawing.Size(31, 13);
-            this.txt_delay.TabIndex = 20;
-            this.txt_delay.Text = "Mora";
-            // 
-            // lbl_fines
-            // 
-            this.lbl_fines.AutoSize = true;
-            this.lbl_fines.Location = new System.Drawing.Point(634, 17);
-            this.lbl_fines.Name = "lbl_fines";
-            this.lbl_fines.Size = new System.Drawing.Size(38, 13);
-            this.lbl_fines.TabIndex = 21;
-            this.lbl_fines.Text = "Multas";
+            this.label12.AutoSize = true;
+            this.label12.Location = new System.Drawing.Point(394, 325);
+            this.label12.Name = "label12";
+            this.label12.Size = new System.Drawing.Size(143, 13);
+            this.label12.TabIndex = 24;
+            this.label12.Text = "Contraseña de configuracion";
             // 
             // Configuration
             // 
@@ -431,6 +453,7 @@
             this.ClientSize = new System.Drawing.Size(800, 450);
             this.Controls.Add(this.btn_save);
             this.Controls.Add(this.tabControl);
+            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
             this.Name = "Configuration";
             this.Text = "Configuración";
             this.tabPage2.ResumeLayout(false);
@@ -484,5 +507,7 @@
         private System.Windows.Forms.Label txt_delay;
         private System.Windows.Forms.Label txt_addtional;
         private System.Windows.Forms.Label txt_comission;
+        private System.Windows.Forms.TextBox ConfigurationPassword;
+        private System.Windows.Forms.Label label12;
     }
 }

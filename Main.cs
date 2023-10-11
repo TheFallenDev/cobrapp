@@ -1,12 +1,7 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
+using System.Runtime.InteropServices;
+using Cobrapp.Logic;
 
 namespace Cobrapp
 {
@@ -20,32 +15,80 @@ namespace Cobrapp
 
         private void btn_collect_taxes_Click(object sender, EventArgs e)
         {
-            using (Collector taxCollector = new Collector()) 
-                taxCollector.ShowDialog();
+            if (ConfigurationLogic.Instance.GetConfigurationValue("ConfigurationOK") != "OK")
+            {
+                MessageBox.Show("Antes de continuar debe rellenar las configuraciones para que el programa funcione correctamente.", "¡Advertencia!", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                OpenNewForm(new Configuration());
+            }
+            else
+            {
+                OpenNewForm(new Collector());
+            }
         }
 
         private void btn_daily_total_Click(object sender, EventArgs e)
         {
-            using (Total dailyTotal = new Total())
-                dailyTotal.ShowDialog();
+            if (ConfigurationLogic.Instance.GetConfigurationValue("ConfigurationOK") != "OK")
+            {
+                MessageBox.Show("Antes de continuar debe rellenar las configuraciones para que el programa funcione correctamente.", "¡Advertencia!", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                OpenNewForm(new Configuration());
+            }
+            else
+            {
+                OpenNewForm(new Total());
+            }
         }
 
         private void btn_stamps_Click(object sender, EventArgs e)
         {
-            using (Stamps stamps = new Stamps())
-                stamps.ShowDialog();
+            if (ConfigurationLogic.Instance.GetConfigurationValue("ConfigurationOK") != "OK")
+            {
+                MessageBox.Show("Antes de continuar debe rellenar las configuraciones para que el programa funcione correctamente.", "¡Advertencia!", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                OpenNewForm(new Configuration());
+            }
+            else
+            {
+                OpenNewForm(new Stamps());
+            }
         }
 
         private void btn_commissions_Click(object sender, EventArgs e)
         {
-            using (Commissions commissions = new Commissions())
-                commissions.ShowDialog();
+            if (ConfigurationLogic.Instance.GetConfigurationValue("ConfigurationOK") != "OK")
+            {
+                MessageBox.Show("Antes de continuar debe rellenar las configuraciones para que el programa funcione correctamente.", "¡Advertencia!", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                OpenNewForm(new Configuration());
+            }
+            else
+            {
+                OpenNewForm(new Commissions());
+            }
         }
 
         private void btn_void_payment_Click(object sender, EventArgs e)
         {
-            using (VoidPayment payment = new VoidPayment())
-                payment.ShowDialog();
+            if (ConfigurationLogic.Instance.GetConfigurationValue("ConfigurationOK") != "OK")
+            {
+                MessageBox.Show("Antes de continuar debe rellenar las configuraciones para que el programa funcione correctamente.", "¡Advertencia!", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                OpenNewForm(new Configuration());
+            }
+            else
+            {
+                OpenNewForm(new VoidPayment());
+            }
+        }
+
+        private void btn_fines_Click(object sender, EventArgs e)
+        {
+            if (ConfigurationLogic.Instance.GetConfigurationValue("ConfigurationOK") != "OK")
+            {
+                MessageBox.Show("Antes de continuar debe rellenar las configuraciones para que el programa funcione correctamente.", "¡Advertencia!", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                OpenNewForm(new Configuration());
+            }
+            else
+            {
+                OpenNewForm(new Fines());
+            }
         }
 
         private void main_KeyDown(object sender, KeyEventArgs e)
@@ -83,20 +126,6 @@ namespace Cobrapp
             }
         }
 
-        private void credencialesToolStripMenuItem_Click(object sender, EventArgs e)
-        {
-            using (Configuration configuration = new Configuration())
-                configuration.ShowDialog();
-        }
-
-        private void btn_fines_Click(object sender, EventArgs e)
-        {
-            using (Fines fines = new Fines())
-            {
-                fines.ShowDialog();
-            }
-        }
-
         private void btn_Close_Click(object sender, EventArgs e)
         {
             Application.Exit();
@@ -121,5 +150,51 @@ namespace Cobrapp
             WindowState = FormWindowState.Minimized;
         }
 
+        [DllImport("user32.DLL", EntryPoint = "ReleaseCapture")]
+        private extern static void ReleaseCapture();
+
+        [DllImport("user32.DLL", EntryPoint = "SendMessage")]
+        private extern static void SendMessage(System.IntPtr hWnd, int wMsg, int wParam, int lParam);
+        private void UpperBar_MouseDown(object sender, MouseEventArgs e)
+        {
+            ReleaseCapture();
+            SendMessage(this.Handle, 0x112, 0xf012, 0);
+        }
+
+        public void OpenNewForm(object newForm)
+        {
+            if(panelContainer.Controls.Count > 0)
+                panelContainer.Controls.RemoveAt(0);
+            Form nf = newForm as Form;
+
+            if(nf != null)
+            {
+                nf.TopLevel = false;
+                nf.Dock = DockStyle.Fill;
+                panelContainer.Controls.Add(nf);
+                panelContainer.Tag = nf;
+                nf.Show();
+                nf.Focus();
+            }
+        }
+
+        private void btn_Configuration_Click(object sender, EventArgs e)
+        {
+            OpenNewForm(new Configuration());
+        }
+
+        private void main_Load(object sender, EventArgs e)
+        {
+            if (ConfigurationLogic.Instance.GetConfigurationValue("ConfigurationOK") != "OK")
+            {
+                OpenNewForm(new Configuration());
+                MessageBox.Show("Antes de continuar debe rellenar las configuraciones para que el programa funcione correctamente.", "¡Advertencia!", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+        }
+
+        private void PasswordCheck()
+        {
+
+        }
     }
 }

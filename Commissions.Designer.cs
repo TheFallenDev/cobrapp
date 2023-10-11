@@ -44,6 +44,7 @@
             this.label1 = new System.Windows.Forms.Label();
             this.lbl_total_collected = new System.Windows.Forms.Label();
             this.lbl_total_commission = new System.Windows.Forms.Label();
+            this.label2 = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.dtgv_commissions)).BeginInit();
             this.SuspendLayout();
             // 
@@ -53,13 +54,14 @@
             this.dtgv_commissions.AllowUserToDeleteRows = false;
             this.dtgv_commissions.AllowUserToResizeColumns = false;
             this.dtgv_commissions.AllowUserToResizeRows = false;
+            this.dtgv_commissions.BackgroundColor = System.Drawing.Color.FromArgb(((int)(((byte)(42)))), ((int)(((byte)(49)))), ((int)(((byte)(50)))));
             this.dtgv_commissions.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dtgv_commissions.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.date,
             this.dailyTotal,
             this.commission,
             this.op_counter});
-            this.dtgv_commissions.Location = new System.Drawing.Point(227, 52);
+            this.dtgv_commissions.Location = new System.Drawing.Point(265, 139);
             this.dtgv_commissions.Name = "dtgv_commissions";
             this.dtgv_commissions.Size = new System.Drawing.Size(443, 323);
             this.dtgv_commissions.TabIndex = 0;
@@ -91,7 +93,7 @@
             // lbl_from_date
             // 
             this.lbl_from_date.AutoSize = true;
-            this.lbl_from_date.Location = new System.Drawing.Point(250, 29);
+            this.lbl_from_date.Location = new System.Drawing.Point(288, 116);
             this.lbl_from_date.Name = "lbl_from_date";
             this.lbl_from_date.Size = new System.Drawing.Size(38, 13);
             this.lbl_from_date.TabIndex = 3;
@@ -100,7 +102,7 @@
             // lbl_to_date
             // 
             this.lbl_to_date.AutoSize = true;
-            this.lbl_to_date.Location = new System.Drawing.Point(397, 29);
+            this.lbl_to_date.Location = new System.Drawing.Point(435, 116);
             this.lbl_to_date.Name = "lbl_to_date";
             this.lbl_to_date.Size = new System.Drawing.Size(35, 13);
             this.lbl_to_date.TabIndex = 4;
@@ -109,7 +111,7 @@
             // lbl_commission
             // 
             this.lbl_commission.AutoSize = true;
-            this.lbl_commission.Location = new System.Drawing.Point(225, 421);
+            this.lbl_commission.Location = new System.Drawing.Point(263, 508);
             this.lbl_commission.Name = "lbl_commission";
             this.lbl_commission.Size = new System.Drawing.Size(101, 13);
             this.lbl_commission.TabIndex = 6;
@@ -119,7 +121,7 @@
             // 
             this.dtp_from_date.CustomFormat = "dd/MM/yyyy";
             this.dtp_from_date.Format = System.Windows.Forms.DateTimePickerFormat.Custom;
-            this.dtp_from_date.Location = new System.Drawing.Point(294, 26);
+            this.dtp_from_date.Location = new System.Drawing.Point(332, 113);
             this.dtp_from_date.MinDate = new System.DateTime(2000, 1, 1, 0, 0, 0, 0);
             this.dtp_from_date.Name = "dtp_from_date";
             this.dtp_from_date.Size = new System.Drawing.Size(100, 20);
@@ -130,7 +132,7 @@
             // 
             this.dtp_to_date.CustomFormat = "dd/MM/yyyy";
             this.dtp_to_date.Format = System.Windows.Forms.DateTimePickerFormat.Custom;
-            this.dtp_to_date.Location = new System.Drawing.Point(438, 26);
+            this.dtp_to_date.Location = new System.Drawing.Point(476, 113);
             this.dtp_to_date.Name = "dtp_to_date";
             this.dtp_to_date.Size = new System.Drawing.Size(100, 20);
             this.dtp_to_date.TabIndex = 8;
@@ -138,7 +140,7 @@
             // 
             // btn_calculate
             // 
-            this.btn_calculate.Location = new System.Drawing.Point(577, 26);
+            this.btn_calculate.Location = new System.Drawing.Point(615, 113);
             this.btn_calculate.Name = "btn_calculate";
             this.btn_calculate.Size = new System.Drawing.Size(93, 23);
             this.btn_calculate.TabIndex = 9;
@@ -148,7 +150,7 @@
             // 
             // btn_print
             // 
-            this.btn_print.Location = new System.Drawing.Point(577, 403);
+            this.btn_print.Location = new System.Drawing.Point(615, 490);
             this.btn_print.Name = "btn_print";
             this.btn_print.Size = new System.Drawing.Size(93, 23);
             this.btn_print.TabIndex = 10;
@@ -159,7 +161,7 @@
             // label1
             // 
             this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(225, 394);
+            this.label1.Location = new System.Drawing.Point(263, 481);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(85, 13);
             this.label1.TabIndex = 11;
@@ -168,7 +170,7 @@
             // lbl_total_collected
             // 
             this.lbl_total_collected.AutoSize = true;
-            this.lbl_total_collected.Location = new System.Drawing.Point(310, 394);
+            this.lbl_total_collected.Location = new System.Drawing.Point(348, 481);
             this.lbl_total_collected.Name = "lbl_total_collected";
             this.lbl_total_collected.Size = new System.Drawing.Size(0, 13);
             this.lbl_total_collected.TabIndex = 12;
@@ -176,16 +178,28 @@
             // lbl_total_commission
             // 
             this.lbl_total_commission.AutoSize = true;
-            this.lbl_total_commission.Location = new System.Drawing.Point(332, 421);
+            this.lbl_total_commission.Location = new System.Drawing.Point(370, 508);
             this.lbl_total_commission.Name = "lbl_total_commission";
             this.lbl_total_commission.Size = new System.Drawing.Size(0, 13);
             this.lbl_total_commission.TabIndex = 13;
+            // 
+            // label2
+            // 
+            this.label2.AutoSize = true;
+            this.label2.Font = new System.Drawing.Font("Microsoft Sans Serif", 16F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label2.Location = new System.Drawing.Point(412, 52);
+            this.label2.Name = "label2";
+            this.label2.Size = new System.Drawing.Size(153, 26);
+            this.label2.TabIndex = 14;
+            this.label2.Text = "COMISIONES";
             // 
             // Commissions
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(800, 450);
+            this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(144)))), ((int)(((byte)(175)))), ((int)(((byte)(197)))));
+            this.ClientSize = new System.Drawing.Size(932, 628);
+            this.Controls.Add(this.label2);
             this.Controls.Add(this.lbl_total_commission);
             this.Controls.Add(this.lbl_total_collected);
             this.Controls.Add(this.label1);
@@ -197,6 +211,7 @@
             this.Controls.Add(this.lbl_to_date);
             this.Controls.Add(this.lbl_from_date);
             this.Controls.Add(this.dtgv_commissions);
+            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
             this.Name = "Commissions";
             this.Text = "Comisiones";
             this.KeyDown += new System.Windows.Forms.KeyEventHandler(this.Commissions_KeyDown);
@@ -224,5 +239,6 @@
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Label lbl_total_collected;
         private System.Windows.Forms.Label lbl_total_commission;
+        private System.Windows.Forms.Label label2;
     }
 }

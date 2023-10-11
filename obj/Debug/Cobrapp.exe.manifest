@@ -42,14 +42,14 @@
     </dependentAssembly>
   </dependency>
   <dependency>
-    <dependentAssembly dependencyType="install" allowDelayedBinding="true" codebase="Cobrapp.exe" size="148896">
+    <dependentAssembly dependencyType="install" allowDelayedBinding="true" codebase="Cobrapp.exe" size="141728">
       <assemblyIdentity name="Cobrapp" version="1.0.0.1" language="neutral" processorArchitecture="msil" />
       <hash>
         <dsig:Transforms>
           <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
         </dsig:Transforms>
         <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha256" />
-        <dsig:DigestValue>VHqUXwXpuQmowu/U0Lxf/335Fc0yL8zSAIDfLV/imr4=</dsig:DigestValue>
+        <dsig:DigestValue>lmmqtJDyOj+ah4beb9hwKg8WDXbuuC8Daw35xTm1/q8=</dsig:DigestValue>
       </hash>
     </dependentAssembly>
   </dependency>
@@ -131,13 +131,13 @@
       <dsig:DigestValue>yH8kesxd0+LbMZrt2B4UgIGkySB2APUmGFDrfS41Bq8=</dsig:DigestValue>
     </hash>
   </file>
-  <file name="models\ticket.txt" size="333">
+  <file name="models\ticket.txt" size="326">
     <hash>
       <dsig:Transforms>
         <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
       </dsig:Transforms>
       <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha256" />
-      <dsig:DigestValue>LmWUskVJzcwgRh9Y6xLxSJ4frbasbf9Zbkx6CuMRQ98=</dsig:DigestValue>
+      <dsig:DigestValue>w94+cbhw9LQXTMbsdEstV2RuxmjoffClXECl2Ope0B8=</dsig:DigestValue>
     </hash>
   </file>
   <file name="models\ticket-comisiones.txt" size="276">

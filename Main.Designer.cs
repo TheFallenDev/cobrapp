@@ -39,25 +39,30 @@
             this.btn_maximize = new System.Windows.Forms.PictureBox();
             this.btn_minimize = new System.Windows.Forms.PictureBox();
             this.btn_restore = new System.Windows.Forms.PictureBox();
-            this.panel1 = new System.Windows.Forms.Panel();
-            this.panel2 = new System.Windows.Forms.Panel();
-            this.panel4 = new System.Windows.Forms.Panel();
-            this.panel5 = new System.Windows.Forms.Panel();
-            this.panel6 = new System.Windows.Forms.Panel();
-            this.panel7 = new System.Windows.Forms.Panel();
-            this.panel8 = new System.Windows.Forms.Panel();
+            this.UpperBar = new System.Windows.Forms.Panel();
+            this.panelLeft = new System.Windows.Forms.Panel();
+            this.panelSmallContainer = new System.Windows.Forms.Panel();
+            this.btn_Configuration = new System.Windows.Forms.PictureBox();
             this.panel3 = new System.Windows.Forms.Panel();
-            this.panel9 = new System.Windows.Forms.Panel();
+            this.panel8 = new System.Windows.Forms.Panel();
+            this.panel7 = new System.Windows.Forms.Panel();
+            this.panel6 = new System.Windows.Forms.Panel();
+            this.panel5 = new System.Windows.Forms.Panel();
+            this.panel4 = new System.Windows.Forms.Panel();
+            this.panelContainer = new System.Windows.Forms.Panel();
             ((System.ComponentModel.ISupportInitialize)(this.btn_Close)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.btn_maximize)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.btn_minimize)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.btn_restore)).BeginInit();
-            this.panel1.SuspendLayout();
-            this.panel2.SuspendLayout();
+            this.UpperBar.SuspendLayout();
+            this.panelLeft.SuspendLayout();
+            this.panelSmallContainer.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.btn_Configuration)).BeginInit();
             this.SuspendLayout();
             // 
             // btn_collect_taxes
             // 
+            this.btn_collect_taxes.Cursor = System.Windows.Forms.Cursors.Hand;
             this.btn_collect_taxes.FlatAppearance.BorderSize = 0;
             this.btn_collect_taxes.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(51)))), ((int)(((byte)(107)))), ((int)(((byte)(135)))));
             this.btn_collect_taxes.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
@@ -73,6 +78,7 @@
             // 
             // btn_void_payment
             // 
+            this.btn_void_payment.Cursor = System.Windows.Forms.Cursors.Hand;
             this.btn_void_payment.FlatAppearance.BorderSize = 0;
             this.btn_void_payment.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(51)))), ((int)(((byte)(107)))), ((int)(((byte)(135)))));
             this.btn_void_payment.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
@@ -88,6 +94,7 @@
             // 
             // btn_daily_total
             // 
+            this.btn_daily_total.Cursor = System.Windows.Forms.Cursors.Hand;
             this.btn_daily_total.FlatAppearance.BorderSize = 0;
             this.btn_daily_total.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(51)))), ((int)(((byte)(107)))), ((int)(((byte)(135)))));
             this.btn_daily_total.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
@@ -103,6 +110,7 @@
             // 
             // btn_commissions
             // 
+            this.btn_commissions.Cursor = System.Windows.Forms.Cursors.Hand;
             this.btn_commissions.FlatAppearance.BorderSize = 0;
             this.btn_commissions.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(51)))), ((int)(((byte)(107)))), ((int)(((byte)(135)))));
             this.btn_commissions.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
@@ -118,6 +126,7 @@
             // 
             // btn_stamps
             // 
+            this.btn_stamps.Cursor = System.Windows.Forms.Cursors.Hand;
             this.btn_stamps.FlatAppearance.BorderSize = 0;
             this.btn_stamps.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(51)))), ((int)(((byte)(107)))), ((int)(((byte)(135)))));
             this.btn_stamps.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
@@ -133,6 +142,7 @@
             // 
             // btn_fines
             // 
+            this.btn_fines.Cursor = System.Windows.Forms.Cursors.Hand;
             this.btn_fines.FlatAppearance.BorderSize = 0;
             this.btn_fines.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(51)))), ((int)(((byte)(107)))), ((int)(((byte)(135)))));
             this.btn_fines.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
@@ -202,80 +212,63 @@
             this.btn_restore.Visible = false;
             this.btn_restore.Click += new System.EventHandler(this.btn_restore_Click);
             // 
-            // panel1
+            // UpperBar
             // 
-            this.panel1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(51)))), ((int)(((byte)(107)))), ((int)(((byte)(135)))));
-            this.panel1.Controls.Add(this.btn_maximize);
-            this.panel1.Controls.Add(this.btn_restore);
-            this.panel1.Controls.Add(this.btn_Close);
-            this.panel1.Controls.Add(this.btn_minimize);
-            this.panel1.Dock = System.Windows.Forms.DockStyle.Top;
-            this.panel1.Location = new System.Drawing.Point(0, 0);
-            this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(1124, 28);
-            this.panel1.TabIndex = 14;
+            this.UpperBar.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(51)))), ((int)(((byte)(107)))), ((int)(((byte)(135)))));
+            this.UpperBar.Controls.Add(this.btn_maximize);
+            this.UpperBar.Controls.Add(this.btn_restore);
+            this.UpperBar.Controls.Add(this.btn_Close);
+            this.UpperBar.Controls.Add(this.btn_minimize);
+            this.UpperBar.Dock = System.Windows.Forms.DockStyle.Top;
+            this.UpperBar.Location = new System.Drawing.Point(0, 0);
+            this.UpperBar.Name = "UpperBar";
+            this.UpperBar.Size = new System.Drawing.Size(1124, 28);
+            this.UpperBar.TabIndex = 14;
+            this.UpperBar.MouseDown += new System.Windows.Forms.MouseEventHandler(this.UpperBar_MouseDown);
             // 
-            // panel2
+            // panelLeft
             // 
-            this.panel2.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(42)))), ((int)(((byte)(49)))), ((int)(((byte)(50)))));
-            this.panel2.Controls.Add(this.panel9);
-            this.panel2.Controls.Add(this.panel3);
-            this.panel2.Controls.Add(this.panel8);
-            this.panel2.Controls.Add(this.panel7);
-            this.panel2.Controls.Add(this.panel6);
-            this.panel2.Controls.Add(this.panel5);
-            this.panel2.Controls.Add(this.panel4);
-            this.panel2.Controls.Add(this.btn_collect_taxes);
-            this.panel2.Controls.Add(this.btn_stamps);
-            this.panel2.Controls.Add(this.btn_commissions);
-            this.panel2.Controls.Add(this.btn_daily_total);
-            this.panel2.Controls.Add(this.btn_fines);
-            this.panel2.Controls.Add(this.btn_void_payment);
-            this.panel2.Dock = System.Windows.Forms.DockStyle.Left;
-            this.panel2.Location = new System.Drawing.Point(0, 28);
-            this.panel2.Name = "panel2";
-            this.panel2.Size = new System.Drawing.Size(192, 628);
-            this.panel2.TabIndex = 15;
+            this.panelLeft.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(42)))), ((int)(((byte)(49)))), ((int)(((byte)(50)))));
+            this.panelLeft.Controls.Add(this.panelSmallContainer);
+            this.panelLeft.Controls.Add(this.panel3);
+            this.panelLeft.Controls.Add(this.panel8);
+            this.panelLeft.Controls.Add(this.panel7);
+            this.panelLeft.Controls.Add(this.panel6);
+            this.panelLeft.Controls.Add(this.panel5);
+            this.panelLeft.Controls.Add(this.panel4);
+            this.panelLeft.Controls.Add(this.btn_collect_taxes);
+            this.panelLeft.Controls.Add(this.btn_stamps);
+            this.panelLeft.Controls.Add(this.btn_commissions);
+            this.panelLeft.Controls.Add(this.btn_daily_total);
+            this.panelLeft.Controls.Add(this.btn_fines);
+            this.panelLeft.Controls.Add(this.btn_void_payment);
+            this.panelLeft.Dock = System.Windows.Forms.DockStyle.Left;
+            this.panelLeft.Location = new System.Drawing.Point(0, 28);
+            this.panelLeft.Name = "panelLeft";
+            this.panelLeft.Size = new System.Drawing.Size(192, 628);
+            this.panelLeft.TabIndex = 15;
             // 
-            // panel4
+            // panelSmallContainer
             // 
-            this.panel4.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(51)))), ((int)(((byte)(107)))), ((int)(((byte)(135)))));
-            this.panel4.Location = new System.Drawing.Point(0, 118);
-            this.panel4.Name = "panel4";
-            this.panel4.Size = new System.Drawing.Size(5, 39);
-            this.panel4.TabIndex = 17;
+            this.panelSmallContainer.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(118)))), ((int)(((byte)(54)))), ((int)(((byte)(38)))));
+            this.panelSmallContainer.Controls.Add(this.btn_Configuration);
+            this.panelSmallContainer.Dock = System.Windows.Forms.DockStyle.Bottom;
+            this.panelSmallContainer.Location = new System.Drawing.Point(0, 581);
+            this.panelSmallContainer.Name = "panelSmallContainer";
+            this.panelSmallContainer.Size = new System.Drawing.Size(192, 47);
+            this.panelSmallContainer.TabIndex = 16;
             // 
-            // panel5
+            // btn_Configuration
             // 
-            this.panel5.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(51)))), ((int)(((byte)(107)))), ((int)(((byte)(135)))));
-            this.panel5.Location = new System.Drawing.Point(0, 157);
-            this.panel5.Name = "panel5";
-            this.panel5.Size = new System.Drawing.Size(5, 39);
-            this.panel5.TabIndex = 17;
-            // 
-            // panel6
-            // 
-            this.panel6.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(51)))), ((int)(((byte)(107)))), ((int)(((byte)(135)))));
-            this.panel6.Location = new System.Drawing.Point(0, 195);
-            this.panel6.Name = "panel6";
-            this.panel6.Size = new System.Drawing.Size(5, 39);
-            this.panel6.TabIndex = 17;
-            // 
-            // panel7
-            // 
-            this.panel7.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(51)))), ((int)(((byte)(107)))), ((int)(((byte)(135)))));
-            this.panel7.Location = new System.Drawing.Point(0, 232);
-            this.panel7.Name = "panel7";
-            this.panel7.Size = new System.Drawing.Size(5, 39);
-            this.panel7.TabIndex = 17;
-            // 
-            // panel8
-            // 
-            this.panel8.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(51)))), ((int)(((byte)(107)))), ((int)(((byte)(135)))));
-            this.panel8.Location = new System.Drawing.Point(0, 269);
-            this.panel8.Name = "panel8";
-            this.panel8.Size = new System.Drawing.Size(5, 39);
-            this.panel8.TabIndex = 17;
+            this.btn_Configuration.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.btn_Configuration.Image = ((System.Drawing.Image)(resources.GetObject("btn_Configuration.Image")));
+            this.btn_Configuration.Location = new System.Drawing.Point(145, 0);
+            this.btn_Configuration.Name = "btn_Configuration";
+            this.btn_Configuration.Size = new System.Drawing.Size(47, 47);
+            this.btn_Configuration.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
+            this.btn_Configuration.TabIndex = 0;
+            this.btn_Configuration.TabStop = false;
+            this.btn_Configuration.Click += new System.EventHandler(this.btn_Configuration_Click);
             // 
             // panel3
             // 
@@ -285,14 +278,53 @@
             this.panel3.Size = new System.Drawing.Size(5, 39);
             this.panel3.TabIndex = 18;
             // 
-            // panel9
+            // panel8
             // 
-            this.panel9.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(118)))), ((int)(((byte)(54)))), ((int)(((byte)(38)))));
-            this.panel9.Dock = System.Windows.Forms.DockStyle.Bottom;
-            this.panel9.Location = new System.Drawing.Point(0, 581);
-            this.panel9.Name = "panel9";
-            this.panel9.Size = new System.Drawing.Size(192, 47);
-            this.panel9.TabIndex = 16;
+            this.panel8.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(51)))), ((int)(((byte)(107)))), ((int)(((byte)(135)))));
+            this.panel8.Location = new System.Drawing.Point(0, 269);
+            this.panel8.Name = "panel8";
+            this.panel8.Size = new System.Drawing.Size(5, 39);
+            this.panel8.TabIndex = 17;
+            // 
+            // panel7
+            // 
+            this.panel7.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(51)))), ((int)(((byte)(107)))), ((int)(((byte)(135)))));
+            this.panel7.Location = new System.Drawing.Point(0, 232);
+            this.panel7.Name = "panel7";
+            this.panel7.Size = new System.Drawing.Size(5, 39);
+            this.panel7.TabIndex = 17;
+            // 
+            // panel6
+            // 
+            this.panel6.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(51)))), ((int)(((byte)(107)))), ((int)(((byte)(135)))));
+            this.panel6.Location = new System.Drawing.Point(0, 195);
+            this.panel6.Name = "panel6";
+            this.panel6.Size = new System.Drawing.Size(5, 39);
+            this.panel6.TabIndex = 17;
+            // 
+            // panel5
+            // 
+            this.panel5.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(51)))), ((int)(((byte)(107)))), ((int)(((byte)(135)))));
+            this.panel5.Location = new System.Drawing.Point(0, 157);
+            this.panel5.Name = "panel5";
+            this.panel5.Size = new System.Drawing.Size(5, 39);
+            this.panel5.TabIndex = 17;
+            // 
+            // panel4
+            // 
+            this.panel4.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(51)))), ((int)(((byte)(107)))), ((int)(((byte)(135)))));
+            this.panel4.Location = new System.Drawing.Point(0, 118);
+            this.panel4.Name = "panel4";
+            this.panel4.Size = new System.Drawing.Size(5, 39);
+            this.panel4.TabIndex = 17;
+            // 
+            // panelContainer
+            // 
+            this.panelContainer.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.panelContainer.Location = new System.Drawing.Point(192, 28);
+            this.panelContainer.Name = "panelContainer";
+            this.panelContainer.Size = new System.Drawing.Size(932, 628);
+            this.panelContainer.TabIndex = 16;
             // 
             // main
             // 
@@ -300,18 +332,22 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(144)))), ((int)(((byte)(175)))), ((int)(((byte)(197)))));
             this.ClientSize = new System.Drawing.Size(1124, 656);
-            this.Controls.Add(this.panel2);
-            this.Controls.Add(this.panel1);
+            this.Controls.Add(this.panelContainer);
+            this.Controls.Add(this.panelLeft);
+            this.Controls.Add(this.UpperBar);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
             this.Name = "main";
             this.Text = "Cobrapp";
+            this.Load += new System.EventHandler(this.main_Load);
             this.KeyDown += new System.Windows.Forms.KeyEventHandler(this.main_KeyDown);
             ((System.ComponentModel.ISupportInitialize)(this.btn_Close)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.btn_maximize)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.btn_minimize)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.btn_restore)).EndInit();
-            this.panel1.ResumeLayout(false);
-            this.panel2.ResumeLayout(false);
+            this.UpperBar.ResumeLayout(false);
+            this.panelLeft.ResumeLayout(false);
+            this.panelSmallContainer.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.btn_Configuration)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -328,15 +364,17 @@
         private System.Windows.Forms.PictureBox btn_maximize;
         private System.Windows.Forms.PictureBox btn_minimize;
         private System.Windows.Forms.PictureBox btn_restore;
-        private System.Windows.Forms.Panel panel1;
-        private System.Windows.Forms.Panel panel2;
+        private System.Windows.Forms.Panel UpperBar;
+        private System.Windows.Forms.Panel panelLeft;
         private System.Windows.Forms.Panel panel4;
         private System.Windows.Forms.Panel panel8;
         private System.Windows.Forms.Panel panel7;
         private System.Windows.Forms.Panel panel6;
         private System.Windows.Forms.Panel panel5;
         private System.Windows.Forms.Panel panel3;
-        private System.Windows.Forms.Panel panel9;
+        private System.Windows.Forms.Panel panelSmallContainer;
+        private System.Windows.Forms.Panel panelContainer;
+        private System.Windows.Forms.PictureBox btn_Configuration;
     }
 }
 

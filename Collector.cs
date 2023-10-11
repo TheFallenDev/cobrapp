@@ -6,6 +6,7 @@ using System.Globalization;
 using System.Drawing.Printing;
 using Cobrapp.Model;
 using Cobrapp.Logic;
+using System.Collections.Generic;
 
 namespace Cobrapp
 {
@@ -57,14 +58,14 @@ namespace Cobrapp
 
         private string TaxCheck (string taxNumber)
         {
-            switch (taxNumber)
+            string tax = ConfigurationLogic.Instance.GetConfigurationKey(taxNumber);
+            if (tax != null && tax.Contains("tax"))
             {
-                case "06":
-                    return "TGI";
-                case "13":
-                    return "OSM";
-                default:
-                    return "ERROR EN LA BARRA";
+                return tax.Remove(0,3);
+            }
+            else
+            {
+                throw new Exception("Tasa no configurada");
             }
         }
          
@@ -115,9 +116,18 @@ namespace Cobrapp
                 decimal amountDecimal = Decimal.Parse(amount) / 100;
                 txt_barcode.Enabled = false;
                 txt_amount.Text = (Math.Round(amountDecimal, 2)).ToString();
-                lbl_show_tax.Text = TaxCheck(taxNumber);
                 lbl_show_due_date.Text = DateCheck(dueDate, amountDecimal);
                 if (!btn_add_tax.Enabled) btn_add_tax.Enabled = true;
+                try
+                {
+                    lbl_show_tax.Text = TaxCheck(taxNumber);
+                }
+                catch (Exception ex)
+                {
+                    MessageBox.Show("Error: " + ex.Message);
+                    MessageBox.Show("Error: " + ex.Message);
+                    Cleaner();
+                }
             }
         }
 
@@ -301,10 +311,5 @@ namespace Cobrapp
                 Close();
             }
         }
-    }
-    static class Constants
-    {
-        public const decimal Interest = 0.0667m;
-        public const decimal ExtraPenalty = 0.1m;
     }
 }

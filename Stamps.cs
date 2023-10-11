@@ -21,27 +21,31 @@ namespace Cobrapp
 
         private void btn_print_Click(object sender, EventArgs e)
         {
-            string value = MyUtils.Formatter(txt_stamp_value.Text);
-            
-            PrintDocument printReceipt = new PrintDocument();
-            PrinterSettings ps = new PrinterSettings();
-            printReceipt.PrinterSettings = ps;
-            //printReceipt.DefaultPageSettings.PaperSize = new PaperSize("Receipt",500,1500);
-            printReceipt.PrintPage += (s, ev) => Print(s, ev);
-            printReceipt.Print();
-
-            int newId = StampLogic.Instance.GetLastItemID() + 1;
-            string businessCode = ConfigurationLogic.Instance.GetConfigurationValue("BusinessCode");
-            Stamp obj = new Stamp()
+            if (!string.IsNullOrEmpty(txt_stamp_value.Text))
             {
-                Receipt_number = businessCode + newId.ToString().PadLeft(6, '0'),
-                Payment_date = DateTime.Now.ToString("yyyy/MM/dd"),
-                Payment_time = DateTime.Now.ToString("HH:mm:ss"),
-                Total = float.Parse(value)
-            };
+                string value = MyUtils.Formatter(txt_stamp_value.Text);
+                PrintDocument printReceipt = new PrintDocument();
+                PrinterSettings ps = new PrinterSettings();
+                printReceipt.PrinterSettings = ps;
+                //printReceipt.DefaultPageSettings.PaperSize = new PaperSize("Receipt",500,1500);
+                printReceipt.PrintPage += (s, ev) => Print(s, ev);
+                printReceipt.Print();
 
-            bool response = StampLogic.Instance.Save(obj);
-
+                int newId = StampLogic.Instance.GetLastItemID() + 1;
+                string businessCode = ConfigurationLogic.Instance.GetConfigurationValue("BusinessCode");
+                Stamp obj = new Stamp()
+                {
+                    Receipt_number = businessCode + newId.ToString().PadLeft(6, '0'),
+                    Payment_date = DateTime.Now.ToString("yyyy/MM/dd"),
+                    Payment_time = DateTime.Now.ToString("HH:mm:ss"),
+                    Total = float.Parse(value)
+                };
+                bool response = StampLogic.Instance.Save(obj);
+            }
+            else
+            {
+                MessageBox.Show("Debe ingresar un valor.","¡Advertencia!",MessageBoxButtons.OK,MessageBoxIcon.Warning);
+            }
         }
 
         private void Print(object sender, PrintPageEventArgs e)
