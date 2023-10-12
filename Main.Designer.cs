@@ -40,7 +40,9 @@
             this.btn_minimize = new System.Windows.Forms.PictureBox();
             this.btn_restore = new System.Windows.Forms.PictureBox();
             this.UpperBar = new System.Windows.Forms.Panel();
+            this.label1 = new System.Windows.Forms.Label();
             this.panelLeft = new System.Windows.Forms.Panel();
+            this.btn_Main = new System.Windows.Forms.PictureBox();
             this.panelSmallContainer = new System.Windows.Forms.Panel();
             this.btn_Configuration = new System.Windows.Forms.PictureBox();
             this.panel3 = new System.Windows.Forms.Panel();
@@ -56,6 +58,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.btn_restore)).BeginInit();
             this.UpperBar.SuspendLayout();
             this.panelLeft.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.btn_Main)).BeginInit();
             this.panelSmallContainer.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.btn_Configuration)).BeginInit();
             this.SuspendLayout();
@@ -67,9 +70,9 @@
             this.btn_collect_taxes.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(51)))), ((int)(((byte)(107)))), ((int)(((byte)(135)))));
             this.btn_collect_taxes.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btn_collect_taxes.ForeColor = System.Drawing.SystemColors.ButtonFace;
-            this.btn_collect_taxes.Location = new System.Drawing.Point(0, 82);
+            this.btn_collect_taxes.Location = new System.Drawing.Point(0, 136);
             this.btn_collect_taxes.Name = "btn_collect_taxes";
-            this.btn_collect_taxes.Size = new System.Drawing.Size(189, 39);
+            this.btn_collect_taxes.Size = new System.Drawing.Size(192, 39);
             this.btn_collect_taxes.TabIndex = 0;
             this.btn_collect_taxes.Text = "Cobrar tasas - F1";
             this.btn_collect_taxes.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
@@ -83,9 +86,9 @@
             this.btn_void_payment.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(51)))), ((int)(((byte)(107)))), ((int)(((byte)(135)))));
             this.btn_void_payment.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btn_void_payment.ForeColor = System.Drawing.SystemColors.ButtonFace;
-            this.btn_void_payment.Location = new System.Drawing.Point(0, 195);
+            this.btn_void_payment.Location = new System.Drawing.Point(0, 249);
             this.btn_void_payment.Name = "btn_void_payment";
-            this.btn_void_payment.Size = new System.Drawing.Size(189, 39);
+            this.btn_void_payment.Size = new System.Drawing.Size(192, 39);
             this.btn_void_payment.TabIndex = 1;
             this.btn_void_payment.Text = "Anular pago - F4";
             this.btn_void_payment.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
@@ -99,9 +102,9 @@
             this.btn_daily_total.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(51)))), ((int)(((byte)(107)))), ((int)(((byte)(135)))));
             this.btn_daily_total.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btn_daily_total.ForeColor = System.Drawing.SystemColors.ButtonFace;
-            this.btn_daily_total.Location = new System.Drawing.Point(0, 232);
+            this.btn_daily_total.Location = new System.Drawing.Point(0, 286);
             this.btn_daily_total.Name = "btn_daily_total";
-            this.btn_daily_total.Size = new System.Drawing.Size(189, 39);
+            this.btn_daily_total.Size = new System.Drawing.Size(192, 39);
             this.btn_daily_total.TabIndex = 4;
             this.btn_daily_total.Text = "Totales diarios - F5";
             this.btn_daily_total.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
@@ -115,9 +118,9 @@
             this.btn_commissions.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(51)))), ((int)(((byte)(107)))), ((int)(((byte)(135)))));
             this.btn_commissions.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btn_commissions.ForeColor = System.Drawing.SystemColors.ButtonFace;
-            this.btn_commissions.Location = new System.Drawing.Point(0, 269);
+            this.btn_commissions.Location = new System.Drawing.Point(0, 323);
             this.btn_commissions.Name = "btn_commissions";
-            this.btn_commissions.Size = new System.Drawing.Size(189, 39);
+            this.btn_commissions.Size = new System.Drawing.Size(192, 39);
             this.btn_commissions.TabIndex = 5;
             this.btn_commissions.Text = "Comisiones - F6";
             this.btn_commissions.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
@@ -131,9 +134,9 @@
             this.btn_stamps.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(51)))), ((int)(((byte)(107)))), ((int)(((byte)(135)))));
             this.btn_stamps.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btn_stamps.ForeColor = System.Drawing.SystemColors.ButtonFace;
-            this.btn_stamps.Location = new System.Drawing.Point(0, 118);
+            this.btn_stamps.Location = new System.Drawing.Point(0, 172);
             this.btn_stamps.Name = "btn_stamps";
-            this.btn_stamps.Size = new System.Drawing.Size(189, 39);
+            this.btn_stamps.Size = new System.Drawing.Size(192, 39);
             this.btn_stamps.TabIndex = 6;
             this.btn_stamps.Text = "Sellados - F2";
             this.btn_stamps.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
@@ -147,9 +150,9 @@
             this.btn_fines.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(51)))), ((int)(((byte)(107)))), ((int)(((byte)(135)))));
             this.btn_fines.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btn_fines.ForeColor = System.Drawing.SystemColors.ButtonFace;
-            this.btn_fines.Location = new System.Drawing.Point(0, 157);
+            this.btn_fines.Location = new System.Drawing.Point(0, 211);
             this.btn_fines.Name = "btn_fines";
-            this.btn_fines.Size = new System.Drawing.Size(189, 39);
+            this.btn_fines.Size = new System.Drawing.Size(192, 39);
             this.btn_fines.TabIndex = 7;
             this.btn_fines.Text = "Multas y estadías - F3";
             this.btn_fines.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
@@ -216,6 +219,7 @@
             // UpperBar
             // 
             this.UpperBar.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(51)))), ((int)(((byte)(107)))), ((int)(((byte)(135)))));
+            this.UpperBar.Controls.Add(this.label1);
             this.UpperBar.Controls.Add(this.btn_maximize);
             this.UpperBar.Controls.Add(this.btn_restore);
             this.UpperBar.Controls.Add(this.btn_Close);
@@ -227,9 +231,19 @@
             this.UpperBar.TabIndex = 14;
             this.UpperBar.MouseDown += new System.Windows.Forms.MouseEventHandler(this.UpperBar_MouseDown);
             // 
+            // label1
+            // 
+            this.label1.AutoSize = true;
+            this.label1.Location = new System.Drawing.Point(12, 8);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(135, 13);
+            this.label1.TabIndex = 0;
+            this.label1.Text = "Municipalidad de Diamante";
+            // 
             // panelLeft
             // 
             this.panelLeft.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(42)))), ((int)(((byte)(49)))), ((int)(((byte)(50)))));
+            this.panelLeft.Controls.Add(this.btn_Main);
             this.panelLeft.Controls.Add(this.panelSmallContainer);
             this.panelLeft.Controls.Add(this.panel3);
             this.panelLeft.Controls.Add(this.panel8);
@@ -248,6 +262,19 @@
             this.panelLeft.Name = "panelLeft";
             this.panelLeft.Size = new System.Drawing.Size(192, 628);
             this.panelLeft.TabIndex = 15;
+            // 
+            // btn_Main
+            // 
+            this.btn_Main.BackColor = System.Drawing.Color.Transparent;
+            this.btn_Main.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.btn_Main.Image = ((System.Drawing.Image)(resources.GetObject("btn_Main.Image")));
+            this.btn_Main.Location = new System.Drawing.Point(0, 0);
+            this.btn_Main.Name = "btn_Main";
+            this.btn_Main.Size = new System.Drawing.Size(192, 140);
+            this.btn_Main.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
+            this.btn_Main.TabIndex = 19;
+            this.btn_Main.TabStop = false;
+            this.btn_Main.Click += new System.EventHandler(this.btn_Main_Click);
             // 
             // panelSmallContainer
             // 
@@ -274,7 +301,7 @@
             // panel3
             // 
             this.panel3.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(51)))), ((int)(((byte)(107)))), ((int)(((byte)(135)))));
-            this.panel3.Location = new System.Drawing.Point(0, 82);
+            this.panel3.Location = new System.Drawing.Point(0, 136);
             this.panel3.Name = "panel3";
             this.panel3.Size = new System.Drawing.Size(5, 39);
             this.panel3.TabIndex = 18;
@@ -282,7 +309,7 @@
             // panel8
             // 
             this.panel8.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(51)))), ((int)(((byte)(107)))), ((int)(((byte)(135)))));
-            this.panel8.Location = new System.Drawing.Point(0, 269);
+            this.panel8.Location = new System.Drawing.Point(0, 323);
             this.panel8.Name = "panel8";
             this.panel8.Size = new System.Drawing.Size(5, 39);
             this.panel8.TabIndex = 17;
@@ -290,7 +317,7 @@
             // panel7
             // 
             this.panel7.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(51)))), ((int)(((byte)(107)))), ((int)(((byte)(135)))));
-            this.panel7.Location = new System.Drawing.Point(0, 232);
+            this.panel7.Location = new System.Drawing.Point(0, 286);
             this.panel7.Name = "panel7";
             this.panel7.Size = new System.Drawing.Size(5, 39);
             this.panel7.TabIndex = 17;
@@ -298,7 +325,7 @@
             // panel6
             // 
             this.panel6.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(51)))), ((int)(((byte)(107)))), ((int)(((byte)(135)))));
-            this.panel6.Location = new System.Drawing.Point(0, 195);
+            this.panel6.Location = new System.Drawing.Point(0, 249);
             this.panel6.Name = "panel6";
             this.panel6.Size = new System.Drawing.Size(5, 39);
             this.panel6.TabIndex = 17;
@@ -306,7 +333,7 @@
             // panel5
             // 
             this.panel5.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(51)))), ((int)(((byte)(107)))), ((int)(((byte)(135)))));
-            this.panel5.Location = new System.Drawing.Point(0, 157);
+            this.panel5.Location = new System.Drawing.Point(0, 211);
             this.panel5.Name = "panel5";
             this.panel5.Size = new System.Drawing.Size(5, 39);
             this.panel5.TabIndex = 17;
@@ -314,7 +341,7 @@
             // panel4
             // 
             this.panel4.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(51)))), ((int)(((byte)(107)))), ((int)(((byte)(135)))));
-            this.panel4.Location = new System.Drawing.Point(0, 118);
+            this.panel4.Location = new System.Drawing.Point(0, 172);
             this.panel4.Name = "panel4";
             this.panel4.Size = new System.Drawing.Size(5, 39);
             this.panel4.TabIndex = 17;
@@ -346,7 +373,9 @@
             ((System.ComponentModel.ISupportInitialize)(this.btn_minimize)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.btn_restore)).EndInit();
             this.UpperBar.ResumeLayout(false);
+            this.UpperBar.PerformLayout();
             this.panelLeft.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.btn_Main)).EndInit();
             this.panelSmallContainer.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.btn_Configuration)).EndInit();
             this.ResumeLayout(false);
@@ -373,9 +402,11 @@
         private System.Windows.Forms.Panel panel6;
         private System.Windows.Forms.Panel panel5;
         private System.Windows.Forms.Panel panel3;
-        private System.Windows.Forms.Panel panelSmallContainer;
         private System.Windows.Forms.Panel panelContainer;
         private System.Windows.Forms.PictureBox btn_Configuration;
+        private System.Windows.Forms.Label label1;
+        private System.Windows.Forms.Panel panelSmallContainer;
+        private System.Windows.Forms.PictureBox btn_Main;
     }
 }
 

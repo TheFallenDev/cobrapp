@@ -76,13 +76,5 @@ namespace Cobrapp
                 e.Handled = true;
             }
         }
-
-        private void VoidPayment_KeyDown(object sender, KeyEventArgs e)
-        {
-            if(e.KeyCode == Keys.Escape)
-            {
-                Close();
-            }
-        }
     }
 }

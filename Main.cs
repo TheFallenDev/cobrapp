@@ -124,6 +124,10 @@ namespace Cobrapp
                 // Realiza la acción correspondiente al botón F6
                 btn_commissions.PerformClick(); // Esto simula un clic en el botón 2
             }
+            else if (e.KeyCode == Keys.Escape)
+            {
+                btn_Main_Click(null, e);
+            }
         }
 
         private void btn_Close_Click(object sender, EventArgs e)
@@ -189,12 +193,10 @@ namespace Cobrapp
             }
         }
 
-
         private void btn_Configuration_Click(object sender, EventArgs e)
         {
             OpenProtectedArea();
         }
-
         private void main_Load(object sender, EventArgs e)
         {
             if (ConfigurationLogic.Instance.GetConfigurationValue("ConfigurationOK") != "OK")
@@ -202,6 +204,15 @@ namespace Cobrapp
                 OpenNewForm(new Configuration());
                 MessageBox.Show("Antes de continuar debe rellenar las configuraciones para que el programa funcione correctamente.", "¡Advertencia!", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
+            else
+            {
+                btn_Main_Click(null, e);
+            }
+        }
+
+        private void btn_Main_Click(object sender, EventArgs e)
+        {
+            OpenNewForm(new MainChild());
         }
     }
 }

@@ -42,14 +42,14 @@
     </dependentAssembly>
   </dependency>
   <dependency>
-    <dependentAssembly dependencyType="install" allowDelayedBinding="true" codebase="Cobrapp.exe" size="137632">
+    <dependentAssembly dependencyType="install" allowDelayedBinding="true" codebase="Cobrapp.exe" size="155040">
       <assemblyIdentity name="Cobrapp" version="1.0.0.1" language="neutral" processorArchitecture="msil" />
       <hash>
         <dsig:Transforms>
           <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
         </dsig:Transforms>
         <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha256" />
-        <dsig:DigestValue>WEEKK+YgwY8bSeq4blclutiqhLTu+QZp0Gt2bWfUEwg=</dsig:DigestValue>
+        <dsig:DigestValue>rDpz5LmJOla6XWqFNJzdg1ioGgaORG/esqWqJDBb90E=</dsig:DigestValue>
       </hash>
     </dependentAssembly>
   </dependency>
@@ -131,40 +131,40 @@
       <dsig:DigestValue>yH8kesxd0+LbMZrt2B4UgIGkySB2APUmGFDrfS41Bq8=</dsig:DigestValue>
     </hash>
   </file>
-  <file name="models\ticket.txt" size="349">
+  <file name="models\ticket.txt" size="326">
     <hash>
       <dsig:Transforms>
         <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
       </dsig:Transforms>
       <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha256" />
-      <dsig:DigestValue>lZJzil03KrwSLT8bGA8kpNXgveregwbIkAA6GuafDdo=</dsig:DigestValue>
+      <dsig:DigestValue>w94+cbhw9LQXTMbsdEstV2RuxmjoffClXECl2Ope0B8=</dsig:DigestValue>
     </hash>
   </file>
-  <file name="models\ticket-comisiones.txt" size="292">
+  <file name="models\ticket-comisiones.txt" size="276">
     <hash>
       <dsig:Transforms>
         <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
       </dsig:Transforms>
       <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha256" />
-      <dsig:DigestValue>C8OF7K2TO+rpNK/2OLpLTNF65dS8Zqb8ThiTIzvwa80=</dsig:DigestValue>
+      <dsig:DigestValue>/ZN7xClW9OFLqcztLTZFkkTSKMVxCDEudJZazYgRBQc=</dsig:DigestValue>
     </hash>
   </file>
-  <file name="models\ticket-sellado.txt" size="772">
+  <file name="models\ticket-sellado.txt" size="751">
     <hash>
       <dsig:Transforms>
         <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
       </dsig:Transforms>
       <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha256" />
-      <dsig:DigestValue>0VzbqIyhLErKiTN6ai6jBp/VqLlZor0TYcHHpLrBwrc=</dsig:DigestValue>
+      <dsig:DigestValue>iMF6+kuzm62X6mUFnboLxrEKq/Ho/1/4id/WgY9mRYg=</dsig:DigestValue>
     </hash>
   </file>
-  <file name="models\ticket-totales.txt" size="338">
+  <file name="models\ticket-totales.txt" size="322">
     <hash>
       <dsig:Transforms>
         <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
       </dsig:Transforms>
       <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha256" />
-      <dsig:DigestValue>xUU6xDh0t+fkcYF4ch06W0TGc6jybojJIa+F6l0EEMc=</dsig:DigestValue>
+      <dsig:DigestValue>saEZBDaKuuY6V4xlb+M913BeVtPqxCoC1PL5t1lfhNw=</dsig:DigestValue>
     </hash>
   </file>
 </asmv1:assembly>

@@ -39,6 +39,7 @@
             this.label5 = new System.Windows.Forms.Label();
             this.btn_print = new System.Windows.Forms.Button();
             this.label6 = new System.Windows.Forms.Label();
+            this.label7 = new System.Windows.Forms.Label();
             this.SuspendLayout();
             // 
             // txt_barcode
@@ -142,12 +143,25 @@
             this.label6.TabIndex = 11;
             this.label6.Text = "MULTAS Y ESTADÍAS";
             // 
+            // label7
+            // 
+            this.label7.AutoSize = true;
+            this.label7.Dock = System.Windows.Forms.DockStyle.Bottom;
+            this.label7.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label7.Location = new System.Drawing.Point(0, 615);
+            this.label7.Name = "label7";
+            this.label7.Size = new System.Drawing.Size(811, 13);
+            this.label7.TabIndex = 12;
+            this.label7.Text = "El cobro de multas y estadías no puede ser anulado. Antes de presionar el boton d" +
+    "e COBRAR asegurese de haber recibido el total del dinero.";
+            // 
             // Fines
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(144)))), ((int)(((byte)(175)))), ((int)(((byte)(197)))));
             this.ClientSize = new System.Drawing.Size(932, 628);
+            this.Controls.Add(this.label7);
             this.Controls.Add(this.label6);
             this.Controls.Add(this.btn_print);
             this.Controls.Add(this.label5);
@@ -181,5 +195,6 @@
         private System.Windows.Forms.Label label5;
         private System.Windows.Forms.Button btn_print;
         private System.Windows.Forms.Label label6;
+        private System.Windows.Forms.Label label7;
     }
 }

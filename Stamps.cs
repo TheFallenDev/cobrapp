@@ -83,10 +83,6 @@ namespace Cobrapp
             {
                 btn_print.PerformClick();
             }
-            else if (e.KeyCode == Keys.Escape)
-            {
-                Close();
-            }
         }
     }
 }

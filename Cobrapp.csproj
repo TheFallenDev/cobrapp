@@ -150,6 +150,12 @@
     <Compile Include="LoginForm.Designer.cs">
       <DependentUpon>LoginForm.cs</DependentUpon>
     </Compile>
+    <Compile Include="MainChild.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="MainChild.Designer.cs">
+      <DependentUpon>MainChild.cs</DependentUpon>
+    </Compile>
     <Compile Include="Model\Commission.cs" />
     <Compile Include="Model\Configuration.cs" />
     <Compile Include="Model\Fine.cs" />
@@ -197,6 +203,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="LoginForm.resx">
       <DependentUpon>LoginForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="MainChild.resx">
+      <DependentUpon>MainChild.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Stamps.resx">
       <DependentUpon>Stamps.cs</DependentUpon>

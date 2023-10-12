@@ -20,6 +20,8 @@ namespace Cobrapp
             InitializeComponent();
             dtp_date.Value = DateTime.Now;
             dtp_date.Focus();
+            dtgv_taxes.Columns[2].DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleRight;
+            dtgv_taxes.Columns[3].DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleCenter;
             KeyPreview = true;
             btn_print.Enabled = false;
             btn_generate_file.Enabled = false;
@@ -58,7 +60,7 @@ namespace Cobrapp
                     dtgv_taxes.Rows[n].Cells[2].Value = fine.Total.ToString("0.00");
                     dtgv_taxes.Rows[n].Cells[3].Value = fine.Due_date;
                     string fineName = ConfigurationLogic.Instance.GetConfigurationKey(fine.Code).Split('_')[1];
-                    dtgv_taxes.Rows[n].Cells[4].Value = fineName;
+                    dtgv_taxes.Rows[n].Cells[4].Value = fineName.Substring(0,4).ToUpper();
                     acc += fine.Total;
                     lbl_total.Text = acc.ToString("0.00");
                 }
@@ -114,7 +116,8 @@ namespace Cobrapp
             {
                 if (row.Cells[5].Value == null || string.IsNullOrEmpty(row.Cells[5].Value.ToString()))
                 {
-                    linea = linea + Environment.NewLine + row.Cells[4].Value.ToString() + "\t\t" + row.Cells[1].Value.ToString() + "\t" + row.Cells[2].Value.ToString();
+                    string type = row.Cells[4].Value.ToString();
+                    linea = linea + Environment.NewLine + type.Substring(0, 3).ToUpper() + "\t\t" + row.Cells[1].Value.ToString() + "\t" + row.Cells[2].Value.ToString();
                 }
             }
             dtgv_taxes.Sort(dtgv_taxes.Columns[0], ListSortDirection.Ascending);
@@ -243,10 +246,6 @@ namespace Cobrapp
             else if (e.KeyCode == Keys.Enter)
             {
                 dtp_date_KeyDown(dtp_date,e);
-            }
-            else if (e.KeyCode == Keys.Escape)
-            {
-                Close();
             }
         }
     }

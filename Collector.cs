@@ -6,7 +6,6 @@ using System.Globalization;
 using System.Drawing.Printing;
 using Cobrapp.Model;
 using Cobrapp.Logic;
-using System.Collections.Generic;
 
 namespace Cobrapp
 {
@@ -15,6 +14,10 @@ namespace Cobrapp
         public Collector()
         {
             InitializeComponent();
+            dtgv_taxes_list.Columns[2].DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleCenter;
+            dtgv_taxes_list.Columns[3].DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleRight;
+            dtgv_taxes_list.Columns[4].DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleRight;
+            dtgv_taxes_list.Columns[5].DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleRight;
             KeyPreview = true;
         }
 
@@ -305,10 +308,6 @@ namespace Cobrapp
             else if(e.KeyCode == Keys.F12)
             {
                 btn_collect_taxes_KeyDown(btn_collect_taxes,e);
-            }
-            else if(e.KeyCode == Keys.Escape)
-            {
-                Close();
             }
         }
     }

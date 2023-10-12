@@ -75,3 +75,5 @@ D:\Deploy\cobrapp\obj\Debug\Cobrapp.csproj.CopyComplete
 D:\Deploy\cobrapp\obj\Debug\Cobrapp.exe
 D:\Deploy\cobrapp\obj\Debug\Cobrapp.pdb
 D:\Deploy\cobrapp\obj\Debug\Cobrapp.LoginForm.resources
+C:\Deploy\cobrapp\obj\Debug\Cobrapp.LoginForm.resources
+C:\Deploy\cobrapp\obj\Debug\Cobrapp.MainChild.resources

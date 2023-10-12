@@ -54,7 +54,6 @@
             this.txt_penalty = new System.Windows.Forms.TextBox();
             this.btn_cleaner = new System.Windows.Forms.Button();
             this.txt_tax_total = new System.Windows.Forms.TextBox();
-            this.txt_total = new System.Windows.Forms.TextBox();
             this.txt_extra_penalty = new System.Windows.Forms.TextBox();
             this.lbl_extra_penalty = new System.Windows.Forms.Label();
             this.txt_penalty_percentage = new System.Windows.Forms.TextBox();
@@ -62,6 +61,8 @@
             this.printTicket = new System.Drawing.Printing.PrintDocument();
             this.btn_collect_taxes = new System.Windows.Forms.Button();
             this.label2 = new System.Windows.Forms.Label();
+            this.label1 = new System.Windows.Forms.Label();
+            this.txt_total = new System.Windows.Forms.TextBox();
             ((System.ComponentModel.ISupportInitialize)(this.dtgv_taxes_list)).BeginInit();
             this.SuspendLayout();
             // 
@@ -104,7 +105,7 @@
             // lbl_total
             // 
             this.lbl_total.AutoSize = true;
-            this.lbl_total.Location = new System.Drawing.Point(44, 466);
+            this.lbl_total.Location = new System.Drawing.Point(44, 469);
             this.lbl_total.Name = "lbl_total";
             this.lbl_total.Size = new System.Drawing.Size(73, 13);
             this.lbl_total.TabIndex = 5;
@@ -289,14 +290,7 @@
             this.txt_tax_total.Name = "txt_tax_total";
             this.txt_tax_total.Size = new System.Drawing.Size(126, 20);
             this.txt_tax_total.TabIndex = 27;
-            // 
-            // txt_total
-            // 
-            this.txt_total.Enabled = false;
-            this.txt_total.Location = new System.Drawing.Point(123, 463);
-            this.txt_total.Name = "txt_total";
-            this.txt_total.Size = new System.Drawing.Size(167, 20);
-            this.txt_total.TabIndex = 28;
+            this.txt_tax_total.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
             // 
             // txt_extra_penalty
             // 
@@ -305,6 +299,7 @@
             this.txt_extra_penalty.Name = "txt_extra_penalty";
             this.txt_extra_penalty.Size = new System.Drawing.Size(93, 20);
             this.txt_extra_penalty.TabIndex = 29;
+            this.txt_extra_penalty.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
             // 
             // lbl_extra_penalty
             // 
@@ -356,6 +351,27 @@
             this.label2.TabIndex = 34;
             this.label2.Text = "TASAS";
             // 
+            // label1
+            // 
+            this.label1.AutoSize = true;
+            this.label1.Dock = System.Windows.Forms.DockStyle.Bottom;
+            this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label1.Location = new System.Drawing.Point(0, 615);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(508, 13);
+            this.label1.TabIndex = 35;
+            this.label1.Text = "Asegurese de haber recibido el total del dinero antes de presionar el boton de CO" +
+    "BRAR.";
+            // 
+            // txt_total
+            // 
+            this.txt_total.Enabled = false;
+            this.txt_total.Location = new System.Drawing.Point(128, 466);
+            this.txt_total.Name = "txt_total";
+            this.txt_total.Size = new System.Drawing.Size(154, 20);
+            this.txt_total.TabIndex = 36;
+            this.txt_total.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
+            // 
             // Collector
             // 
             this.AcceptButton = this.btn_add_tax;
@@ -363,13 +379,14 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(144)))), ((int)(((byte)(175)))), ((int)(((byte)(197)))));
             this.ClientSize = new System.Drawing.Size(932, 628);
+            this.Controls.Add(this.txt_total);
+            this.Controls.Add(this.label1);
             this.Controls.Add(this.label2);
             this.Controls.Add(this.btn_collect_taxes);
             this.Controls.Add(this.lbl_show_due_days);
             this.Controls.Add(this.txt_penalty_percentage);
             this.Controls.Add(this.lbl_extra_penalty);
             this.Controls.Add(this.txt_extra_penalty);
-            this.Controls.Add(this.txt_total);
             this.Controls.Add(this.txt_tax_total);
             this.Controls.Add(this.btn_cleaner);
             this.Controls.Add(this.txt_penalty);
@@ -418,7 +435,6 @@
         private System.Windows.Forms.TextBox txt_penalty;
         private System.Windows.Forms.Button btn_cleaner;
         private System.Windows.Forms.TextBox txt_tax_total;
-        private System.Windows.Forms.TextBox txt_total;
         private System.Windows.Forms.TextBox txt_extra_penalty;
         private System.Windows.Forms.Label lbl_extra_penalty;
         private System.Windows.Forms.TextBox txt_penalty_percentage;
@@ -434,5 +450,7 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn subtotal;
         private System.Windows.Forms.Button btn_collect_taxes;
         private System.Windows.Forms.Label label2;
+        private System.Windows.Forms.Label label1;
+        private System.Windows.Forms.TextBox txt_total;
     }
 }

@@ -32,6 +32,7 @@
             this.btn_print = new System.Windows.Forms.Button();
             this.txt_stamp_value = new System.Windows.Forms.TextBox();
             this.label2 = new System.Windows.Forms.Label();
+            this.label3 = new System.Windows.Forms.Label();
             this.SuspendLayout();
             // 
             // label1
@@ -64,6 +65,7 @@
             this.txt_stamp_value.Name = "txt_stamp_value";
             this.txt_stamp_value.Size = new System.Drawing.Size(109, 20);
             this.txt_stamp_value.TabIndex = 4;
+            this.txt_stamp_value.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
             // 
             // label2
             // 
@@ -75,12 +77,25 @@
             this.label2.TabIndex = 5;
             this.label2.Text = "SELLADOS";
             // 
+            // label3
+            // 
+            this.label3.AutoSize = true;
+            this.label3.Dock = System.Windows.Forms.DockStyle.Bottom;
+            this.label3.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label3.Location = new System.Drawing.Point(0, 615);
+            this.label3.Name = "label3";
+            this.label3.Size = new System.Drawing.Size(770, 13);
+            this.label3.TabIndex = 6;
+            this.label3.Text = "El cobro de un sellado no puede ser anulado. Antes de presionar el boton de COBRA" +
+    "R asegurese de haber recibido el total del dinero.";
+            // 
             // Stamps
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(144)))), ((int)(((byte)(175)))), ((int)(((byte)(197)))));
             this.ClientSize = new System.Drawing.Size(932, 628);
+            this.Controls.Add(this.label3);
             this.Controls.Add(this.label2);
             this.Controls.Add(this.txt_stamp_value);
             this.Controls.Add(this.btn_print);
@@ -99,5 +114,6 @@
         private System.Windows.Forms.Button btn_print;
         private System.Windows.Forms.TextBox txt_stamp_value;
         private System.Windows.Forms.Label label2;
+        private System.Windows.Forms.Label label3;
     }
 }

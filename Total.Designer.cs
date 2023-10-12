@@ -70,7 +70,7 @@
             this.voided});
             this.dtgv_taxes.Location = new System.Drawing.Point(138, 125);
             this.dtgv_taxes.Name = "dtgv_taxes";
-            this.dtgv_taxes.Size = new System.Drawing.Size(648, 329);
+            this.dtgv_taxes.Size = new System.Drawing.Size(637, 329);
             this.dtgv_taxes.TabIndex = 2;
             // 
             // time

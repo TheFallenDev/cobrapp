@@ -114,10 +114,6 @@ namespace Cobrapp
                 string payment_time = DateTime.Now.ToString("hh:mm:ss");
                 Collect(lbl_receipt.Text,taxNumber,period,float.Parse(lbl_amount.Text),dueDate,payment_date,payment_time);
             }
-            else if (e.KeyCode == Keys.Escape)
-            {
-                Close();
-            }
         }
     }
 }
