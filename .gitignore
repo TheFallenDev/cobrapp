@@ -1,1 +1,28 @@
-/.vs
+# Carpeta bin generada por la compilación
+bin/
+
+# Carpeta obj generada por la compilación
+obj/
+
+# Carpeta de paquetes de NuGet
+packages/
+
+# Carpeta de archivos de configuración de usuario de Visual Studio
+.vscode/
+
+# Carpeta de configuración del proyecto en Visual Studio
+.vs/
+
+# Archivos de copia de seguridad de Visual Studio
+*.*proj.user
+*.*suo
+
+# Archivos temporales y de respaldo generados por el sistema
+*~
+*.bak
+*.log
+*.tmp
+
+# Archivos de configuración específicos de proyecto
+App.config
+Web.config
