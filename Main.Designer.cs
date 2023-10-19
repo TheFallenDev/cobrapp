@@ -270,7 +270,7 @@
             this.btn_Main.Image = ((System.Drawing.Image)(resources.GetObject("btn_Main.Image")));
             this.btn_Main.Location = new System.Drawing.Point(0, 0);
             this.btn_Main.Name = "btn_Main";
-            this.btn_Main.Size = new System.Drawing.Size(192, 140);
+            this.btn_Main.Size = new System.Drawing.Size(186, 140);
             this.btn_Main.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
             this.btn_Main.TabIndex = 19;
             this.btn_Main.TabStop = false;

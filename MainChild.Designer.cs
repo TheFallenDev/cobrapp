@@ -28,19 +28,22 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.lbl_Muni = new System.Windows.Forms.Label();
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(MainChild));
+            this.pictureBox1 = new System.Windows.Forms.PictureBox();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.SuspendLayout();
             // 
-            // lbl_Muni
+            // pictureBox1
             // 
-            this.lbl_Muni.AutoSize = true;
-            this.lbl_Muni.BackColor = System.Drawing.Color.Transparent;
-            this.lbl_Muni.Font = new System.Drawing.Font("Segoe UI Black", 20F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lbl_Muni.Location = new System.Drawing.Point(236, 276);
-            this.lbl_Muni.Name = "lbl_Muni";
-            this.lbl_Muni.Size = new System.Drawing.Size(444, 37);
-            this.lbl_Muni.TabIndex = 1;
-            this.lbl_Muni.Text = "MUNICIPALIDAD DE DIAMANTE";
+            this.pictureBox1.BackColor = System.Drawing.Color.Transparent;
+            this.pictureBox1.Dock = System.Windows.Forms.DockStyle.Right;
+            this.pictureBox1.Image = ((System.Drawing.Image)(resources.GetObject("pictureBox1.Image")));
+            this.pictureBox1.Location = new System.Drawing.Point(574, 0);
+            this.pictureBox1.Name = "pictureBox1";
+            this.pictureBox1.Size = new System.Drawing.Size(342, 589);
+            this.pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
+            this.pictureBox1.TabIndex = 2;
+            this.pictureBox1.TabStop = false;
             // 
             // MainChild
             // 
@@ -48,17 +51,16 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(144)))), ((int)(((byte)(175)))), ((int)(((byte)(197)))));
             this.ClientSize = new System.Drawing.Size(916, 589);
-            this.Controls.Add(this.lbl_Muni);
+            this.Controls.Add(this.pictureBox1);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
             this.Name = "MainChild";
             this.Text = "MainChild";
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             this.ResumeLayout(false);
-            this.PerformLayout();
 
         }
 
         #endregion
-
-        private System.Windows.Forms.Label lbl_Muni;
+        private System.Windows.Forms.PictureBox pictureBox1;
     }
 }
