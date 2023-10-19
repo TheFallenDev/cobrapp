@@ -5,8 +5,6 @@ Municipalidad de Diamante
 BUSINESSNAME
 ADDRESS
 
-Caja Nº: 
-
 Comprobante Nº: RECEIPTNUMBER
 
 Fecha: DATE
@@ -18,7 +16,3 @@ Fecha: DATE
 ************************
    Total: $ TOTAL
 ************************
-
-
-
-------------------------

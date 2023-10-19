@@ -27,7 +27,7 @@ namespace Cobrapp
                 PrintDocument printReceipt = new PrintDocument();
                 PrinterSettings ps = new PrinterSettings();
                 printReceipt.PrinterSettings = ps;
-                //printReceipt.DefaultPageSettings.PaperSize = new PaperSize("Receipt",500,1500);
+                printReceipt.DefaultPageSettings.PaperSize = new PaperSize("Custom",299, 842);
                 printReceipt.PrintPage += (s, ev) => Print(s, ev);
                 printReceipt.Print();
 
@@ -52,7 +52,7 @@ namespace Cobrapp
         {
             string[] lines = File.ReadAllLines("models/ticket-sellado.txt");
             string file = "";
-            Font font = new Font("Arial", 10, FontStyle.Regular, GraphicsUnit.Point);
+            Font font = new Font("Courier New", 10, FontStyle.Regular, GraphicsUnit.Point);
             foreach (string line in lines)
             {
                 file = file + Environment.NewLine + line;

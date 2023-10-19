@@ -6,7 +6,8 @@ BUSINESSNAME
 ADDRESS                          
                                  
 Comprobante Nro. RECEIPTNUMBER    
-                                 
+Acta Nro. TICKETNUMBER
+Desc.: DESCRIPTION             
 Fecha: DATE                      
                                  
    Importe: $ TOTAL               

@@ -36,7 +36,6 @@
             this.lbl_show_tax = new System.Windows.Forms.Label();
             this.label4 = new System.Windows.Forms.Label();
             this.lbl_receipt = new System.Windows.Forms.Label();
-            this.label5 = new System.Windows.Forms.Label();
             this.btn_print = new System.Windows.Forms.Button();
             this.label6 = new System.Windows.Forms.Label();
             this.label7 = new System.Windows.Forms.Label();
@@ -110,15 +109,6 @@
             this.lbl_receipt.Size = new System.Drawing.Size(0, 13);
             this.lbl_receipt.TabIndex = 8;
             // 
-            // label5
-            // 
-            this.label5.AutoSize = true;
-            this.label5.Location = new System.Drawing.Point(586, 231);
-            this.label5.Name = "label5";
-            this.label5.Size = new System.Drawing.Size(71, 13);
-            this.label5.TabIndex = 9;
-            this.label5.Text = "Vencimiento: ";
-            // 
             // btn_print
             // 
             this.btn_print.BackColor = System.Drawing.Color.SeaGreen;
@@ -164,7 +154,6 @@
             this.Controls.Add(this.label7);
             this.Controls.Add(this.label6);
             this.Controls.Add(this.btn_print);
-            this.Controls.Add(this.label5);
             this.Controls.Add(this.lbl_receipt);
             this.Controls.Add(this.label4);
             this.Controls.Add(this.lbl_show_tax);
@@ -192,7 +181,6 @@
         private System.Windows.Forms.Label lbl_show_tax;
         private System.Windows.Forms.Label label4;
         private System.Windows.Forms.Label lbl_receipt;
-        private System.Windows.Forms.Label label5;
         private System.Windows.Forms.Button btn_print;
         private System.Windows.Forms.Label label6;
         private System.Windows.Forms.Label label7;

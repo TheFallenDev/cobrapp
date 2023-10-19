@@ -14,9 +14,8 @@ Fecha: DATE
 ******************************   
    Total: $ TOTAL                  
 ******************************   
-Este comprobante es válido       
-como constancia de presentación  
-y pago únicamente con el         
-sello de caja                    
-                                 
+Este comprobante es valido       
+como constancia de presentacion  
+y pago unicamente con el         
+sello de caja                                                     
 ******************************

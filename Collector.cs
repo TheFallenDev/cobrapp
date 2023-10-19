@@ -231,7 +231,7 @@ namespace Cobrapp
                     PrintDocument printReceipt = new PrintDocument();
                     PrinterSettings ps = new PrinterSettings();
                     printReceipt.PrinterSettings = ps;
-                    //printReceipt.DefaultPageSettings.PaperSize = new PaperSize("Receipt",500,1500);
+                    printReceipt.DefaultPageSettings.PaperSize = new PaperSize("Custom", 299, 842);
                     printReceipt.PrintPage += (s, ev) => Print(s, ev);
                     printReceipt.Print();
 

@@ -92,11 +92,36 @@ namespace Cobrapp
 
         private void btn_print_Click(object sender, EventArgs e)
         {
-            PrintDocument printReceipt = new PrintDocument();
-            PrinterSettings ps = new PrinterSettings();
-            printReceipt.PrinterSettings = ps;
-            printReceipt.PrintPage += (s, ev) => Print(s, ev);
-            printReceipt.Print();
+            //PrintDocument printReceipt = new PrintDocument();
+            //PrinterSettings ps = new PrinterSettings();
+            //printReceipt.PrinterSettings = ps;
+            //printReceipt.DefaultPageSettings.PaperSize = new PaperSize("Custom", 299, 842);
+            //printReceipt.PrintPage += (s, ev) => Print(s, ev);
+            //printReceipt.Print();
+            List<string> types = new List<string>();
+            List<string> receipts = new List<string>();
+            List<string> totals = new List<string>();
+            dtgv_taxes.Sort(dtgv_taxes.Columns[1], ListSortDirection.Ascending);
+            dtgv_taxes.Sort(dtgv_taxes.Columns[4], ListSortDirection.Ascending);
+            foreach (DataGridViewRow row in dtgv_taxes.Rows)
+            {
+                if (row.Cells[5].Value == null || string.IsNullOrEmpty(row.Cells[5].Value.ToString()))
+                {
+                    types.Add(row.Cells[4].Value.ToString());
+                    receipts.Add(row.Cells[1].Value.ToString());
+                    totals.Add(row.Cells[2].Value.ToString());
+                }
+            }
+
+            Ticket myTicket = new Ticket
+            {
+                Date = DateTime.Now,
+                Total = lbl_total.Text,
+                ItemNames = receipts.ToArray(),
+                ItemPrices = totals.ToArray()
+            };
+            myTicket.PrintTicket();
+            dtgv_taxes.Sort(dtgv_taxes.Columns[0], ListSortDirection.Ascending);
         }
 
         private void Print(object sender, PrintPageEventArgs e)

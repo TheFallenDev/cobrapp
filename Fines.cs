@@ -1,14 +1,9 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
 using System.Drawing;
+using System.Drawing.Printing;
 using System.Globalization;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+using System.IO;
 using System.Windows.Forms;
-using Cobrapp.Model;
 using Cobrapp.Logic;
 
 namespace Cobrapp
@@ -88,8 +83,46 @@ namespace Cobrapp
             else
             {
                 FineLogic.Instance.AddFine(receiptNumber, code, period, total, dueDate, paymentDate, paymentTime);
+                Printer();
             }
             Cleaner();
+        }
+
+        private void Printer()
+        {
+            PrintDocument printReceipt = new PrintDocument();
+            PrinterSettings ps = new PrinterSettings();
+            printReceipt.PrinterSettings = ps;
+            printReceipt.DefaultPageSettings.PaperSize = new PaperSize("Custom", 299, 842);
+            printReceipt.PrintPage += (s, ev) => Print(s, ev);
+            printReceipt.Print();
+        }
+
+        private void Print(object sender, PrintPageEventArgs e)
+        {
+            string[] lines = File.ReadAllLines("models/ticket-multa.txt");
+            string file = "";
+            Font font = new Font("Courier New", 10, FontStyle.Regular, GraphicsUnit.Point);
+            foreach (string line in lines)
+            {
+                file = file + Environment.NewLine + line;
+            }
+            string receipt;
+            receipt = Replacer(file);
+            e.Graphics.DrawString(receipt, font, Brushes.Black, new RectangleF(0, 0, 220, 2000));
+        }
+
+        private string Replacer(string receipt)
+        {
+            string businessCode = ConfigurationLogic.Instance.GetConfigurationValue("BusinessCode");
+            receipt = receipt.Replace("BUSINESSNAME", ConfigurationLogic.Instance.GetConfigurationValue("BusinessName").ToUpper());
+            receipt = receipt.Replace("ADDRESS", ConfigurationLogic.Instance.GetConfigurationValue("Address"));
+            receipt = receipt.Replace("RECEIPTNUMBER", businessCode + lbl_receipt.Text);
+            receipt = receipt.Replace("TICKETNUMBER", lbl_receipt.Text);
+            receipt = receipt.Replace("DESCRIPTION", lbl_show_tax.Text);
+            receipt = receipt.Replace("DATE", DateTime.Now.ToString("dd/MM/yy hh:mm:ss").ToString());
+            receipt = receipt.Replace("TOTAL", lbl_amount.Text);
+            return receipt;
         }
 
         private void Cleaner()

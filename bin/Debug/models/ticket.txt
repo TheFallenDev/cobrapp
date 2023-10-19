@@ -5,9 +5,7 @@ Municipalidad de Diamante
 BUSINESSNAME
 ADDRESS
 
-Caja Nº: 
-
-Comprobante Nº: RECEIPTNUMBER
+Comprobante Nro. RECEIPTNUMBER
 
 Fecha: DATE
 
@@ -15,10 +13,8 @@ Fecha: DATE
    Recargos: $ PENALTIES
    Multas: $ EXTRAPENALTY
 
-************************
+*************************
    Total: $ TOTAL
-************************
-
-
-
-------------------------
+*************************
+Este comprobante es valido como constancia de presentacion y pago unicamente con el sello de caja                                                     
+*************************

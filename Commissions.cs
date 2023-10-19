@@ -61,16 +61,18 @@ namespace Cobrapp
             PrintDocument printReceipt = new PrintDocument();
             PrinterSettings ps = new PrinterSettings();
             printReceipt.PrinterSettings = ps;
+            printReceipt.DefaultPageSettings.PaperSize = new PaperSize("Custom", 299, 842);
             printReceipt.PrintPage += (s, ev) => Print(s, ev);
             printReceipt.Print();
         }
 
         private void Print(object sender, PrintPageEventArgs e)
         {
+            Font font = new Font("Courier New", 10, FontStyle.Regular, GraphicsUnit.Point);
             string Model = File.ReadAllText("models/ticket-comisiones.txt");
             int yPos = 100;
             
-            e.Graphics.DrawString(Replacer(Model), new Font("Arial", 8), Brushes.Black, 50, yPos);
+            e.Graphics.DrawString(Replacer(Model), font, Brushes.Black, 50, yPos);
         }
 
         private string Replacer(string model)
