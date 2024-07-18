@@ -21,6 +21,7 @@ namespace Cobrapp
             dtp_date.Value = DateTime.Now;
             dtp_date.Focus();
             dtgv_taxes.Columns[2].DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleRight;
+            dtgv_taxes.Columns[2].DefaultCellStyle.Format = "N2";
             dtgv_taxes.Columns[3].DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleCenter;
             KeyPreview = true;
             btn_print.Enabled = false;
@@ -29,7 +30,7 @@ namespace Cobrapp
 
         private void dtp_date_KeyDown(object sender, KeyEventArgs e)
         {
-            float acc = 0;
+            decimal acc = 0;
             if (e.KeyCode == Keys.Enter)
             {
                 dtgv_taxes.Rows.Clear();
@@ -40,14 +41,14 @@ namespace Cobrapp
                     int n = dtgv_taxes.Rows.Add();
                     dtgv_taxes.Rows[n].Cells[0].Value = tax.Payment_time;
                     dtgv_taxes.Rows[n].Cells[1].Value = tax.Receipt_number;
-                    dtgv_taxes.Rows[n].Cells[2].Value = tax.Total.ToString("0.00");
+                    dtgv_taxes.Rows[n].Cells[2].Value = tax.Total.ToString("N2");
                     dtgv_taxes.Rows[n].Cells[3].Value = tax.Due_date;
                     dtgv_taxes.Rows[n].Cells[4].Value = tax.TaxName;
                     dtgv_taxes.Rows[n].Cells[5].Value = tax.Void;
                     if (dtgv_taxes.Rows[n].Cells[5].Value == null || string.IsNullOrEmpty(dtgv_taxes.Rows[n].Cells[5].Value.ToString()))
                     {
                         acc += tax.Total;
-                        lbl_total.Text = acc.ToString();
+                        lbl_total.Text = acc.ToString("N2");
                     }
                 }
 
@@ -57,12 +58,12 @@ namespace Cobrapp
                     int n = dtgv_taxes.Rows.Add();
                     dtgv_taxes.Rows[n].Cells[0].Value = fine.Payment_time;
                     dtgv_taxes.Rows[n].Cells[1].Value = fine.Receipt_number;
-                    dtgv_taxes.Rows[n].Cells[2].Value = fine.Total.ToString("0.00");
+                    dtgv_taxes.Rows[n].Cells[2].Value = fine.Total.ToString("N2");
                     dtgv_taxes.Rows[n].Cells[3].Value = fine.Due_date;
                     string fineName = ConfigurationLogic.Instance.GetConfigurationKey(fine.Code).Split('_')[1];
                     dtgv_taxes.Rows[n].Cells[4].Value = fineName.Substring(0,4).ToUpper();
                     acc += fine.Total;
-                    lbl_total.Text = acc.ToString("0.00");
+                    lbl_total.Text = "$ " + acc.ToString("N2");
                 }
 
                 List<Stamp> stampList = StampLogic.Instance.ListByDate(MyUtils.DateFixer(dtp_date.Text));
@@ -71,10 +72,10 @@ namespace Cobrapp
                     int n = dtgv_taxes.Rows.Add();
                     dtgv_taxes.Rows[n].Cells[0].Value = stamp.Payment_time;
                     dtgv_taxes.Rows[n].Cells[1].Value = stamp.Receipt_number;
-                    dtgv_taxes.Rows[n].Cells[2].Value = stamp.Total.ToString("0.00");
+                    dtgv_taxes.Rows[n].Cells[2].Value = stamp.Total.ToString("N2");
                     dtgv_taxes.Rows[n].Cells[4].Value = "Sellado";
                     acc += stamp.Total;
-                    lbl_total.Text = acc.ToString("0.00");
+                    lbl_total.Text = acc.ToString("N2");
                 }
                 dtgv_taxes.Sort(dtgv_taxes.Columns[0], ListSortDirection.Ascending);
                 if (dtgv_taxes.Rows.Count > 0)
@@ -92,12 +93,6 @@ namespace Cobrapp
 
         private void btn_print_Click(object sender, EventArgs e)
         {
-            //PrintDocument printReceipt = new PrintDocument();
-            //PrinterSettings ps = new PrinterSettings();
-            //printReceipt.PrinterSettings = ps;
-            //printReceipt.DefaultPageSettings.PaperSize = new PaperSize("Custom", 299, 842);
-            //printReceipt.PrintPage += (s, ev) => Print(s, ev);
-            //printReceipt.Print();
             List<string> types = new List<string>();
             List<string> receipts = new List<string>();
             List<string> totals = new List<string>();
@@ -107,60 +102,36 @@ namespace Cobrapp
             {
                 if (row.Cells[5].Value == null || string.IsNullOrEmpty(row.Cells[5].Value.ToString()))
                 {
-                    types.Add(row.Cells[4].Value.ToString());
+                    types.Add(row.Cells[4].Value.ToString().Substring(0, 3).ToUpper());
                     receipts.Add(row.Cells[1].Value.ToString());
                     totals.Add(row.Cells[2].Value.ToString());
                 }
             }
-
+            decimal commission = (decimal.Parse(lbl_total.Text) * decimal.Parse(ConfigurationLogic.Instance.GetConfigurationValue("CorrespondingComission"))) / 100;
             Ticket myTicket = new Ticket
             {
-                Date = DateTime.Now,
+                Date = dtp_date.Text,
                 Total = lbl_total.Text,
-                ItemNames = receipts.ToArray(),
-                ItemPrices = totals.ToArray()
+                Commission = commission.ToString("N2"),
+                FirstColumn = types.ToArray(),
+                SecondColumn = receipts.ToArray(),
+                ThirdColumn = totals.ToArray()
             };
-            myTicket.PrintTicket();
-            dtgv_taxes.Sort(dtgv_taxes.Columns[0], ListSortDirection.Ascending);
-        }
-
-        private void Print(object sender, PrintPageEventArgs e)
-        {
-            string Model = File.ReadAllText("models/ticket-totales.txt");
-            int yPos = 100;
-
-            e.Graphics.DrawString(Replacer(Model), new Font("Arial", 8), Brushes.Black, 50, yPos);
-        }
-
-        private string Replacer(string model)
-        {
-            string linea = string.Empty;
-            dtgv_taxes.Sort(dtgv_taxes.Columns[1], ListSortDirection.Ascending);
-            dtgv_taxes.Sort(dtgv_taxes.Columns[4], ListSortDirection.Ascending);
-            foreach (DataGridViewRow row in dtgv_taxes.Rows)
+            if (MyUtils.PrinterExists("brother"))
             {
-                if (row.Cells[5].Value == null || string.IsNullOrEmpty(row.Cells[5].Value.ToString()))
-                {
-                    string type = row.Cells[4].Value.ToString();
-                    linea = linea + Environment.NewLine + type.Substring(0, 3).ToUpper() + "\t\t" + row.Cells[1].Value.ToString() + "\t" + row.Cells[2].Value.ToString();
-                }
+                myTicket.PrintTicket(Ticket.PrintType.TotalUSB);
+            }
+            else
+            {
+                myTicket.PrintTicket(Ticket.PrintType.Total);
             }
             dtgv_taxes.Sort(dtgv_taxes.Columns[0], ListSortDirection.Ascending);
-            model = model.Replace("PERCENT", ConfigurationLogic.Instance.GetConfigurationValue("CorrespondingComission"));
-            model = model.Replace("BUSINESSNAME", ConfigurationLogic.Instance.GetConfigurationValue("BusinessName").ToUpper());
-            model = model.Replace("ADDRESS", ConfigurationLogic.Instance.GetConfigurationValue("Address"));
-            model = model.Replace("LINE", linea);
-            model = model.Replace("TOTAL", "$" + lbl_total.Text);
-            float commission = (float.Parse(lbl_total.Text) * float.Parse(ConfigurationLogic.Instance.GetConfigurationValue("CorrespondingComission"))) / 100;
-            model = model.Replace("TOTCOM", " $" + commission.ToString("0.00"));
-
-            return model;
         }
 
         private async void btn_generate_file_Click(object sender, EventArgs e)
         {
             string baseFileName = ConfigurationLogic.Instance.GetConfigurationValue("ShortName").ToUpper() + MyUtils.DateFixer(dtp_date.Text).Replace("/", "");
-            string fileName = baseFileName + ".dat";
+            string fileName = "arch/" + baseFileName + ".dat";
             int version = 1;
 
             while (File.Exists(fileName))
@@ -179,13 +150,14 @@ namespace Cobrapp
                     {
                         if (String.IsNullOrEmpty(tax.Void))
                         {
+                            string taxCode = tax.TaxCode.ToString().PadLeft(2, '0');
                             string receipt = tax.Receipt_number.PadLeft(8, '0');
                             string date = MyUtils.DateFixer(dtp_date.Text).Replace("/", "");
                             string amount = tax.Partial.ToString().Replace(",", "").PadLeft(10, '0');
                             string additional = tax.Additional.ToString().Replace(",", "").PadLeft(8, '0');
                             string delay = tax.Delay.ToString().Replace(",", "").PadLeft(8, '0');
                             string businessCode = ConfigurationLogic.Instance.GetConfigurationValue("BusinessCode");
-                            string line = businessCode + "0285" + "06" + receipt + date + amount + "0" + additional + delay;
+                            string line = businessCode + "0285" + taxCode + receipt + date + amount + "0" + additional + delay;
                             writer.WriteLine(line);
                         }
                     }
@@ -216,7 +188,6 @@ namespace Cobrapp
                         writer.WriteLine(line);
                     }
                 }
-                Console.WriteLine("Archivo creado con éxito: " + fileName + " " + lbl_total.Text);
                  
                 DialogResult result = MessageBox.Show("¿Desea enviar el archivo por correo electrónico?", "Enviar Correo Electrónico", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
 
@@ -244,7 +215,27 @@ namespace Cobrapp
             }
             catch (Exception ex)
             {
-                Console.WriteLine("Error al crear el archivo: " + ex.Message);
+                MessageBox.Show("Error al crear el archivo: " + ex.Message);
+            }
+        }
+
+        private void FinesFileGenerator(string fileName)
+        {
+            fileName = "Fines" + fileName; 
+            using (StreamWriter writer = new StreamWriter(fileName))
+            {
+                // Escribe contenido en el archivo
+                List<Fine> fineList = FineLogic.Instance.GetFinesByDate(MyUtils.DateFixer(dtp_date.Text));
+                foreach (var fine in fineList)
+                {
+                    string businessCode = ConfigurationLogic.Instance.GetConfigurationValue("BusinessCode");
+                    string receipt = fine.Receipt_number.PadLeft(8, '0');
+                    string date = MyUtils.DateFixer(dtp_date.Text).Replace("/", "");
+                    string amount = fine.Total.ToString("0.00").Replace(",", "").PadLeft(10, '0');
+                    string code = fine.Code;
+                    string line = businessCode + receipt + date + amount + code;
+                    writer.WriteLine(line);
+                }
             }
         }
 

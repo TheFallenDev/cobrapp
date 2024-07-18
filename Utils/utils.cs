@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Drawing.Printing;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -9,6 +10,18 @@ namespace Cobrapp.Utils
 {
     public static class MyUtils
     {
+        public static bool PrinterExists(string printerName)
+        {
+            foreach (string printer in PrinterSettings.InstalledPrinters)
+            {
+                if (string.Equals(printer, printerName, StringComparison.OrdinalIgnoreCase))
+                {
+                    return true;
+                }
+            }
+            return false;
+        }
+
         public static string DateFixer(string date)
         {
             string[] array = date.Split('/');

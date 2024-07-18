@@ -2,8 +2,8 @@
 using System.Collections.Generic;
 using System.Configuration;
 using System.Data.SQLite;
-using System.Security.Cryptography;
-using System.Text;
+using System.Drawing.Printing;
+using System.Windows.Forms;
 
 namespace Cobrapp.Logic
 {
@@ -360,6 +360,25 @@ namespace Cobrapp.Logic
             }
 
             return null;
+        }
+
+        public static void SelectDefaultPrinter()
+        {
+            PrintDialog printDialog = new PrintDialog();
+            printDialog.PrinterSettings = new PrinterSettings();
+
+            if (printDialog.ShowDialog() == DialogResult.OK)
+            {
+                string selectedPrinter = printDialog.PrinterSettings.PrinterName;
+                Properties.Settings.Default.DefaultPrinter = selectedPrinter;
+                Properties.Settings.Default.Save();
+                MessageBox.Show($"Impresora seleccionada: {selectedPrinter}");
+            }
+        }
+
+        public static string GetDefaultPrinter()
+        {
+            return Properties.Settings.Default.DefaultPrinter;
         }
 
         public bool ConfigurationExists(string key)

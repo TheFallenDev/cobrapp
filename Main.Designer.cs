@@ -52,6 +52,10 @@
             this.panel5 = new System.Windows.Forms.Panel();
             this.panel4 = new System.Windows.Forms.Panel();
             this.panelContainer = new System.Windows.Forms.Panel();
+            this.btn_CommercialTax = new System.Windows.Forms.Button();
+            this.panel1 = new System.Windows.Forms.Panel();
+            this.panel2 = new System.Windows.Forms.Panel();
+            this.panel9 = new System.Windows.Forms.Panel();
             ((System.ComponentModel.ISupportInitialize)(this.btn_Close)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.btn_maximize)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.btn_minimize)).BeginInit();
@@ -61,6 +65,8 @@
             ((System.ComponentModel.ISupportInitialize)(this.btn_Main)).BeginInit();
             this.panelSmallContainer.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.btn_Configuration)).BeginInit();
+            this.panel8.SuspendLayout();
+            this.panel2.SuspendLayout();
             this.SuspendLayout();
             // 
             // btn_collect_taxes
@@ -86,11 +92,11 @@
             this.btn_void_payment.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(51)))), ((int)(((byte)(107)))), ((int)(((byte)(135)))));
             this.btn_void_payment.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btn_void_payment.ForeColor = System.Drawing.SystemColors.ButtonFace;
-            this.btn_void_payment.Location = new System.Drawing.Point(0, 249);
+            this.btn_void_payment.Location = new System.Drawing.Point(0, 286);
             this.btn_void_payment.Name = "btn_void_payment";
             this.btn_void_payment.Size = new System.Drawing.Size(192, 39);
             this.btn_void_payment.TabIndex = 1;
-            this.btn_void_payment.Text = "Anular pago - F4";
+            this.btn_void_payment.Text = "Anular pago - F5";
             this.btn_void_payment.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             this.btn_void_payment.UseVisualStyleBackColor = true;
             this.btn_void_payment.Click += new System.EventHandler(this.btn_void_payment_Click);
@@ -102,11 +108,11 @@
             this.btn_daily_total.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(51)))), ((int)(((byte)(107)))), ((int)(((byte)(135)))));
             this.btn_daily_total.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btn_daily_total.ForeColor = System.Drawing.SystemColors.ButtonFace;
-            this.btn_daily_total.Location = new System.Drawing.Point(0, 286);
+            this.btn_daily_total.Location = new System.Drawing.Point(0, 323);
             this.btn_daily_total.Name = "btn_daily_total";
             this.btn_daily_total.Size = new System.Drawing.Size(192, 39);
             this.btn_daily_total.TabIndex = 4;
-            this.btn_daily_total.Text = "Totales diarios - F5";
+            this.btn_daily_total.Text = "Totales diarios - F6";
             this.btn_daily_total.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             this.btn_daily_total.UseVisualStyleBackColor = true;
             this.btn_daily_total.Click += new System.EventHandler(this.btn_daily_total_Click);
@@ -118,11 +124,11 @@
             this.btn_commissions.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(51)))), ((int)(((byte)(107)))), ((int)(((byte)(135)))));
             this.btn_commissions.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btn_commissions.ForeColor = System.Drawing.SystemColors.ButtonFace;
-            this.btn_commissions.Location = new System.Drawing.Point(0, 323);
+            this.btn_commissions.Location = new System.Drawing.Point(0, 360);
             this.btn_commissions.Name = "btn_commissions";
             this.btn_commissions.Size = new System.Drawing.Size(192, 39);
             this.btn_commissions.TabIndex = 5;
-            this.btn_commissions.Text = "Comisiones - F6";
+            this.btn_commissions.Text = "Comisiones - F7";
             this.btn_commissions.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             this.btn_commissions.UseVisualStyleBackColor = true;
             this.btn_commissions.Click += new System.EventHandler(this.btn_commissions_Click);
@@ -243,6 +249,8 @@
             // panelLeft
             // 
             this.panelLeft.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(42)))), ((int)(((byte)(49)))), ((int)(((byte)(50)))));
+            this.panelLeft.Controls.Add(this.panel2);
+            this.panelLeft.Controls.Add(this.btn_CommercialTax);
             this.panelLeft.Controls.Add(this.btn_Main);
             this.panelLeft.Controls.Add(this.panelSmallContainer);
             this.panelLeft.Controls.Add(this.panel3);
@@ -309,7 +317,8 @@
             // panel8
             // 
             this.panel8.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(51)))), ((int)(((byte)(107)))), ((int)(((byte)(135)))));
-            this.panel8.Location = new System.Drawing.Point(0, 323);
+            this.panel8.Controls.Add(this.panel1);
+            this.panel8.Location = new System.Drawing.Point(0, 360);
             this.panel8.Name = "panel8";
             this.panel8.Size = new System.Drawing.Size(5, 39);
             this.panel8.TabIndex = 17;
@@ -317,7 +326,7 @@
             // panel7
             // 
             this.panel7.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(51)))), ((int)(((byte)(107)))), ((int)(((byte)(135)))));
-            this.panel7.Location = new System.Drawing.Point(0, 286);
+            this.panel7.Location = new System.Drawing.Point(0, 323);
             this.panel7.Name = "panel7";
             this.panel7.Size = new System.Drawing.Size(5, 39);
             this.panel7.TabIndex = 17;
@@ -325,7 +334,7 @@
             // panel6
             // 
             this.panel6.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(51)))), ((int)(((byte)(107)))), ((int)(((byte)(135)))));
-            this.panel6.Location = new System.Drawing.Point(0, 249);
+            this.panel6.Location = new System.Drawing.Point(0, 286);
             this.panel6.Name = "panel6";
             this.panel6.Size = new System.Drawing.Size(5, 39);
             this.panel6.TabIndex = 17;
@@ -354,6 +363,47 @@
             this.panelContainer.Size = new System.Drawing.Size(932, 628);
             this.panelContainer.TabIndex = 16;
             // 
+            // btn_CommercialTax
+            // 
+            this.btn_CommercialTax.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.btn_CommercialTax.FlatAppearance.BorderSize = 0;
+            this.btn_CommercialTax.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(51)))), ((int)(((byte)(107)))), ((int)(((byte)(135)))));
+            this.btn_CommercialTax.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btn_CommercialTax.ForeColor = System.Drawing.SystemColors.ButtonFace;
+            this.btn_CommercialTax.Location = new System.Drawing.Point(0, 250);
+            this.btn_CommercialTax.Name = "btn_CommercialTax";
+            this.btn_CommercialTax.Size = new System.Drawing.Size(192, 39);
+            this.btn_CommercialTax.TabIndex = 20;
+            this.btn_CommercialTax.Text = "TISHPyS - F4";
+            this.btn_CommercialTax.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.btn_CommercialTax.UseVisualStyleBackColor = true;
+            this.btn_CommercialTax.Click += new System.EventHandler(this.btn_CommercialTax_Click);
+            // 
+            // panel1
+            // 
+            this.panel1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(51)))), ((int)(((byte)(107)))), ((int)(((byte)(135)))));
+            this.panel1.Location = new System.Drawing.Point(1, 36);
+            this.panel1.Name = "panel1";
+            this.panel1.Size = new System.Drawing.Size(5, 39);
+            this.panel1.TabIndex = 18;
+            // 
+            // panel2
+            // 
+            this.panel2.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(51)))), ((int)(((byte)(107)))), ((int)(((byte)(135)))));
+            this.panel2.Controls.Add(this.panel9);
+            this.panel2.Location = new System.Drawing.Point(0, 250);
+            this.panel2.Name = "panel2";
+            this.panel2.Size = new System.Drawing.Size(5, 39);
+            this.panel2.TabIndex = 19;
+            // 
+            // panel9
+            // 
+            this.panel9.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(51)))), ((int)(((byte)(107)))), ((int)(((byte)(135)))));
+            this.panel9.Location = new System.Drawing.Point(1, 36);
+            this.panel9.Name = "panel9";
+            this.panel9.Size = new System.Drawing.Size(5, 39);
+            this.panel9.TabIndex = 18;
+            // 
             // main
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -378,6 +428,8 @@
             ((System.ComponentModel.ISupportInitialize)(this.btn_Main)).EndInit();
             this.panelSmallContainer.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.btn_Configuration)).EndInit();
+            this.panel8.ResumeLayout(false);
+            this.panel2.ResumeLayout(false);
             this.ResumeLayout(false);
 
         }
@@ -407,6 +459,10 @@
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Panel panelSmallContainer;
         private System.Windows.Forms.PictureBox btn_Main;
+        private System.Windows.Forms.Panel panel2;
+        private System.Windows.Forms.Panel panel9;
+        private System.Windows.Forms.Button btn_CommercialTax;
+        private System.Windows.Forms.Panel panel1;
     }
 }
 

@@ -12,6 +12,6 @@ namespace Cobrapp.Model
         public string Receipt_number { get; set; }
         public string Payment_date { get; set; }
         public string Payment_time { get; set; }
-        public float Total { get; set; }
+        public decimal Total { get; set; }
     }
 }

@@ -97,7 +97,7 @@ namespace Cobrapp
             decimal penalty = amountDecimal * (calc / 100);
             decimal totalWithPenalties = amountDecimal + penalty;
             if (differenceInDays > 60) {
-                decimal extraPenalty = (Decimal.Multiply(amountDecimal, delayPenalty));
+                decimal extraPenalty = (Decimal.Multiply(amountDecimal, (delayPenalty / 100)));
                 totalWithPenalties += extraPenalty;
                 txt_extra_penalty.Text = (Math.Round(extraPenalty, 2)).ToString();
             }
@@ -173,6 +173,7 @@ namespace Cobrapp
                 dtgv_taxes_list.Rows[n].Cells[4].Value = string.IsNullOrEmpty(txt_extra_penalty.Text) ? "0" : txt_extra_penalty.Text;
                 dtgv_taxes_list.Rows[n].Cells[5].Value = Decimal.Parse(txt_tax_total.Text);
                 dtgv_taxes_list.Rows[n].Cells["amount"].Value = txt_amount.Text;
+                dtgv_taxes_list.Rows[n].Cells["taxCode"].Value = txt_barcode.Text.Substring(4, 2);
 
 
                 if (string.IsNullOrEmpty(txt_penalty.Text))
@@ -230,8 +231,10 @@ namespace Cobrapp
                 {
                     PrintDocument printReceipt = new PrintDocument();
                     PrinterSettings ps = new PrinterSettings();
+                    //CAMBIAR NOMBRE DE IMPRESORA
+                    string defaultPrinter = ConfigurationLogic.GetDefaultPrinter();
+                    ps.PrinterName = defaultPrinter;
                     printReceipt.PrinterSettings = ps;
-                    printReceipt.DefaultPageSettings.PaperSize = new PaperSize("Custom", 299, 842);
                     printReceipt.PrintPage += (s, ev) => Print(s, ev);
                     printReceipt.Print();
 
@@ -241,12 +244,13 @@ namespace Cobrapp
                         Tax obj = new Tax()
                         {
                             TaxName = row.Cells["tax"].Value.ToString(),
+                            TaxCode = row.Cells["taxCode"].Value.ToString(),
                             Receipt_number = row.Cells["receiptNum"].Value.ToString(),
                             Due_date = row.Cells["due_date"].Value.ToString(),
                             Partial = row.Cells["amount"].Value.ToString(),
                             Additional = float.Parse(row.Cells["penalty"].Value.ToString()),
                             Delay = float.Parse(row.Cells["extra_penalty"].Value.ToString()),
-                            Total = float.Parse(row.Cells["partial"].Value.ToString()),
+                            Total = decimal.Parse(row.Cells["partial"].Value.ToString()),
                             Payment_date = DateTime.Now.ToString("yyyy/MM/dd"),
                             Payment_time = DateTime.Now.ToString("HH:mm:ss")
                         };
@@ -265,7 +269,7 @@ namespace Cobrapp
         {
             string[] lines = File.ReadAllLines("models/ticket.txt");
             string file = "";
-            Font font = new Font("Arial", 10, FontStyle.Regular, GraphicsUnit.Point);
+            Font font = new Font("Arial", 11, FontStyle.Regular, GraphicsUnit.Point);
             foreach (string line in lines)
             {
                 file = file + Environment.NewLine + line;

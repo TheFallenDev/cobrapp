@@ -45,6 +45,7 @@
             this.partial = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.amount = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.subtotal = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.taxCode = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.btn_remove_tax = new System.Windows.Forms.Button();
             this.lbl_show_tax = new System.Windows.Forms.Label();
             this.lbl_show_due_date = new System.Windows.Forms.Label();
@@ -154,7 +155,8 @@
             this.extra_penalty,
             this.partial,
             this.amount,
-            this.subtotal});
+            this.subtotal,
+            this.taxCode});
             this.dtgv_taxes_list.Location = new System.Drawing.Point(321, 70);
             this.dtgv_taxes_list.Name = "dtgv_taxes_list";
             this.dtgv_taxes_list.Size = new System.Drawing.Size(599, 474);
@@ -211,6 +213,12 @@
             this.subtotal.Name = "subtotal";
             this.subtotal.ReadOnly = true;
             this.subtotal.Visible = false;
+            // 
+            // taxCode
+            // 
+            this.taxCode.HeaderText = "Codigo";
+            this.taxCode.Name = "taxCode";
+            this.taxCode.Visible = false;
             // 
             // btn_remove_tax
             // 
@@ -440,6 +448,10 @@
         private System.Windows.Forms.TextBox txt_penalty_percentage;
         private System.Windows.Forms.Label lbl_show_due_days;
         private System.Drawing.Printing.PrintDocument printTicket;
+        private System.Windows.Forms.Button btn_collect_taxes;
+        private System.Windows.Forms.Label label2;
+        private System.Windows.Forms.Label label1;
+        private System.Windows.Forms.TextBox txt_total;
         private System.Windows.Forms.DataGridViewTextBoxColumn receiptNum;
         private System.Windows.Forms.DataGridViewTextBoxColumn tax;
         private System.Windows.Forms.DataGridViewTextBoxColumn due_date;
@@ -448,9 +460,6 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn partial;
         private System.Windows.Forms.DataGridViewTextBoxColumn amount;
         private System.Windows.Forms.DataGridViewTextBoxColumn subtotal;
-        private System.Windows.Forms.Button btn_collect_taxes;
-        private System.Windows.Forms.Label label2;
-        private System.Windows.Forms.Label label1;
-        private System.Windows.Forms.TextBox txt_total;
+        private System.Windows.Forms.DataGridViewTextBoxColumn taxCode;
     }
 }

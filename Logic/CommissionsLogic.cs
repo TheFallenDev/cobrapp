@@ -40,6 +40,7 @@ namespace Cobrapp.Logic
                 string query = @"SELECT total, payment_date, receipt_number FROM (
                                     SELECT total, payment_date, receipt_number FROM Taxes 
                                     WHERE payment_date >= @fromDate AND payment_date <= @toDate
+                                    AND void IS NULL
                                     UNION ALL
                                     SELECT total, payment_date, receipt_number FROM Stamps
                                     WHERE payment_date >= @fromDate AND payment_date <= @toDate
@@ -55,8 +56,8 @@ namespace Cobrapp.Logic
                 string previousDate = "";
                 string newDate = "";
                 int counter = 0;
-                float dailyTotal;
-                float accumulator = 0;
+                double dailyTotal;
+                double accumulator = 0;
 
                 using (SQLiteDataReader reader = command.ExecuteReader())
                 {
@@ -69,7 +70,7 @@ namespace Cobrapp.Logic
                             if (accumulator == 0)
                             {
                                 previousDate = reader["payment_date"].ToString();
-                                dailyTotal = float.Parse(reader["total"].ToString());
+                                dailyTotal = double.Parse(reader["total"].ToString());
                             }
                             else
                             {
@@ -81,12 +82,12 @@ namespace Cobrapp.Logic
                                     OpCounter = counter
                                 });
                             }
-                            accumulator = float.Parse(reader["total"].ToString());
+                            accumulator = double.Parse(reader["total"].ToString());
                             counter = 1;
                         }
                         else
                         {
-                            accumulator += float.Parse(reader["total"].ToString());
+                            accumulator += double.Parse(reader["total"].ToString());
                             counter++;
                         }
                     }

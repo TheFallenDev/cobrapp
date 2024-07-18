@@ -72,10 +72,10 @@
     <Prefer32Bit>true</Prefer32Bit>
   </PropertyGroup>
   <PropertyGroup>
-    <ManifestCertificateThumbprint>CF87A07EE57C6D04E932A2C321BEEE8B2A601942</ManifestCertificateThumbprint>
+    <ManifestCertificateThumbprint>6C6423D3338CBFEF63F233765673B1B914C6BFF2</ManifestCertificateThumbprint>
   </PropertyGroup>
   <PropertyGroup>
-    <ManifestKeyFile>Cobrapp_TemporaryKey.pfx</ManifestKeyFile>
+    <ManifestKeyFile>Cobrapp_1_TemporaryKey.pfx</ManifestKeyFile>
   </PropertyGroup>
   <PropertyGroup>
     <GenerateManifests>true</GenerateManifests>
@@ -120,6 +120,12 @@
     <Compile Include="Collector.Designer.cs">
       <DependentUpon>Collector.cs</DependentUpon>
     </Compile>
+    <Compile Include="CommercialTax.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="CommercialTax.Designer.cs">
+      <DependentUpon>CommercialTax.cs</DependentUpon>
+    </Compile>
     <Compile Include="Commissions.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -138,6 +144,7 @@
     <Compile Include="Fines.Designer.cs">
       <DependentUpon>Fines.cs</DependentUpon>
     </Compile>
+    <Compile Include="Logic\PeriodsLogic.cs" />
     <Compile Include="Logic\CommissionsLogic.cs" />
     <Compile Include="Logic\ConfigurationLogic.cs" />
     <Compile Include="Logic\EmailSender.cs" />
@@ -159,8 +166,10 @@
     <Compile Include="Model\Commission.cs" />
     <Compile Include="Model\Configuration.cs" />
     <Compile Include="Model\Fine.cs" />
+    <Compile Include="Model\Period.cs" />
     <Compile Include="Model\Stamp.cs" />
     <Compile Include="Model\Tax.cs" />
+    <Compile Include="Settings.cs" />
     <Compile Include="Stamps.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -189,10 +198,12 @@
     <Compile Include="VoidPayment.Designer.cs">
       <DependentUpon>VoidPayment.cs</DependentUpon>
     </Compile>
-    <Content Include="models\ticket-comisiones.txt" />
+    <Content Include="models\ticket-multa.txt" />
     <Content Include="models\ticket-sellado.txt" />
-    <Content Include="models\ticket-totales.txt" />
     <Content Include="models\ticket.txt" />
+    <EmbeddedResource Include="CommercialTax.resx">
+      <DependentUpon>CommercialTax.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Commissions.resx">
       <DependentUpon>Commissions.cs</DependentUpon>
     </EmbeddedResource>
@@ -232,6 +243,7 @@
     <EmbeddedResource Include="VoidPayment.resx">
       <DependentUpon>VoidPayment.cs</DependentUpon>
     </EmbeddedResource>
+    <None Include="Cobrapp_1_TemporaryKey.pfx" />
     <None Include="Cobrapp_TemporaryKey.pfx" />
     <Content Include="data.db">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
@@ -262,7 +274,9 @@
       <Install>false</Install>
     </BootstrapperPackage>
   </ItemGroup>
-  <ItemGroup />
+  <ItemGroup>
+    <Folder Include="arch\" />
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <Target Name="EnsureNuGetPackageBuildImports" BeforeTargets="PrepareForBuild">
     <PropertyGroup>

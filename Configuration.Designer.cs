@@ -68,12 +68,28 @@
             this.BusinessName = new System.Windows.Forms.TextBox();
             this.label1 = new System.Windows.Forms.Label();
             this.tabControl = new System.Windows.Forms.TabControl();
+            this.tabPage3 = new System.Windows.Forms.TabPage();
+            this.label17 = new System.Windows.Forms.Label();
+            this.txt_extensionDecree = new System.Windows.Forms.TextBox();
+            this.label16 = new System.Windows.Forms.Label();
+            this.txt_extensionDelay = new System.Windows.Forms.TextBox();
+            this.label15 = new System.Windows.Forms.Label();
+            this.label14 = new System.Windows.Forms.Label();
+            this.label13 = new System.Windows.Forms.Label();
+            this.txt_extensionAdditional = new System.Windows.Forms.TextBox();
+            this.txt_extensionLastDate = new System.Windows.Forms.TextBox();
+            this.txt_extensionEndDate = new System.Windows.Forms.TextBox();
+            this.checkBox1 = new System.Windows.Forms.CheckBox();
             this.btn_save = new System.Windows.Forms.Button();
+            this.label18 = new System.Windows.Forms.Label();
+            this.txt_ShowPrinterName = new System.Windows.Forms.TextBox();
+            this.btn_PrinterSelection = new System.Windows.Forms.Button();
             this.tabPage2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dtgv_fines)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dtgv_taxes)).BeginInit();
             this.tabPage1.SuspendLayout();
             this.tabControl.SuspendLayout();
+            this.tabPage3.SuspendLayout();
             this.SuspendLayout();
             // 
             // tabPage2
@@ -220,6 +236,9 @@
             // 
             // tabPage1
             // 
+            this.tabPage1.Controls.Add(this.btn_PrinterSelection);
+            this.tabPage1.Controls.Add(this.txt_ShowPrinterName);
+            this.tabPage1.Controls.Add(this.label18);
             this.tabPage1.Controls.Add(this.ShortName);
             this.tabPage1.Controls.Add(this.label11);
             this.tabPage1.Controls.Add(this.BusinessCode);
@@ -430,11 +449,123 @@
             // 
             this.tabControl.Controls.Add(this.tabPage1);
             this.tabControl.Controls.Add(this.tabPage2);
+            this.tabControl.Controls.Add(this.tabPage3);
             this.tabControl.Location = new System.Drawing.Point(12, 12);
             this.tabControl.Name = "tabControl";
             this.tabControl.SelectedIndex = 0;
             this.tabControl.Size = new System.Drawing.Size(776, 382);
             this.tabControl.TabIndex = 0;
+            // 
+            // tabPage3
+            // 
+            this.tabPage3.Controls.Add(this.label17);
+            this.tabPage3.Controls.Add(this.txt_extensionDecree);
+            this.tabPage3.Controls.Add(this.label16);
+            this.tabPage3.Controls.Add(this.txt_extensionDelay);
+            this.tabPage3.Controls.Add(this.label15);
+            this.tabPage3.Controls.Add(this.label14);
+            this.tabPage3.Controls.Add(this.label13);
+            this.tabPage3.Controls.Add(this.txt_extensionAdditional);
+            this.tabPage3.Controls.Add(this.txt_extensionLastDate);
+            this.tabPage3.Controls.Add(this.txt_extensionEndDate);
+            this.tabPage3.Controls.Add(this.checkBox1);
+            this.tabPage3.Location = new System.Drawing.Point(4, 22);
+            this.tabPage3.Name = "tabPage3";
+            this.tabPage3.Padding = new System.Windows.Forms.Padding(3);
+            this.tabPage3.Size = new System.Drawing.Size(768, 356);
+            this.tabPage3.TabIndex = 2;
+            this.tabPage3.Text = "Moratoria";
+            this.tabPage3.UseVisualStyleBackColor = true;
+            // 
+            // label17
+            // 
+            this.label17.AutoSize = true;
+            this.label17.Location = new System.Drawing.Point(252, 77);
+            this.label17.Name = "label17";
+            this.label17.Size = new System.Drawing.Size(45, 13);
+            this.label17.TabIndex = 10;
+            this.label17.Text = "Decreto";
+            // 
+            // txt_extensionDecree
+            // 
+            this.txt_extensionDecree.Location = new System.Drawing.Point(252, 96);
+            this.txt_extensionDecree.Name = "txt_extensionDecree";
+            this.txt_extensionDecree.Size = new System.Drawing.Size(196, 20);
+            this.txt_extensionDecree.TabIndex = 9;
+            // 
+            // label16
+            // 
+            this.label16.AutoSize = true;
+            this.label16.Location = new System.Drawing.Point(30, 251);
+            this.label16.Name = "label16";
+            this.label16.Size = new System.Drawing.Size(31, 13);
+            this.label16.TabIndex = 8;
+            this.label16.Text = "Mora";
+            // 
+            // txt_extensionDelay
+            // 
+            this.txt_extensionDelay.Location = new System.Drawing.Point(30, 270);
+            this.txt_extensionDelay.Name = "txt_extensionDelay";
+            this.txt_extensionDelay.Size = new System.Drawing.Size(100, 20);
+            this.txt_extensionDelay.TabIndex = 7;
+            // 
+            // label15
+            // 
+            this.label15.AutoSize = true;
+            this.label15.Location = new System.Drawing.Point(30, 192);
+            this.label15.Name = "label15";
+            this.label15.Size = new System.Drawing.Size(48, 13);
+            this.label15.TabIndex = 6;
+            this.label15.Text = "Recargo";
+            // 
+            // label14
+            // 
+            this.label14.AutoSize = true;
+            this.label14.Location = new System.Drawing.Point(30, 135);
+            this.label14.Name = "label14";
+            this.label14.Size = new System.Drawing.Size(96, 13);
+            this.label14.TabIndex = 5;
+            this.label14.Text = "Ultimo vencimiento";
+            // 
+            // label13
+            // 
+            this.label13.AutoSize = true;
+            this.label13.Location = new System.Drawing.Point(30, 77);
+            this.label13.Name = "label13";
+            this.label13.Size = new System.Drawing.Size(107, 13);
+            this.label13.TabIndex = 4;
+            this.label13.Text = "Fecha de finalización";
+            // 
+            // txt_extensionAdditional
+            // 
+            this.txt_extensionAdditional.Location = new System.Drawing.Point(30, 211);
+            this.txt_extensionAdditional.Name = "txt_extensionAdditional";
+            this.txt_extensionAdditional.Size = new System.Drawing.Size(100, 20);
+            this.txt_extensionAdditional.TabIndex = 3;
+            // 
+            // txt_extensionLastDate
+            // 
+            this.txt_extensionLastDate.Location = new System.Drawing.Point(30, 154);
+            this.txt_extensionLastDate.Name = "txt_extensionLastDate";
+            this.txt_extensionLastDate.Size = new System.Drawing.Size(100, 20);
+            this.txt_extensionLastDate.TabIndex = 2;
+            // 
+            // txt_extensionEndDate
+            // 
+            this.txt_extensionEndDate.Location = new System.Drawing.Point(30, 96);
+            this.txt_extensionEndDate.Name = "txt_extensionEndDate";
+            this.txt_extensionEndDate.Size = new System.Drawing.Size(100, 20);
+            this.txt_extensionEndDate.TabIndex = 1;
+            // 
+            // checkBox1
+            // 
+            this.checkBox1.AutoSize = true;
+            this.checkBox1.Location = new System.Drawing.Point(30, 31);
+            this.checkBox1.Name = "checkBox1";
+            this.checkBox1.Size = new System.Drawing.Size(110, 17);
+            this.checkBox1.TabIndex = 0;
+            this.checkBox1.Text = "Habilitar moratoria";
+            this.checkBox1.UseVisualStyleBackColor = true;
             // 
             // btn_save
             // 
@@ -445,6 +576,32 @@
             this.btn_save.Text = "Guardar";
             this.btn_save.UseVisualStyleBackColor = true;
             this.btn_save.Click += new System.EventHandler(this.btn_save_Click);
+            // 
+            // label18
+            // 
+            this.label18.AutoSize = true;
+            this.label18.Location = new System.Drawing.Point(392, 311);
+            this.label18.Name = "label18";
+            this.label18.Size = new System.Drawing.Size(53, 13);
+            this.label18.TabIndex = 22;
+            this.label18.Text = "Impresora";
+            // 
+            // txt_ShowPrinterName
+            // 
+            this.txt_ShowPrinterName.Location = new System.Drawing.Point(444, 308);
+            this.txt_ShowPrinterName.Name = "txt_ShowPrinterName";
+            this.txt_ShowPrinterName.Size = new System.Drawing.Size(219, 20);
+            this.txt_ShowPrinterName.TabIndex = 23;
+            // 
+            // btn_PrinterSelection
+            // 
+            this.btn_PrinterSelection.Location = new System.Drawing.Point(669, 306);
+            this.btn_PrinterSelection.Name = "btn_PrinterSelection";
+            this.btn_PrinterSelection.Size = new System.Drawing.Size(75, 23);
+            this.btn_PrinterSelection.TabIndex = 24;
+            this.btn_PrinterSelection.Text = "Seleccionar";
+            this.btn_PrinterSelection.UseVisualStyleBackColor = true;
+            this.btn_PrinterSelection.Click += new System.EventHandler(this.btn_PrinterSelection_Click);
             // 
             // Configuration
             // 
@@ -463,6 +620,8 @@
             this.tabPage1.ResumeLayout(false);
             this.tabPage1.PerformLayout();
             this.tabControl.ResumeLayout(false);
+            this.tabPage3.ResumeLayout(false);
+            this.tabPage3.PerformLayout();
             this.ResumeLayout(false);
 
         }
@@ -509,5 +668,20 @@
         private System.Windows.Forms.Label txt_comission;
         private System.Windows.Forms.TextBox ConfigurationPassword;
         private System.Windows.Forms.Label label12;
+        private System.Windows.Forms.TabPage tabPage3;
+        private System.Windows.Forms.CheckBox checkBox1;
+        private System.Windows.Forms.TextBox txt_extensionEndDate;
+        private System.Windows.Forms.Label label13;
+        private System.Windows.Forms.TextBox txt_extensionAdditional;
+        private System.Windows.Forms.TextBox txt_extensionLastDate;
+        private System.Windows.Forms.Label label15;
+        private System.Windows.Forms.Label label14;
+        private System.Windows.Forms.Label label16;
+        private System.Windows.Forms.TextBox txt_extensionDelay;
+        private System.Windows.Forms.Label label17;
+        private System.Windows.Forms.TextBox txt_extensionDecree;
+        private System.Windows.Forms.Button btn_PrinterSelection;
+        private System.Windows.Forms.TextBox txt_ShowPrinterName;
+        private System.Windows.Forms.Label label18;
     }
 }

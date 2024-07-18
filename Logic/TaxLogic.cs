@@ -37,9 +37,10 @@ namespace Cobrapp.Logic
             using (SQLiteConnection connection = new SQLiteConnection(conn) )
             {
                 connection.Open();
-                string query = "insert into Taxes(Tax,Receipt_number,Payment_date,Payment_time,Due_date,Total,Additional,Delay,Partial) values (@tax,@receipt_number,@payment_date,@payment_time,@due_date,@total,@additional,@delay,@partial)";
+                string query = "insert into Taxes(Tax,Tax_code,Receipt_number,Payment_date,Payment_time,Due_date,Total,Additional,Delay,Partial) values (@tax,@tax_code,@receipt_number,@payment_date,@payment_time,@due_date,@total,@additional,@delay,@partial)";
                 SQLiteCommand command = new SQLiteCommand(query, connection);
                 command.Parameters.Add(new SQLiteParameter("@tax", obj.TaxName));
+                command.Parameters.Add(new SQLiteParameter("@tax_code", obj.TaxCode));
                 command.Parameters.Add(new SQLiteParameter("@receipt_number", obj.Receipt_number));
                 command.Parameters.Add(new SQLiteParameter("@payment_date", obj.Payment_date));
                 command.Parameters.Add(new SQLiteParameter("@payment_time", obj.Payment_time));
@@ -124,7 +125,7 @@ namespace Cobrapp.Logic
                         list.Add(new Tax()
                         {
                             Receipt_number = reader["receipt_number"].ToString(),
-                            Total = float.Parse(reader["total"].ToString()),
+                            Total = decimal.Parse(reader["total"].ToString()),
                             Due_date = reader["due_date"].ToString(),
                             TaxName = reader["tax"].ToString(),
                         });
@@ -141,7 +142,7 @@ namespace Cobrapp.Logic
             using (SQLiteConnection connection = new SQLiteConnection(conn))
             {
                 connection.Open();
-                string query = "select receipt_number,total,additional,delay,partial,due_date,tax,payment_date,payment_time,void from Taxes where payment_date='" + date + "'" ;
+                string query = "select receipt_number,total,additional,delay,partial,due_date,tax,tax_code,payment_date,payment_time,void from Taxes where payment_date='" + date + "'" ;
                 SQLiteCommand command = new SQLiteCommand(query, connection);
                 command.CommandType = System.Data.CommandType.Text;
 
@@ -152,12 +153,13 @@ namespace Cobrapp.Logic
                         listByDate.Add(new Tax()
                         {
                             Receipt_number = reader["receipt_number"].ToString(),
-                            Total = float.Parse(reader["total"].ToString()),
+                            Total = decimal.Parse(reader["total"].ToString()),
                             Additional = float.Parse(reader["additional"].ToString()),
                             Delay = float.Parse(reader["delay"].ToString()),
                             Partial = reader["partial"].ToString(),
                             Due_date = reader["due_date"].ToString(),
                             TaxName = reader["tax"].ToString(),
+                            TaxCode = reader["tax_code"].ToString(),
                             Payment_time = reader["payment_time"].ToString(),
                             Void = reader["void"].ToString()
                         });

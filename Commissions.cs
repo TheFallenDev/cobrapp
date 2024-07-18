@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.ComponentModel;
 using System.Drawing;
 using System.Drawing.Printing;
 using System.IO;
@@ -20,6 +21,11 @@ namespace Cobrapp
             DateTime previousMonth = today.AddMonths(-1);
             dtp_to_date.Value = new DateTime(previousMonth.Year,previousMonth.Month, DateTime.DaysInMonth(previousMonth.Year, previousMonth.Month));
             dtp_from_date.Value = new DateTime(dtp_to_date.Value.Year,dtp_to_date.Value.Month,1);
+            dtgv_commissions.Columns[1].DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleRight;
+            dtgv_commissions.Columns[1].DefaultCellStyle.Format = "N2";
+            dtgv_commissions.Columns[2].DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleRight;
+            dtgv_commissions.Columns[2].DefaultCellStyle.Format = "N2";
+            dtgv_commissions.Columns[3].DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleCenter;
             KeyPreview = true;
             btn_print.Enabled = false;
         }
@@ -32,21 +38,22 @@ namespace Cobrapp
             lbl_total_commission.Text = "";
             lbl_total_collected.Text = "";
             List<Commission> commissionsList = CommissionsLogic.Instance.ListFromToDate(MyUtils.DateFixer(dtp_from_date.Text), MyUtils.DateFixer(dtp_to_date.Text));
-            Decimal acc = 0;
-            Decimal collected = 0;
+            decimal acc = 0;
+            decimal collected = 0;
             foreach (var commission in commissionsList)
             {
                 int n = dtgv_commissions.Rows.Add();
                 dtgv_commissions.Rows[n].Cells[0].Value = MyUtils.DateFixer(commission.Day);
-                dtgv_commissions.Rows[n].Cells[1].Value = "$ " + commission.DailyTotal.ToString("0.00");
-                dtgv_commissions.Rows[n].Cells[2].Value = "$ " + (commission.DailyTotal * CorrespondingComission).ToString("0.00");
-                dtgv_commissions.Rows[n].Cells[3].Value = commission.OpCounter.ToString();
-                acc += Decimal.Parse((commission.DailyTotal * CorrespondingComission).ToString());
-                lbl_total_commission.Text = "$ " + acc.ToString("0.00");
-                collected += Decimal.Parse(commission.DailyTotal.ToString());
-                lbl_total_collected.Text = "$ " + collected.ToString("0.00");
+                dtgv_commissions.Rows[n].Cells[1].Value = commission.DailyTotal.ToString("N2");
+                dtgv_commissions.Rows[n].Cells[2].Value = (commission.DailyTotal * CorrespondingComission).ToString("N2");
+                dtgv_commissions.Rows[n].Cells[3].Value = commission.OpCounter;
+                acc += decimal.Parse((commission.DailyTotal * CorrespondingComission).ToString());
+                lbl_total_commission.Text = "$ " + acc.ToString("N2");
+                collected += decimal.Parse(commission.DailyTotal.ToString());
+                lbl_total_collected.Text = "$ " + collected.ToString("N2");
             }
-            if(dtgv_commissions.Rows.Count > 0)
+            Console.WriteLine(acc);
+            if (dtgv_commissions.Rows.Count > 0)
             {
                 btn_print.Enabled = true;
             }
@@ -58,21 +65,36 @@ namespace Cobrapp
 
         private void btn_print_Click(object sender, EventArgs e)
         {
-            PrintDocument printReceipt = new PrintDocument();
-            PrinterSettings ps = new PrinterSettings();
-            printReceipt.PrinterSettings = ps;
-            printReceipt.DefaultPageSettings.PaperSize = new PaperSize("Custom", 299, 842);
-            printReceipt.PrintPage += (s, ev) => Print(s, ev);
-            printReceipt.Print();
-        }
+            List<string> days = new List<string>();
+            List<string> totals = new List<string>();
+            List<string> commissions = new List<string>();
+            dtgv_commissions.Sort(dtgv_commissions.Columns[0], ListSortDirection.Ascending);
 
-        private void Print(object sender, PrintPageEventArgs e)
-        {
-            Font font = new Font("Courier New", 10, FontStyle.Regular, GraphicsUnit.Point);
-            string Model = File.ReadAllText("models/ticket-comisiones.txt");
-            int yPos = 100;
-            
-            e.Graphics.DrawString(Replacer(Model), font, Brushes.Black, 50, yPos);
+            foreach (DataGridViewRow row in dtgv_commissions.Rows)
+            {
+                days.Add(row.Cells[0].Value.ToString());
+                totals.Add(row.Cells[1].Value.ToString());
+                commissions.Add(row.Cells[2].Value.ToString());
+            }
+
+            Ticket myTicket = new Ticket
+            {
+                Total = lbl_total_collected.Text,
+                Commission = lbl_total_commission.Text,
+                FirstColumn = days.ToArray(),
+                SecondColumn = totals.ToArray(),
+                ThirdColumn = commissions.ToArray()
+            };
+            if (MyUtils.PrinterExists("tickerausb"))
+            {
+                myTicket.PrintTicket(Ticket.PrintType.CommissionsUSB);
+            }
+            else
+            {
+                myTicket.PrintTicket(Ticket.PrintType.Commissions);
+            }
+
+            dtgv_commissions.Sort(dtgv_commissions.Columns[0], ListSortDirection.Ascending);
         }
 
         private string Replacer(string model)
@@ -81,7 +103,8 @@ namespace Cobrapp
 
             foreach (DataGridViewRow row in dtgv_commissions.Rows)
             {
-                linea = linea + Environment.NewLine + row.Cells[0].Value.ToString() + "\t" + row.Cells[1].Value.ToString() + "\t" + row.Cells[2].Value.ToString();
+                DateTime day = DateTime.Parse(row.Cells[0].Value.ToString());
+                linea = linea + Environment.NewLine + day.ToString("dd/MM/yy") + "\t" + row.Cells[1].Value.ToString() + "\t" + row.Cells[2].Value.ToString();
             }
 
             model = model.Replace("PERCENT", ConfigurationLogic.Instance.GetConfigurationValue("CorrespondingComission"));
@@ -96,7 +119,7 @@ namespace Cobrapp
 
         private void Commissions_KeyDown(object sender, KeyEventArgs e)
         {
-            if(e.KeyCode == Keys.F9)
+            if(e.KeyCode == Keys.Enter)
             {
                 btn_calculate.PerformClick();
             }

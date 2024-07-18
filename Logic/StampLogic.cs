@@ -74,7 +74,7 @@ namespace Cobrapp.Logic
                         {
                             Payment_time = reader["payment_time"].ToString(),
                             Receipt_number = reader["receipt_number"].ToString(),
-                            Total = float.Parse(reader["total"].ToString()),
+                            Total = decimal.Parse(reader["total"].ToString()),
                         });
                     }
                 }

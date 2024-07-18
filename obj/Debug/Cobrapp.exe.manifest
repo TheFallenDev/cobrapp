@@ -42,14 +42,14 @@
     </dependentAssembly>
   </dependency>
   <dependency>
-    <dependentAssembly dependencyType="install" allowDelayedBinding="true" codebase="Cobrapp.exe" size="155040">
+    <dependentAssembly dependencyType="install" allowDelayedBinding="true" codebase="Cobrapp.exe" size="582560">
       <assemblyIdentity name="Cobrapp" version="1.0.0.1" language="neutral" processorArchitecture="msil" />
       <hash>
         <dsig:Transforms>
           <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
         </dsig:Transforms>
         <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha256" />
-        <dsig:DigestValue>rDpz5LmJOla6XWqFNJzdg1ioGgaORG/esqWqJDBb90E=</dsig:DigestValue>
+        <dsig:DigestValue>xULiP4cz9Z8KaByp0c1+42iR1jEYUrjwQfIgOFoPmYQ=</dsig:DigestValue>
       </hash>
     </dependentAssembly>
   </dependency>
@@ -113,58 +113,49 @@
       </hash>
     </dependentAssembly>
   </dependency>
-  <file name="Cobrapp.exe.config" size="1698">
+  <file name="Cobrapp.exe.config" size="4366">
     <hash>
       <dsig:Transforms>
         <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
       </dsig:Transforms>
       <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha256" />
-      <dsig:DigestValue>reGo+HyjunlDGP6L1vscaQonP/PCZXlBh2/dvIQh2I4=</dsig:DigestValue>
+      <dsig:DigestValue>EIBkrkvC3RQJaPjbMisJEaeEfb6xskwYlfeDdCG+tLs=</dsig:DigestValue>
     </hash>
   </file>
-  <file name="data.db" size="49152">
+  <file name="data.db" size="61440">
     <hash>
       <dsig:Transforms>
         <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
       </dsig:Transforms>
       <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha256" />
-      <dsig:DigestValue>yH8kesxd0+LbMZrt2B4UgIGkySB2APUmGFDrfS41Bq8=</dsig:DigestValue>
+      <dsig:DigestValue>cnoH4scnaeEND6BT6od8nsXPv76S/SshBKq7KQw2UCw=</dsig:DigestValue>
     </hash>
   </file>
-  <file name="models\ticket.txt" size="326">
+  <file name="models\ticket.txt" size="525">
     <hash>
       <dsig:Transforms>
         <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
       </dsig:Transforms>
       <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha256" />
-      <dsig:DigestValue>w94+cbhw9LQXTMbsdEstV2RuxmjoffClXECl2Ope0B8=</dsig:DigestValue>
+      <dsig:DigestValue>W9kwfvsz0rZDzhHLOqhSscQLRYLTB7HB8a2QTs2dtQg=</dsig:DigestValue>
     </hash>
   </file>
-  <file name="models\ticket-comisiones.txt" size="276">
+  <file name="models\ticket-multa.txt" size="719">
     <hash>
       <dsig:Transforms>
         <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
       </dsig:Transforms>
       <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha256" />
-      <dsig:DigestValue>/ZN7xClW9OFLqcztLTZFkkTSKMVxCDEudJZazYgRBQc=</dsig:DigestValue>
+      <dsig:DigestValue>g+rMsBmfpJWk83wUZ2yIsNjUJnDyuJrV84KpycUbCUc=</dsig:DigestValue>
     </hash>
   </file>
-  <file name="models\ticket-sellado.txt" size="751">
+  <file name="models\ticket-sellado.txt" size="510">
     <hash>
       <dsig:Transforms>
         <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
       </dsig:Transforms>
       <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha256" />
-      <dsig:DigestValue>iMF6+kuzm62X6mUFnboLxrEKq/Ho/1/4id/WgY9mRYg=</dsig:DigestValue>
-    </hash>
-  </file>
-  <file name="models\ticket-totales.txt" size="322">
-    <hash>
-      <dsig:Transforms>
-        <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
-      </dsig:Transforms>
-      <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha256" />
-      <dsig:DigestValue>saEZBDaKuuY6V4xlb+M913BeVtPqxCoC1PL5t1lfhNw=</dsig:DigestValue>
+      <dsig:DigestValue>HKA1DAvx5HG9kw5EYhoNxNj9pjTFsdHC4AZkYfy/kE0=</dsig:DigestValue>
     </hash>
   </file>
 </asmv1:assembly>

@@ -6,10 +6,10 @@ using System.Threading.Tasks;
 
 namespace Cobrapp.Model
 {
-    public class Commission
+    public class Period
     {
-        public string Day { get; set; }
-        public double DailyTotal { get; set; }
-        public int OpCounter { get; set; }
+        public string PeriodName { get; set; }
+        public string DueDate { get; set; }
+        public string Tax { get; set; }
     }
 }

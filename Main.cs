@@ -2,7 +2,9 @@
 using System.Windows.Forms;
 using System.Runtime.InteropServices;
 using Cobrapp.Logic;
+using Cobrapp.Utils;
 using System.Runtime.Remoting.Messaging;
+using System.Drawing.Printing;
 
 namespace Cobrapp
 {
@@ -92,37 +94,53 @@ namespace Cobrapp
             }
         }
 
+        private void btn_Main_Click(object sender, EventArgs e)
+        {
+            OpenNewForm(new MainChild());
+        }
+
+        private void btn_CommercialTax_Click(object sender, EventArgs e)
+        {
+            if (ConfigurationLogic.Instance.GetConfigurationValue("ConfigurationOK") != "OK")
+            {
+                MessageBox.Show("Antes de continuar debe rellenar las configuraciones para que el programa funcione correctamente.", "¡Advertencia!", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                OpenNewForm(new Configuration());
+            }
+            else
+            {
+                OpenNewForm(new CommercialTax());
+            }
+        }
+
         private void main_KeyDown(object sender, KeyEventArgs e)
         {
             if (e.KeyCode == Keys.F1)
             {
-                // Realiza la acción correspondiente al botón F1
-                btn_collect_taxes.PerformClick(); // Esto simula un clic en el botón 1
+                btn_collect_taxes.PerformClick();
             }
             else if (e.KeyCode == Keys.F2)
             {
-                // Realiza la acción correspondiente al botón F2
-                btn_stamps.PerformClick(); // Esto simula un clic en el botón 2
+                btn_stamps.PerformClick();
             }
             else if (e.KeyCode == Keys.F3)
             {
                 btn_fines.PerformClick();
-                // Realiza la acción correspondiente al botón F3
             }
             else if (e.KeyCode == Keys.F4)
             {
-                // Realiza la acción correspondiente al botón F4
-                btn_void_payment.PerformClick(); // Esto simula un clic en el botón 2
+                btn_CommercialTax.PerformClick();
             }
             else if (e.KeyCode == Keys.F5)
             {
-                // Realiza la acción correspondiente al botón F5
-                btn_daily_total.PerformClick(); // Esto simula un clic en el botón 2
+                btn_void_payment.PerformClick();
             }
             else if (e.KeyCode == Keys.F6)
             {
-                // Realiza la acción correspondiente al botón F6
-                btn_commissions.PerformClick(); // Esto simula un clic en el botón 2
+                btn_daily_total.PerformClick();
+            }
+            else if (e.KeyCode == Keys.F7)
+            {
+                btn_commissions.PerformClick();
             }
             else if (e.KeyCode == Keys.Escape)
             {
@@ -208,11 +226,11 @@ namespace Cobrapp
             {
                 btn_Main_Click(null, e);
             }
-        }
 
-        private void btn_Main_Click(object sender, EventArgs e)
-        {
-            OpenNewForm(new MainChild());
+            if (!MyUtils.PrinterExists("tickera") && !MyUtils.PrinterExists("tickerausb"))
+            {
+                MessageBox.Show("Se requiere tener una impresora instalada con el nombre 'tickera' o 'tickeraUSB'.");
+            }
         }
     }
 }

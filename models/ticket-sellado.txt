@@ -1,21 +1,15 @@
-*********************************
+********************************
 Municipalidad de Diamante        
-*********************************
-                                 
+********************************
 BUSINESSNAME                     
 ADDRESS                          
                                  
-Comprobante Nº: RECEIPTNUMBER    
-                                 
-Fecha: DATE                      
-                                 
-   Importe: $ TOTAL               
-                                 
-******************************   
-   Total: $ TOTAL                  
-******************************   
-Este comprobante es valido       
-como constancia de presentacion  
-y pago unicamente con el         
-sello de caja                                                     
-******************************
+Cpte. Nro. RECEIPTNUMBER    
+Fecha: DATE             
+********************************
+Sellado Administrativo
+
+Total: $ TOTAL                  
+********************************
+Este comprobante es valido como constancia de presentacion y pago unicamente con el sello de caja
+********************************

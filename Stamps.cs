@@ -26,8 +26,8 @@ namespace Cobrapp
                 string value = MyUtils.Formatter(txt_stamp_value.Text);
                 PrintDocument printReceipt = new PrintDocument();
                 PrinterSettings ps = new PrinterSettings();
+                ps.PrinterName = "tickera";
                 printReceipt.PrinterSettings = ps;
-                printReceipt.DefaultPageSettings.PaperSize = new PaperSize("Custom",299, 842);
                 printReceipt.PrintPage += (s, ev) => Print(s, ev);
                 printReceipt.Print();
 
@@ -38,7 +38,7 @@ namespace Cobrapp
                     Receipt_number = businessCode + newId.ToString().PadLeft(6, '0'),
                     Payment_date = DateTime.Now.ToString("yyyy/MM/dd"),
                     Payment_time = DateTime.Now.ToString("HH:mm:ss"),
-                    Total = float.Parse(value)
+                    Total = decimal.Parse(value)
                 };
                 bool response = StampLogic.Instance.Save(obj);
             }
@@ -52,7 +52,7 @@ namespace Cobrapp
         {
             string[] lines = File.ReadAllLines("models/ticket-sellado.txt");
             string file = "";
-            Font font = new Font("Courier New", 10, FontStyle.Regular, GraphicsUnit.Point);
+            Font font = new Font("Arial", 11, FontStyle.Regular, GraphicsUnit.Point);
             foreach (string line in lines)
             {
                 file = file + Environment.NewLine + line;

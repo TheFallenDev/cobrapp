@@ -144,6 +144,7 @@ namespace Cobrapp
                     }
                 }
             }
+            txt_ShowPrinterName.Text = ConfigurationLogic.GetDefaultPrinter();
         }
 
         private void getTaxConfigurations()
@@ -188,6 +189,12 @@ namespace Cobrapp
             {
                 e.Handled = true;
             }
+        }
+
+        private void btn_PrinterSelection_Click(object sender, EventArgs e)
+        {
+            ConfigurationLogic.SelectDefaultPrinter();
+            txt_ShowPrinterName.Text = ConfigurationLogic.GetDefaultPrinter();
         }
     }
 }

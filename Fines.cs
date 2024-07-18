@@ -92,6 +92,7 @@ namespace Cobrapp
         {
             PrintDocument printReceipt = new PrintDocument();
             PrinterSettings ps = new PrinterSettings();
+            ps.PrinterName = "tickera";
             printReceipt.PrinterSettings = ps;
             printReceipt.DefaultPageSettings.PaperSize = new PaperSize("Custom", 299, 842);
             printReceipt.PrintPage += (s, ev) => Print(s, ev);

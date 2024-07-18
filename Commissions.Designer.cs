@@ -144,7 +144,7 @@
             this.btn_calculate.Name = "btn_calculate";
             this.btn_calculate.Size = new System.Drawing.Size(93, 23);
             this.btn_calculate.TabIndex = 9;
-            this.btn_calculate.Text = "Calcular (F9)";
+            this.btn_calculate.Text = "Calcular";
             this.btn_calculate.UseVisualStyleBackColor = true;
             this.btn_calculate.Click += new System.EventHandler(this.btn_calculate_Click);
             // 
