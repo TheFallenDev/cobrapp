@@ -42,31 +42,31 @@
             this.UpperBar = new System.Windows.Forms.Panel();
             this.label1 = new System.Windows.Forms.Label();
             this.panelLeft = new System.Windows.Forms.Panel();
+            this.panel2 = new System.Windows.Forms.Panel();
+            this.panel9 = new System.Windows.Forms.Panel();
+            this.btn_CommercialTax = new System.Windows.Forms.Button();
             this.btn_Main = new System.Windows.Forms.PictureBox();
             this.panelSmallContainer = new System.Windows.Forms.Panel();
             this.btn_Configuration = new System.Windows.Forms.PictureBox();
             this.panel3 = new System.Windows.Forms.Panel();
             this.panel8 = new System.Windows.Forms.Panel();
+            this.panel1 = new System.Windows.Forms.Panel();
             this.panel7 = new System.Windows.Forms.Panel();
             this.panel6 = new System.Windows.Forms.Panel();
             this.panel5 = new System.Windows.Forms.Panel();
             this.panel4 = new System.Windows.Forms.Panel();
             this.panelContainer = new System.Windows.Forms.Panel();
-            this.btn_CommercialTax = new System.Windows.Forms.Button();
-            this.panel1 = new System.Windows.Forms.Panel();
-            this.panel2 = new System.Windows.Forms.Panel();
-            this.panel9 = new System.Windows.Forms.Panel();
             ((System.ComponentModel.ISupportInitialize)(this.btn_Close)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.btn_maximize)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.btn_minimize)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.btn_restore)).BeginInit();
             this.UpperBar.SuspendLayout();
             this.panelLeft.SuspendLayout();
+            this.panel2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.btn_Main)).BeginInit();
             this.panelSmallContainer.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.btn_Configuration)).BeginInit();
             this.panel8.SuspendLayout();
-            this.panel2.SuspendLayout();
             this.SuspendLayout();
             // 
             // btn_collect_taxes
@@ -271,6 +271,39 @@
             this.panelLeft.Size = new System.Drawing.Size(192, 628);
             this.panelLeft.TabIndex = 15;
             // 
+            // panel2
+            // 
+            this.panel2.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(51)))), ((int)(((byte)(107)))), ((int)(((byte)(135)))));
+            this.panel2.Controls.Add(this.panel9);
+            this.panel2.Location = new System.Drawing.Point(0, 250);
+            this.panel2.Name = "panel2";
+            this.panel2.Size = new System.Drawing.Size(5, 39);
+            this.panel2.TabIndex = 19;
+            // 
+            // panel9
+            // 
+            this.panel9.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(51)))), ((int)(((byte)(107)))), ((int)(((byte)(135)))));
+            this.panel9.Location = new System.Drawing.Point(1, 36);
+            this.panel9.Name = "panel9";
+            this.panel9.Size = new System.Drawing.Size(5, 39);
+            this.panel9.TabIndex = 18;
+            // 
+            // btn_CommercialTax
+            // 
+            this.btn_CommercialTax.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.btn_CommercialTax.FlatAppearance.BorderSize = 0;
+            this.btn_CommercialTax.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(51)))), ((int)(((byte)(107)))), ((int)(((byte)(135)))));
+            this.btn_CommercialTax.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btn_CommercialTax.ForeColor = System.Drawing.SystemColors.ButtonFace;
+            this.btn_CommercialTax.Location = new System.Drawing.Point(0, 250);
+            this.btn_CommercialTax.Name = "btn_CommercialTax";
+            this.btn_CommercialTax.Size = new System.Drawing.Size(192, 39);
+            this.btn_CommercialTax.TabIndex = 20;
+            this.btn_CommercialTax.Text = "TISHPyS - F4";
+            this.btn_CommercialTax.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.btn_CommercialTax.UseVisualStyleBackColor = true;
+            this.btn_CommercialTax.Click += new System.EventHandler(this.btn_CommercialTax_Click);
+            // 
             // btn_Main
             // 
             this.btn_Main.BackColor = System.Drawing.Color.Transparent;
@@ -323,6 +356,14 @@
             this.panel8.Size = new System.Drawing.Size(5, 39);
             this.panel8.TabIndex = 17;
             // 
+            // panel1
+            // 
+            this.panel1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(51)))), ((int)(((byte)(107)))), ((int)(((byte)(135)))));
+            this.panel1.Location = new System.Drawing.Point(1, 36);
+            this.panel1.Name = "panel1";
+            this.panel1.Size = new System.Drawing.Size(5, 39);
+            this.panel1.TabIndex = 18;
+            // 
             // panel7
             // 
             this.panel7.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(51)))), ((int)(((byte)(107)))), ((int)(((byte)(135)))));
@@ -363,47 +404,6 @@
             this.panelContainer.Size = new System.Drawing.Size(932, 628);
             this.panelContainer.TabIndex = 16;
             // 
-            // btn_CommercialTax
-            // 
-            this.btn_CommercialTax.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.btn_CommercialTax.FlatAppearance.BorderSize = 0;
-            this.btn_CommercialTax.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(51)))), ((int)(((byte)(107)))), ((int)(((byte)(135)))));
-            this.btn_CommercialTax.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btn_CommercialTax.ForeColor = System.Drawing.SystemColors.ButtonFace;
-            this.btn_CommercialTax.Location = new System.Drawing.Point(0, 250);
-            this.btn_CommercialTax.Name = "btn_CommercialTax";
-            this.btn_CommercialTax.Size = new System.Drawing.Size(192, 39);
-            this.btn_CommercialTax.TabIndex = 20;
-            this.btn_CommercialTax.Text = "TISHPyS - F4";
-            this.btn_CommercialTax.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btn_CommercialTax.UseVisualStyleBackColor = true;
-            this.btn_CommercialTax.Click += new System.EventHandler(this.btn_CommercialTax_Click);
-            // 
-            // panel1
-            // 
-            this.panel1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(51)))), ((int)(((byte)(107)))), ((int)(((byte)(135)))));
-            this.panel1.Location = new System.Drawing.Point(1, 36);
-            this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(5, 39);
-            this.panel1.TabIndex = 18;
-            // 
-            // panel2
-            // 
-            this.panel2.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(51)))), ((int)(((byte)(107)))), ((int)(((byte)(135)))));
-            this.panel2.Controls.Add(this.panel9);
-            this.panel2.Location = new System.Drawing.Point(0, 250);
-            this.panel2.Name = "panel2";
-            this.panel2.Size = new System.Drawing.Size(5, 39);
-            this.panel2.TabIndex = 19;
-            // 
-            // panel9
-            // 
-            this.panel9.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(51)))), ((int)(((byte)(107)))), ((int)(((byte)(135)))));
-            this.panel9.Location = new System.Drawing.Point(1, 36);
-            this.panel9.Name = "panel9";
-            this.panel9.Size = new System.Drawing.Size(5, 39);
-            this.panel9.TabIndex = 18;
-            // 
             // main
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -425,11 +425,11 @@
             this.UpperBar.ResumeLayout(false);
             this.UpperBar.PerformLayout();
             this.panelLeft.ResumeLayout(false);
+            this.panel2.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.btn_Main)).EndInit();
             this.panelSmallContainer.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.btn_Configuration)).EndInit();
             this.panel8.ResumeLayout(false);
-            this.panel2.ResumeLayout(false);
             this.ResumeLayout(false);
 
         }

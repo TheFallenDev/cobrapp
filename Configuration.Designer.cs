@@ -45,6 +45,9 @@
             this.taxName = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.taxCode = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.tabPage1 = new System.Windows.Forms.TabPage();
+            this.btn_PrinterSelection = new System.Windows.Forms.Button();
+            this.DefaultPrinter = new System.Windows.Forms.TextBox();
+            this.label18 = new System.Windows.Forms.Label();
             this.ShortName = new System.Windows.Forms.TextBox();
             this.label11 = new System.Windows.Forms.Label();
             this.BusinessCode = new System.Windows.Forms.TextBox();
@@ -70,30 +73,39 @@
             this.tabControl = new System.Windows.Forms.TabControl();
             this.tabPage3 = new System.Windows.Forms.TabPage();
             this.label17 = new System.Windows.Forms.Label();
-            this.txt_extensionDecree = new System.Windows.Forms.TextBox();
+            this.ExtensionDecree = new System.Windows.Forms.TextBox();
             this.label16 = new System.Windows.Forms.Label();
-            this.txt_extensionDelay = new System.Windows.Forms.TextBox();
+            this.ExtensionDelay = new System.Windows.Forms.TextBox();
             this.label15 = new System.Windows.Forms.Label();
             this.label14 = new System.Windows.Forms.Label();
             this.label13 = new System.Windows.Forms.Label();
-            this.txt_extensionAdditional = new System.Windows.Forms.TextBox();
-            this.txt_extensionLastDate = new System.Windows.Forms.TextBox();
-            this.txt_extensionEndDate = new System.Windows.Forms.TextBox();
-            this.checkBox1 = new System.Windows.Forms.CheckBox();
+            this.ExtensionAdditional = new System.Windows.Forms.TextBox();
+            this.ExtensionLastDate = new System.Windows.Forms.TextBox();
+            this.ExtensionEndDate = new System.Windows.Forms.TextBox();
+            this.ExtensionActive = new System.Windows.Forms.CheckBox();
+            this.tabPage4 = new System.Windows.Forms.TabPage();
+            this.EntranceMode = new System.Windows.Forms.CheckBox();
             this.btn_save = new System.Windows.Forms.Button();
-            this.label18 = new System.Windows.Forms.Label();
-            this.txt_ShowPrinterName = new System.Windows.Forms.TextBox();
-            this.btn_PrinterSelection = new System.Windows.Forms.Button();
+            this.dtgv_entranceConcepts = new System.Windows.Forms.DataGridView();
+            this.lbl_concepts = new System.Windows.Forms.Label();
+            this.dataGridViewTextBoxColumn3 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.dataGridViewTextBoxColumn4 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.lbl_taxes = new System.Windows.Forms.Label();
             this.tabPage2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dtgv_fines)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dtgv_taxes)).BeginInit();
             this.tabPage1.SuspendLayout();
             this.tabControl.SuspendLayout();
             this.tabPage3.SuspendLayout();
+            this.tabPage4.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.dtgv_entranceConcepts)).BeginInit();
             this.SuspendLayout();
             // 
             // tabPage2
             // 
+            this.tabPage2.Controls.Add(this.lbl_taxes);
+            this.tabPage2.Controls.Add(this.lbl_concepts);
+            this.tabPage2.Controls.Add(this.dtgv_entranceConcepts);
             this.tabPage2.Controls.Add(this.ConfigurationPassword);
             this.tabPage2.Controls.Add(this.label12);
             this.tabPage2.Controls.Add(this.lbl_fines);
@@ -132,7 +144,7 @@
             // lbl_fines
             // 
             this.lbl_fines.AutoSize = true;
-            this.lbl_fines.Location = new System.Drawing.Point(634, 17);
+            this.lbl_fines.Location = new System.Drawing.Point(354, 17);
             this.lbl_fines.Name = "lbl_fines";
             this.lbl_fines.Size = new System.Drawing.Size(38, 13);
             this.lbl_fines.TabIndex = 21;
@@ -172,7 +184,7 @@
             this.dtgv_fines.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.dataGridViewTextBoxColumn1,
             this.dataGridViewTextBoxColumn2});
-            this.dtgv_fines.Location = new System.Drawing.Point(522, 33);
+            this.dtgv_fines.Location = new System.Drawing.Point(249, 33);
             this.dtgv_fines.Name = "dtgv_fines";
             this.dtgv_fines.Size = new System.Drawing.Size(240, 231);
             this.dtgv_fines.TabIndex = 1;
@@ -237,7 +249,7 @@
             // tabPage1
             // 
             this.tabPage1.Controls.Add(this.btn_PrinterSelection);
-            this.tabPage1.Controls.Add(this.txt_ShowPrinterName);
+            this.tabPage1.Controls.Add(this.DefaultPrinter);
             this.tabPage1.Controls.Add(this.label18);
             this.tabPage1.Controls.Add(this.ShortName);
             this.tabPage1.Controls.Add(this.label11);
@@ -269,28 +281,54 @@
             this.tabPage1.Text = "Lugar de cobro";
             this.tabPage1.UseVisualStyleBackColor = true;
             // 
+            // btn_PrinterSelection
+            // 
+            this.btn_PrinterSelection.Location = new System.Drawing.Point(669, 306);
+            this.btn_PrinterSelection.Name = "btn_PrinterSelection";
+            this.btn_PrinterSelection.Size = new System.Drawing.Size(75, 23);
+            this.btn_PrinterSelection.TabIndex = 24;
+            this.btn_PrinterSelection.Text = "Seleccionar";
+            this.btn_PrinterSelection.UseVisualStyleBackColor = true;
+            this.btn_PrinterSelection.Click += new System.EventHandler(this.btn_PrinterSelection_Click);
+            // 
+            // DefaultPrinter
+            // 
+            this.DefaultPrinter.Location = new System.Drawing.Point(444, 308);
+            this.DefaultPrinter.Name = "DefaultPrinter";
+            this.DefaultPrinter.Size = new System.Drawing.Size(219, 20);
+            this.DefaultPrinter.TabIndex = 12;
+            // 
+            // label18
+            // 
+            this.label18.AutoSize = true;
+            this.label18.Location = new System.Drawing.Point(392, 311);
+            this.label18.Name = "label18";
+            this.label18.Size = new System.Drawing.Size(53, 13);
+            this.label18.TabIndex = 22;
+            this.label18.Text = "Impresora";
+            // 
             // ShortName
             // 
             this.ShortName.Location = new System.Drawing.Point(236, 56);
             this.ShortName.Name = "ShortName";
             this.ShortName.Size = new System.Drawing.Size(416, 20);
-            this.ShortName.TabIndex = 21;
+            this.ShortName.TabIndex = 2;
             // 
             // label11
             // 
             this.label11.AutoSize = true;
             this.label11.Location = new System.Drawing.Point(6, 59);
             this.label11.Name = "label11";
-            this.label11.Size = new System.Drawing.Size(63, 13);
+            this.label11.Size = new System.Drawing.Size(61, 13);
             this.label11.TabIndex = 20;
-            this.label11.Text = "Abreviación";
+            this.label11.Text = "Abreviatura";
             // 
             // BusinessCode
             // 
             this.BusinessCode.Location = new System.Drawing.Point(236, 160);
             this.BusinessCode.Name = "BusinessCode";
             this.BusinessCode.Size = new System.Drawing.Size(416, 20);
-            this.BusinessCode.TabIndex = 19;
+            this.BusinessCode.TabIndex = 6;
             // 
             // label10
             // 
@@ -306,7 +344,7 @@
             this.toEmail.Location = new System.Drawing.Point(78, 308);
             this.toEmail.Name = "toEmail";
             this.toEmail.Size = new System.Drawing.Size(219, 20);
-            this.toEmail.TabIndex = 17;
+            this.toEmail.TabIndex = 9;
             // 
             // label9
             // 
@@ -322,7 +360,7 @@
             this.EmailPort.Location = new System.Drawing.Point(444, 282);
             this.EmailPort.Name = "EmailPort";
             this.EmailPort.Size = new System.Drawing.Size(219, 20);
-            this.EmailPort.TabIndex = 15;
+            this.EmailPort.TabIndex = 11;
             // 
             // label8
             // 
@@ -338,7 +376,7 @@
             this.EmailServer.Location = new System.Drawing.Point(444, 256);
             this.EmailServer.Name = "EmailServer";
             this.EmailServer.Size = new System.Drawing.Size(219, 20);
-            this.EmailServer.TabIndex = 13;
+            this.EmailServer.TabIndex = 10;
             // 
             // label7
             // 
@@ -354,7 +392,7 @@
             this.EmailPassword.Location = new System.Drawing.Point(78, 282);
             this.EmailPassword.Name = "EmailPassword";
             this.EmailPassword.Size = new System.Drawing.Size(219, 20);
-            this.EmailPassword.TabIndex = 11;
+            this.EmailPassword.TabIndex = 8;
             // 
             // label5
             // 
@@ -370,7 +408,7 @@
             this.EmailUser.Location = new System.Drawing.Point(78, 256);
             this.EmailUser.Name = "EmailUser";
             this.EmailUser.Size = new System.Drawing.Size(219, 20);
-            this.EmailUser.TabIndex = 9;
+            this.EmailUser.TabIndex = 7;
             // 
             // label6
             // 
@@ -386,7 +424,7 @@
             this.BusinessOwner.Location = new System.Drawing.Point(236, 134);
             this.BusinessOwner.Name = "BusinessOwner";
             this.BusinessOwner.Size = new System.Drawing.Size(416, 20);
-            this.BusinessOwner.TabIndex = 7;
+            this.BusinessOwner.TabIndex = 5;
             // 
             // label3
             // 
@@ -402,7 +440,7 @@
             this.Phone.Location = new System.Drawing.Point(236, 108);
             this.Phone.Name = "Phone";
             this.Phone.Size = new System.Drawing.Size(416, 20);
-            this.Phone.TabIndex = 5;
+            this.Phone.TabIndex = 4;
             // 
             // label4
             // 
@@ -450,6 +488,7 @@
             this.tabControl.Controls.Add(this.tabPage1);
             this.tabControl.Controls.Add(this.tabPage2);
             this.tabControl.Controls.Add(this.tabPage3);
+            this.tabControl.Controls.Add(this.tabPage4);
             this.tabControl.Location = new System.Drawing.Point(12, 12);
             this.tabControl.Name = "tabControl";
             this.tabControl.SelectedIndex = 0;
@@ -459,16 +498,16 @@
             // tabPage3
             // 
             this.tabPage3.Controls.Add(this.label17);
-            this.tabPage3.Controls.Add(this.txt_extensionDecree);
+            this.tabPage3.Controls.Add(this.ExtensionDecree);
             this.tabPage3.Controls.Add(this.label16);
-            this.tabPage3.Controls.Add(this.txt_extensionDelay);
+            this.tabPage3.Controls.Add(this.ExtensionDelay);
             this.tabPage3.Controls.Add(this.label15);
             this.tabPage3.Controls.Add(this.label14);
             this.tabPage3.Controls.Add(this.label13);
-            this.tabPage3.Controls.Add(this.txt_extensionAdditional);
-            this.tabPage3.Controls.Add(this.txt_extensionLastDate);
-            this.tabPage3.Controls.Add(this.txt_extensionEndDate);
-            this.tabPage3.Controls.Add(this.checkBox1);
+            this.tabPage3.Controls.Add(this.ExtensionAdditional);
+            this.tabPage3.Controls.Add(this.ExtensionLastDate);
+            this.tabPage3.Controls.Add(this.ExtensionEndDate);
+            this.tabPage3.Controls.Add(this.ExtensionActive);
             this.tabPage3.Location = new System.Drawing.Point(4, 22);
             this.tabPage3.Name = "tabPage3";
             this.tabPage3.Padding = new System.Windows.Forms.Padding(3);
@@ -486,37 +525,37 @@
             this.label17.TabIndex = 10;
             this.label17.Text = "Decreto";
             // 
-            // txt_extensionDecree
+            // ExtensionDecree
             // 
-            this.txt_extensionDecree.Location = new System.Drawing.Point(252, 96);
-            this.txt_extensionDecree.Name = "txt_extensionDecree";
-            this.txt_extensionDecree.Size = new System.Drawing.Size(196, 20);
-            this.txt_extensionDecree.TabIndex = 9;
+            this.ExtensionDecree.Location = new System.Drawing.Point(252, 96);
+            this.ExtensionDecree.Name = "ExtensionDecree";
+            this.ExtensionDecree.Size = new System.Drawing.Size(196, 20);
+            this.ExtensionDecree.TabIndex = 9;
             // 
             // label16
             // 
             this.label16.AutoSize = true;
             this.label16.Location = new System.Drawing.Point(30, 251);
             this.label16.Name = "label16";
-            this.label16.Size = new System.Drawing.Size(31, 13);
+            this.label16.Size = new System.Drawing.Size(100, 13);
             this.label16.TabIndex = 8;
-            this.label16.Text = "Mora";
+            this.label16.Text = "Descuento en mora";
             // 
-            // txt_extensionDelay
+            // ExtensionDelay
             // 
-            this.txt_extensionDelay.Location = new System.Drawing.Point(30, 270);
-            this.txt_extensionDelay.Name = "txt_extensionDelay";
-            this.txt_extensionDelay.Size = new System.Drawing.Size(100, 20);
-            this.txt_extensionDelay.TabIndex = 7;
+            this.ExtensionDelay.Location = new System.Drawing.Point(30, 270);
+            this.ExtensionDelay.Name = "ExtensionDelay";
+            this.ExtensionDelay.Size = new System.Drawing.Size(100, 20);
+            this.ExtensionDelay.TabIndex = 7;
             // 
             // label15
             // 
             this.label15.AutoSize = true;
             this.label15.Location = new System.Drawing.Point(30, 192);
             this.label15.Name = "label15";
-            this.label15.Size = new System.Drawing.Size(48, 13);
+            this.label15.Size = new System.Drawing.Size(113, 13);
             this.label15.TabIndex = 6;
-            this.label15.Text = "Recargo";
+            this.label15.Text = "Descuento en recargo";
             // 
             // label14
             // 
@@ -536,36 +575,57 @@
             this.label13.TabIndex = 4;
             this.label13.Text = "Fecha de finalización";
             // 
-            // txt_extensionAdditional
+            // ExtensionAdditional
             // 
-            this.txt_extensionAdditional.Location = new System.Drawing.Point(30, 211);
-            this.txt_extensionAdditional.Name = "txt_extensionAdditional";
-            this.txt_extensionAdditional.Size = new System.Drawing.Size(100, 20);
-            this.txt_extensionAdditional.TabIndex = 3;
+            this.ExtensionAdditional.Location = new System.Drawing.Point(30, 211);
+            this.ExtensionAdditional.Name = "ExtensionAdditional";
+            this.ExtensionAdditional.Size = new System.Drawing.Size(100, 20);
+            this.ExtensionAdditional.TabIndex = 3;
             // 
-            // txt_extensionLastDate
+            // ExtensionLastDate
             // 
-            this.txt_extensionLastDate.Location = new System.Drawing.Point(30, 154);
-            this.txt_extensionLastDate.Name = "txt_extensionLastDate";
-            this.txt_extensionLastDate.Size = new System.Drawing.Size(100, 20);
-            this.txt_extensionLastDate.TabIndex = 2;
+            this.ExtensionLastDate.Location = new System.Drawing.Point(30, 154);
+            this.ExtensionLastDate.Name = "ExtensionLastDate";
+            this.ExtensionLastDate.Size = new System.Drawing.Size(100, 20);
+            this.ExtensionLastDate.TabIndex = 2;
             // 
-            // txt_extensionEndDate
+            // ExtensionEndDate
             // 
-            this.txt_extensionEndDate.Location = new System.Drawing.Point(30, 96);
-            this.txt_extensionEndDate.Name = "txt_extensionEndDate";
-            this.txt_extensionEndDate.Size = new System.Drawing.Size(100, 20);
-            this.txt_extensionEndDate.TabIndex = 1;
+            this.ExtensionEndDate.Location = new System.Drawing.Point(30, 96);
+            this.ExtensionEndDate.Name = "ExtensionEndDate";
+            this.ExtensionEndDate.Size = new System.Drawing.Size(100, 20);
+            this.ExtensionEndDate.TabIndex = 1;
             // 
-            // checkBox1
+            // ExtensionActive
             // 
-            this.checkBox1.AutoSize = true;
-            this.checkBox1.Location = new System.Drawing.Point(30, 31);
-            this.checkBox1.Name = "checkBox1";
-            this.checkBox1.Size = new System.Drawing.Size(110, 17);
-            this.checkBox1.TabIndex = 0;
-            this.checkBox1.Text = "Habilitar moratoria";
-            this.checkBox1.UseVisualStyleBackColor = true;
+            this.ExtensionActive.AutoSize = true;
+            this.ExtensionActive.Location = new System.Drawing.Point(30, 31);
+            this.ExtensionActive.Name = "ExtensionActive";
+            this.ExtensionActive.Size = new System.Drawing.Size(110, 17);
+            this.ExtensionActive.TabIndex = 0;
+            this.ExtensionActive.Text = "Habilitar moratoria";
+            this.ExtensionActive.UseVisualStyleBackColor = true;
+            // 
+            // tabPage4
+            // 
+            this.tabPage4.Controls.Add(this.EntranceMode);
+            this.tabPage4.Location = new System.Drawing.Point(4, 22);
+            this.tabPage4.Name = "tabPage4";
+            this.tabPage4.Padding = new System.Windows.Forms.Padding(3);
+            this.tabPage4.Size = new System.Drawing.Size(768, 356);
+            this.tabPage4.TabIndex = 3;
+            this.tabPage4.Text = "Menu";
+            this.tabPage4.UseVisualStyleBackColor = true;
+            // 
+            // EntranceMode
+            // 
+            this.EntranceMode.AutoSize = true;
+            this.EntranceMode.Location = new System.Drawing.Point(27, 35);
+            this.EntranceMode.Name = "EntranceMode";
+            this.EntranceMode.Size = new System.Drawing.Size(113, 17);
+            this.EntranceMode.TabIndex = 0;
+            this.EntranceMode.Text = "Cobro de entradas";
+            this.EntranceMode.UseVisualStyleBackColor = true;
             // 
             // btn_save
             // 
@@ -577,31 +637,47 @@
             this.btn_save.UseVisualStyleBackColor = true;
             this.btn_save.Click += new System.EventHandler(this.btn_save_Click);
             // 
-            // label18
+            // dtgv_entranceConcepts
             // 
-            this.label18.AutoSize = true;
-            this.label18.Location = new System.Drawing.Point(392, 311);
-            this.label18.Name = "label18";
-            this.label18.Size = new System.Drawing.Size(53, 13);
-            this.label18.TabIndex = 22;
-            this.label18.Text = "Impresora";
+            this.dtgv_entranceConcepts.BackgroundColor = System.Drawing.Color.FromArgb(((int)(((byte)(42)))), ((int)(((byte)(49)))), ((int)(((byte)(50)))));
+            this.dtgv_entranceConcepts.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dtgv_entranceConcepts.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
+            this.dataGridViewTextBoxColumn3,
+            this.dataGridViewTextBoxColumn4});
+            this.dtgv_entranceConcepts.Location = new System.Drawing.Point(495, 33);
+            this.dtgv_entranceConcepts.Name = "dtgv_entranceConcepts";
+            this.dtgv_entranceConcepts.Size = new System.Drawing.Size(240, 231);
+            this.dtgv_entranceConcepts.TabIndex = 26;
             // 
-            // txt_ShowPrinterName
+            // lbl_concepts
             // 
-            this.txt_ShowPrinterName.Location = new System.Drawing.Point(444, 308);
-            this.txt_ShowPrinterName.Name = "txt_ShowPrinterName";
-            this.txt_ShowPrinterName.Size = new System.Drawing.Size(219, 20);
-            this.txt_ShowPrinterName.TabIndex = 23;
+            this.lbl_concepts.AutoSize = true;
+            this.lbl_concepts.Location = new System.Drawing.Point(568, 17);
+            this.lbl_concepts.Name = "lbl_concepts";
+            this.lbl_concepts.Size = new System.Drawing.Size(97, 13);
+            this.lbl_concepts.TabIndex = 27;
+            this.lbl_concepts.Text = "Conceptos entrada";
             // 
-            // btn_PrinterSelection
+            // dataGridViewTextBoxColumn3
             // 
-            this.btn_PrinterSelection.Location = new System.Drawing.Point(669, 306);
-            this.btn_PrinterSelection.Name = "btn_PrinterSelection";
-            this.btn_PrinterSelection.Size = new System.Drawing.Size(75, 23);
-            this.btn_PrinterSelection.TabIndex = 24;
-            this.btn_PrinterSelection.Text = "Seleccionar";
-            this.btn_PrinterSelection.UseVisualStyleBackColor = true;
-            this.btn_PrinterSelection.Click += new System.EventHandler(this.btn_PrinterSelection_Click);
+            this.dataGridViewTextBoxColumn3.Frozen = true;
+            this.dataGridViewTextBoxColumn3.HeaderText = "Concepto";
+            this.dataGridViewTextBoxColumn3.Name = "dataGridViewTextBoxColumn3";
+            // 
+            // dataGridViewTextBoxColumn4
+            // 
+            this.dataGridViewTextBoxColumn4.Frozen = true;
+            this.dataGridViewTextBoxColumn4.HeaderText = "Valor";
+            this.dataGridViewTextBoxColumn4.Name = "dataGridViewTextBoxColumn4";
+            // 
+            // lbl_taxes
+            // 
+            this.lbl_taxes.AutoSize = true;
+            this.lbl_taxes.Location = new System.Drawing.Point(102, 17);
+            this.lbl_taxes.Name = "lbl_taxes";
+            this.lbl_taxes.Size = new System.Drawing.Size(36, 13);
+            this.lbl_taxes.TabIndex = 28;
+            this.lbl_taxes.Text = "Tasas";
             // 
             // Configuration
             // 
@@ -622,6 +698,9 @@
             this.tabControl.ResumeLayout(false);
             this.tabPage3.ResumeLayout(false);
             this.tabPage3.PerformLayout();
+            this.tabPage4.ResumeLayout(false);
+            this.tabPage4.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.dtgv_entranceConcepts)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -669,19 +748,26 @@
         private System.Windows.Forms.TextBox ConfigurationPassword;
         private System.Windows.Forms.Label label12;
         private System.Windows.Forms.TabPage tabPage3;
-        private System.Windows.Forms.CheckBox checkBox1;
-        private System.Windows.Forms.TextBox txt_extensionEndDate;
+        private System.Windows.Forms.CheckBox ExtensionActive;
+        private System.Windows.Forms.TextBox ExtensionEndDate;
         private System.Windows.Forms.Label label13;
-        private System.Windows.Forms.TextBox txt_extensionAdditional;
-        private System.Windows.Forms.TextBox txt_extensionLastDate;
+        private System.Windows.Forms.TextBox ExtensionAdditional;
+        private System.Windows.Forms.TextBox ExtensionLastDate;
         private System.Windows.Forms.Label label15;
         private System.Windows.Forms.Label label14;
         private System.Windows.Forms.Label label16;
-        private System.Windows.Forms.TextBox txt_extensionDelay;
+        private System.Windows.Forms.TextBox ExtensionDelay;
         private System.Windows.Forms.Label label17;
-        private System.Windows.Forms.TextBox txt_extensionDecree;
+        private System.Windows.Forms.TextBox ExtensionDecree;
         private System.Windows.Forms.Button btn_PrinterSelection;
-        private System.Windows.Forms.TextBox txt_ShowPrinterName;
+        private System.Windows.Forms.TextBox DefaultPrinter;
         private System.Windows.Forms.Label label18;
+        private System.Windows.Forms.TabPage tabPage4;
+        private System.Windows.Forms.CheckBox EntranceMode;
+        private System.Windows.Forms.Label lbl_concepts;
+        private System.Windows.Forms.DataGridView dtgv_entranceConcepts;
+        private System.Windows.Forms.Label lbl_taxes;
+        private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn3;
+        private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn4;
     }
 }

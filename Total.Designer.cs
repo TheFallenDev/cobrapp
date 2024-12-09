@@ -43,7 +43,12 @@
             this.btn_generate_file = new System.Windows.Forms.Button();
             this.chkShowVoid = new System.Windows.Forms.CheckBox();
             this.label3 = new System.Windows.Forms.Label();
+            this.dtgv_summary = new System.Windows.Forms.DataGridView();
+            this.Concept = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Quantity = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Tot = new System.Windows.Forms.DataGridViewTextBoxColumn();
             ((System.ComponentModel.ISupportInitialize)(this.dtgv_taxes)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dtgv_summary)).BeginInit();
             this.SuspendLayout();
             // 
             // label1
@@ -112,7 +117,7 @@
             // label2
             // 
             this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(203, 484);
+            this.label2.Location = new System.Drawing.Point(530, 479);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(67, 13);
             this.label2.TabIndex = 4;
@@ -120,7 +125,7 @@
             // 
             // btn_print
             // 
-            this.btn_print.Location = new System.Drawing.Point(423, 479);
+            this.btn_print.Location = new System.Drawing.Point(487, 533);
             this.btn_print.Name = "btn_print";
             this.btn_print.Size = new System.Drawing.Size(102, 23);
             this.btn_print.TabIndex = 5;
@@ -142,14 +147,15 @@
             // lbl_total
             // 
             this.lbl_total.AutoSize = true;
-            this.lbl_total.Location = new System.Drawing.Point(276, 484);
+            this.lbl_total.Location = new System.Drawing.Point(626, 479);
             this.lbl_total.Name = "lbl_total";
-            this.lbl_total.Size = new System.Drawing.Size(0, 13);
+            this.lbl_total.Size = new System.Drawing.Size(85, 13);
             this.lbl_total.TabIndex = 10;
+            this.lbl_total.Text = "total_acumulado";
             // 
             // btn_generate_file
             // 
-            this.btn_generate_file.Location = new System.Drawing.Point(606, 479);
+            this.btn_generate_file.Location = new System.Drawing.Point(595, 533);
             this.btn_generate_file.Name = "btn_generate_file";
             this.btn_generate_file.Size = new System.Drawing.Size(180, 23);
             this.btn_generate_file.TabIndex = 11;
@@ -180,12 +186,49 @@
             this.label3.TabIndex = 13;
             this.label3.Text = "TOTALES DIARIOS";
             // 
+            // dtgv_summary
+            // 
+            this.dtgv_summary.AllowUserToAddRows = false;
+            this.dtgv_summary.AllowUserToDeleteRows = false;
+            this.dtgv_summary.BackgroundColor = System.Drawing.Color.FromArgb(((int)(((byte)(42)))), ((int)(((byte)(49)))), ((int)(((byte)(50)))));
+            this.dtgv_summary.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dtgv_summary.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
+            this.Concept,
+            this.Quantity,
+            this.Tot});
+            this.dtgv_summary.Location = new System.Drawing.Point(138, 460);
+            this.dtgv_summary.Name = "dtgv_summary";
+            this.dtgv_summary.Size = new System.Drawing.Size(343, 161);
+            this.dtgv_summary.TabIndex = 14;
+            // 
+            // Concept
+            // 
+            this.Concept.Frozen = true;
+            this.Concept.HeaderText = "Concepto";
+            this.Concept.Name = "Concept";
+            this.Concept.ReadOnly = true;
+            // 
+            // Quantity
+            // 
+            this.Quantity.Frozen = true;
+            this.Quantity.HeaderText = "Cantidad";
+            this.Quantity.Name = "Quantity";
+            this.Quantity.ReadOnly = true;
+            // 
+            // Tot
+            // 
+            this.Tot.Frozen = true;
+            this.Tot.HeaderText = "Total";
+            this.Tot.Name = "Tot";
+            this.Tot.ReadOnly = true;
+            // 
             // Total
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(144)))), ((int)(((byte)(175)))), ((int)(((byte)(197)))));
             this.ClientSize = new System.Drawing.Size(932, 628);
+            this.Controls.Add(this.dtgv_summary);
             this.Controls.Add(this.label3);
             this.Controls.Add(this.chkShowVoid);
             this.Controls.Add(this.btn_generate_file);
@@ -198,8 +241,10 @@
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
             this.Name = "Total";
             this.Text = "Total del día";
+            this.Load += new System.EventHandler(this.Total_Load);
             this.KeyDown += new System.Windows.Forms.KeyEventHandler(this.Total_KeyDown);
             ((System.ComponentModel.ISupportInitialize)(this.dtgv_taxes)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dtgv_summary)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -214,12 +259,16 @@
         private System.Windows.Forms.Label lbl_total;
         private System.Windows.Forms.Button btn_generate_file;
         private System.Windows.Forms.CheckBox chkShowVoid;
+        private System.Windows.Forms.Label label3;
         private System.Windows.Forms.DataGridViewTextBoxColumn time;
         private System.Windows.Forms.DataGridViewTextBoxColumn Receipt;
         private System.Windows.Forms.DataGridViewTextBoxColumn Payment;
         private System.Windows.Forms.DataGridViewTextBoxColumn DueDate;
         private System.Windows.Forms.DataGridViewTextBoxColumn TaxName;
         private System.Windows.Forms.DataGridViewTextBoxColumn voided;
-        private System.Windows.Forms.Label label3;
+        private System.Windows.Forms.DataGridView dtgv_summary;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Concept;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Quantity;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Tot;
     }
 }

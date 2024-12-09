@@ -169,7 +169,7 @@ namespace Cobrapp.Properties {
         
         [global::System.Configuration.UserScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.Configuration.DefaultSettingValueAttribute("")]
+        [global::System.Configuration.DefaultSettingValueAttribute("Sysadmin")]
         public string ConfigurationPassword {
             get {
                 return ((string)(this["ConfigurationPassword"]));
@@ -181,10 +181,10 @@ namespace Cobrapp.Properties {
         
         [global::System.Configuration.UserScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.Configuration.DefaultSettingValueAttribute("")]
-        public string AdditionalPenalty {
+        [global::System.Configuration.DefaultSettingValueAttribute("0")]
+        public decimal AdditionalPenalty {
             get {
-                return ((string)(this["AdditionalPenalty"]));
+                return ((decimal)(this["AdditionalPenalty"]));
             }
             set {
                 this["AdditionalPenalty"] = value;
@@ -193,10 +193,10 @@ namespace Cobrapp.Properties {
         
         [global::System.Configuration.UserScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.Configuration.DefaultSettingValueAttribute("")]
-        public string DelayPenalty {
+        [global::System.Configuration.DefaultSettingValueAttribute("0")]
+        public decimal DelayPenalty {
             get {
-                return ((string)(this["DelayPenalty"]));
+                return ((decimal)(this["DelayPenalty"]));
             }
             set {
                 this["DelayPenalty"] = value;
@@ -241,10 +241,10 @@ namespace Cobrapp.Properties {
         
         [global::System.Configuration.UserScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.Configuration.DefaultSettingValueAttribute("")]
-        public string ExtensionAdditional {
+        [global::System.Configuration.DefaultSettingValueAttribute("0")]
+        public int ExtensionAdditional {
             get {
-                return ((string)(this["ExtensionAdditional"]));
+                return ((int)(this["ExtensionAdditional"]));
             }
             set {
                 this["ExtensionAdditional"] = value;
@@ -253,10 +253,10 @@ namespace Cobrapp.Properties {
         
         [global::System.Configuration.UserScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.Configuration.DefaultSettingValueAttribute("")]
-        public string ExtensionDelay {
+        [global::System.Configuration.DefaultSettingValueAttribute("0")]
+        public int ExtensionDelay {
             get {
-                return ((string)(this["ExtensionDelay"]));
+                return ((int)(this["ExtensionDelay"]));
             }
             set {
                 this["ExtensionDelay"] = value;
@@ -295,6 +295,30 @@ namespace Cobrapp.Properties {
             }
             set {
                 this["TaxesCodes"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("")]
+        public string ConfigurationOK {
+            get {
+                return ((string)(this["ConfigurationOK"]));
+            }
+            set {
+                this["ConfigurationOK"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("False")]
+        public bool EntranceMode {
+            get {
+                return ((bool)(this["EntranceMode"]));
+            }
+            set {
+                this["EntranceMode"] = value;
             }
         }
     }

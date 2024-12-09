@@ -15,9 +15,13 @@ namespace Cobrapp
             getConfigurations();
             getTaxConfigurations();
             getFineConfigurations();
+            GetEntranceConcepts();
+            ToggleExtensionFields();
             CorrespondingComission.KeyPress += onlyNumbersAndComa_KeyPress;
             AdditionalPenalty.KeyPress += onlyNumbersAndComa_KeyPress;
             DelayPenalty.KeyPress += onlyNumbersAndComa_KeyPress;
+            ExtensionAdditional.KeyPress += onlyNumbersAndComa_KeyPress;
+            ExtensionDelay.KeyPress += onlyNumbersAndComa_KeyPress;
         }
 
         private void btn_save_Click(object sender, EventArgs e)
@@ -28,20 +32,58 @@ namespace Cobrapp
             }
             else
             {
-                Dictionary<string, string> textBoxValues = SaveTextBoxValues(tabControl);
+
+                Properties.Settings.Default.ShortName = ShortName.Text;
+                Properties.Settings.Default.BusinessName = BusinessName.Text;
+                Properties.Settings.Default.Address = Address.Text;
+                Properties.Settings.Default.Phone = Phone.Text;
+                Properties.Settings.Default.BusinessOwner = BusinessOwner.Text;
+                Properties.Settings.Default.BusinessCode = BusinessCode.Text;
+                Properties.Settings.Default.EmailUser = EmailUser.Text;
+                Properties.Settings.Default.EmailPassword = EmailPassword.Text;
+                Properties.Settings.Default.EmailPort = EmailPort.Text;
+                Properties.Settings.Default.Emailserver = EmailServer.Text;
+                Properties.Settings.Default.EmailReceiver = toEmail.Text;
+                Properties.Settings.Default.DefaultPrinter = DefaultPrinter.Text;
+
+                Properties.Settings.Default.CorrespondingComission = CorrespondingComission.Text;
+                Properties.Settings.Default.AdditionalPenalty = decimal.Parse(AdditionalPenalty.Text);
+                Properties.Settings.Default.DelayPenalty = decimal.Parse(DelayPenalty.Text);
+                Properties.Settings.Default.ConfigurationPassword = ConfigurationPassword.Text;
+
+                Properties.Settings.Default.ExtensionActive = ExtensionActive.Checked;
+                Properties.Settings.Default.ExtensionEndDate = ExtensionEndDate.Text;
+                Properties.Settings.Default.ExtensionLastDate = ExtensionLastDate.Text;
+                Properties.Settings.Default.ExtensionAdditional = int.Parse(ExtensionAdditional.Text);
+                Properties.Settings.Default.ExtensionDelay = int.Parse(ExtensionDelay.Text);
+                Properties.Settings.Default.ExtensionDecree = ExtensionDecree.Text;
+                Properties.Settings.Default.ConfigurationOK = "OK";
+
+                Properties.Settings.Default.EntranceMode = EntranceMode.Checked;
+
+                Properties.Settings.Default.Save();
+
+                /*Dictionary<string, string> textBoxValues = SaveTextBoxValues(tabControl);
 
                 foreach (var kvp in textBoxValues)
                 {
                     ConfigurationLogic.Instance.SaveConfiguration(kvp.Key,kvp.Value);
-                }
+                }*/
 
                 Dictionary<string, string> keyValueTaxes = new Dictionary<string, string>();
                 Dictionary<string, string> keyValueFines = new Dictionary<string, string>();
+                Dictionary<string, string> keyValueEntranceConcepts = new Dictionary<string, string>();
                 SaveDataGridViewToDictionary(dtgv_taxes, keyValueTaxes, "tax");
                 SaveDataGridViewToDictionary(dtgv_fines, keyValueFines, "fine_");
+                SaveDataGridViewToDictionary(dtgv_entranceConcepts, keyValueEntranceConcepts, "entranceConcept");
                 ConfigurationLogic.Instance.SaveOrUpdateTaxConfigurations(keyValueTaxes);
                 ConfigurationLogic.Instance.SaveOrUpdateFineConfigurations(keyValueFines);
-                ConfigurationLogic.Instance.SaveConfiguration("ConfigurationOK", "OK");
+                ConfigurationLogic.Instance.SaveOrUpdateEntranceConcepts(keyValueEntranceConcepts);
+
+                MessageBox.Show("La aplicación se reiniciará para aplicar los cambios.", "Configuración guardada", MessageBoxButtons.OK, MessageBoxIcon.Information);
+
+                // Reiniciar la aplicación
+                Application.Restart();
             }
         }
 
@@ -49,6 +91,16 @@ namespace Cobrapp
         {
             bool allFieldsValid = true;
             string emptyFields = "";
+
+            // Lista de campos a ignorar si ExtensionActive es False
+            List<string> fieldsToIgnore = new List<string>
+            {
+                "ExtensionEndDate",
+                "ExtensionLastDate",
+                "ExtensionAdditional",
+                "ExtensionDelay",
+                "ExtensionDecree"
+            };
 
             // Itera a través de todos los controles dentro de todos los tabpages del TabControl.
             foreach (TabPage tabPage in tabControl.TabPages)
@@ -58,6 +110,12 @@ namespace Cobrapp
                     // Verifica si el control es un TextBox.
                     if (control is TextBox textBox)
                     {
+                        // Si ExtensionActive es False, ignora los campos especificados
+                        if (!ExtensionActive.Checked && fieldsToIgnore.Contains(textBox.Name))
+                        {
+                            continue;
+                        }
+
                         // Verifica si el TextBox está vacío o contiene un valor no válido.
                         if (string.IsNullOrWhiteSpace(textBox.Text))
                         {
@@ -82,7 +140,8 @@ namespace Cobrapp
             return allFieldsValid;
         }
 
-        public Dictionary<string, string> SaveTextBoxValues(TabControl tabControl)
+
+        /*public Dictionary<string, string> SaveTextBoxValues(TabControl tabControl)
         {
             Dictionary<string, string> textBoxValues = new Dictionary<string, string>();
 
@@ -99,7 +158,7 @@ namespace Cobrapp
             }
 
             return textBoxValues;
-        }
+        }*/
 
         private void SaveDataGridViewToDictionary(DataGridView dataGridView, Dictionary<string, string> dictionary, string prefix)
         {
@@ -124,6 +183,35 @@ namespace Cobrapp
 
         private void getConfigurations()
         {
+
+            ShortName.Text = Properties.Settings.Default.ShortName;
+            BusinessName.Text = Properties.Settings.Default.BusinessName;
+            Address.Text = Properties.Settings.Default.Address;
+            Phone.Text = Properties.Settings.Default.Phone;
+            BusinessOwner.Text = Properties.Settings.Default.BusinessOwner;
+            BusinessCode.Text = Properties.Settings.Default.BusinessCode;
+            EmailUser.Text = Properties.Settings.Default.EmailUser;
+            EmailPassword.Text = Properties.Settings.Default.EmailPassword;
+            EmailPort.Text = Properties.Settings.Default.EmailPort;
+            EmailServer.Text = Properties.Settings.Default.Emailserver;
+            toEmail.Text = Properties.Settings.Default.EmailReceiver;
+            DefaultPrinter.Text = Properties.Settings.Default.DefaultPrinter;
+
+            CorrespondingComission.Text = Properties.Settings.Default.CorrespondingComission;
+            AdditionalPenalty.Text = Properties.Settings.Default.AdditionalPenalty.ToString();
+            DelayPenalty.Text = Properties.Settings.Default.DelayPenalty.ToString();
+            ConfigurationPassword.Text = Properties.Settings.Default.ConfigurationPassword;
+
+            ExtensionActive.Checked = Properties.Settings.Default.ExtensionActive;
+            ExtensionEndDate.Text = Properties.Settings.Default.ExtensionEndDate;
+            ExtensionLastDate.Text = Properties.Settings.Default.ExtensionLastDate;
+            ExtensionAdditional.Text = Properties.Settings.Default.ExtensionAdditional.ToString();
+            ExtensionDelay.Text = Properties.Settings.Default.ExtensionDelay.ToString();
+            ExtensionDecree.Text = Properties.Settings.Default.ExtensionDecree;
+
+            EntranceMode.Checked = Properties.Settings.Default.EntranceMode;
+
+            /*
             Dictionary<string, string> config = ConfigurationLogic.Instance.GetAllConfigurations();
 
             if (config.Count != 0)
@@ -144,7 +232,8 @@ namespace Cobrapp
                     }
                 }
             }
-            txt_ShowPrinterName.Text = ConfigurationLogic.GetDefaultPrinter();
+            DefaultPrinter.Text = ConfigurationLogic.GetDefaultPrinter();
+            */
         }
 
         private void getTaxConfigurations()
@@ -175,6 +264,22 @@ namespace Cobrapp
             }
         }
 
+        private void GetEntranceConcepts()
+        {
+            Dictionary<string, string> entranceConcepts = ConfigurationLogic.Instance.GetEntranceConcepts();
+
+            // Limpia el DataGridView antes de llenarlo
+            dtgv_entranceConcepts.Rows.Clear();
+
+            foreach (var kvp in entranceConcepts)
+            {
+                // Elimina el prefijo "entranceConcept" de la clave
+                string keyWithoutPrefix = kvp.Key.Substring(15); // "entranceConcept" tiene 15 caracteres
+                dtgv_entranceConcepts.Rows.Add(keyWithoutPrefix, kvp.Value);
+            }
+        }
+
+
         private void onlyNumbersAndComa_KeyPress(object sender, KeyPressEventArgs e)
         {
             // Verificar si la tecla presionada no es un número ni una coma
@@ -191,10 +296,26 @@ namespace Cobrapp
             }
         }
 
+        private void ToggleExtensionFields()
+        {
+            bool enableFields = ExtensionActive.Checked;
+
+            ExtensionEndDate.Enabled = enableFields;
+            ExtensionLastDate.Enabled = enableFields;
+            ExtensionAdditional.Enabled = enableFields;
+            ExtensionDelay.Enabled = enableFields;
+            ExtensionDecree.Enabled = enableFields;
+        }
+
         private void btn_PrinterSelection_Click(object sender, EventArgs e)
         {
             ConfigurationLogic.SelectDefaultPrinter();
-            txt_ShowPrinterName.Text = ConfigurationLogic.GetDefaultPrinter();
+            DefaultPrinter.Text = ConfigurationLogic.GetDefaultPrinter();
+        }
+
+        private void ExtensionActive_CheckedChanged(object sender, EventArgs e)
+        {
+            ToggleExtensionFields();
         }
     }
 }

@@ -35,6 +35,19 @@ namespace Cobrapp.Utils
             string newDate = string.Join("/", newArray);
             return newDate;
         }
+        public static string DateFixerMinus(string date)
+        {
+            string[] array = date.Split('/');
+            string[] newArray = new string[array.Length];
+            int counter = 0;
+            for (int i = array.Length - 1; i >= 0; i--)
+            {
+                newArray[counter] = array[i];
+                counter++;
+            }
+            string newDate = string.Join("-", newArray);
+            return newDate;
+        }
         public static string Formatter(string text)
         {
             string result;

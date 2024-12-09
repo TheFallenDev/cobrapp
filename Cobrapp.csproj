@@ -26,7 +26,7 @@
     <UpdatePeriodically>false</UpdatePeriodically>
     <UpdateRequired>false</UpdateRequired>
     <MapFileExtensions>true</MapFileExtensions>
-    <ApplicationRevision>4</ApplicationRevision>
+    <ApplicationRevision>5</ApplicationRevision>
     <ApplicationVersion>1.0.0.%2a</ApplicationVersion>
     <UseApplicationTrust>false</UseApplicationTrust>
     <PublishWizardCompleted>true</PublishWizardCompleted>
@@ -144,6 +144,13 @@
     <Compile Include="Fines.Designer.cs">
       <DependentUpon>Fines.cs</DependentUpon>
     </Compile>
+    <Compile Include="Entrance.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Entrance.Designer.cs">
+      <DependentUpon>Entrance.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Logic\EntranceLogic.cs" />
     <Compile Include="Logic\PeriodsLogic.cs" />
     <Compile Include="Logic\CommissionsLogic.cs" />
     <Compile Include="Logic\ConfigurationLogic.cs" />
@@ -165,6 +172,8 @@
     </Compile>
     <Compile Include="Model\Commission.cs" />
     <Compile Include="Model\Configuration.cs" />
+    <Compile Include="Model\EntranceConcept.cs" />
+    <Compile Include="Model\EntranceTicket.cs" />
     <Compile Include="Model\Fine.cs" />
     <Compile Include="Model\Period.cs" />
     <Compile Include="Model\Stamp.cs" />
@@ -209,6 +218,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Configuration.resx">
       <DependentUpon>Configuration.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Entrance.resx">
+      <DependentUpon>Entrance.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Fines.resx">
       <DependentUpon>Fines.cs</DependentUpon>

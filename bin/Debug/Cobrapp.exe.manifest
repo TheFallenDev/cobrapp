@@ -1,6 +1,6 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <asmv1:assembly xsi:schemaLocation="urn:schemas-microsoft-com:asm.v1 assembly.adaptive.xsd" manifestVersion="1.0" xmlns:asmv1="urn:schemas-microsoft-com:asm.v1" xmlns="urn:schemas-microsoft-com:asm.v2" xmlns:asmv2="urn:schemas-microsoft-com:asm.v2" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:co.v1="urn:schemas-microsoft-com:clickonce.v1" xmlns:asmv3="urn:schemas-microsoft-com:asm.v3" xmlns:dsig="http://www.w3.org/2000/09/xmldsig#" xmlns:co.v2="urn:schemas-microsoft-com:clickonce.v2">
-  <asmv1:assemblyIdentity name="Cobrapp.exe" version="1.0.0.4" publicKeyToken="0000000000000000" language="neutral" processorArchitecture="msil" type="win32" />
+  <asmv1:assemblyIdentity name="Cobrapp.exe" version="1.0.0.5" publicKeyToken="0000000000000000" language="neutral" processorArchitecture="msil" type="win32" />
   <application />
   <entryPoint>
     <assemblyIdentity name="Cobrapp" version="1.0.0.1" language="neutral" processorArchitecture="msil" />
@@ -42,14 +42,14 @@
     </dependentAssembly>
   </dependency>
   <dependency>
-    <dependentAssembly dependencyType="install" allowDelayedBinding="true" codebase="Cobrapp.exe" size="582560">
+    <dependentAssembly dependencyType="install" allowDelayedBinding="true" codebase="Cobrapp.exe" size="605600">
       <assemblyIdentity name="Cobrapp" version="1.0.0.1" language="neutral" processorArchitecture="msil" />
       <hash>
         <dsig:Transforms>
           <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
         </dsig:Transforms>
         <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha256" />
-        <dsig:DigestValue>xULiP4cz9Z8KaByp0c1+42iR1jEYUrjwQfIgOFoPmYQ=</dsig:DigestValue>
+        <dsig:DigestValue>8VT6Ufm48x89q8FAlclMEYv5T2q9LbbR0xTf86NJZoo=</dsig:DigestValue>
       </hash>
     </dependentAssembly>
   </dependency>
@@ -113,22 +113,22 @@
       </hash>
     </dependentAssembly>
   </dependency>
-  <file name="Cobrapp.exe.config" size="4366">
+  <file name="Cobrapp.exe.config" size="4612">
     <hash>
       <dsig:Transforms>
         <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
       </dsig:Transforms>
       <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha256" />
-      <dsig:DigestValue>EIBkrkvC3RQJaPjbMisJEaeEfb6xskwYlfeDdCG+tLs=</dsig:DigestValue>
+      <dsig:DigestValue>AjSDAd8aFLxs/z4U7cIaxOCg9ts40lmlr3Zvu13jDvk=</dsig:DigestValue>
     </hash>
   </file>
-  <file name="data.db" size="61440">
+  <file name="data.db" size="81920">
     <hash>
       <dsig:Transforms>
         <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
       </dsig:Transforms>
       <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha256" />
-      <dsig:DigestValue>cnoH4scnaeEND6BT6od8nsXPv76S/SshBKq7KQw2UCw=</dsig:DigestValue>
+      <dsig:DigestValue>vjYCRce2q6oWYctqcFyU6VJMA5Ge+dNRVwPvlpdfRiU=</dsig:DigestValue>
     </hash>
   </file>
   <file name="models\ticket.txt" size="525">

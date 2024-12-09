@@ -1,10 +1,9 @@
 ﻿using System;
 using System.Windows.Forms;
 using System.Runtime.InteropServices;
+using System.Drawing;
 using Cobrapp.Logic;
 using Cobrapp.Utils;
-using System.Runtime.Remoting.Messaging;
-using System.Drawing.Printing;
 
 namespace Cobrapp
 {
@@ -16,12 +15,51 @@ namespace Cobrapp
             KeyPreview = true;
         }
 
+        private void entranceMode()
+        {
+            bool entranceActive = Properties.Settings.Default.EntranceMode;
+            if ( entranceActive )
+            {
+                btn_collect_taxes.Text = "Cobrar entradas - F1";
+                btn_daily_total.Location = new Point(0, 172);
+                btn_CommercialTax.Visible = false;
+                btn_stamps.Visible = false;
+                btn_void_payment.Visible = false;
+                btn_commissions.Visible = false;
+                btn_fines.Visible = false;
+                panel2.Visible = false;
+                panel5.Visible = false;
+                panel6.Visible = false;
+                panel7.Visible = false;
+                panel8.Visible = false;
+            }
+            else
+            {
+                btn_collect_taxes.Text = "Cobrar tasas - F1";
+                btn_daily_total.Location = new Point(0, 323);
+                btn_CommercialTax.Visible = true;
+                btn_stamps.Visible = true;
+                btn_void_payment.Visible = true;
+                btn_commissions.Visible = true;
+                btn_fines.Visible= true;
+                panel2.Visible = true;
+                panel5.Visible = true;
+                panel6.Visible = true;
+                panel7.Visible = true;
+                panel8.Visible = true;
+            }
+        }
+
         private void btn_collect_taxes_Click(object sender, EventArgs e)
         {
             if (ConfigurationLogic.Instance.GetConfigurationValue("ConfigurationOK") != "OK")
             {
                 MessageBox.Show("Antes de continuar debe rellenar las configuraciones para que el programa funcione correctamente.", "¡Advertencia!", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 OpenNewForm(new Configuration());
+            }
+            else if (Properties.Settings.Default.EntranceMode)
+            {
+                OpenNewForm(new Entrance());
             }
             else
             {
@@ -118,19 +156,19 @@ namespace Cobrapp
             {
                 btn_collect_taxes.PerformClick();
             }
-            else if (e.KeyCode == Keys.F2)
+            else if (e.KeyCode == Keys.F2 && !Properties.Settings.Default.EntranceMode)
             {
                 btn_stamps.PerformClick();
             }
-            else if (e.KeyCode == Keys.F3)
+            else if (e.KeyCode == Keys.F3 && !Properties.Settings.Default.EntranceMode)
             {
                 btn_fines.PerformClick();
             }
-            else if (e.KeyCode == Keys.F4)
+            else if (e.KeyCode == Keys.F4 && !Properties.Settings.Default.EntranceMode)
             {
                 btn_CommercialTax.PerformClick();
             }
-            else if (e.KeyCode == Keys.F5)
+            else if (e.KeyCode == Keys.F5 && !Properties.Settings.Default.EntranceMode)
             {
                 btn_void_payment.PerformClick();
             }
@@ -138,7 +176,7 @@ namespace Cobrapp
             {
                 btn_daily_total.PerformClick();
             }
-            else if (e.KeyCode == Keys.F7)
+            else if (e.KeyCode == Keys.F7 && !Properties.Settings.Default.EntranceMode)
             {
                 btn_commissions.PerformClick();
             }
@@ -217,6 +255,7 @@ namespace Cobrapp
         }
         private void main_Load(object sender, EventArgs e)
         {
+            entranceMode();
             if (ConfigurationLogic.Instance.GetConfigurationValue("ConfigurationOK") != "OK")
             {
                 OpenNewForm(new Configuration());

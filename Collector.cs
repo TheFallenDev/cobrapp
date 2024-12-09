@@ -231,7 +231,6 @@ namespace Cobrapp
                 {
                     PrintDocument printReceipt = new PrintDocument();
                     PrinterSettings ps = new PrinterSettings();
-                    //CAMBIAR NOMBRE DE IMPRESORA
                     string defaultPrinter = ConfigurationLogic.GetDefaultPrinter();
                     ps.PrinterName = defaultPrinter;
                     printReceipt.PrinterSettings = ps;

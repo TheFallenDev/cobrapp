@@ -9,6 +9,8 @@ using Cobrapp.Utils;
 using System.Drawing.Printing;
 using System.IO;
 using System.Threading.Tasks;
+using static System.Windows.Forms.VisualStyles.VisualStyleElement;
+using System.Drawing.Text;
 
 
 namespace Cobrapp
@@ -26,13 +28,23 @@ namespace Cobrapp
             KeyPreview = true;
             btn_print.Enabled = false;
             btn_generate_file.Enabled = false;
+
         }
+
+        public class ConceptSummary
+        {
+            public string Name { get; set; }
+            public int Count { get; set; }
+            public decimal Total { get; set; }
+        }
+
 
         private void dtp_date_KeyDown(object sender, KeyEventArgs e)
         {
             decimal acc = 0;
             if (e.KeyCode == Keys.Enter)
             {
+                GenerateDailySummary(MyUtils.DateFixerMinus(dtp_date.Text));
                 dtgv_taxes.Rows.Clear();
 
                 List<Tax> taxList = TaxLogic.Instance.ListByDate(MyUtils.DateFixer(dtp_date.Text));
@@ -77,6 +89,19 @@ namespace Cobrapp
                     acc += stamp.Total;
                     lbl_total.Text = acc.ToString("N2");
                 }
+                
+                List<EntranceConcept> entranceConcepts = EntranceLogic.Instance.GetEntranceConceptsByDate(MyUtils.DateFixerMinus(dtp_date.Text));
+                foreach (var concept in entranceConcepts)
+                {
+                    int n = dtgv_taxes.Rows.Add();
+                    dtgv_taxes.Rows[n].Cells[0].Value = concept.TicketTime;
+                    dtgv_taxes.Rows[n].Cells[1].Value = concept.TicketId;
+                    dtgv_taxes.Rows[n].Cells[2].Value = concept.Value;
+                    dtgv_taxes.Rows[n].Cells[4].Value = concept.Name;
+                    acc += concept.Value;
+                    lbl_total.Text = acc.ToString("N2");
+                }
+
                 dtgv_taxes.Sort(dtgv_taxes.Columns[0], ListSortDirection.Ascending);
                 if (dtgv_taxes.Rows.Count > 0)
                 {
@@ -91,20 +116,95 @@ namespace Cobrapp
             }
         }
 
+        private void GenerateDailySummary(string date)
+        {
+            // Diccionario para agrupar los datos
+            Dictionary<string, ConceptSummary> summaryDict = new Dictionary<string, ConceptSummary>();
+            // Recuperar los conceptos
+            List<EntranceConcept> entranceConcepts = EntranceLogic.Instance.GetEntranceConceptsByDate(MyUtils.DateFixerMinus(date));
+
+            foreach (var concept in entranceConcepts)
+            {
+                if (!summaryDict.ContainsKey(concept.Name))
+                {
+                    // Agregar nuevo concepto al diccionario
+                    summaryDict[concept.Name] = new ConceptSummary
+                    {
+                        Name = concept.Name,
+                        Count = 0,
+                        Total = 0
+                    };
+                }
+
+                // Actualizar cantidad y total
+                summaryDict[concept.Name].Count += 1; // Una entrada por cada concepto
+                summaryDict[concept.Name].Total += concept.Value;
+            }
+
+            // Mostrar el resumen en el DataGridView
+            dtgv_summary.Rows.Clear(); // Limpiar DataGridView
+            foreach (var summary in summaryDict.Values)
+            {
+                int n = dtgv_summary.Rows.Add();
+                dtgv_summary.Rows[n].Cells[0].Value = summary.Name; // Nombre del concepto
+                dtgv_summary.Rows[n].Cells[1].Value = summary.Count; // Cantidad
+                dtgv_summary.Rows[n].Cells[2].Value = summary.Total.ToString("N2"); // Total
+            }
+        }
+
+
         private void btn_print_Click(object sender, EventArgs e)
         {
             List<string> types = new List<string>();
             List<string> receipts = new List<string>();
-            List<string> totals = new List<string>();
+            List<decimal> totals = new List<decimal>();
+            decimal totalcash = 0;
+            decimal totalpos = 0;
+
+            // Diccionario para agrupar los datos
+            Dictionary<string, ConceptSummary> summaryDict = new Dictionary<string, ConceptSummary>();
+            // Recuperar los conceptos
+            List<EntranceConcept> entranceConcepts = EntranceLogic.Instance.GetEntranceConceptsByDate(MyUtils.DateFixerMinus(dtp_date.Text));
+
+            foreach (var concept in entranceConcepts)
+            {
+                if (!summaryDict.ContainsKey(concept.Name))
+                {
+                    // Agregar nuevo concepto al diccionario
+                    summaryDict[concept.Name] = new ConceptSummary
+                    {
+                        Name = concept.Name,
+                        Count = 0,
+                        Total = 0
+                    };
+                }
+
+                // Actualizar cantidad y total
+                summaryDict[concept.Name].Count += 1; // Una entrada por cada concepto
+                summaryDict[concept.Name].Total += concept.Value;
+                if (concept.Payment_method == "Efectivo")
+                {
+                    totalcash += concept.Value;
+                }
+                else
+                {
+                    totalpos += concept.Value;
+                }
+            }
+
             dtgv_taxes.Sort(dtgv_taxes.Columns[1], ListSortDirection.Ascending);
-            dtgv_taxes.Sort(dtgv_taxes.Columns[4], ListSortDirection.Ascending);
+
+            if (!Properties.Settings.Default.EntranceMode)
+            {
+                dtgv_taxes.Sort(dtgv_taxes.Columns[4], ListSortDirection.Ascending);
+            }
             foreach (DataGridViewRow row in dtgv_taxes.Rows)
             {
                 if (row.Cells[5].Value == null || string.IsNullOrEmpty(row.Cells[5].Value.ToString()))
                 {
                     types.Add(row.Cells[4].Value.ToString().Substring(0, 3).ToUpper());
                     receipts.Add(row.Cells[1].Value.ToString());
-                    totals.Add(row.Cells[2].Value.ToString());
+                    totals.Add(decimal.Parse(row.Cells[2].Value.ToString()));
                 }
             }
             decimal commission = (decimal.Parse(lbl_total.Text) * decimal.Parse(ConfigurationLogic.Instance.GetConfigurationValue("CorrespondingComission"))) / 100;
@@ -115,15 +215,23 @@ namespace Cobrapp
                 Commission = commission.ToString("N2"),
                 FirstColumn = types.ToArray(),
                 SecondColumn = receipts.ToArray(),
-                ThirdColumn = totals.ToArray()
+                PriceColumn = totals.ToArray(),
+                SummaryDict = summaryDict,
+                TotalCash = totalcash,
+                TotalPos = totalpos
             };
-            if (MyUtils.PrinterExists("brother"))
+            
+            if (Properties.Settings.Default.EntranceMode)
             {
-                myTicket.PrintTicket(Ticket.PrintType.TotalUSB);
+                myTicket.PrintTicket(Ticket.PrintType.TotalEntrance);
+            }
+            else if (Properties.Settings.Default.DefaultPrinter == "tickets")
+            {
+                myTicket.PrintTicket(Ticket.PrintType.Total);
             }
             else
             {
-                myTicket.PrintTicket(Ticket.PrintType.Total);
+                myTicket.PrintTicket(Ticket.PrintType.TotalUSB);
             }
             dtgv_taxes.Sort(dtgv_taxes.Columns[0], ListSortDirection.Ascending);
         }
@@ -175,7 +283,7 @@ namespace Cobrapp
                         writer.WriteLine(line);
                     }
 
-                        List<Stamp> stampList = StampLogic.Instance.ListByDate(MyUtils.DateFixer(dtp_date.Text));
+                    List<Stamp> stampList = StampLogic.Instance.ListByDate(MyUtils.DateFixer(dtp_date.Text));
                     foreach (var stamp in stampList)
                     {
                         string receipt = stamp.Receipt_number.PadLeft(8, '0');
@@ -262,6 +370,17 @@ namespace Cobrapp
             else if (e.KeyCode == Keys.Enter)
             {
                 dtp_date_KeyDown(dtp_date,e);
+            }
+        }
+        
+        private void Total_Load(object sender, EventArgs e)
+        {
+            if (Properties.Settings.Default.EntranceMode)
+            {
+                dtgv_taxes.Columns[5].Visible = false;
+                dtgv_taxes.Columns[3].Visible = false;
+                lbl_total.Text = "0.00";
+                chkShowVoid.Visible = false;
             }
         }
     }
