@@ -33,9 +33,10 @@
             this.value = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.cuantity = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.subtotal = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.btn_collect = new System.Windows.Forms.Button();
+            this.btn_cash = new System.Windows.Forms.Button();
             this.label2 = new System.Windows.Forms.Label();
             this.lbl_total = new System.Windows.Forms.Label();
+            this.btn_posnet = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.dtgv_entrances)).BeginInit();
             this.SuspendLayout();
             // 
@@ -55,6 +56,7 @@
             this.dtgv_entrances.Size = new System.Drawing.Size(442, 255);
             this.dtgv_entrances.TabIndex = 0;
             this.dtgv_entrances.CellValidating += new System.Windows.Forms.DataGridViewCellValidatingEventHandler(this.dtgv_entrances_CellValidating);
+            this.dtgv_entrances.KeyDown += new System.Windows.Forms.KeyEventHandler(this.TextBox_KeyDown);
             // 
             // concept
             // 
@@ -83,20 +85,19 @@
             this.subtotal.Name = "subtotal";
             this.subtotal.ReadOnly = true;
             // 
-            // btn_collect
+            // btn_cash
             // 
-            this.btn_collect.BackColor = System.Drawing.Color.SeaGreen;
-            this.btn_collect.FlatAppearance.BorderSize = 0;
-            this.btn_collect.FlatAppearance.MouseOverBackColor = System.Drawing.Color.MediumSeaGreen;
-            this.btn_collect.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btn_collect.ForeColor = System.Drawing.Color.White;
-            this.btn_collect.Location = new System.Drawing.Point(427, 481);
-            this.btn_collect.Name = "btn_collect";
-            this.btn_collect.Size = new System.Drawing.Size(159, 32);
-            this.btn_collect.TabIndex = 34;
-            this.btn_collect.Text = "Cobrar (F12)";
-            this.btn_collect.UseVisualStyleBackColor = false;
-            this.btn_collect.Click += new System.EventHandler(this.btnCobrar_Click);
+            this.btn_cash.BackColor = System.Drawing.Color.SeaGreen;
+            this.btn_cash.FlatAppearance.BorderSize = 0;
+            this.btn_cash.FlatAppearance.MouseOverBackColor = System.Drawing.Color.MediumSeaGreen;
+            this.btn_cash.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btn_cash.ForeColor = System.Drawing.Color.White;
+            this.btn_cash.Location = new System.Drawing.Point(608, 475);
+            this.btn_cash.Name = "btn_cash";
+            this.btn_cash.Size = new System.Drawing.Size(159, 32);
+            this.btn_cash.TabIndex = 34;
+            this.btn_cash.Text = "Efectivo (F12)";
+            this.btn_cash.UseVisualStyleBackColor = false;
             // 
             // label2
             // 
@@ -119,19 +120,34 @@
             this.lbl_total.Text = "$ 0.00";
             this.lbl_total.TextAlign = System.Drawing.ContentAlignment.BottomRight;
             // 
+            // btn_posnet
+            // 
+            this.btn_posnet.BackColor = System.Drawing.Color.RoyalBlue;
+            this.btn_posnet.FlatAppearance.BorderSize = 0;
+            this.btn_posnet.FlatAppearance.MouseOverBackColor = System.Drawing.Color.MediumSeaGreen;
+            this.btn_posnet.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btn_posnet.ForeColor = System.Drawing.Color.White;
+            this.btn_posnet.Location = new System.Drawing.Point(235, 475);
+            this.btn_posnet.Name = "btn_posnet";
+            this.btn_posnet.Size = new System.Drawing.Size(159, 32);
+            this.btn_posnet.TabIndex = 37;
+            this.btn_posnet.Text = "Posnet (F9)";
+            this.btn_posnet.UseVisualStyleBackColor = false;
+            // 
             // Entrance
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(144)))), ((int)(((byte)(175)))), ((int)(((byte)(197)))));
             this.ClientSize = new System.Drawing.Size(916, 589);
+            this.Controls.Add(this.btn_posnet);
             this.Controls.Add(this.lbl_total);
             this.Controls.Add(this.label2);
-            this.Controls.Add(this.btn_collect);
+            this.Controls.Add(this.btn_cash);
             this.Controls.Add(this.dtgv_entrances);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
             this.Name = "Entrance";
-            this.Text = "Form1";
+            this.Text = "EntranceForm";
             this.Load += new System.EventHandler(this.Form_Load);
             ((System.ComponentModel.ISupportInitialize)(this.dtgv_entrances)).EndInit();
             this.ResumeLayout(false);
@@ -146,8 +162,9 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn value;
         private System.Windows.Forms.DataGridViewTextBoxColumn cuantity;
         private System.Windows.Forms.DataGridViewTextBoxColumn subtotal;
-        private System.Windows.Forms.Button btn_collect;
+        private System.Windows.Forms.Button btn_cash;
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.Label lbl_total;
+        private System.Windows.Forms.Button btn_posnet;
     }
 }

@@ -42,14 +42,14 @@
     </dependentAssembly>
   </dependency>
   <dependency>
-    <dependentAssembly dependencyType="install" allowDelayedBinding="true" codebase="Cobrapp.exe" size="605600">
+    <dependentAssembly dependencyType="install" allowDelayedBinding="true" codebase="Cobrapp.exe" size="606112">
       <assemblyIdentity name="Cobrapp" version="1.0.0.1" language="neutral" processorArchitecture="msil" />
       <hash>
         <dsig:Transforms>
           <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
         </dsig:Transforms>
         <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha256" />
-        <dsig:DigestValue>8VT6Ufm48x89q8FAlclMEYv5T2q9LbbR0xTf86NJZoo=</dsig:DigestValue>
+        <dsig:DigestValue>+RruAT+C4pySWxOYjxjpMJO8jIOuB6mqP+tysqyiieM=</dsig:DigestValue>
       </hash>
     </dependentAssembly>
   </dependency>
@@ -113,13 +113,13 @@
       </hash>
     </dependentAssembly>
   </dependency>
-  <file name="Cobrapp.exe.config" size="4612">
+  <file name="Cobrapp.exe.config" size="4508">
     <hash>
       <dsig:Transforms>
         <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
       </dsig:Transforms>
       <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha256" />
-      <dsig:DigestValue>AjSDAd8aFLxs/z4U7cIaxOCg9ts40lmlr3Zvu13jDvk=</dsig:DigestValue>
+      <dsig:DigestValue>p93a9JCVh/4Avt0NyA5wumT+IquTWVTcSnaFE5AC4us=</dsig:DigestValue>
     </hash>
   </file>
   <file name="data.db" size="81920">

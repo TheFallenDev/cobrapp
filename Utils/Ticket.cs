@@ -16,6 +16,7 @@ namespace Cobrapp.Utils
         public string Date { get; set; }
         public string Time { get; set; }
         public string Total { get; set; }
+        public int TicketNumber { get; set; }
         public decimal TotalPrice { get; set; }
         public decimal TotalCash { get; set; }
         public decimal TotalPos {  get; set; }
@@ -41,10 +42,6 @@ namespace Cobrapp.Utils
             EntranceTicket,
             TotalEntrance
         }
-
-        private int currentLine = 0;
-        private int page = 0;
-        private bool isPrintingSummary = false;
 
         public void PrintTicket(PrintType printType)
         {
@@ -501,6 +498,11 @@ namespace Cobrapp.Utils
             // Fecha
             yPos = topMargin + (count++) * g.MeasureString("Text", font).Height;
             line = "Fecha: " + Date;
+            g.DrawString(line, font, Brushes.Black, leftMargin, yPos);
+
+            // Ticket
+            yPos = topMargin + (count++) * g.MeasureString("Text", font).Height;
+            line = "Ticket Nro." + TicketNumber.ToString().PadLeft(10);
             g.DrawString(line, font, Brushes.Black, leftMargin, yPos);
 
             // Cabeceras de las columnas

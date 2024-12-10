@@ -61,6 +61,7 @@ C:\Deploy\cobrapp\obj\Debug\Cobrapp.csproj.AssemblyReference.cache
 C:\Deploy\cobrapp\obj\Debug\Cobrapp.CommercialTax.resources
 C:\Deploy\cobrapp\obj\Debug\Cobrapp.Commissions.resources
 C:\Deploy\cobrapp\obj\Debug\Cobrapp.Configuration.resources
+C:\Deploy\cobrapp\obj\Debug\Cobrapp.Entrance.resources
 C:\Deploy\cobrapp\obj\Debug\Cobrapp.Fines.resources
 C:\Deploy\cobrapp\obj\Debug\Cobrapp.LoginForm.resources
 C:\Deploy\cobrapp\obj\Debug\Cobrapp.MainChild.resources
@@ -77,4 +78,3 @@ C:\Deploy\cobrapp\obj\Debug\Cobrapp.application
 C:\Deploy\cobrapp\obj\Debug\Cobrapp.csproj.Up2Date
 C:\Deploy\cobrapp\obj\Debug\Cobrapp.exe
 C:\Deploy\cobrapp\obj\Debug\Cobrapp.pdb
-C:\Deploy\cobrapp\obj\Debug\Cobrapp.Entrance.resources
