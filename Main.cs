@@ -255,6 +255,8 @@ namespace Cobrapp
         }
         private void main_Load(object sender, EventArgs e)
         {
+            ConfigurationLogic.Instance.CreateDefaultRoles();
+            ConfigurationLogic.Instance.EnsureDefaultAdminExists();
             entranceMode();
             if (ConfigurationLogic.Instance.GetConfigurationValue("ConfigurationOK") != "OK")
             {

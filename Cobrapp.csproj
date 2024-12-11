@@ -178,6 +178,7 @@
     <Compile Include="Model\Period.cs" />
     <Compile Include="Model\Stamp.cs" />
     <Compile Include="Model\Tax.cs" />
+    <Compile Include="Model\Users.cs" />
     <Compile Include="Settings.cs" />
     <Compile Include="Stamps.cs">
       <SubType>Form</SubType>

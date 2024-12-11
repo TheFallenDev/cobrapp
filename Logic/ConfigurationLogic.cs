@@ -1,4 +1,6 @@
-﻿using System;
+﻿using Cobrapp.Model;
+using Cobrapp.Utils;
+using System;
 using System.Collections.Generic;
 using System.Configuration;
 using System.Data.SQLite;
@@ -29,6 +31,175 @@ namespace Cobrapp.Logic
                 return _instance;
             }
         }
+        public void CreateDefaultRoles()
+        {
+            using (SQLiteConnection connection = new SQLiteConnection(conn))
+            {
+                connection.Open();
+
+                string query = "INSERT OR IGNORE INTO Roles (Name) VALUES ('Admin'), ('User'), ('Guest')";
+                using (SQLiteCommand command = new SQLiteCommand(query, connection))
+                {
+                    command.ExecuteNonQuery();
+                }
+            }
+        }
+        public void EnsureDefaultAdminExists()
+        {
+            using (SQLiteConnection connection = new SQLiteConnection(conn))
+            {
+                connection.Open();
+
+                // Verifica si la tabla Users está vacía
+                string query = "SELECT COUNT(*) FROM Users";
+                using (SQLiteCommand command = new SQLiteCommand(query, connection))
+                {
+                    long userCount = (long)command.ExecuteScalar();
+                    if (userCount == 0)
+                    {
+                        // Inserta el rol Admin si no existe
+                        string insertRole = "INSERT OR IGNORE INTO Roles (Name) VALUES ('Admin')";
+                        using (SQLiteCommand roleCommand = new SQLiteCommand(insertRole, connection))
+                        {
+                            roleCommand.ExecuteNonQuery();
+                        }
+
+                        // Crea el usuario Admin
+                        string insertAdmin = @"
+                    INSERT INTO Users (Username, PasswordHash, Email, RoleId, IsActive)
+                    VALUES ('admin', @PasswordHash, 'admin@example.com', 
+                            (SELECT Id FROM Roles WHERE Name = 'Admin'), 1)";
+                        using (SQLiteCommand adminCommand = new SQLiteCommand(insertAdmin, connection))
+                        {
+                            string hashedPassword = MyUtils.HashPassword("admin123"); // Implementa tu función de hashing
+                            adminCommand.Parameters.AddWithValue("@PasswordHash", hashedPassword);
+                            adminCommand.ExecuteNonQuery();
+                        }
+                    }
+                }
+            }
+        }
+        public void RegisterUser(string username, string password, int roleId)
+        {
+            using (SQLiteConnection connection = new SQLiteConnection(conn))
+            {
+                connection.Open();
+
+                string hashedPassword = MyUtils.HashPassword(password);
+
+                string query = @"
+            INSERT INTO Users (Username, PasswordHash, RoleId, IsActive)
+            VALUES (@Username, @PasswordHash, @RoleId, 1)";
+                using (SQLiteCommand command = new SQLiteCommand(query, connection))
+                {
+                    command.Parameters.AddWithValue("@Username", username);
+                    command.Parameters.AddWithValue("@PasswordHash", hashedPassword);
+                    command.Parameters.AddWithValue("@RoleId", roleId);
+                    command.ExecuteNonQuery();
+                }
+            }
+        }
+        public bool Login(string username, string password)
+        {
+            using (SQLiteConnection connection = new SQLiteConnection(conn))
+            {
+                connection.Open();
+
+                string query = "SELECT PasswordHash FROM Users WHERE Username = @Username AND IsActive = 1";
+                using (SQLiteCommand command = new SQLiteCommand(query, connection))
+                {
+                    command.Parameters.AddWithValue("@Username", username);
+                    var result = command.ExecuteScalar();
+                    if (result != null)
+                    {
+                        string storedHash = result.ToString();
+                        return MyUtils.VerifyPassword(password, storedHash);
+                    }
+                    else
+                    {
+                        return false; // Usuario no encontrado o inactivo
+                    }
+                }
+            }
+        }
+        public void ChangePassword(string username, string newPassword)
+        {
+            using (SQLiteConnection connection = new SQLiteConnection(conn))
+            {
+                connection.Open();
+
+                string hashedPassword = MyUtils.HashPassword(newPassword);
+
+                string query = "UPDATE Users SET PasswordHash = @PasswordHash WHERE Username = @Username";
+                using (SQLiteCommand command = new SQLiteCommand(query, connection))
+                {
+                    command.Parameters.AddWithValue("@PasswordHash", hashedPassword);
+                    command.Parameters.AddWithValue("@Username", username);
+                    command.ExecuteNonQuery();
+                }
+            }
+        }
+        public void UpdateUserRole(string username, int newRoleId)
+        {
+            using (SQLiteConnection connection = new SQLiteConnection(conn))
+            {
+                connection.Open();
+
+                string query = "UPDATE Users SET RoleId = @RoleId WHERE Username = @Username";
+                using (SQLiteCommand command = new SQLiteCommand(query, connection))
+                {
+                    command.Parameters.AddWithValue("@RoleId", newRoleId);
+                    command.Parameters.AddWithValue("@Username", username);
+                    command.ExecuteNonQuery();
+                }
+            }
+        }
+        public void SetUserActiveState(string username, bool isActive)
+        {
+            using (SQLiteConnection connection = new SQLiteConnection(conn))
+            {
+                connection.Open();
+
+                string query = "UPDATE Users SET IsActive = @IsActive WHERE Username = @Username";
+                using (SQLiteCommand command = new SQLiteCommand(query, connection))
+                {
+                    command.Parameters.AddWithValue("@IsActive", isActive ? 1 : 0);
+                    command.Parameters.AddWithValue("@Username", username);
+                    command.ExecuteNonQuery();
+                }
+            }
+        }
+        public List<User> GetAllUsers()
+        {
+            List<User> users = new List<User>();
+
+            using (SQLiteConnection connection = new SQLiteConnection(conn))
+            {
+                connection.Open();
+                string query = "SELECT u.Id, u.Username, r.Name AS Role, u.IsActive FROM Users u " +
+                               "INNER JOIN Roles r ON u.RoleId = r.Id";
+                using (SQLiteCommand command = new SQLiteCommand(query, connection))
+                {
+                    using (SQLiteDataReader reader = command.ExecuteReader())
+                    {
+                        while (reader.Read())
+                        {
+                            User user = new User
+                            {
+                                Id = reader.GetInt32(0),
+                                Username = reader.GetString(1),
+                                RoleId = reader.GetString(2),
+                                IsActive = reader.GetBoolean(3)
+                            };
+                            users.Add(user);
+                        }
+                    }
+                }
+            }
+
+            return users;
+        }
+
 
         public bool AddOrUpdateConfiguration(string key, string value)
         {

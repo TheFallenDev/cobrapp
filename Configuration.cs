@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Windows.Forms;
 using Cobrapp.Logic;
+using Cobrapp.Model;
 
 namespace Cobrapp
 {
@@ -86,7 +87,15 @@ namespace Cobrapp
                 Application.Restart();
             }
         }
+        private void GetUsers()
+        {
+            List
+            foreach (User user in ConfigurationLogic.Instance.ListUsers())
+            {
 
+            }
+            
+        }
         private bool CheckAllFields()
         {
             bool allFieldsValid = true;

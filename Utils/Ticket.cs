@@ -21,6 +21,7 @@ namespace Cobrapp.Utils
         public decimal TotalCash { get; set; }
         public decimal TotalPos {  get; set; }
         public string Commission { get; set; }
+        public string UserName { get; set; }
         public string[] FirstColumn { get; set; }
         public string[] SecondColumn { get; set; }
         public string[] ThirdColumn { get; set; }
