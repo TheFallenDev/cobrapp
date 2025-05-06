@@ -21,7 +21,7 @@ namespace Cobrapp.Utils
         public decimal TotalCash { get; set; }
         public decimal TotalPos {  get; set; }
         public string Commission { get; set; }
-        public string UserName { get; set; }
+        public string Username { get; set; }
         public string[] FirstColumn { get; set; }
         public string[] SecondColumn { get; set; }
         public string[] ThirdColumn { get; set; }
@@ -583,6 +583,10 @@ namespace Cobrapp.Utils
             yPos = topMargin + (count++) * g.MeasureString("Text", font).Height;
             line = Title;
             g.DrawString(line, new Font("Consolas", 12), Brushes.Black, leftMargin, yPos);
+
+            yPos = topMargin + (count++) * g.MeasureString("Text", font).Height;
+            line = "Usuario: " + Username;
+            g.DrawString(line, font, Brushes.Black, leftMargin, yPos);
 
             // Fecha
             yPos = topMargin + (count++) * g.MeasureString("Text", font).Height;

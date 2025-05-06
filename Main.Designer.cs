@@ -337,6 +337,7 @@
             this.btn_Configuration.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
             this.btn_Configuration.TabIndex = 0;
             this.btn_Configuration.TabStop = false;
+            this.btn_Configuration.Visible = false;
             this.btn_Configuration.Click += new System.EventHandler(this.btn_Configuration_Click);
             // 
             // panel3

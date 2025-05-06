@@ -70,9 +70,10 @@
             // lbl_barcode
             // 
             this.lbl_barcode.AutoSize = true;
-            this.lbl_barcode.Location = new System.Drawing.Point(12, 37);
+            this.lbl_barcode.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lbl_barcode.Location = new System.Drawing.Point(5, 35);
             this.lbl_barcode.Name = "lbl_barcode";
-            this.lbl_barcode.Size = new System.Drawing.Size(76, 13);
+            this.lbl_barcode.Size = new System.Drawing.Size(101, 15);
             this.lbl_barcode.TabIndex = 0;
             this.lbl_barcode.Text = "Cod. de barras";
             // 
@@ -88,45 +89,50 @@
             // lbl_tax_name
             // 
             this.lbl_tax_name.AutoSize = true;
-            this.lbl_tax_name.Location = new System.Drawing.Point(13, 104);
+            this.lbl_tax_name.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lbl_tax_name.Location = new System.Drawing.Point(12, 102);
             this.lbl_tax_name.Name = "lbl_tax_name";
-            this.lbl_tax_name.Size = new System.Drawing.Size(31, 13);
+            this.lbl_tax_name.Size = new System.Drawing.Size(38, 15);
             this.lbl_tax_name.TabIndex = 2;
             this.lbl_tax_name.Text = "Tasa";
             // 
             // lbl_due_date
             // 
             this.lbl_due_date.AutoSize = true;
-            this.lbl_due_date.Location = new System.Drawing.Point(13, 221);
+            this.lbl_due_date.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lbl_due_date.Location = new System.Drawing.Point(12, 219);
             this.lbl_due_date.Name = "lbl_due_date";
-            this.lbl_due_date.Size = new System.Drawing.Size(112, 13);
+            this.lbl_due_date.Size = new System.Drawing.Size(147, 15);
             this.lbl_due_date.TabIndex = 4;
             this.lbl_due_date.Text = "Fecha de vencimiento";
             // 
             // lbl_total
             // 
             this.lbl_total.AutoSize = true;
-            this.lbl_total.Location = new System.Drawing.Point(44, 469);
+            this.lbl_total.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lbl_total.Location = new System.Drawing.Point(26, 467);
             this.lbl_total.Name = "lbl_total";
-            this.lbl_total.Size = new System.Drawing.Size(73, 13);
+            this.lbl_total.Size = new System.Drawing.Size(96, 15);
             this.lbl_total.TabIndex = 5;
             this.lbl_total.Text = "Total a cobrar";
             // 
             // lbl_penalty
             // 
             this.lbl_penalty.AutoSize = true;
-            this.lbl_penalty.Location = new System.Drawing.Point(13, 161);
+            this.lbl_penalty.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lbl_penalty.Location = new System.Drawing.Point(12, 159);
             this.lbl_penalty.Name = "lbl_penalty";
-            this.lbl_penalty.Size = new System.Drawing.Size(48, 13);
+            this.lbl_penalty.Size = new System.Drawing.Size(61, 15);
             this.lbl_penalty.TabIndex = 6;
             this.lbl_penalty.Text = "Recargo";
             // 
             // lbl_tax_total
             // 
             this.lbl_tax_total.AutoSize = true;
+            this.lbl_tax_total.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lbl_tax_total.Location = new System.Drawing.Point(13, 286);
             this.lbl_tax_total.Name = "lbl_tax_total";
-            this.lbl_tax_total.Size = new System.Drawing.Size(63, 13);
+            this.lbl_tax_total.Size = new System.Drawing.Size(83, 15);
             this.lbl_tax_total.TabIndex = 7;
             this.lbl_tax_total.Text = "Total boleta";
             // 
@@ -241,9 +247,10 @@
             // lbl_show_due_date
             // 
             this.lbl_show_due_date.AutoSize = true;
-            this.lbl_show_due_date.Location = new System.Drawing.Point(132, 221);
+            this.lbl_show_due_date.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lbl_show_due_date.Location = new System.Drawing.Point(198, 219);
             this.lbl_show_due_date.Name = "lbl_show_due_date";
-            this.lbl_show_due_date.Size = new System.Drawing.Size(0, 13);
+            this.lbl_show_due_date.Size = new System.Drawing.Size(0, 15);
             this.lbl_show_due_date.TabIndex = 19;
             // 
             // lbl_show_penalty
@@ -257,27 +264,32 @@
             // lbl_amount
             // 
             this.lbl_amount.AutoSize = true;
-            this.lbl_amount.Location = new System.Drawing.Point(13, 135);
+            this.lbl_amount.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lbl_amount.Location = new System.Drawing.Point(12, 133);
             this.lbl_amount.Name = "lbl_amount";
-            this.lbl_amount.Size = new System.Drawing.Size(37, 13);
+            this.lbl_amount.Size = new System.Drawing.Size(47, 15);
             this.lbl_amount.TabIndex = 22;
             this.lbl_amount.Text = "Monto";
             // 
             // txt_amount
             // 
-            this.txt_amount.Enabled = false;
+            this.txt_amount.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.txt_amount.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txt_amount.Location = new System.Drawing.Point(175, 132);
             this.txt_amount.Name = "txt_amount";
-            this.txt_amount.Size = new System.Drawing.Size(93, 20);
+            this.txt_amount.ReadOnly = true;
+            this.txt_amount.Size = new System.Drawing.Size(93, 14);
             this.txt_amount.TabIndex = 24;
             this.txt_amount.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
             // 
             // txt_penalty
             // 
-            this.txt_penalty.Enabled = false;
+            this.txt_penalty.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.txt_penalty.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txt_penalty.Location = new System.Drawing.Point(175, 158);
             this.txt_penalty.Name = "txt_penalty";
-            this.txt_penalty.Size = new System.Drawing.Size(93, 20);
+            this.txt_penalty.ReadOnly = true;
+            this.txt_penalty.Size = new System.Drawing.Size(93, 14);
             this.txt_penalty.TabIndex = 25;
             this.txt_penalty.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
             // 
@@ -293,46 +305,54 @@
             // 
             // txt_tax_total
             // 
-            this.txt_tax_total.Enabled = false;
+            this.txt_tax_total.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.txt_tax_total.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txt_tax_total.Location = new System.Drawing.Point(142, 283);
             this.txt_tax_total.Name = "txt_tax_total";
-            this.txt_tax_total.Size = new System.Drawing.Size(126, 20);
+            this.txt_tax_total.ReadOnly = true;
+            this.txt_tax_total.Size = new System.Drawing.Size(126, 14);
             this.txt_tax_total.TabIndex = 27;
             this.txt_tax_total.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
             // 
             // txt_extra_penalty
             // 
-            this.txt_extra_penalty.Enabled = false;
+            this.txt_extra_penalty.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.txt_extra_penalty.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txt_extra_penalty.Location = new System.Drawing.Point(175, 184);
             this.txt_extra_penalty.Name = "txt_extra_penalty";
-            this.txt_extra_penalty.Size = new System.Drawing.Size(93, 20);
+            this.txt_extra_penalty.ReadOnly = true;
+            this.txt_extra_penalty.Size = new System.Drawing.Size(93, 14);
             this.txt_extra_penalty.TabIndex = 29;
             this.txt_extra_penalty.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
             // 
             // lbl_extra_penalty
             // 
             this.lbl_extra_penalty.AutoSize = true;
-            this.lbl_extra_penalty.Location = new System.Drawing.Point(13, 188);
+            this.lbl_extra_penalty.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lbl_extra_penalty.Location = new System.Drawing.Point(12, 186);
             this.lbl_extra_penalty.Name = "lbl_extra_penalty";
-            this.lbl_extra_penalty.Size = new System.Drawing.Size(31, 13);
+            this.lbl_extra_penalty.Size = new System.Drawing.Size(40, 15);
             this.lbl_extra_penalty.TabIndex = 30;
             this.lbl_extra_penalty.Text = "Mora";
             // 
             // txt_penalty_percentage
             // 
-            this.txt_penalty_percentage.Enabled = false;
+            this.txt_penalty_percentage.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.txt_penalty_percentage.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txt_penalty_percentage.Location = new System.Drawing.Point(76, 158);
             this.txt_penalty_percentage.Name = "txt_penalty_percentage";
-            this.txt_penalty_percentage.Size = new System.Drawing.Size(93, 20);
+            this.txt_penalty_percentage.ReadOnly = true;
+            this.txt_penalty_percentage.Size = new System.Drawing.Size(93, 14);
             this.txt_penalty_percentage.TabIndex = 31;
             this.txt_penalty_percentage.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
             // 
             // lbl_show_due_days
             // 
             this.lbl_show_due_days.AutoSize = true;
-            this.lbl_show_due_days.Location = new System.Drawing.Point(198, 221);
+            this.lbl_show_due_days.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lbl_show_due_days.Location = new System.Drawing.Point(109, 244);
             this.lbl_show_due_days.Name = "lbl_show_due_days";
-            this.lbl_show_due_days.Size = new System.Drawing.Size(0, 13);
+            this.lbl_show_due_days.Size = new System.Drawing.Size(0, 15);
             this.lbl_show_due_days.TabIndex = 32;
             // 
             // btn_collect_taxes
@@ -341,6 +361,7 @@
             this.btn_collect_taxes.FlatAppearance.BorderSize = 0;
             this.btn_collect_taxes.FlatAppearance.MouseOverBackColor = System.Drawing.Color.MediumSeaGreen;
             this.btn_collect_taxes.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btn_collect_taxes.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btn_collect_taxes.ForeColor = System.Drawing.Color.White;
             this.btn_collect_taxes.Location = new System.Drawing.Point(123, 512);
             this.btn_collect_taxes.Name = "btn_collect_taxes";
@@ -352,10 +373,10 @@
             // label2
             // 
             this.label2.AutoSize = true;
-            this.label2.Font = new System.Drawing.Font("Microsoft Sans Serif", 16F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label2.Font = new System.Drawing.Font("Microsoft Sans Serif", 16F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label2.Location = new System.Drawing.Point(836, 28);
             this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(84, 26);
+            this.label2.Size = new System.Drawing.Size(89, 26);
             this.label2.TabIndex = 34;
             this.label2.Text = "TASAS";
             // 
@@ -373,10 +394,13 @@
             // 
             // txt_total
             // 
-            this.txt_total.Enabled = false;
+            this.txt_total.BackColor = System.Drawing.SystemColors.Window;
+            this.txt_total.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.txt_total.Font = new System.Drawing.Font("Microsoft Sans Serif", 11F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txt_total.Location = new System.Drawing.Point(128, 466);
             this.txt_total.Name = "txt_total";
-            this.txt_total.Size = new System.Drawing.Size(154, 20);
+            this.txt_total.ReadOnly = true;
+            this.txt_total.Size = new System.Drawing.Size(154, 17);
             this.txt_total.TabIndex = 36;
             this.txt_total.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
             // 

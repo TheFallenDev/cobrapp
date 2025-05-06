@@ -66,8 +66,8 @@ namespace Cobrapp.Logic
 
                         // Crea el usuario Admin
                         string insertAdmin = @"
-                    INSERT INTO Users (Username, PasswordHash, Email, RoleId, IsActive)
-                    VALUES ('admin', @PasswordHash, 'admin@example.com', 
+                    INSERT INTO Users (Username, PasswordHash, RoleId, IsActive)
+                    VALUES ('admin', @PasswordHash, 
                             (SELECT Id FROM Roles WHERE Name = 'Admin'), 1)";
                         using (SQLiteCommand adminCommand = new SQLiteCommand(insertAdmin, connection))
                         {
@@ -79,6 +79,23 @@ namespace Cobrapp.Logic
                 }
             }
         }
+        public bool UserExists(string username)
+        {
+            using (SQLiteConnection connection = new SQLiteConnection(conn))
+            {
+                connection.Open();
+
+                string query = "SELECT COUNT(1) FROM Users WHERE Username = @Username";
+                using (SQLiteCommand command = new SQLiteCommand(query, connection))
+                {
+                    command.Parameters.AddWithValue("@Username", username);
+
+                    int count = Convert.ToInt32(command.ExecuteScalar());
+                    return count > 0; // Devuelve true si el usuario existe, de lo contrario false
+                }
+            }
+        }
+
         public void RegisterUser(string username, string password, int roleId)
         {
             using (SQLiteConnection connection = new SQLiteConnection(conn))
@@ -99,29 +116,39 @@ namespace Cobrapp.Logic
                 }
             }
         }
-        public bool Login(string username, string password)
+        public (bool, string) Login(string username, string password)
         {
             using (SQLiteConnection connection = new SQLiteConnection(conn))
             {
                 connection.Open();
 
-                string query = "SELECT PasswordHash FROM Users WHERE Username = @Username AND IsActive = 1";
+                string query = @"
+            SELECT PasswordHash, 
+                   (SELECT Name FROM Roles WHERE Roles.Id = Users.RoleId) AS Role
+            FROM Users
+            WHERE Username = @Username AND IsActive = 1";
+
                 using (SQLiteCommand command = new SQLiteCommand(query, connection))
                 {
                     command.Parameters.AddWithValue("@Username", username);
-                    var result = command.ExecuteScalar();
-                    if (result != null)
+
+                    using (SQLiteDataReader reader = command.ExecuteReader())
                     {
-                        string storedHash = result.ToString();
-                        return MyUtils.VerifyPassword(password, storedHash);
-                    }
-                    else
-                    {
-                        return false; // Usuario no encontrado o inactivo
+                        if (reader.Read())
+                        {
+                            string storedHash = reader["PasswordHash"].ToString();
+                            string role = reader["Role"].ToString();
+
+                            bool isAuthenticated = MyUtils.VerifyPassword(password, storedHash);
+                            return (isAuthenticated, isAuthenticated ? role : string.Empty);
+                        }
                     }
                 }
             }
+
+            return (false, string.Empty); // Usuario no encontrado o contraseña incorrecta
         }
+
         public void ChangePassword(string username, string newPassword)
         {
             using (SQLiteConnection connection = new SQLiteConnection(conn))
@@ -176,7 +203,7 @@ namespace Cobrapp.Logic
             using (SQLiteConnection connection = new SQLiteConnection(conn))
             {
                 connection.Open();
-                string query = "SELECT u.Id, u.Username, r.Name AS Role, u.IsActive FROM Users u " +
+                string query = "SELECT u.Id, u.Username, r.Id AS RoleId, u.IsActive FROM Users u " +
                                "INNER JOIN Roles r ON u.RoleId = r.Id";
                 using (SQLiteCommand command = new SQLiteCommand(query, connection))
                 {
@@ -188,7 +215,7 @@ namespace Cobrapp.Logic
                             {
                                 Id = reader.GetInt32(0),
                                 Username = reader.GetString(1),
-                                RoleId = reader.GetString(2),
+                                RoleId = reader.GetInt32(2),
                                 IsActive = reader.GetBoolean(3)
                             };
                             users.Add(user);
@@ -199,7 +226,6 @@ namespace Cobrapp.Logic
 
             return users;
         }
-
 
         public bool AddOrUpdateConfiguration(string key, string value)
         {

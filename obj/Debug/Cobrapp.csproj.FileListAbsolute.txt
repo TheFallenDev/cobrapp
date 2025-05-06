@@ -63,6 +63,7 @@ C:\Deploy\cobrapp\obj\Debug\Cobrapp.Commissions.resources
 C:\Deploy\cobrapp\obj\Debug\Cobrapp.Configuration.resources
 C:\Deploy\cobrapp\obj\Debug\Cobrapp.Entrance.resources
 C:\Deploy\cobrapp\obj\Debug\Cobrapp.Fines.resources
+C:\Deploy\cobrapp\obj\Debug\Cobrapp.LoginConfig.resources
 C:\Deploy\cobrapp\obj\Debug\Cobrapp.LoginForm.resources
 C:\Deploy\cobrapp\obj\Debug\Cobrapp.MainChild.resources
 C:\Deploy\cobrapp\obj\Debug\Cobrapp.Stamps.resources

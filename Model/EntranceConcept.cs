@@ -16,5 +16,6 @@ namespace Cobrapp.Model
         public EntranceTicket EntranceTicket { get; set; }
         public string TicketTime { get; set; }
         public string Payment_method { get; set; }
+        public string Username { get; set; }
     }
 }

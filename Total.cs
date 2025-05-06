@@ -90,7 +90,7 @@ namespace Cobrapp
                     lbl_total.Text = acc.ToString("N2");
                 }
                 
-                List<EntranceConcept> entranceConcepts = EntranceLogic.Instance.GetEntranceConceptsByDate(MyUtils.DateFixerMinus(dtp_date.Text));
+                List<EntranceConcept> entranceConcepts = EntranceLogic.Instance.GetEntranceConceptsByDateAndUser(MyUtils.DateFixerMinus(dtp_date.Text),Properties.Settings.Default.CurrentUser);
                 foreach (var concept in entranceConcepts)
                 {
                     int n = dtgv_taxes.Rows.Add();
@@ -121,7 +121,7 @@ namespace Cobrapp
             // Diccionario para agrupar los datos
             Dictionary<string, ConceptSummary> summaryDict = new Dictionary<string, ConceptSummary>();
             // Recuperar los conceptos
-            List<EntranceConcept> entranceConcepts = EntranceLogic.Instance.GetEntranceConceptsByDate(MyUtils.DateFixerMinus(date));
+            List<EntranceConcept> entranceConcepts = EntranceLogic.Instance.GetEntranceConceptsByDateAndUser(MyUtils.DateFixerMinus(date), Properties.Settings.Default.CurrentUser);
 
             foreach (var concept in entranceConcepts)
             {
@@ -164,7 +164,7 @@ namespace Cobrapp
             // Diccionario para agrupar los datos
             Dictionary<string, ConceptSummary> summaryDict = new Dictionary<string, ConceptSummary>();
             // Recuperar los conceptos
-            List<EntranceConcept> entranceConcepts = EntranceLogic.Instance.GetEntranceConceptsByDate(MyUtils.DateFixerMinus(dtp_date.Text));
+            List<EntranceConcept> entranceConcepts = EntranceLogic.Instance.GetEntranceConceptsByDateAndUser(MyUtils.DateFixerMinus(dtp_date.Text), Properties.Settings.Default.CurrentUser);
 
             foreach (var concept in entranceConcepts)
             {
@@ -218,7 +218,8 @@ namespace Cobrapp
                 PriceColumn = totals.ToArray(),
                 SummaryDict = summaryDict,
                 TotalCash = totalcash,
-                TotalPos = totalpos
+                TotalPos = totalpos,
+                Username = Properties.Settings.Default.CurrentUser
             };
             
             if (Properties.Settings.Default.EntranceMode)

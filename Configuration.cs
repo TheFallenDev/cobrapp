@@ -4,6 +4,7 @@ using System.Linq;
 using System.Windows.Forms;
 using Cobrapp.Logic;
 using Cobrapp.Model;
+using Cobrapp.Utils;
 
 namespace Cobrapp
 {
@@ -17,6 +18,7 @@ namespace Cobrapp
             getTaxConfigurations();
             getFineConfigurations();
             GetEntranceConcepts();
+            LoadUsers();
             ToggleExtensionFields();
             CorrespondingComission.KeyPress += onlyNumbersAndComa_KeyPress;
             AdditionalPenalty.KeyPress += onlyNumbersAndComa_KeyPress;
@@ -87,15 +89,21 @@ namespace Cobrapp
                 Application.Restart();
             }
         }
-        private void GetUsers()
+        private void LoadUsers()
         {
-            List
-            foreach (User user in ConfigurationLogic.Instance.ListUsers())
-            {
+            // Obtener los usuarios desde la base de datos
+            List<User> users = ConfigurationLogic.Instance.GetAllUsers();
 
+            // Limpiar filas existentes
+            dtgv_users.Rows.Clear();
+
+            // Agregar filas al DataGridView
+            foreach (var user in users)
+            {
+                dtgv_users.Rows.Add(user.Username, user.RoleId, user.IsActive ? true : false);
             }
-            
         }
+
         private bool CheckAllFields()
         {
             bool allFieldsValid = true;
@@ -325,6 +333,21 @@ namespace Cobrapp
         private void ExtensionActive_CheckedChanged(object sender, EventArgs e)
         {
             ToggleExtensionFields();
+        }
+
+        private void btnUser_Click(object sender, EventArgs e)
+        {
+            string username = txtUser.Text.Trim();
+            string password = txtPassword.Text.Trim();
+            int roleId = Convert.ToInt32(txtRole.Text);
+            if (ConfigurationLogic.Instance.UserExists(username))
+            {
+                ConfigurationLogic.Instance.ChangePassword(username,password);
+            }
+            else
+            {
+                ConfigurationLogic.Instance.RegisterUser(username,password,roleId);
+            }
         }
     }
 }

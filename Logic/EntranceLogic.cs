@@ -6,6 +6,7 @@ using System.Data.SQLite;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using static System.Windows.Forms.VisualStyles.VisualStyleElement.StartPanel;
 
 namespace Cobrapp.Logic
 {
@@ -38,8 +39,8 @@ namespace Cobrapp.Logic
             {
                 connection.Open();
 
-                string query = "INSERT INTO EntranceTickets (Date, Time, Concepts, Total, Payment_method) " +
-                               "VALUES (@Date, @Time, @Concepts, @Total, @Payment_method)";
+                string query = "INSERT INTO EntranceTickets (Date, Time, Concepts, Total, Payment_method, Username) " +
+                               "VALUES (@Date, @Time, @Concepts, @Total, @Payment_method, @Username)";
                 using (SQLiteCommand command = new SQLiteCommand(query, connection))
                 {
                     command.Parameters.AddWithValue("@Date", ticket.Date);
@@ -47,6 +48,7 @@ namespace Cobrapp.Logic
                     command.Parameters.AddWithValue("@Concepts", ticket.Concepts);
                     command.Parameters.AddWithValue("@Total", ticket.Total);
                     command.Parameters.AddWithValue("@Payment_method", ticket.Payment_method);
+                    command.Parameters.AddWithValue("@Username", ticket.Username);
                     command.ExecuteNonQuery();
                 }
             }
@@ -111,6 +113,49 @@ namespace Cobrapp.Logic
             return concepts;
         }
 
+        public List<EntranceConcept> GetEntranceConceptsByDateAndUser(string date, string username)
+        {
+            List<EntranceConcept> concepts = new List<EntranceConcept>();
+
+            using (SQLiteConnection connection = new SQLiteConnection(conn))
+            {
+                connection.Open();
+
+                // Consulta SQL actualizada para incluir la hora del ticket
+                string query = @"
+            SELECT ec.Id, ec.Name, ec.Value, ec.TicketId, et.Time, et.Payment_method, et.Username
+            FROM EntranceConcepts ec
+            INNER JOIN EntranceTickets et ON ec.TicketId = et.Id
+            WHERE et.Date = @Date AND et.Username = @Username;";
+
+                using (SQLiteCommand command = new SQLiteCommand(query, connection))
+                {
+                    command.Parameters.AddWithValue("@Date", date);
+                    command.Parameters.AddWithValue("@Username", username);
+
+                    using (SQLiteDataReader reader = command.ExecuteReader())
+                    {
+                        while (reader.Read())
+                        {
+                            EntranceConcept concept = new EntranceConcept
+                            {
+                                Id = Convert.ToInt32(reader["Id"]),
+                                Name = reader["Name"].ToString(),
+                                Value = Convert.ToDecimal(reader["Value"]),
+                                TicketId = Convert.ToInt32(reader["TicketId"]),
+                                TicketTime = reader["Time"].ToString(), // Obtiene la hora del ticket
+                                Payment_method = reader["Payment_method"].ToString()
+
+                            };
+
+                            concepts.Add(concept);
+                        }
+                    }
+                }
+            }
+
+            return concepts;
+        }
 
         public int GetLastInsertedTicketId()
         {
