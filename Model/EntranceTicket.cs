@@ -14,6 +14,7 @@ namespace Cobrapp.Model
         public string Concepts { get; set; }
         public decimal Total { get; set; }
         public string Payment_method { get; set; }
+        public string Username { get; set; }
         // Relación uno a muchos
         public List<EntranceConcept> EntranceConcepts { get; set; }
     }

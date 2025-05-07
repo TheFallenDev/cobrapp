@@ -240,7 +240,7 @@ namespace Cobrapp
 
         private void OpenProtectedArea()
         {
-            using (LoginForm loginForm = new LoginForm())
+            using (LoginConfig loginForm = new LoginConfig())
             {
                 if (loginForm.ShowDialog() == DialogResult.OK)
                 {
@@ -265,7 +265,7 @@ namespace Cobrapp
             {
                 btn_Main_Click(null, e);
             }
-
+            if (Properties.Settings.Default.CurrentUser == "admin") btn_Configuration.Visible = true;
             if (!MyUtils.PrinterExists("tickera") && !MyUtils.PrinterExists("tickerausb"))
             {
                 MessageBox.Show("Se requiere tener una impresora instalada con el nombre 'tickera' o 'tickeraUSB'.");

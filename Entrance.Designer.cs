@@ -29,13 +29,15 @@
         private void InitializeComponent()
         {
             this.dtgv_entrances = new System.Windows.Forms.DataGridView();
+            this.btn_cash = new System.Windows.Forms.Button();
+            this.label2 = new System.Windows.Forms.Label();
+            this.lbl_total = new System.Windows.Forms.Label();
+            this.btn_posnet = new System.Windows.Forms.Button();
+            this.btn_qr = new System.Windows.Forms.Button();
             this.concept = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.value = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.cuantity = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.subtotal = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.btn_collect = new System.Windows.Forms.Button();
-            this.label2 = new System.Windows.Forms.Label();
-            this.lbl_total = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.dtgv_entrances)).BeginInit();
             this.SuspendLayout();
             // 
@@ -50,59 +52,34 @@
             this.value,
             this.cuantity,
             this.subtotal});
-            this.dtgv_entrances.Location = new System.Drawing.Point(287, 53);
+            this.dtgv_entrances.Location = new System.Drawing.Point(209, 31);
+            this.dtgv_entrances.MultiSelect = false;
             this.dtgv_entrances.Name = "dtgv_entrances";
-            this.dtgv_entrances.Size = new System.Drawing.Size(442, 255);
+            this.dtgv_entrances.RowHeadersWidthSizeMode = System.Windows.Forms.DataGridViewRowHeadersWidthSizeMode.DisableResizing;
+            this.dtgv_entrances.Size = new System.Drawing.Size(560, 350);
             this.dtgv_entrances.TabIndex = 0;
             this.dtgv_entrances.CellValidating += new System.Windows.Forms.DataGridViewCellValidatingEventHandler(this.dtgv_entrances_CellValidating);
+            this.dtgv_entrances.KeyDown += new System.Windows.Forms.KeyEventHandler(this.TextBox_KeyDown);
             // 
-            // concept
+            // btn_cash
             // 
-            this.concept.Frozen = true;
-            this.concept.HeaderText = "Concepto";
-            this.concept.Name = "concept";
-            this.concept.ReadOnly = true;
-            // 
-            // value
-            // 
-            this.value.Frozen = true;
-            this.value.HeaderText = "Valor";
-            this.value.Name = "value";
-            this.value.ReadOnly = true;
-            // 
-            // cuantity
-            // 
-            this.cuantity.Frozen = true;
-            this.cuantity.HeaderText = "Cantidad";
-            this.cuantity.Name = "cuantity";
-            // 
-            // subtotal
-            // 
-            this.subtotal.Frozen = true;
-            this.subtotal.HeaderText = "Subtotal";
-            this.subtotal.Name = "subtotal";
-            this.subtotal.ReadOnly = true;
-            // 
-            // btn_collect
-            // 
-            this.btn_collect.BackColor = System.Drawing.Color.SeaGreen;
-            this.btn_collect.FlatAppearance.BorderSize = 0;
-            this.btn_collect.FlatAppearance.MouseOverBackColor = System.Drawing.Color.MediumSeaGreen;
-            this.btn_collect.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btn_collect.ForeColor = System.Drawing.Color.White;
-            this.btn_collect.Location = new System.Drawing.Point(427, 481);
-            this.btn_collect.Name = "btn_collect";
-            this.btn_collect.Size = new System.Drawing.Size(159, 32);
-            this.btn_collect.TabIndex = 34;
-            this.btn_collect.Text = "Cobrar (F12)";
-            this.btn_collect.UseVisualStyleBackColor = false;
-            this.btn_collect.Click += new System.EventHandler(this.btnCobrar_Click);
+            this.btn_cash.BackColor = System.Drawing.Color.SeaGreen;
+            this.btn_cash.FlatAppearance.BorderSize = 0;
+            this.btn_cash.FlatAppearance.MouseOverBackColor = System.Drawing.Color.MediumSeaGreen;
+            this.btn_cash.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btn_cash.ForeColor = System.Drawing.Color.White;
+            this.btn_cash.Location = new System.Drawing.Point(608, 475);
+            this.btn_cash.Name = "btn_cash";
+            this.btn_cash.Size = new System.Drawing.Size(159, 32);
+            this.btn_cash.TabIndex = 34;
+            this.btn_cash.Text = "Efectivo (F12)";
+            this.btn_cash.UseVisualStyleBackColor = false;
             // 
             // label2
             // 
             this.label2.AutoSize = true;
             this.label2.Font = new System.Drawing.Font("Microsoft Sans Serif", 16F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label2.Location = new System.Drawing.Point(147, 379);
+            this.label2.Location = new System.Drawing.Point(290, 415);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(202, 26);
             this.label2.TabIndex = 35;
@@ -110,14 +87,75 @@
             // 
             // lbl_total
             // 
+            this.lbl_total.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.lbl_total.AutoSize = true;
             this.lbl_total.Font = new System.Drawing.Font("Microsoft Sans Serif", 16F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lbl_total.Location = new System.Drawing.Point(657, 379);
+            this.lbl_total.ImageAlign = System.Drawing.ContentAlignment.BottomRight;
+            this.lbl_total.Location = new System.Drawing.Point(550, 415);
             this.lbl_total.Name = "lbl_total";
             this.lbl_total.Size = new System.Drawing.Size(72, 26);
             this.lbl_total.TabIndex = 36;
             this.lbl_total.Text = "$ 0.00";
-            this.lbl_total.TextAlign = System.Drawing.ContentAlignment.BottomRight;
+            this.lbl_total.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            // 
+            // btn_posnet
+            // 
+            this.btn_posnet.BackColor = System.Drawing.Color.RoyalBlue;
+            this.btn_posnet.FlatAppearance.BorderSize = 0;
+            this.btn_posnet.FlatAppearance.MouseOverBackColor = System.Drawing.Color.MediumSeaGreen;
+            this.btn_posnet.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btn_posnet.ForeColor = System.Drawing.Color.White;
+            this.btn_posnet.Location = new System.Drawing.Point(209, 475);
+            this.btn_posnet.Name = "btn_posnet";
+            this.btn_posnet.Size = new System.Drawing.Size(159, 32);
+            this.btn_posnet.TabIndex = 37;
+            this.btn_posnet.Text = "Posnet (F9)";
+            this.btn_posnet.UseVisualStyleBackColor = false;
+            // 
+            // btn_qr
+            // 
+            this.btn_qr.BackColor = System.Drawing.Color.Goldenrod;
+            this.btn_qr.FlatAppearance.BorderSize = 0;
+            this.btn_qr.FlatAppearance.MouseOverBackColor = System.Drawing.Color.MediumSeaGreen;
+            this.btn_qr.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btn_qr.ForeColor = System.Drawing.Color.White;
+            this.btn_qr.Location = new System.Drawing.Point(408, 475);
+            this.btn_qr.Name = "btn_qr";
+            this.btn_qr.Size = new System.Drawing.Size(159, 32);
+            this.btn_qr.TabIndex = 38;
+            this.btn_qr.Text = "QR (F10)";
+            this.btn_qr.UseVisualStyleBackColor = false;
+            // 
+            // concept
+            // 
+            this.concept.Frozen = true;
+            this.concept.HeaderText = "Concepto";
+            this.concept.Name = "concept";
+            this.concept.ReadOnly = true;
+            this.concept.Width = 140;
+            // 
+            // value
+            // 
+            this.value.Frozen = true;
+            this.value.HeaderText = "Valor";
+            this.value.Name = "value";
+            this.value.ReadOnly = true;
+            this.value.Width = 140;
+            // 
+            // cuantity
+            // 
+            this.cuantity.Frozen = true;
+            this.cuantity.HeaderText = "Cantidad";
+            this.cuantity.Name = "cuantity";
+            this.cuantity.Width = 140;
+            // 
+            // subtotal
+            // 
+            this.subtotal.Frozen = true;
+            this.subtotal.HeaderText = "Subtotal";
+            this.subtotal.Name = "subtotal";
+            this.subtotal.ReadOnly = true;
+            this.subtotal.Width = 140;
             // 
             // Entrance
             // 
@@ -125,13 +163,15 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(144)))), ((int)(((byte)(175)))), ((int)(((byte)(197)))));
             this.ClientSize = new System.Drawing.Size(916, 589);
+            this.Controls.Add(this.btn_qr);
+            this.Controls.Add(this.btn_posnet);
             this.Controls.Add(this.lbl_total);
             this.Controls.Add(this.label2);
-            this.Controls.Add(this.btn_collect);
+            this.Controls.Add(this.btn_cash);
             this.Controls.Add(this.dtgv_entrances);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
             this.Name = "Entrance";
-            this.Text = "Form1";
+            this.Text = "EntranceForm";
             this.Load += new System.EventHandler(this.Form_Load);
             ((System.ComponentModel.ISupportInitialize)(this.dtgv_entrances)).EndInit();
             this.ResumeLayout(false);
@@ -142,12 +182,14 @@
         #endregion
 
         private System.Windows.Forms.DataGridView dtgv_entrances;
+        private System.Windows.Forms.Button btn_cash;
+        private System.Windows.Forms.Label label2;
+        private System.Windows.Forms.Label lbl_total;
+        private System.Windows.Forms.Button btn_posnet;
+        private System.Windows.Forms.Button btn_qr;
         private System.Windows.Forms.DataGridViewTextBoxColumn concept;
         private System.Windows.Forms.DataGridViewTextBoxColumn value;
         private System.Windows.Forms.DataGridViewTextBoxColumn cuantity;
         private System.Windows.Forms.DataGridViewTextBoxColumn subtotal;
-        private System.Windows.Forms.Button btn_collect;
-        private System.Windows.Forms.Label label2;
-        private System.Windows.Forms.Label lbl_total;
     }
 }

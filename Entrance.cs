@@ -20,16 +20,7 @@ namespace Cobrapp
             InitializeComponent();
 
             dtgv_entrances.Rows.Clear();
-            dtgv_entrances.Columns[1].DefaultCellStyle.Format = "C";
-            dtgv_entrances.Columns[1].DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleRight;
-            dtgv_entrances.Columns[2].DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleRight;
-            dtgv_entrances.Columns[3].DefaultCellStyle.Format = "C";
-            dtgv_entrances.Columns[3].DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleRight;
-
-            dtgv_entrances.EditingControlShowing += dtgv_entrances_EditingControlShowing;
-            dtgv_entrances.CellValueChanged += dtgv_entrances_CellValueChanged;
-            dtgv_entrances.CellEndEdit += dtgv_entranceConcepts_CellEndEdit;
-
+            DataGridViewStyle();
             GetEntranceConcepts();
         }
 
@@ -51,7 +42,7 @@ namespace Cobrapp
         private void dtgv_entrances_EditingControlShowing(object sender, DataGridViewEditingControlShowingEventArgs e)
         {
             // Verifica si la columna que se está editando es la de números
-            if (dtgv_entrances.CurrentCell.ColumnIndex == 2) // Cambia "1" al índice de la columna deseada
+            if (dtgv_entrances.CurrentCell.ColumnIndex == 2)
             {
                 TextBox textBox = e.Control as TextBox;
 
@@ -146,7 +137,7 @@ namespace Cobrapp
             lbl_total.Text = total.ToString("C"); // Muestra el total en un Label
         }
 
-        private void btnCobrar_Click(object sender, EventArgs e)
+        private void btnCobrar_KeyDown(object sender, KeyEventArgs e)
         {
             // Validar los datos del DataGridView
             int quant = 0;
@@ -186,24 +177,34 @@ namespace Cobrapp
                 }
             }
 
+            int ticketId = EntranceLogic.Instance.GetLastInsertedTicketId();
+
             Ticket myticket = new Ticket
             {
                 Date = DateTime.Now.ToString(),
                 TotalPrice = total,
                 FirstColumn = concepts.ToArray(),
                 SecondColumn = quantitys.ToArray(),
-                PriceColumn = values.ToArray()
+                PriceColumn = values.ToArray(),
+                TicketNumber = ticketId + 1,
+                Username = Properties.Settings.Default.CurrentUser
             };
+
             myticket.PrintTicket(Ticket.PrintType.EntranceTicket);
 
             // Crear el ticket
+            string payment_method = "";
+            if (e.KeyCode == Keys.F9) payment_method = "Posnet";
+            if (e.KeyCode == Keys.F10) payment_method = "QR";
+            if (e.KeyCode == Keys.F12) payment_method = "Efectivo";
             EntranceTicket ticket = new EntranceTicket
             {
                 Date = DateTime.Now.ToString("yyyy-MM-dd"),
                 Time = DateTime.Now.ToString("HH:mm:ss"),
                 Concepts = GetDetailedConcepts(),
                 Total = total,
-                Payment_method = "Efectivo" // Cambia según sea necesario
+                Payment_method = payment_method, // Cambia según sea necesario
+                Username = Properties.Settings.Default.CurrentUser
             };
 
             try
@@ -212,8 +213,7 @@ namespace Cobrapp
                 EntranceLogic.Instance.AddEntranceTicket(ticket);
 
                 // Obtener el ID del ticket generado
-                int ticketId = EntranceLogic.Instance.GetLastInsertedTicketId();
-
+                ticketId = EntranceLogic.Instance.GetLastInsertedTicketId();
                 // Guardar los conceptos como entradas individuales
                 foreach (DataGridViewRow row in dtgv_entrances.Rows)
                 {
@@ -281,6 +281,33 @@ namespace Cobrapp
                 dtgv_entrances.CurrentCell = dtgv_entrances[2, 0];  // [columna, fila]
             }
             Cleaner();
+
+            // MODIFICAR PARA HABILITAR BOTONES DE COBRO
+            btn_posnet.Visible = false;
+            btn_qr.Visible = false;
+
+        }
+
+        private void TextBox_KeyDown(object sender, KeyEventArgs e)
+        {
+            // MODIFICAR PARA HABILITAR BOTONES DE COBRO
+            if (/*e.KeyCode == Keys.F9 || e.KeyCode == Keys.F10 || */ e.KeyCode == Keys.F12) btnCobrar_KeyDown(sender, e);
+        }
+
+        private void DataGridViewStyle()
+        {
+            dtgv_entrances.Columns[1].DefaultCellStyle.Format = "C";
+            dtgv_entrances.Columns[1].DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleRight;
+            dtgv_entrances.Columns[2].DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleRight;
+            dtgv_entrances.Columns[3].DefaultCellStyle.Format = "C";
+            dtgv_entrances.Columns[3].DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleRight;
+
+            dtgv_entrances.EditingControlShowing += dtgv_entrances_EditingControlShowing;
+            dtgv_entrances.CellValueChanged += dtgv_entrances_CellValueChanged;
+            dtgv_entrances.CellEndEdit += dtgv_entranceConcepts_CellEndEdit;
+
+            dtgv_entrances.DefaultCellStyle.Font = new Font("Consolas", 12);
+            dtgv_entrances.RowHeadersVisible = false;
         }
     }
 }

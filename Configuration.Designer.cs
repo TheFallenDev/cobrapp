@@ -29,6 +29,11 @@
         private void InitializeComponent()
         {
             this.tabPage2 = new System.Windows.Forms.TabPage();
+            this.lbl_taxes = new System.Windows.Forms.Label();
+            this.lbl_concepts = new System.Windows.Forms.Label();
+            this.dtgv_entranceConcepts = new System.Windows.Forms.DataGridView();
+            this.dataGridViewTextBoxColumn3 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.dataGridViewTextBoxColumn4 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.ConfigurationPassword = new System.Windows.Forms.TextBox();
             this.label12 = new System.Windows.Forms.Label();
             this.lbl_fines = new System.Windows.Forms.Label();
@@ -84,21 +89,30 @@
             this.ExtensionEndDate = new System.Windows.Forms.TextBox();
             this.ExtensionActive = new System.Windows.Forms.CheckBox();
             this.tabPage4 = new System.Windows.Forms.TabPage();
+            this.dtgv_users = new System.Windows.Forms.DataGridView();
+            this.Username = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Role = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.IsActive = new System.Windows.Forms.DataGridViewCheckBoxColumn();
             this.EntranceMode = new System.Windows.Forms.CheckBox();
             this.btn_save = new System.Windows.Forms.Button();
-            this.dtgv_entranceConcepts = new System.Windows.Forms.DataGridView();
-            this.lbl_concepts = new System.Windows.Forms.Label();
-            this.dataGridViewTextBoxColumn3 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.dataGridViewTextBoxColumn4 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.lbl_taxes = new System.Windows.Forms.Label();
+            this.btnUser = new System.Windows.Forms.Button();
+            this.txtUser = new System.Windows.Forms.TextBox();
+            this.txtPassword = new System.Windows.Forms.TextBox();
+            this.label19 = new System.Windows.Forms.Label();
+            this.label20 = new System.Windows.Forms.Label();
+            this.panel1 = new System.Windows.Forms.Panel();
+            this.txtRole = new System.Windows.Forms.TextBox();
+            this.lblRole = new System.Windows.Forms.Label();
             this.tabPage2.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.dtgv_entranceConcepts)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dtgv_fines)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dtgv_taxes)).BeginInit();
             this.tabPage1.SuspendLayout();
             this.tabControl.SuspendLayout();
             this.tabPage3.SuspendLayout();
             this.tabPage4.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.dtgv_entranceConcepts)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dtgv_users)).BeginInit();
+            this.panel1.SuspendLayout();
             this.SuspendLayout();
             // 
             // tabPage2
@@ -124,6 +138,48 @@
             this.tabPage2.TabIndex = 1;
             this.tabPage2.Text = "Constantes";
             this.tabPage2.UseVisualStyleBackColor = true;
+            // 
+            // lbl_taxes
+            // 
+            this.lbl_taxes.AutoSize = true;
+            this.lbl_taxes.Location = new System.Drawing.Point(102, 17);
+            this.lbl_taxes.Name = "lbl_taxes";
+            this.lbl_taxes.Size = new System.Drawing.Size(36, 13);
+            this.lbl_taxes.TabIndex = 28;
+            this.lbl_taxes.Text = "Tasas";
+            // 
+            // lbl_concepts
+            // 
+            this.lbl_concepts.AutoSize = true;
+            this.lbl_concepts.Location = new System.Drawing.Point(568, 17);
+            this.lbl_concepts.Name = "lbl_concepts";
+            this.lbl_concepts.Size = new System.Drawing.Size(97, 13);
+            this.lbl_concepts.TabIndex = 27;
+            this.lbl_concepts.Text = "Conceptos entrada";
+            // 
+            // dtgv_entranceConcepts
+            // 
+            this.dtgv_entranceConcepts.BackgroundColor = System.Drawing.Color.FromArgb(((int)(((byte)(42)))), ((int)(((byte)(49)))), ((int)(((byte)(50)))));
+            this.dtgv_entranceConcepts.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dtgv_entranceConcepts.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
+            this.dataGridViewTextBoxColumn3,
+            this.dataGridViewTextBoxColumn4});
+            this.dtgv_entranceConcepts.Location = new System.Drawing.Point(495, 33);
+            this.dtgv_entranceConcepts.Name = "dtgv_entranceConcepts";
+            this.dtgv_entranceConcepts.Size = new System.Drawing.Size(240, 231);
+            this.dtgv_entranceConcepts.TabIndex = 26;
+            // 
+            // dataGridViewTextBoxColumn3
+            // 
+            this.dataGridViewTextBoxColumn3.Frozen = true;
+            this.dataGridViewTextBoxColumn3.HeaderText = "Concepto";
+            this.dataGridViewTextBoxColumn3.Name = "dataGridViewTextBoxColumn3";
+            // 
+            // dataGridViewTextBoxColumn4
+            // 
+            this.dataGridViewTextBoxColumn4.Frozen = true;
+            this.dataGridViewTextBoxColumn4.HeaderText = "Valor";
+            this.dataGridViewTextBoxColumn4.Name = "dataGridViewTextBoxColumn4";
             // 
             // ConfigurationPassword
             // 
@@ -608,6 +664,8 @@
             // 
             // tabPage4
             // 
+            this.tabPage4.Controls.Add(this.panel1);
+            this.tabPage4.Controls.Add(this.dtgv_users);
             this.tabPage4.Controls.Add(this.EntranceMode);
             this.tabPage4.Location = new System.Drawing.Point(4, 22);
             this.tabPage4.Name = "tabPage4";
@@ -616,6 +674,36 @@
             this.tabPage4.TabIndex = 3;
             this.tabPage4.Text = "Menu";
             this.tabPage4.UseVisualStyleBackColor = true;
+            // 
+            // dtgv_users
+            // 
+            this.dtgv_users.AllowUserToDeleteRows = false;
+            this.dtgv_users.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dtgv_users.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
+            this.Username,
+            this.Role,
+            this.IsActive});
+            this.dtgv_users.Location = new System.Drawing.Point(403, 21);
+            this.dtgv_users.Name = "dtgv_users";
+            this.dtgv_users.Size = new System.Drawing.Size(345, 203);
+            this.dtgv_users.TabIndex = 1;
+            // 
+            // Username
+            // 
+            this.Username.HeaderText = "Usuario";
+            this.Username.Name = "Username";
+            this.Username.ReadOnly = true;
+            // 
+            // Role
+            // 
+            this.Role.HeaderText = "Rol";
+            this.Role.Name = "Role";
+            this.Role.Resizable = System.Windows.Forms.DataGridViewTriState.True;
+            // 
+            // IsActive
+            // 
+            this.IsActive.HeaderText = "Activo";
+            this.IsActive.Name = "IsActive";
             // 
             // EntranceMode
             // 
@@ -637,47 +725,78 @@
             this.btn_save.UseVisualStyleBackColor = true;
             this.btn_save.Click += new System.EventHandler(this.btn_save_Click);
             // 
-            // dtgv_entranceConcepts
+            // btnUser
             // 
-            this.dtgv_entranceConcepts.BackgroundColor = System.Drawing.Color.FromArgb(((int)(((byte)(42)))), ((int)(((byte)(49)))), ((int)(((byte)(50)))));
-            this.dtgv_entranceConcepts.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dtgv_entranceConcepts.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
-            this.dataGridViewTextBoxColumn3,
-            this.dataGridViewTextBoxColumn4});
-            this.dtgv_entranceConcepts.Location = new System.Drawing.Point(495, 33);
-            this.dtgv_entranceConcepts.Name = "dtgv_entranceConcepts";
-            this.dtgv_entranceConcepts.Size = new System.Drawing.Size(240, 231);
-            this.dtgv_entranceConcepts.TabIndex = 26;
+            this.btnUser.Location = new System.Drawing.Point(151, 74);
+            this.btnUser.Name = "btnUser";
+            this.btnUser.Size = new System.Drawing.Size(75, 23);
+            this.btnUser.TabIndex = 2;
+            this.btnUser.Text = "Aceptar";
+            this.btnUser.UseVisualStyleBackColor = true;
+            this.btnUser.Click += new System.EventHandler(this.btnUser_Click);
             // 
-            // lbl_concepts
+            // txtUser
             // 
-            this.lbl_concepts.AutoSize = true;
-            this.lbl_concepts.Location = new System.Drawing.Point(568, 17);
-            this.lbl_concepts.Name = "lbl_concepts";
-            this.lbl_concepts.Size = new System.Drawing.Size(97, 13);
-            this.lbl_concepts.TabIndex = 27;
-            this.lbl_concepts.Text = "Conceptos entrada";
+            this.txtUser.Location = new System.Drawing.Point(12, 24);
+            this.txtUser.Name = "txtUser";
+            this.txtUser.Size = new System.Drawing.Size(100, 20);
+            this.txtUser.TabIndex = 3;
             // 
-            // dataGridViewTextBoxColumn3
+            // txtPassword
             // 
-            this.dataGridViewTextBoxColumn3.Frozen = true;
-            this.dataGridViewTextBoxColumn3.HeaderText = "Concepto";
-            this.dataGridViewTextBoxColumn3.Name = "dataGridViewTextBoxColumn3";
+            this.txtPassword.Location = new System.Drawing.Point(118, 24);
+            this.txtPassword.Name = "txtPassword";
+            this.txtPassword.Size = new System.Drawing.Size(100, 20);
+            this.txtPassword.TabIndex = 4;
             // 
-            // dataGridViewTextBoxColumn4
+            // label19
             // 
-            this.dataGridViewTextBoxColumn4.Frozen = true;
-            this.dataGridViewTextBoxColumn4.HeaderText = "Valor";
-            this.dataGridViewTextBoxColumn4.Name = "dataGridViewTextBoxColumn4";
+            this.label19.AutoSize = true;
+            this.label19.Location = new System.Drawing.Point(12, 10);
+            this.label19.Name = "label19";
+            this.label19.Size = new System.Drawing.Size(43, 13);
+            this.label19.TabIndex = 5;
+            this.label19.Text = "Usuario";
             // 
-            // lbl_taxes
+            // label20
             // 
-            this.lbl_taxes.AutoSize = true;
-            this.lbl_taxes.Location = new System.Drawing.Point(102, 17);
-            this.lbl_taxes.Name = "lbl_taxes";
-            this.lbl_taxes.Size = new System.Drawing.Size(36, 13);
-            this.lbl_taxes.TabIndex = 28;
-            this.lbl_taxes.Text = "Tasas";
+            this.label20.AutoSize = true;
+            this.label20.Location = new System.Drawing.Point(118, 10);
+            this.label20.Name = "label20";
+            this.label20.Size = new System.Drawing.Size(66, 13);
+            this.label20.TabIndex = 6;
+            this.label20.Text = "Constraseña";
+            // 
+            // panel1
+            // 
+            this.panel1.BackColor = System.Drawing.Color.Gainsboro;
+            this.panel1.Controls.Add(this.lblRole);
+            this.panel1.Controls.Add(this.txtRole);
+            this.panel1.Controls.Add(this.txtPassword);
+            this.panel1.Controls.Add(this.label20);
+            this.panel1.Controls.Add(this.btnUser);
+            this.panel1.Controls.Add(this.label19);
+            this.panel1.Controls.Add(this.txtUser);
+            this.panel1.Location = new System.Drawing.Point(27, 124);
+            this.panel1.Name = "panel1";
+            this.panel1.Size = new System.Drawing.Size(229, 100);
+            this.panel1.TabIndex = 7;
+            // 
+            // txtRole
+            // 
+            this.txtRole.Location = new System.Drawing.Point(62, 50);
+            this.txtRole.Name = "txtRole";
+            this.txtRole.Size = new System.Drawing.Size(100, 20);
+            this.txtRole.TabIndex = 7;
+            // 
+            // lblRole
+            // 
+            this.lblRole.AutoSize = true;
+            this.lblRole.Location = new System.Drawing.Point(12, 53);
+            this.lblRole.Name = "lblRole";
+            this.lblRole.Size = new System.Drawing.Size(23, 13);
+            this.lblRole.TabIndex = 8;
+            this.lblRole.Text = "Rol";
             // 
             // Configuration
             // 
@@ -691,6 +810,7 @@
             this.Text = "Configuración";
             this.tabPage2.ResumeLayout(false);
             this.tabPage2.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.dtgv_entranceConcepts)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.dtgv_fines)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.dtgv_taxes)).EndInit();
             this.tabPage1.ResumeLayout(false);
@@ -700,7 +820,9 @@
             this.tabPage3.PerformLayout();
             this.tabPage4.ResumeLayout(false);
             this.tabPage4.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.dtgv_entranceConcepts)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dtgv_users)).EndInit();
+            this.panel1.ResumeLayout(false);
+            this.panel1.PerformLayout();
             this.ResumeLayout(false);
 
         }
@@ -769,5 +891,17 @@
         private System.Windows.Forms.Label lbl_taxes;
         private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn3;
         private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn4;
+        private System.Windows.Forms.DataGridView dtgv_users;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Username;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Role;
+        private System.Windows.Forms.DataGridViewCheckBoxColumn IsActive;
+        private System.Windows.Forms.Panel panel1;
+        private System.Windows.Forms.TextBox txtPassword;
+        private System.Windows.Forms.Label label20;
+        private System.Windows.Forms.Button btnUser;
+        private System.Windows.Forms.Label label19;
+        private System.Windows.Forms.TextBox txtUser;
+        private System.Windows.Forms.Label lblRole;
+        private System.Windows.Forms.TextBox txtRole;
     }
 }

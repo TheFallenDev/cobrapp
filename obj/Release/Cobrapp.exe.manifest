@@ -42,14 +42,14 @@
     </dependentAssembly>
   </dependency>
   <dependency>
-    <dependentAssembly dependencyType="install" allowDelayedBinding="true" codebase="Cobrapp.exe" size="592800">
+    <dependentAssembly dependencyType="install" allowDelayedBinding="true" codebase="Cobrapp.exe" size="608672">
       <assemblyIdentity name="Cobrapp" version="1.0.0.1" language="neutral" processorArchitecture="msil" />
       <hash>
         <dsig:Transforms>
           <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
         </dsig:Transforms>
         <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha256" />
-        <dsig:DigestValue>Q7afMWn4vlrrit6bHFnhAfD8snNHf/qnBrYIL8fhhAE=</dsig:DigestValue>
+        <dsig:DigestValue>YFkX5qKG9foDGsLHp/ysRi3AKyg0F+SLuDt/MxLy/HA=</dsig:DigestValue>
       </hash>
     </dependentAssembly>
   </dependency>
@@ -113,22 +113,22 @@
       </hash>
     </dependentAssembly>
   </dependency>
-  <file name="Cobrapp.exe.config" size="4612">
+  <file name="Cobrapp.exe.config" size="4875">
     <hash>
       <dsig:Transforms>
         <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
       </dsig:Transforms>
       <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha256" />
-      <dsig:DigestValue>AjSDAd8aFLxs/z4U7cIaxOCg9ts40lmlr3Zvu13jDvk=</dsig:DigestValue>
+      <dsig:DigestValue>NFPIJaTWV/jggjSc9DNBthALPXZZeAHoFMDT+kgTX14=</dsig:DigestValue>
     </hash>
   </file>
-  <file name="data.db" size="81920">
+  <file name="data.db" size="98304">
     <hash>
       <dsig:Transforms>
         <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
       </dsig:Transforms>
       <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha256" />
-      <dsig:DigestValue>vjYCRce2q6oWYctqcFyU6VJMA5Ge+dNRVwPvlpdfRiU=</dsig:DigestValue>
+      <dsig:DigestValue>+ebpNixvp8OyitSX01LGDnfgAf7riffdQObseonux1s=</dsig:DigestValue>
     </hash>
   </file>
   <file name="models\ticket.txt" size="525">

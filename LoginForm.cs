@@ -20,18 +20,39 @@ namespace Cobrapp
 
         private void btnLogin_Click(object sender, EventArgs e)
         {
-            string userPassword = txtPassword.Text;
-            string configuredPassword = ConfigurationLogic.Instance.GetConfigurationValue("ConfigurationPassword");
-            if (userPassword == configuredPassword)
+            string username = txtUsername.Text.Trim();
+            string password = txtPassword.Text;
+
+            // Validar campos vacíos
+            if (string.IsNullOrWhiteSpace(username) || string.IsNullOrWhiteSpace(password))
             {
-                this.DialogResult = DialogResult.OK;
+                lblError.Text = "Por favor, complete todos los campos.";
+                return;
+            }
+
+            var (isAuthenticated, role) = ConfigurationLogic.Instance.Login(username, password);
+
+            if (isAuthenticated)
+            {
+                lblError.Text = ""; // Limpiar mensaje de error
+                MessageBox.Show($"Bienvenido, {username} (Rol: {role})", "Login Exitoso");
+
+                // Lógica para redirigir a la interfaz principal
+                this.Hide();
+                Properties.Settings.Default.CurrentUser = username;
+                main mainForm = new main(); // Pasar el rol al formulario principal
+                mainForm.Show();
             }
             else
             {
-                MessageBox.Show("Contraseña incorrecta. Inténtelo de nuevo.", "Error de inicio de sesión", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                txtPassword.Clear();
+                lblError.Text = "Usuario o contraseña incorrectos.";
             }
         }
-    }
 
+        private void LoginForm_Load(object sender, EventArgs e)
+        {
+            ConfigurationLogic.Instance.CreateDefaultRoles();
+            ConfigurationLogic.Instance.EnsureDefaultAdminExists();
+        }
+    }
 }

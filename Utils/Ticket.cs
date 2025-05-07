@@ -16,10 +16,12 @@ namespace Cobrapp.Utils
         public string Date { get; set; }
         public string Time { get; set; }
         public string Total { get; set; }
+        public int TicketNumber { get; set; }
         public decimal TotalPrice { get; set; }
         public decimal TotalCash { get; set; }
         public decimal TotalPos {  get; set; }
         public string Commission { get; set; }
+        public string Username { get; set; }
         public string[] FirstColumn { get; set; }
         public string[] SecondColumn { get; set; }
         public string[] ThirdColumn { get; set; }
@@ -41,10 +43,6 @@ namespace Cobrapp.Utils
             EntranceTicket,
             TotalEntrance
         }
-
-        private int currentLine = 0;
-        private int page = 0;
-        private bool isPrintingSummary = false;
 
         public void PrintTicket(PrintType printType)
         {
@@ -503,6 +501,11 @@ namespace Cobrapp.Utils
             line = "Fecha: " + Date;
             g.DrawString(line, font, Brushes.Black, leftMargin, yPos);
 
+            // Ticket
+            yPos = topMargin + (count++) * g.MeasureString("Text", font).Height;
+            line = "Ticket Nro." + TicketNumber.ToString().PadLeft(10);
+            g.DrawString(line, font, Brushes.Black, leftMargin, yPos);
+
             // Cabeceras de las columnas
             yPos = topMargin + (count++) * g.MeasureString("Text", font).Height;
             line = "Detalle       Cant.         Subtotal";
@@ -580,6 +583,10 @@ namespace Cobrapp.Utils
             yPos = topMargin + (count++) * g.MeasureString("Text", font).Height;
             line = Title;
             g.DrawString(line, new Font("Consolas", 12), Brushes.Black, leftMargin, yPos);
+
+            yPos = topMargin + (count++) * g.MeasureString("Text", font).Height;
+            line = "Usuario: " + Username;
+            g.DrawString(line, font, Brushes.Black, leftMargin, yPos);
 
             // Fecha
             yPos = topMargin + (count++) * g.MeasureString("Text", font).Height;

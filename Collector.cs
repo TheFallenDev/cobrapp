@@ -18,7 +18,11 @@ namespace Cobrapp
             dtgv_taxes_list.Columns[3].DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleRight;
             dtgv_taxes_list.Columns[4].DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleRight;
             dtgv_taxes_list.Columns[5].DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleRight;
+            dtgv_taxes_list.Columns[3].DefaultCellStyle.Format = "C";
+            dtgv_taxes_list.Columns[4].DefaultCellStyle.Format = "C";
+            dtgv_taxes_list.Columns[5].DefaultCellStyle.Format = "C";
             KeyPreview = true;
+            ColorsFixer();
         }
 
         private int n = 0;
@@ -312,6 +316,16 @@ namespace Cobrapp
             {
                 btn_collect_taxes_KeyDown(btn_collect_taxes,e);
             }
+        }
+
+        private void ColorsFixer()
+        {
+            txt_total.BackColor = Color.FromArgb(144, 175, 197);
+            txt_penalty.BackColor = Color.FromArgb(144, 175, 197);
+            txt_extra_penalty.BackColor = Color.FromArgb(144, 175, 197);
+            txt_amount.BackColor = Color.FromArgb(144, 175, 197);
+            txt_penalty_percentage.BackColor = Color.FromArgb(144, 175, 197);
+            txt_tax_total.BackColor = Color.FromArgb(144, 175, 197);
         }
     }
 }
