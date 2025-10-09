@@ -42,14 +42,14 @@
     </dependentAssembly>
   </dependency>
   <dependency>
-    <dependentAssembly dependencyType="install" allowDelayedBinding="true" codebase="Cobrapp.exe" size="608672">
+    <dependentAssembly dependencyType="install" allowDelayedBinding="true" codebase="Cobrapp.exe" size="1021952">
       <assemblyIdentity name="Cobrapp" version="1.0.0.1" language="neutral" processorArchitecture="msil" />
       <hash>
         <dsig:Transforms>
           <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
         </dsig:Transforms>
         <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha256" />
-        <dsig:DigestValue>YFkX5qKG9foDGsLHp/ysRi3AKyg0F+SLuDt/MxLy/HA=</dsig:DigestValue>
+        <dsig:DigestValue>lmRUjJ/CXKUo4XoQmr44DQO9yaDMHGUbwU1UJJcUrzs=</dsig:DigestValue>
       </hash>
     </dependentAssembly>
   </dependency>

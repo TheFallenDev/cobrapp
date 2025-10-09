@@ -270,6 +270,10 @@ namespace Cobrapp
             {
                 MessageBox.Show("Se requiere tener una impresora instalada con el nombre 'tickera' o 'tickeraUSB'.");
             }
+
+            // TASA DE COMERCIO DESHABILITADA
+            btn_CommercialTax.Enabled = false;
+            btn_CommercialTax.Visible = false;
         }
     }
 }

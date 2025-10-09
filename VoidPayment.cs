@@ -18,6 +18,7 @@ namespace Cobrapp
         public VoidPayment()
         {
             InitializeComponent();
+            SendKeys.Send("{TAB}");
             KeyPreview = true;
             txt_receipt_number.Focus();
         }

@@ -16,43 +16,63 @@ namespace Cobrapp
         public LoginForm()
         {
             InitializeComponent();
+            this.KeyPreview = true;
         }
 
         private void btnLogin_Click(object sender, EventArgs e)
         {
             string username = txtUsername.Text.Trim();
             string password = txtPassword.Text;
-
+            Console.WriteLine(string.IsNullOrWhiteSpace(txtUsername.Text));
             // Validar campos vacíos
-            if (string.IsNullOrWhiteSpace(username) || string.IsNullOrWhiteSpace(password))
+            if (string.IsNullOrWhiteSpace(txtUsername.Text) || string.IsNullOrWhiteSpace(txtPassword.Text))
             {
                 lblError.Text = "Por favor, complete todos los campos.";
+                lblError.Visible = true;
                 return;
             }
 
-            var (isAuthenticated, role) = ConfigurationLogic.Instance.Login(username, password);
-
-            if (isAuthenticated)
+            try
             {
-                lblError.Text = ""; // Limpiar mensaje de error
-                MessageBox.Show($"Bienvenido, {username} (Rol: {role})", "Login Exitoso");
-
-                // Lógica para redirigir a la interfaz principal
-                this.Hide();
-                Properties.Settings.Default.CurrentUser = username;
-                main mainForm = new main(); // Pasar el rol al formulario principal
-                mainForm.Show();
+                var (isAuthenticated, role) = ConfigurationLogic.Instance.Login(username, password);
+                
+                if (isAuthenticated)
+                {
+                    lblError.Visible = false;
+                    MessageBox.Show($"Bienvenido, {username} (Rol: {role})", "Login Exitoso");
+                    this.Hide();
+                    Properties.Settings.Default.CurrentUser = username;
+                    main mainForm = new main();
+                    mainForm.Show();
+                }
+                else
+                {
+                    lblError.Text = "Usuario o contraseña incorrectos.";
+                    txtPassword.Clear();
+                    txtPassword.Focus();
+                    lblError.Visible = true;
+                }
             }
-            else
+            catch (Exception ex)
             {
-                lblError.Text = "Usuario o contraseña incorrectos.";
+                MessageBox.Show("Ocurrió un error al intentar iniciar sesión.\n" + ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
+
         }
 
         private void LoginForm_Load(object sender, EventArgs e)
         {
+            Console.WriteLine("Load");
             ConfigurationLogic.Instance.CreateDefaultRoles();
             ConfigurationLogic.Instance.EnsureDefaultAdminExists();
+        }
+        private void LoginForm_KeyDown(object sender, KeyEventArgs e)
+        {
+            if (e.KeyCode == Keys.Enter)
+            {
+                btnLogin.PerformClick();
+                Console.WriteLine("Enter");
+            }
         }
     }
 }

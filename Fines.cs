@@ -13,6 +13,7 @@ namespace Cobrapp
         public Fines()
         {
             InitializeComponent();
+            SendKeys.Send("{TAB}");
             KeyPreview = true;
             txt_barcode.Focus();
         }

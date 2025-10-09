@@ -117,9 +117,10 @@
             // label2
             // 
             this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(530, 479);
+            this.label2.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label2.Location = new System.Drawing.Point(506, 484);
             this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(67, 13);
+            this.label2.Size = new System.Drawing.Size(99, 17);
             this.label2.TabIndex = 4;
             this.label2.Text = "Total del día";
             // 
@@ -140,18 +141,19 @@
             this.dtp_date.Location = new System.Drawing.Point(423, 99);
             this.dtp_date.Name = "dtp_date";
             this.dtp_date.Size = new System.Drawing.Size(100, 20);
-            this.dtp_date.TabIndex = 9;
+            this.dtp_date.TabIndex = 0;
             this.dtp_date.Value = new System.DateTime(2023, 9, 15, 0, 0, 0, 0);
             this.dtp_date.KeyDown += new System.Windows.Forms.KeyEventHandler(this.dtp_date_KeyDown);
             // 
             // lbl_total
             // 
             this.lbl_total.AutoSize = true;
-            this.lbl_total.Location = new System.Drawing.Point(626, 479);
+            this.lbl_total.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lbl_total.Location = new System.Drawing.Point(630, 484);
             this.lbl_total.Name = "lbl_total";
-            this.lbl_total.Size = new System.Drawing.Size(85, 13);
+            this.lbl_total.Size = new System.Drawing.Size(40, 17);
             this.lbl_total.TabIndex = 10;
-            this.lbl_total.Text = "total_acumulado";
+            this.lbl_total.Text = "0.00";
             // 
             // btn_generate_file
             // 

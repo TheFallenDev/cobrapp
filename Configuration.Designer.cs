@@ -89,20 +89,20 @@
             this.ExtensionEndDate = new System.Windows.Forms.TextBox();
             this.ExtensionActive = new System.Windows.Forms.CheckBox();
             this.tabPage4 = new System.Windows.Forms.TabPage();
+            this.panel1 = new System.Windows.Forms.Panel();
+            this.lblRole = new System.Windows.Forms.Label();
+            this.txtRole = new System.Windows.Forms.TextBox();
+            this.txtPassword = new System.Windows.Forms.TextBox();
+            this.label20 = new System.Windows.Forms.Label();
+            this.btnUser = new System.Windows.Forms.Button();
+            this.label19 = new System.Windows.Forms.Label();
+            this.txtUser = new System.Windows.Forms.TextBox();
             this.dtgv_users = new System.Windows.Forms.DataGridView();
             this.Username = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Role = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.IsActive = new System.Windows.Forms.DataGridViewCheckBoxColumn();
             this.EntranceMode = new System.Windows.Forms.CheckBox();
             this.btn_save = new System.Windows.Forms.Button();
-            this.btnUser = new System.Windows.Forms.Button();
-            this.txtUser = new System.Windows.Forms.TextBox();
-            this.txtPassword = new System.Windows.Forms.TextBox();
-            this.label19 = new System.Windows.Forms.Label();
-            this.label20 = new System.Windows.Forms.Label();
-            this.panel1 = new System.Windows.Forms.Panel();
-            this.txtRole = new System.Windows.Forms.TextBox();
-            this.lblRole = new System.Windows.Forms.Label();
             this.tabPage2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dtgv_entranceConcepts)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dtgv_fines)).BeginInit();
@@ -111,8 +111,8 @@
             this.tabControl.SuspendLayout();
             this.tabPage3.SuspendLayout();
             this.tabPage4.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.dtgv_users)).BeginInit();
             this.panel1.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.dtgv_users)).BeginInit();
             this.SuspendLayout();
             // 
             // tabPage2
@@ -675,6 +675,79 @@
             this.tabPage4.Text = "Menu";
             this.tabPage4.UseVisualStyleBackColor = true;
             // 
+            // panel1
+            // 
+            this.panel1.BackColor = System.Drawing.Color.Gainsboro;
+            this.panel1.Controls.Add(this.lblRole);
+            this.panel1.Controls.Add(this.txtRole);
+            this.panel1.Controls.Add(this.txtPassword);
+            this.panel1.Controls.Add(this.label20);
+            this.panel1.Controls.Add(this.btnUser);
+            this.panel1.Controls.Add(this.label19);
+            this.panel1.Controls.Add(this.txtUser);
+            this.panel1.Location = new System.Drawing.Point(467, 241);
+            this.panel1.Name = "panel1";
+            this.panel1.Size = new System.Drawing.Size(229, 100);
+            this.panel1.TabIndex = 7;
+            // 
+            // lblRole
+            // 
+            this.lblRole.AutoSize = true;
+            this.lblRole.Location = new System.Drawing.Point(12, 53);
+            this.lblRole.Name = "lblRole";
+            this.lblRole.Size = new System.Drawing.Size(23, 13);
+            this.lblRole.TabIndex = 8;
+            this.lblRole.Text = "Rol";
+            // 
+            // txtRole
+            // 
+            this.txtRole.Location = new System.Drawing.Point(62, 50);
+            this.txtRole.Name = "txtRole";
+            this.txtRole.Size = new System.Drawing.Size(100, 20);
+            this.txtRole.TabIndex = 7;
+            // 
+            // txtPassword
+            // 
+            this.txtPassword.Location = new System.Drawing.Point(118, 24);
+            this.txtPassword.Name = "txtPassword";
+            this.txtPassword.Size = new System.Drawing.Size(100, 20);
+            this.txtPassword.TabIndex = 4;
+            // 
+            // label20
+            // 
+            this.label20.AutoSize = true;
+            this.label20.Location = new System.Drawing.Point(118, 10);
+            this.label20.Name = "label20";
+            this.label20.Size = new System.Drawing.Size(66, 13);
+            this.label20.TabIndex = 6;
+            this.label20.Text = "Constraseña";
+            // 
+            // btnUser
+            // 
+            this.btnUser.Location = new System.Drawing.Point(151, 74);
+            this.btnUser.Name = "btnUser";
+            this.btnUser.Size = new System.Drawing.Size(75, 23);
+            this.btnUser.TabIndex = 2;
+            this.btnUser.Text = "Aceptar";
+            this.btnUser.UseVisualStyleBackColor = true;
+            this.btnUser.Click += new System.EventHandler(this.btnUser_Click);
+            // 
+            // label19
+            // 
+            this.label19.AutoSize = true;
+            this.label19.Location = new System.Drawing.Point(12, 10);
+            this.label19.Name = "label19";
+            this.label19.Size = new System.Drawing.Size(43, 13);
+            this.label19.TabIndex = 5;
+            this.label19.Text = "Usuario";
+            // 
+            // txtUser
+            // 
+            this.txtUser.Location = new System.Drawing.Point(12, 24);
+            this.txtUser.Name = "txtUser";
+            this.txtUser.Size = new System.Drawing.Size(100, 20);
+            this.txtUser.TabIndex = 3;
+            // 
             // dtgv_users
             // 
             this.dtgv_users.AllowUserToDeleteRows = false;
@@ -708,7 +781,7 @@
             // EntranceMode
             // 
             this.EntranceMode.AutoSize = true;
-            this.EntranceMode.Location = new System.Drawing.Point(27, 35);
+            this.EntranceMode.Location = new System.Drawing.Point(284, 21);
             this.EntranceMode.Name = "EntranceMode";
             this.EntranceMode.Size = new System.Drawing.Size(113, 17);
             this.EntranceMode.TabIndex = 0;
@@ -724,79 +797,6 @@
             this.btn_save.Text = "Guardar";
             this.btn_save.UseVisualStyleBackColor = true;
             this.btn_save.Click += new System.EventHandler(this.btn_save_Click);
-            // 
-            // btnUser
-            // 
-            this.btnUser.Location = new System.Drawing.Point(151, 74);
-            this.btnUser.Name = "btnUser";
-            this.btnUser.Size = new System.Drawing.Size(75, 23);
-            this.btnUser.TabIndex = 2;
-            this.btnUser.Text = "Aceptar";
-            this.btnUser.UseVisualStyleBackColor = true;
-            this.btnUser.Click += new System.EventHandler(this.btnUser_Click);
-            // 
-            // txtUser
-            // 
-            this.txtUser.Location = new System.Drawing.Point(12, 24);
-            this.txtUser.Name = "txtUser";
-            this.txtUser.Size = new System.Drawing.Size(100, 20);
-            this.txtUser.TabIndex = 3;
-            // 
-            // txtPassword
-            // 
-            this.txtPassword.Location = new System.Drawing.Point(118, 24);
-            this.txtPassword.Name = "txtPassword";
-            this.txtPassword.Size = new System.Drawing.Size(100, 20);
-            this.txtPassword.TabIndex = 4;
-            // 
-            // label19
-            // 
-            this.label19.AutoSize = true;
-            this.label19.Location = new System.Drawing.Point(12, 10);
-            this.label19.Name = "label19";
-            this.label19.Size = new System.Drawing.Size(43, 13);
-            this.label19.TabIndex = 5;
-            this.label19.Text = "Usuario";
-            // 
-            // label20
-            // 
-            this.label20.AutoSize = true;
-            this.label20.Location = new System.Drawing.Point(118, 10);
-            this.label20.Name = "label20";
-            this.label20.Size = new System.Drawing.Size(66, 13);
-            this.label20.TabIndex = 6;
-            this.label20.Text = "Constraseña";
-            // 
-            // panel1
-            // 
-            this.panel1.BackColor = System.Drawing.Color.Gainsboro;
-            this.panel1.Controls.Add(this.lblRole);
-            this.panel1.Controls.Add(this.txtRole);
-            this.panel1.Controls.Add(this.txtPassword);
-            this.panel1.Controls.Add(this.label20);
-            this.panel1.Controls.Add(this.btnUser);
-            this.panel1.Controls.Add(this.label19);
-            this.panel1.Controls.Add(this.txtUser);
-            this.panel1.Location = new System.Drawing.Point(27, 124);
-            this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(229, 100);
-            this.panel1.TabIndex = 7;
-            // 
-            // txtRole
-            // 
-            this.txtRole.Location = new System.Drawing.Point(62, 50);
-            this.txtRole.Name = "txtRole";
-            this.txtRole.Size = new System.Drawing.Size(100, 20);
-            this.txtRole.TabIndex = 7;
-            // 
-            // lblRole
-            // 
-            this.lblRole.AutoSize = true;
-            this.lblRole.Location = new System.Drawing.Point(12, 53);
-            this.lblRole.Name = "lblRole";
-            this.lblRole.Size = new System.Drawing.Size(23, 13);
-            this.lblRole.TabIndex = 8;
-            this.lblRole.Text = "Rol";
             // 
             // Configuration
             // 
@@ -820,9 +820,9 @@
             this.tabPage3.PerformLayout();
             this.tabPage4.ResumeLayout(false);
             this.tabPage4.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.dtgv_users)).EndInit();
             this.panel1.ResumeLayout(false);
             this.panel1.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.dtgv_users)).EndInit();
             this.ResumeLayout(false);
 
         }

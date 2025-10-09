@@ -82,7 +82,7 @@
             this.txt_barcode.Location = new System.Drawing.Point(112, 34);
             this.txt_barcode.Name = "txt_barcode";
             this.txt_barcode.Size = new System.Drawing.Size(366, 20);
-            this.txt_barcode.TabIndex = 1;
+            this.txt_barcode.TabIndex = 0;
             this.txt_barcode.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
             this.txt_barcode.TextChanged += new System.EventHandler(this.txt_barcode_TextChanged);
             // 
@@ -92,9 +92,9 @@
             this.lbl_tax_name.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lbl_tax_name.Location = new System.Drawing.Point(12, 102);
             this.lbl_tax_name.Name = "lbl_tax_name";
-            this.lbl_tax_name.Size = new System.Drawing.Size(38, 15);
+            this.lbl_tax_name.Size = new System.Drawing.Size(35, 15);
             this.lbl_tax_name.TabIndex = 2;
-            this.lbl_tax_name.Text = "Tasa";
+            this.lbl_tax_name.Text = "Tipo";
             // 
             // lbl_due_date
             // 
@@ -267,9 +267,9 @@
             this.lbl_amount.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lbl_amount.Location = new System.Drawing.Point(12, 133);
             this.lbl_amount.Name = "lbl_amount";
-            this.lbl_amount.Size = new System.Drawing.Size(47, 15);
+            this.lbl_amount.Size = new System.Drawing.Size(38, 15);
             this.lbl_amount.TabIndex = 22;
-            this.lbl_amount.Text = "Monto";
+            this.lbl_amount.Text = "Tasa";
             // 
             // txt_amount
             // 
@@ -307,7 +307,7 @@
             // 
             this.txt_tax_total.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.txt_tax_total.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txt_tax_total.Location = new System.Drawing.Point(142, 283);
+            this.txt_tax_total.Location = new System.Drawing.Point(142, 287);
             this.txt_tax_total.Name = "txt_tax_total";
             this.txt_tax_total.ReadOnly = true;
             this.txt_tax_total.Size = new System.Drawing.Size(126, 14);
@@ -384,10 +384,10 @@
             // 
             this.label1.AutoSize = true;
             this.label1.Dock = System.Windows.Forms.DockStyle.Bottom;
-            this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label1.Location = new System.Drawing.Point(0, 615);
+            this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label1.Location = new System.Drawing.Point(0, 611);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(508, 13);
+            this.label1.Size = new System.Drawing.Size(654, 17);
             this.label1.TabIndex = 35;
             this.label1.Text = "Asegurese de haber recibido el total del dinero antes de presionar el boton de CO" +
     "BRAR.";

@@ -56,6 +56,7 @@
             this.panel5 = new System.Windows.Forms.Panel();
             this.panel4 = new System.Windows.Forms.Panel();
             this.panelContainer = new System.Windows.Forms.Panel();
+            this.panel10 = new System.Windows.Forms.Panel();
             ((System.ComponentModel.ISupportInitialize)(this.btn_Close)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.btn_maximize)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.btn_minimize)).BeginInit();
@@ -249,6 +250,7 @@
             // panelLeft
             // 
             this.panelLeft.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(42)))), ((int)(((byte)(49)))), ((int)(((byte)(50)))));
+            this.panelLeft.Controls.Add(this.panel10);
             this.panelLeft.Controls.Add(this.panel2);
             this.panelLeft.Controls.Add(this.btn_CommercialTax);
             this.panelLeft.Controls.Add(this.btn_Main);
@@ -311,7 +313,7 @@
             this.btn_Main.Image = ((System.Drawing.Image)(resources.GetObject("btn_Main.Image")));
             this.btn_Main.Location = new System.Drawing.Point(0, 0);
             this.btn_Main.Name = "btn_Main";
-            this.btn_Main.Size = new System.Drawing.Size(186, 140);
+            this.btn_Main.Size = new System.Drawing.Size(189, 140);
             this.btn_Main.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
             this.btn_Main.TabIndex = 19;
             this.btn_Main.TabStop = false;
@@ -405,6 +407,13 @@
             this.panelContainer.Size = new System.Drawing.Size(932, 628);
             this.panelContainer.TabIndex = 16;
             // 
+            // panel10
+            // 
+            this.panel10.Location = new System.Drawing.Point(182, 116);
+            this.panel10.Name = "panel10";
+            this.panel10.Size = new System.Drawing.Size(10, 24);
+            this.panel10.TabIndex = 0;
+            // 
             // main
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -464,6 +473,7 @@
         private System.Windows.Forms.Panel panel9;
         private System.Windows.Forms.Button btn_CommercialTax;
         private System.Windows.Forms.Panel panel1;
+        private System.Windows.Forms.Panel panel10;
     }
 }
 

@@ -14,6 +14,7 @@ namespace Cobrapp
         public Stamps()
         {
             InitializeComponent();
+            SendKeys.Send("{TAB}");
             KeyPreview = true;
             txt_stamp_value.Text = "";
             txt_stamp_value.Focus();
@@ -26,7 +27,7 @@ namespace Cobrapp
                 string value = MyUtils.Formatter(txt_stamp_value.Text);
                 PrintDocument printReceipt = new PrintDocument();
                 PrinterSettings ps = new PrinterSettings();
-                ps.PrinterName = "tickera";
+                ps.PrinterName = Properties.Settings.Default.DefaultPrinter;
                 printReceipt.PrinterSettings = ps;
                 printReceipt.PrintPage += (s, ev) => Print(s, ev);
                 printReceipt.Print();
@@ -72,7 +73,7 @@ namespace Cobrapp
             receipt = receipt.Replace("ADDRESS", ConfigurationLogic.Instance.GetConfigurationValue("Address"));
             receipt = receipt.Replace("RECEIPTNUMBER", businessCode + newId.ToString().PadLeft(6, '0'));
             receipt = receipt.Replace("DATE", DateTime.Now.ToString("dd/MM/yy hh:mm:ss").ToString());
-            receipt = receipt.Replace("TOTAL", MyUtils.Formatter(txt_stamp_value.Text));
+            receipt = receipt.Replace("TOTAL", decimal.Parse(txt_stamp_value.Text).ToString("N2"));
             return receipt;
         }
 

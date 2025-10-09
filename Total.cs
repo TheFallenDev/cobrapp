@@ -20,6 +20,7 @@ namespace Cobrapp
         public Total()
         {
             InitializeComponent();
+            SendKeys.Send("{TAB}");
             dtp_date.Value = DateTime.Now;
             dtp_date.Focus();
             dtgv_taxes.Columns[2].DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleRight;
@@ -44,7 +45,7 @@ namespace Cobrapp
             decimal acc = 0;
             if (e.KeyCode == Keys.Enter)
             {
-                GenerateDailySummary(MyUtils.DateFixerMinus(dtp_date.Text));
+                //GenerateDailySummary(MyUtils.DateFixerMinus(dtp_date.Text));
                 dtgv_taxes.Rows.Clear();
 
                 List<Tax> taxList = TaxLogic.Instance.ListByDate(MyUtils.DateFixer(dtp_date.Text));
@@ -115,7 +116,7 @@ namespace Cobrapp
                 }
             }
         }
-
+        
         private void GenerateDailySummary(string date)
         {
             // Diccionario para agrupar los datos
@@ -158,9 +159,9 @@ namespace Cobrapp
             List<string> types = new List<string>();
             List<string> receipts = new List<string>();
             List<decimal> totals = new List<decimal>();
-            decimal totalcash = 0;
-            decimal totalpos = 0;
-
+            //decimal totalcash = 0m;
+            //decimal totalpos = 0m;
+            /*
             // Diccionario para agrupar los datos
             Dictionary<string, ConceptSummary> summaryDict = new Dictionary<string, ConceptSummary>();
             // Recuperar los conceptos
@@ -190,7 +191,7 @@ namespace Cobrapp
                 {
                     totalpos += concept.Value;
                 }
-            }
+            }*/
 
             dtgv_taxes.Sort(dtgv_taxes.Columns[1], ListSortDirection.Ascending);
 
@@ -216,9 +217,9 @@ namespace Cobrapp
                 FirstColumn = types.ToArray(),
                 SecondColumn = receipts.ToArray(),
                 PriceColumn = totals.ToArray(),
-                SummaryDict = summaryDict,
-                TotalCash = totalcash,
-                TotalPos = totalpos,
+                //SummaryDict = summaryDict,
+                //TotalCash = totalcash,
+                //TotalPos = totalpos,
                 Username = Properties.Settings.Default.CurrentUser
             };
             
@@ -259,13 +260,13 @@ namespace Cobrapp
                     {
                         if (String.IsNullOrEmpty(tax.Void))
                         {
+                            string businessCode = ConfigurationLogic.Instance.GetConfigurationValue("BusinessCode");
                             string taxCode = tax.TaxCode.ToString().PadLeft(2, '0');
                             string receipt = tax.Receipt_number.PadLeft(8, '0');
                             string date = MyUtils.DateFixer(dtp_date.Text).Replace("/", "");
                             string amount = tax.Partial.ToString().Replace(",", "").PadLeft(10, '0');
                             string additional = tax.Additional.ToString().Replace(",", "").PadLeft(8, '0');
                             string delay = tax.Delay.ToString().Replace(",", "").PadLeft(8, '0');
-                            string businessCode = ConfigurationLogic.Instance.GetConfigurationValue("BusinessCode");
                             string line = businessCode + "0285" + taxCode + receipt + date + amount + "0" + additional + delay;
                             writer.WriteLine(line);
                         }
@@ -302,7 +303,7 @@ namespace Cobrapp
 
                 if (result == DialogResult.Yes)
                 {
-                    string toEmail = ConfigurationLogic.Instance.GetConfigurationValue("toEmail");
+                    string toEmail = ConfigurationLogic.Instance.GetConfigurationValue("EmailReceiver");
                     string subject = baseFileName + " - $" + lbl_total.Text;
                     string body = "";
                     string currentDirectory = AppDomain.CurrentDomain.BaseDirectory;

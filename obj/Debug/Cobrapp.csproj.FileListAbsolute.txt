@@ -79,3 +79,4 @@ C:\Deploy\cobrapp\obj\Debug\Cobrapp.application
 C:\Deploy\cobrapp\obj\Debug\Cobrapp.csproj.Up2Date
 C:\Deploy\cobrapp\obj\Debug\Cobrapp.exe
 C:\Deploy\cobrapp\obj\Debug\Cobrapp.pdb
+C:\Deploy\cobrapp\obj\Debug\Cobrapp.exe.config

@@ -16,7 +16,7 @@ namespace Cobrapp
         public Commissions()
         {
             InitializeComponent();
-
+            SendKeys.Send("{TAB}");
             DateTime today = DateTime.Now;
             DateTime previousMonth = today.AddMonths(-1);
             dtp_to_date.Value = new DateTime(previousMonth.Year,previousMonth.Month, DateTime.DaysInMonth(previousMonth.Year, previousMonth.Month));

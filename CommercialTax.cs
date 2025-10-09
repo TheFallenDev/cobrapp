@@ -291,18 +291,18 @@ namespace Cobrapp
         private void Save()
         {
             DateTime parsedDueDate = DateTime.ParseExact(txt_due_date.Text, "dd/MM/yyyy", cultureInfo);
-            string partial;
-            float additional;
-            float delay;
+            decimal partial;
+            decimal additional;
+            decimal delay;
             if (parsedDueDate < DateTime.Today)
             {
-                partial = (calculatedTaxWithCommon + 50).ToString();
-                additional = float.Parse(lbl_additional.Text);
-                delay = float.Parse(lbl_delay.Text);
+                partial = calculatedTaxWithCommon + 50;
+                additional = decimal.Parse(lbl_additional.Text);
+                delay = decimal.Parse(lbl_delay.Text);
             }
             else
             {
-                partial = lbl_total.Text;
+                partial = decimal.Parse(lbl_total.Text);
                 additional = 0;
                 delay = 0;
             }

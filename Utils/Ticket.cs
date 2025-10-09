@@ -287,7 +287,7 @@ namespace Cobrapp.Utils
 
             string[] type = FirstColumn;
             string[] receipt = SecondColumn;
-            string[] total = ThirdColumn;
+            decimal[] total = PriceColumn;
 
             // Separador
             yPos = topMargin + (count++) * g.MeasureString("Text", font).Height;
@@ -317,7 +317,7 @@ namespace Cobrapp.Utils
 
             // Cabeceras de las columnas
             yPos = topMargin + (count++) * g.MeasureString("Text", font).Height;
-            line = "Tipo  Recibo                  Total";
+            line = "Tipo  Comprobante             Total";
             g.DrawString(line, font, Brushes.Black, leftMargin, yPos);
 
             // Detalles de los elementos en tres columnas
@@ -326,7 +326,7 @@ namespace Cobrapp.Utils
                 yPos = topMargin + (count++) * g.MeasureString("Text", font).Height;
 
                 // Ajusta el espaciado para acercar más la columna "Elemento"
-                line = $"{type[i].PadRight(5)}{receipt[i].PadRight(12)}{total[i].PadLeft(18)}";
+                line = $"{type[i].PadRight(6)}{receipt[i].PadRight(12)}{total[i].ToString("N2").PadLeft(17)}";
                 g.DrawString(line, font, Brushes.Black, leftMargin, yPos);
             }
 

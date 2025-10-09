@@ -14,6 +14,7 @@ namespace Cobrapp
         public Collector()
         {
             InitializeComponent();
+            SendKeys.Send("{TAB}");
             dtgv_taxes_list.Columns[2].DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleCenter;
             dtgv_taxes_list.Columns[3].DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleRight;
             dtgv_taxes_list.Columns[4].DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleRight;
@@ -22,12 +23,14 @@ namespace Cobrapp
             dtgv_taxes_list.Columns[4].DefaultCellStyle.Format = "C";
             dtgv_taxes_list.Columns[5].DefaultCellStyle.Format = "C";
             KeyPreview = true;
+            txt_barcode.KeyPress += txt_barcode_KeyPress;
             ColorsFixer();
         }
 
         private int n = 0;
         private string receiptNumber = "";
         private int page = 0;
+        private CultureInfo culture = new CultureInfo("es-AR");
 
         private bool CheckDigit (string barcode)
         {
@@ -76,19 +79,22 @@ namespace Cobrapp
             }
         }
          
-        private string DateCheck(string dueDateStr,decimal amountDecimal)
+        private string DateCheck(string dueDateStr,decimal amountDecimal, string taxNumber)
         {
             DateTime todayDate = DateTime.Today;
-            var cultureInfo = new CultureInfo("es-AR");
-            DateTime dueDate = DateTime.ParseExact(dueDateStr, "ddMMyy", cultureInfo);
+            DateTime dueDate = DateTime.ParseExact(dueDateStr, "ddMMyy", culture);
             if (DateTime.Compare(todayDate, dueDate) > 0)
             {
+                if (taxNumber == "34" || taxNumber == "39")
+                {
+                    throw new InvalidOperationException("La boleta está vencida y debe ser generada nuevamente o pagada en tesorería municipal.");
+                }
                 lbl_show_due_date.ForeColor = Color.Red;
                 PenaltiesCalculator(amountDecimal, todayDate, dueDate);
                 return dueDate.ToString("dd/MM/yy");
             }
             lbl_show_due_date.ForeColor = Color.Black;
-            txt_tax_total.Text = (Math.Round(amountDecimal, 2)).ToString();
+            txt_tax_total.Text = (Math.Round(amountDecimal, 2)).ToString("C2", culture);
             return dueDate.ToString("dd/MM/yy");
         }
 
@@ -103,12 +109,12 @@ namespace Cobrapp
             if (differenceInDays > 60) {
                 decimal extraPenalty = (Decimal.Multiply(amountDecimal, (delayPenalty / 100)));
                 totalWithPenalties += extraPenalty;
-                txt_extra_penalty.Text = (Math.Round(extraPenalty, 2)).ToString();
+                txt_extra_penalty.Text = extraPenalty.ToString("C2", culture);
             }
             lbl_show_due_days.Text = "Días de atraso: " + differenceInDays.ToString();
             txt_penalty_percentage.Text = (Math.Round(calc,2)).ToString() + " %";
-            txt_penalty.Text = (Math.Round(penalty, 2)).ToString();
-            txt_tax_total.Text = (Math.Round(totalWithPenalties, 2)).ToString();
+            txt_penalty.Text = penalty.ToString("C2",culture);
+            txt_tax_total.Text = totalWithPenalties.ToString("C2", culture);
         }
 
         private void txt_barcode_TextChanged(object sender, EventArgs e)
@@ -122,8 +128,20 @@ namespace Cobrapp
                 string amount = txt_barcode.Text.Substring(20, 10);
                 decimal amountDecimal = Decimal.Parse(amount) / 100;
                 txt_barcode.Enabled = false;
-                txt_amount.Text = (Math.Round(amountDecimal, 2)).ToString();
-                lbl_show_due_date.Text = DateCheck(dueDate, amountDecimal);
+                txt_amount.Text = amountDecimal.ToString("C2", culture);
+                try
+                {
+                    string result = DateCheck(dueDate, amountDecimal, taxNumber);
+                    // Continuás con el resto solo si no se lanzó excepción
+                    lbl_show_due_date.Text = result;
+                }
+                catch (InvalidOperationException ex)
+                {
+                    MessageBox.Show(ex.Message, "Advertencia", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                    Cleaner();
+                    txt_barcode.Focus();
+                    return;
+                }
                 if (!btn_add_tax.Enabled) btn_add_tax.Enabled = true;
                 try
                 {
@@ -173,10 +191,10 @@ namespace Cobrapp
                 dtgv_taxes_list.Rows[n].Cells[0].Value = newReceiptNumber;
                 dtgv_taxes_list.Rows[n].Cells[1].Value = lbl_show_tax.Text;
                 dtgv_taxes_list.Rows[n].Cells[2].Value = lbl_show_due_date.Text;
-                dtgv_taxes_list.Rows[n].Cells[3].Value = string.IsNullOrEmpty(txt_penalty.Text) ? "0" : txt_penalty.Text;
-                dtgv_taxes_list.Rows[n].Cells[4].Value = string.IsNullOrEmpty(txt_extra_penalty.Text) ? "0" : txt_extra_penalty.Text;
-                dtgv_taxes_list.Rows[n].Cells[5].Value = Decimal.Parse(txt_tax_total.Text);
-                dtgv_taxes_list.Rows[n].Cells["amount"].Value = txt_amount.Text;
+                dtgv_taxes_list.Rows[n].Cells[3].Value = string.IsNullOrEmpty(txt_penalty.Text) ? 0m : Decimal.Parse(txt_penalty.Text, NumberStyles.Currency, culture);
+                dtgv_taxes_list.Rows[n].Cells[4].Value = string.IsNullOrEmpty(txt_extra_penalty.Text) ? 0m : Decimal.Parse(txt_extra_penalty.Text, NumberStyles.Currency, culture);
+                dtgv_taxes_list.Rows[n].Cells[5].Value = Decimal.Parse(txt_tax_total.Text, NumberStyles.Currency, culture);
+                dtgv_taxes_list.Rows[n].Cells["amount"].Value = Decimal.Parse(txt_amount.Text, NumberStyles.Currency, culture);
                 dtgv_taxes_list.Rows[n].Cells["taxCode"].Value = txt_barcode.Text.Substring(4, 2);
 
 
@@ -250,9 +268,9 @@ namespace Cobrapp
                             TaxCode = row.Cells["taxCode"].Value.ToString(),
                             Receipt_number = row.Cells["receiptNum"].Value.ToString(),
                             Due_date = row.Cells["due_date"].Value.ToString(),
-                            Partial = row.Cells["amount"].Value.ToString(),
-                            Additional = float.Parse(row.Cells["penalty"].Value.ToString()),
-                            Delay = float.Parse(row.Cells["extra_penalty"].Value.ToString()),
+                            Partial = decimal.Parse(row.Cells["amount"].Value.ToString()),
+                            Additional = decimal.Parse(row.Cells["penalty"].Value.ToString()),
+                            Delay = decimal.Parse(row.Cells["extra_penalty"].Value.ToString()),
                             Total = decimal.Parse(row.Cells["partial"].Value.ToString()),
                             Payment_date = DateTime.Now.ToString("yyyy/MM/dd"),
                             Payment_time = DateTime.Now.ToString("HH:mm:ss")
@@ -327,5 +345,14 @@ namespace Cobrapp
             txt_penalty_percentage.BackColor = Color.FromArgb(144, 175, 197);
             txt_tax_total.BackColor = Color.FromArgb(144, 175, 197);
         }
+        private void txt_barcode_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            // Permitir solo números y teclas de control (como backspace)
+            if (!char.IsControl(e.KeyChar) && !char.IsDigit(e.KeyChar))
+            {
+                e.Handled = true;
+            }
+        }
+
     }
 }

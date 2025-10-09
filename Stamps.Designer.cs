@@ -38,9 +38,10 @@
             // label1
             // 
             this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(349, 138);
+            this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label1.Location = new System.Drawing.Point(314, 158);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(93, 13);
+            this.label1.Size = new System.Drawing.Size(157, 20);
             this.label1.TabIndex = 1;
             this.label1.Text = "Valor del sellado $";
             // 
@@ -61,19 +62,19 @@
             // 
             // txt_stamp_value
             // 
-            this.txt_stamp_value.Location = new System.Drawing.Point(448, 135);
+            this.txt_stamp_value.Location = new System.Drawing.Point(477, 158);
             this.txt_stamp_value.Name = "txt_stamp_value";
             this.txt_stamp_value.Size = new System.Drawing.Size(109, 20);
-            this.txt_stamp_value.TabIndex = 4;
+            this.txt_stamp_value.TabIndex = 0;
             this.txt_stamp_value.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
             // 
             // label2
             // 
             this.label2.AutoSize = true;
-            this.label2.Font = new System.Drawing.Font("Microsoft Sans Serif", 16F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label2.Location = new System.Drawing.Point(393, 81);
+            this.label2.Font = new System.Drawing.Font("Microsoft Sans Serif", 20F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label2.Location = new System.Drawing.Point(384, 84);
             this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(129, 26);
+            this.label2.Size = new System.Drawing.Size(157, 31);
             this.label2.TabIndex = 5;
             this.label2.Text = "SELLADOS";
             // 
@@ -81,10 +82,10 @@
             // 
             this.label3.AutoSize = true;
             this.label3.Dock = System.Windows.Forms.DockStyle.Bottom;
-            this.label3.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label3.Location = new System.Drawing.Point(0, 615);
+            this.label3.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label3.Location = new System.Drawing.Point(0, 613);
             this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(770, 13);
+            this.label3.Size = new System.Drawing.Size(868, 15);
             this.label3.TabIndex = 6;
             this.label3.Text = "El cobro de un sellado no puede ser anulado. Antes de presionar el boton de COBRA" +
     "R asegurese de haber recibido el total del dinero.";

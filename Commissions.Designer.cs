@@ -64,7 +64,7 @@
             this.dtgv_commissions.Location = new System.Drawing.Point(265, 139);
             this.dtgv_commissions.Name = "dtgv_commissions";
             this.dtgv_commissions.Size = new System.Drawing.Size(443, 323);
-            this.dtgv_commissions.TabIndex = 0;
+            this.dtgv_commissions.TabIndex = 6;
             // 
             // date
             // 
@@ -125,7 +125,7 @@
             this.dtp_from_date.MinDate = new System.DateTime(2000, 1, 1, 0, 0, 0, 0);
             this.dtp_from_date.Name = "dtp_from_date";
             this.dtp_from_date.Size = new System.Drawing.Size(100, 20);
-            this.dtp_from_date.TabIndex = 7;
+            this.dtp_from_date.TabIndex = 0;
             this.dtp_from_date.Value = new System.DateTime(2000, 1, 1, 0, 0, 0, 0);
             // 
             // dtp_to_date
@@ -135,7 +135,7 @@
             this.dtp_to_date.Location = new System.Drawing.Point(476, 113);
             this.dtp_to_date.Name = "dtp_to_date";
             this.dtp_to_date.Size = new System.Drawing.Size(100, 20);
-            this.dtp_to_date.TabIndex = 8;
+            this.dtp_to_date.TabIndex = 1;
             this.dtp_to_date.Value = new System.DateTime(2023, 9, 15, 0, 0, 0, 0);
             // 
             // btn_calculate
@@ -143,7 +143,7 @@
             this.btn_calculate.Location = new System.Drawing.Point(615, 113);
             this.btn_calculate.Name = "btn_calculate";
             this.btn_calculate.Size = new System.Drawing.Size(93, 23);
-            this.btn_calculate.TabIndex = 9;
+            this.btn_calculate.TabIndex = 2;
             this.btn_calculate.Text = "Calcular";
             this.btn_calculate.UseVisualStyleBackColor = true;
             this.btn_calculate.Click += new System.EventHandler(this.btn_calculate_Click);
@@ -153,7 +153,7 @@
             this.btn_print.Location = new System.Drawing.Point(615, 490);
             this.btn_print.Name = "btn_print";
             this.btn_print.Size = new System.Drawing.Size(93, 23);
-            this.btn_print.TabIndex = 10;
+            this.btn_print.TabIndex = 3;
             this.btn_print.Text = "Imprimir (F12)";
             this.btn_print.UseVisualStyleBackColor = true;
             this.btn_print.Click += new System.EventHandler(this.btn_print_Click);
